@@ -1,4 +1,5 @@
-#Исправьте программу так, чтобы в результате её выполнения на экран в одну строку выводился текст: Red Blue Green RedGreenBlue Blue GreenBlue.
+# Исправьте программу так, чтобы в результате её выполнения на экран в одну строку выводился текст: 
+# Red Blue Green RedGreenBlue Blue GreenBlue.
 r = 'Red'
 g = 'Green'
 b = 'Blue'
