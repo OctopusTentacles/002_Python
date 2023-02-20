@@ -6,6 +6,12 @@
 # Однако можно использовать сколько угодно переменных
 
 number = int(input("Введите четырехзначное число: "))
-half_1 = number // 100
-half_2 = number % 100
-print("Ваши цифры:", half_1 // 10, half_1 % 10, half_2 // 10, half_2 % 10)
+#half_1 = number // 100
+#half_2 = number % 100
+#print("Ваши цифры:", half_1 // 10, half_1 % 10, half_2 // 10, half_2 % 10)
+
+a = number // 1000
+b = number // 100 % 10
+c = number % 100 // 10
+d = number % 10
+print("Ваши цифры:", a, b, c, d)
