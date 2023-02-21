@@ -10,6 +10,7 @@ number = int(input("Введите четырехзначное число: "))
 #half_2 = number % 100
 #print("Ваши цифры:", half_1 // 10, half_1 % 10, half_2 // 10, half_2 % 10)
 
+# best way
 a = number // 1000
 b = number // 100 % 10
 c = number % 100 // 10
