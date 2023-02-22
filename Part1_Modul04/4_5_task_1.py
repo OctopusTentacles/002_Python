@@ -15,5 +15,5 @@
 sensor = int(input("На улице идет дождь? "))
 if sensor == 1:
     print("Пошёл дождь. Возьмите зонтик!")
-else:
+if sensor == 0:
     print("Дождя нет!")
