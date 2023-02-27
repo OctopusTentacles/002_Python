@@ -18,12 +18,27 @@ print('Задача 1. Калькулятор опыта')
 # Введите количество опыта: 2000
 # Ваш уровень: 2
 
+    
+# Первое решение было таким, но было чувство что что-то здесь не то....)))
+
+# skill = int(input("Введите количество опыта: "))
+# if skill >= 0 and skill < 1000:
+#   print("Ваш уровень: 1")
+# elif skill >= 1000 and skill < 2500:
+#   print("Ваш уровень: 2")
+# elif skill >= 2500 and skill < 5000:
+#   print("Ваш уровень: 3")
+# else:
+#   print("Ваш уровень: 4")
+
+# Так (мне кажется) более правильно:
 skill = int(input("Введите количество опыта: "))
-if skill >= 0 and skill < 1000:
-    print("Ваш уровень: 1")
-elif skill >= 1000 and skill < 2500:
-    print("Ваш уровень: 2")
-elif skill >= 2500 and skill < 5000:
-    print("Ваш уровень: 3")
-else:
-    print("Ваш уровень: 4")
+level = 1
+if skill >= 1000:
+  level += 1
+if skill >= 2500:
+  level += 1
+if skill >= 5000:
+  level += 1
+print("Ваш уровень:", level)   
+ 
