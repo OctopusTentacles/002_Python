@@ -13,3 +13,10 @@ print('Задача 3. Слишком большие числа')
 
 # Введите число: 1203
 # Ответ: 4
+
+number = int(input("Введите число: "))
+count = 0
+while number != 0:
+    count += 1
+    number //= 10
+print("В числе цифр:", count)
