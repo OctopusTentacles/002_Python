@@ -41,4 +41,3 @@ if skill >= 2500:
 if skill >= 5000:
   level += 1
 print("Ваш уровень:", level)   
- 
