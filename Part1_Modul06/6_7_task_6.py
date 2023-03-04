@@ -16,5 +16,6 @@ money_Y = int(input("Желаемая сумма накоплений: "))
 year = 0
 while deposit_X < money_Y:
     deposit_X += deposit_X * percent_P / 100
+    deposit_X = int(deposit_X)
     year += 1
 print("Через", year, "лет вклад составит", deposit_X, "рублей.")
