@@ -19,5 +19,4 @@ if a == b == c:
 elif a == b or a == c or b == c:
     print("Совпало чисел: 2")
 else:
-    print("Совпало чисел: 0")
-    
+    print("Совпало чисел: 0")    
