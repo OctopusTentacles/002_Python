@@ -17,27 +17,20 @@ print('Задача 8. Игра «Компьютер угадывает числ
 # Подсказка: используйте бинарный поиск, а не конкатенацию.
 
 
-while True:
-    number = int(input("Загадай число между 1 и 100 (включительно) "))
-    if 0 < number < 101:
-        break
-number_N = 50
+print("Загадай число между 1 и 100 (включительно)")
+
 first = 1
 last = 100
 count_try = 0
-while number_N != number:
-    print(f"Твое число больше, чем число {number_N}?")
+while first <= last:
+    suppose = (first + last) // 2      # среднее значение диапозона
+    print("Твое число равно, больше или меньше, чем число", suppose)
+    answer = int(input("Ответь 1-равно, 2-больше, 3-меньше: "))
     count_try += 1
-    if number > number_N:
-        print(2, "- больше")
-        first += number_N
-        number_N += (first + last) // 2
-        print(number_N)
-    elif number < number_N:
-        print(3, "- меньше")
-        last -= number_N
-        number_N -= (first + last) // 2
-        print(number_N)
+    if answer == 2:
+        first = suppose + 1            # уменьшаем диапозон
+    elif answer == 3:
+        last = suppose - 1             # уменьшаем диапозон
     else:
         break
-print(number_N, "Угадали с попыток", count_try)
+print("Твое число", suppose,  "Попыток:", count_try)
