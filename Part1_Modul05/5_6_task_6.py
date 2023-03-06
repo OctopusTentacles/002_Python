@@ -25,3 +25,4 @@ elif square >= 80 and price <= 7000000:
     print("Квартира подходит")
 else:
     print("Квартира не подходит")
+  
