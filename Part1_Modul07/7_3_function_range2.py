@@ -8,3 +8,4 @@ hour = int(input("Который час? "))
 for word in range(hour):
     print("Ку-ку!")
     
+    
