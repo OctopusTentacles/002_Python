@@ -13,3 +13,4 @@
 for grade in range(21):
     print(2 ** grade)
     
+   
