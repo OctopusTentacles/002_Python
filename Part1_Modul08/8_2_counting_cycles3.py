@@ -7,6 +7,6 @@
 # попробуйте подумать сами, в следующем уроке мы обязательно разберём эту задачу.
 
 numberN = int(input("Введите число: "))
-for i in range(numberN // 2):
-    odd = i * 2 + 1
+for i in range(1, numberN // 2 + numberN % 2 + 1):
+    odd = i * 2 - 1
     print("Квадрат нечетного числа", odd, "равен", odd ** 2)
