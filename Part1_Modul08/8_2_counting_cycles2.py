@@ -24,4 +24,3 @@ for i in range(1, hour // 3 + 1):
     print("Клеток: ", cell)
     print("Часов до конца эксперимента: ", hour - i * 3)
     
-
