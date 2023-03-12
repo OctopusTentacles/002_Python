@@ -9,3 +9,4 @@ number = int(input("Введите число: "))
 for i in range(1, number // 2 + 1):
     i *= 2
     print("Четное число ", i, "** 3 =", i ** 3)
+    
