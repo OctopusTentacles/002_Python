@@ -33,3 +33,17 @@ print('Задача 8. Кинотеатр')
 
 boy = int(input("Введите кол-во мальчиков: "))
 girl = int(input("Введите кол-во девочек: "))
+result = ""
+
+if boy == girl:
+    for i in range(boy):
+        result += "BG"
+
+elif boy > girl:
+    while girl != 1:
+        result += "BG"
+        girl -= 1
+    result += "BBGB"
+
+
+print(result)
