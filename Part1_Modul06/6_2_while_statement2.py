@@ -6,4 +6,4 @@ balance = int(input("Сколько отложить денег? "))
 while balance < 500000:
     moneybox = int(input("Сколько отложить денег? "))
     balance += moneybox
-print("Вы накопили", balance )
+print("Вы накопили", balance)
