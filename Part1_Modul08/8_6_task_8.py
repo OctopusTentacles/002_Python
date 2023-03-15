@@ -39,7 +39,17 @@ if boy > girl * 2 or girl > boy * 2:
     print("Ответ: Нет решения")
 elif boy >= girl:
     k = boy - girl
-
+    for bgb in range(k):
+        result += "BGB"
+    for bg in range(girl - k):
+        result += "BG"
+else:
+    k = girl - boy
+    for gbg in range(k):
+        result += "GBG"
+    for gb in range(boy - k):
+        result += "GB"
+print(result)
 
 # if boy == girl:
 #     for i in range(boy):
