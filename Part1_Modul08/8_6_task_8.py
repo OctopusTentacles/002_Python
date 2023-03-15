@@ -35,29 +35,35 @@ boy = int(input("Введите кол-во мальчиков: "))
 girl = int(input("Введите кол-во девочек: "))
 result = ""
 
-if boy == girl:
-    for i in range(boy):
-        result += "BG"
-    print(result)
+if boy > girl * 2 or girl > boy * 2:
+    print("Ответ: Нет решения")
+elif boy >= girl:
+    k = boy - girl
 
-elif boy > girl:
-    while girl != 1:
-        result += "BG"
-        girl -= 1
-        boy -= 1
-    result += "BBGB"
-    if boy > 3:
-        print("Нет решения")
-    else:
-        print(result)
 
-elif boy < girl:
-    while boy != 1:
-        result += "GB"
-        girl -= 1
-        boy -= 1
-    result += "GGBG"
-    if girl > 3:
-        print("Нет решения")
-    else:
-        print(result)
+# if boy == girl:
+#     for i in range(boy):
+#         result += "BG"
+#     print(result)
+
+# elif boy > girl:
+#     while girl != 1:
+#         result += "BG"
+#         girl -= 1
+#         boy -= 1
+#     result += "BBGB"
+#     if boy > 3:
+#         print("Нет решения")
+#     else:
+#         print(result)
+
+# elif boy < girl:
+#     while boy != 1:
+#         result += "GB"
+#         girl -= 1
+#         boy -= 1
+#     result += "GGBG"
+#     if girl > 3:
+#         print("Нет решения")
+#     else:
+#         print(result)
