@@ -16,3 +16,4 @@ for i in range(5):
     print("Неправильно, два!")
     badStudent += 1
 print("Количество двоек", badStudent)
+
