@@ -12,3 +12,4 @@ for i in range(4):
             print("0", end="")
     print()
 print("-" * 10)
+
