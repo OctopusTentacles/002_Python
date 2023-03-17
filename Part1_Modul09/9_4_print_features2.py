@@ -19,3 +19,4 @@ for i in range(2):
     summa += number
     print(number, end=".")
 print(summa)
+
