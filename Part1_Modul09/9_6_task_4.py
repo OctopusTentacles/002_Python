@@ -33,11 +33,11 @@ y = 10
 while True:
     prog = input(f"Марсоход находится на позиции {x}, {y}, введите команду:\n")
 
-    if prog == "A" or prog == "a" and x != 0:
+    if (prog == "A" or prog == "a") and x != 0:
         x -= 1
-    elif prog == "D" or prog == "d" and x != 15:
+    elif (prog == "D" or prog == "d") and x != 15:
         x += 1
-    elif prog == "W" or prog == "w" and y != 20:
+    elif (prog == "W" or prog == "w") and y != 20:
         y += 1
-    elif prog == "S" or prog == "s" and y != 0:
+    elif (prog == "S" or prog == "s") and y != 0:
         y -= 1
