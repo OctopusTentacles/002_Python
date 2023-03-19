@@ -18,3 +18,17 @@ print('Задача 7. Метод бутерброда')
 #          1   3   5   7   8   6   4   2
 # Слово: | s | a | n | d | w | i | c | h |
 # Шифр:  | s | h | a | c | n | i | d | w |
+
+left = ""
+right = ""
+count = 0
+
+cipher = input("Введите зашифрованное сообщение: ")
+
+for symbol in cipher:
+    count += 1
+    if count % 2 == 0:
+        right = symbol + right
+    else:
+        left = left + symbol
+print("Расшифрованное сообщение:", left + right)
