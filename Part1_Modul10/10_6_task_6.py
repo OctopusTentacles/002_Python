@@ -15,8 +15,5 @@ print('Задача 6. Пирамидка')
 h = int(input('Высота пирамиды будет: '))
 
 for row in range(h):
-    for col in range(7):
-        if col == 4:
-            print('*', end='')
-        print(' ', end='')
-    print()
+    print(' ' * (h - row - 1), end='')
+    print('*' * (row * 2 + 1), end='\n')
