@@ -19,12 +19,37 @@
 # Фигура находится в клетке (7, 1)
 # Поправьте положение фигуры на (0.019, -0.017)
 
+
 print('Введите местоположение фигуры')
 x = float(input('По горизонтали: '))
 y = float(input('По вертикали: '))
-if (0 > x or x > 0.8) or (0 > y or y > 0.8):
-    print('Клетки с такой координатой не существует')
-else:
+
+if 0 < x < 0.8 and 0 < y < 0.8:
+
     xSq = int(x * 10)
     ySq = int(y * 10)
     print(f'Фигура находится в клетке ({xSq}, {ySq})')
+
+    xCenter = xSq / 10 + 0.05
+    yCenter = ySq / 10 + 0.05
+    xDelta = round(xCenter - x, 3)
+    yDelta = round(yCenter - y, 3)
+
+    # xCener = x * 1000 % 100
+    # yCenter = y * 1000 % 100
+    # if xCener < 50:
+    #     xCener = (50 - xCener) / 1000
+    # elif xCener > 50:
+    #     xCener = (xCener - 50) / -1000
+    # else:
+    #     xCener = 0
+    # if yCenter < 50:
+    #     yCenter = (50 - yCenter) / 1000
+    # elif yCenter > 50:
+    #     yCenter = (yCenter - 50) / -1000
+    # else:
+    #     yCenter = 0
+
+    print(f"Поправьте положение фигуры на ({xDelta}, {yDelta})")
+else:
+    print('Клетки с такой координатой не существует')
