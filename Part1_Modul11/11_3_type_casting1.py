@@ -22,5 +22,6 @@ chatls = int(input('Сколько чатлов? '))
 
 cr = chatls / 2200
 print('Это ', cr, 'CR')
-ships = cr / 0.5
-print('Можно купить кораблей:', int(ships))
+ship_price = 0.5
+ships_can_buy = int(cr / ship_price)
+print('Можно купить кораблей:', ships_can_buy)
