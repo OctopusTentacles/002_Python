@@ -10,6 +10,14 @@
 # а после 30 - ожирение. Напишите такую программу для Алексея.
 
 height = float(input('Рост в метрах: '))
-weight = float(inpput('Вес в кг: '))
+weight = float(input('Вес в кг: '))
 
 bmi = round(weight / height ** 2, 2)
+if bmi < 18.5:
+    print('Недобор')
+elif bmi < 25:
+    print('Все нормально')
+elif bmi < 30:
+    print('Избыток')
+else:
+    print('Ожирение')
