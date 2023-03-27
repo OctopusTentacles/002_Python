@@ -1,3 +1,4 @@
+import math
 print('Задача 3. Аналог Steam')
 
 # Вы пишете программу-инсталлятор для компьютерной игры.
@@ -28,3 +29,19 @@ print('Задача 3. Аналог Steam')
 # Прошло 3 сек. Скачано 81 из 123 Мб (66%)
 # Прошло 4 сек. Скачано 108 из 123 Мб (88%)
 # Прошло 5 сек. Скачано 123 из 123 Мб (100%)
+
+while True:
+    file_size = float(input('Укажите размер файла для скачивания: '))
+    con_speed = float(input('Какова скорость вашего соединения? '))
+    if file_size > 0 and con_speed > 0:
+        break
+    print('Проверьте размер файла и скорость соединения!\n')
+
+time = (math.floor(file_size / con_speed))
+
+for sec in range(1, time + 1):
+    download = con_speed * sec
+    percent = math.ceil(download * 100 / file_size)
+    print(
+        f'Прошло {sec} сек. Скачано {download} из {file_size} Мб ({percent}%)')
+print(f'Прошло {sec + 1} сек. Скачано {download} из {file_size} Мб ({percent}%)')
