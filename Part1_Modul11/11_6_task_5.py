@@ -29,9 +29,8 @@ print('Задача 5. Вот это объёмы!')
 # Объём планеты Земля меньше в (1/0.754) = 1.326 раз
 
 radius = float(input('Введите радиус случайной планеты: '))
-
 earth_V = 10.8321 * 10 ** 11
-planet_V = (4 / 3) * math.pi * radius ** 3
+planet_V = 4 / 3 * math.pi * radius ** 3
 if earth_V > planet_V:
     print('Объём планеты Земля больше в', round(earth_V / planet_V, 3), 'раз')
 elif earth_V < planet_V:
