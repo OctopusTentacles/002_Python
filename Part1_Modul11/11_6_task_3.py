@@ -37,11 +37,12 @@ while True:
         break
     print('Проверьте размер файла и скорость соединения!\n')
 
-time = (math.floor(file_size / con_speed))
+time = (math.ceil(file_size / con_speed))
 
 for sec in range(1, time + 1):
     download = con_speed * sec
-    percent = math.ceil(download * 100 / file_size)
+    if download > file_size:
+        download = file_size
+    percent = round(download * 100 / file_size)
     print(
         f'Прошло {sec} сек. Скачано {download} из {file_size} Мб ({percent}%)')
-print(f'Прошло {sec + 1} сек. Скачано {download} из {file_size} Мб ({percent}%)')
