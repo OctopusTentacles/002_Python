@@ -1,4 +1,3 @@
-import math
 print('Задача 6. Ход конём')
 
 # В рамках разработки шахматного ИИ стоит новая задача.
@@ -37,8 +36,7 @@ hY = int(horseY * 10)
 pX = int(pointX * 10)
 pY = int(pointY * 10)
 
-print(
-    f'Конь в клетке ({hX}, {hY}). Точка в клетке ({pX}, {pY})')
+print(f'Конь в клетке ({hX}, {hY}). Точка в клетке ({pX}, {pY})')
 if (abs(hX - pX) == 2 and abs(hY - pY) == 1) or (abs(hX - pX) == 1 and abs(hY - pY) == 2):
     print('Да, конь может ходить в эту точку.')
 else:
