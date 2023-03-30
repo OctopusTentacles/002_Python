@@ -33,13 +33,13 @@
 
 # Зайдёте? Да/Нет: ...
 
-Def greeting()
-print('Привет!')
+def greeting():
+    print('Привет!')
+    print('Добро пожаловать!')
 
-print('Добро пожаловать!')
 
 while True:
     a = input('Зайдёте? Да/Нет: ')
-    if a = 'Да':
-    greeting
+    if a == 'Да':
+        greeting()
     print('Следующий.\n')
