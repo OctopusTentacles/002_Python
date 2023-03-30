@@ -21,11 +21,11 @@
 # Цена: 40
 
 def aboutWater(price):
-    print('название: КлирВотер')
-    print('Производитель: ВодЗавод')
-    print('Цена:', price)
+    print('название: КлирВотер\n'
+          'Производитель: ВодЗавод\n'
+          f'Цена: {price}')
 
 
-aboutWater(25)
-aboutWater(30)
-aboutWater(40)
+for i in range(3):
+    waterPrice = int(input('Введите цену'))
+    aboutWater(waterPrice)
