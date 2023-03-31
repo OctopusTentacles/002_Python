@@ -5,5 +5,15 @@
 # являются простыми. Для проверки простоты числа реализуйте
 # функцию isPrime.
 
+def isPrime(number):
+    for i in range(2, int(number ** 0.5) + 1):
+        if number % i == 0:
+            print('Число не простое')
+            break
+    else:
+        print('Число простое')
+
 
 amount = int(input('Введите количество чисел: '))
+for i in range(amount):
+    number = int(input('Введите число: '))
