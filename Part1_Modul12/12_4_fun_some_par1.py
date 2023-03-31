@@ -13,3 +13,13 @@
 # Среднее: 5.5
 
 # Усложнение: сделайте это без использования циклов.
+
+def summa(a, b):
+    print('Среднее:', round((a + b) / 2, 2))
+
+
+number1 = int(input("Введите первое число: "))
+number2 = int(input("Введите второе число: "))
+if number1 > number2:
+    number1, number2 = number2, number1
+summa(number1, number2)
