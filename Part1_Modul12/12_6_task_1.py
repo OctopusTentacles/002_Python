@@ -15,7 +15,7 @@ def summa_n(N):
     count = 0
     for i in range(1, N + 1):
         count += i
-    print(f'Я знаю, что сумма чисел от 1 до {N} равна {count}')
+    print(f'\nЯ знаю, что сумма чисел от 1 до {N} равна {count}')
 
 
 number = int(input('Введите число: '))
