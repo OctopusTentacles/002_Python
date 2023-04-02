@@ -16,21 +16,40 @@ print('Задача 3. Апгрейд калькулятора')
 # максимума и минимума при помощи аргументов.
 
 
+def menu():
+    print('Что сделать с числом?')
+    print('1 = вывести сумму его цифр')
+    print('2 = вывести максимальную цифру')
+    print('3 = вывести минимальную цифру')
+    action = int(input('Введите номер действия: '))
+    if action == 1:
+        digits_sum(number)
+    elif action == 2:
+        digits_max(number)
+    elif action == 3:
+        digits_min(number)
+    else:
+        print('Ошибка, повторите ввод!')
+        menu()
+
+
 def digits_sum(n):
     summa = 0
     while n > 0:
         digit = n % 10
         summa += digit
         n //= 10
+    print('Сумма цифр числа равна:', summa)
 
 
 def digits_max(n):
-    maxDigit = n
+    maxDigit = 0
     while n > 0:
         digit = n % 10
         if digit > maxDigit:
-            maxDigit == digit
+            maxDigit = digit
         n //= 10
+    print('Максимальная цифра числа равна:', maxDigit)
 
 
 def digits_min(n):
@@ -38,21 +57,10 @@ def digits_min(n):
     while n > 0:
         digit = n % 10
         if digit < minDigit:
-            minDigit == digit
+            minDigit = digit
         n //= 10
+    print('Минимальная цифра числа равна:', minDigit)
 
 
 number = int(input('Введите чило: '))
-print('Что сделать с числом?')
-print('1 = вывести сумму его цифр')
-print('2 = вывести максимальную цифру')
-print('3 = вывести минимальную цифру')
-action = int(input('Введите номер действия: '))
-if action == 1:
-    digits_sum(number)
-elif action == 2:
-    digits_max(number)
-elif action == 3:
-    digits_min(number)
-else:
-    print('Ошибка, повторите ввод!')
+menu()
