@@ -15,21 +15,6 @@ print('Задача 3. Апгрейд калькулятора')
 # Запрошенные числа должны передаваться в функции суммы,
 # максимума и минимума при помощи аргументов.
 
-print('Что сделать с числом?')
-print('1 = вывести сумму его цифр')
-print('2 = вывести максимальную цифру')
- print('3 = вывести минимальную цифру')
-  action = int(input('Введите номер действия: '))
-   if action == 1:
-        digits_sum(number)
-    elif action == 2:
-        digits_max(number)
-    elif action == 3:
-        digits_min(number)
-    else:
-        print('Ошибка, повторите ввод!')
-        menu()
-
 
 def digits_sum(n):
     summa = 0
@@ -61,4 +46,16 @@ def digits_min(n):
 
 
 number = int(input('Введите чило: '))
-menu()
+print('Что сделать с числом?')
+print('1 = вывести сумму его цифр')
+print('2 = вывести максимальную цифру')
+print('3 = вывести минимальную цифру')
+action = int(input('Введите номер действия: '))
+if action == 1:
+    digits_sum(number)
+elif action == 2:
+    digits_max(number)
+elif action == 3:
+    digits_min(number)
+else:
+    print('Ошибка, повторите ввод!')
