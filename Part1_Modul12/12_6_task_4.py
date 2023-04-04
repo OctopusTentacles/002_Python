@@ -26,13 +26,21 @@ print('Задача 4. Число наоборот')
 
 
 def revers(n):
-    while n > 0:
+    if n == 0:
+        print('Программа завершена!')
+    else:
         reversed_Num = 0
-        digit = n % 10
-        reversed_Num += 'digit'
-    n //= 10
-    print(reversed_Num)
+        while n > 0:
+            digit = n % 10
+            reversed_Num = (reversed_Num * 10) + digit
+            n //= 10
+        print('Число наоборот:', reversed_Num)
+        main()
 
 
-number = int(input('Введите число: '))
-revers(number)
+def main():
+    number = int(input('\nВведите число: '))
+    revers(number)
+
+
+main()
