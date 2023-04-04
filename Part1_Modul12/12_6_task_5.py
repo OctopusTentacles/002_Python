@@ -29,12 +29,11 @@ def count_letters(t, k, n):
             count_k += 1
         elif i == n:
             count_n += 1
-
-    print(f'Количество цифр {k}: {count_k}')
+    print(f'\nКоличество цифр {k}: {count_k}')
     print(f'Количество букв {n}: {count_n}')
 
 
 text = input('Введите текст: ')
 digit = input('Какую цифру ищем? ')
-letter = input('Какую букву ищём? \n')
+letter = input('Какую букву ищём? ')
 count_letters(text, digit, letter)
