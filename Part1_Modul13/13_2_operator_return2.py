@@ -13,6 +13,15 @@
 
 # НОД = 2
 
+def gcd(a, b):
+    if a > b:
+        small = b
+    else:
+        small = a
+    for i in range(1, small + 1):
+
 
 num1 = int(input('Введите первое число: '))
 num2 = int(input('Введите второе число: '))
+
+print('НОД = ', gcd(num1, num2))
