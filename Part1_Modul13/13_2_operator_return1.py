@@ -14,10 +14,13 @@ def summa_n(n):
     summa = 0
     for i in range(1, n + 1):
         summa += i
-    print(f'Сумма от 1 до {n} = {summa}')
     return summa
 
 
 number = int(input('Введите число: '))
+
 fun1 = summa_n(number)
+print(f'Сумма от 1 до {number} = {fun1}')
+
 fun2 = summa_n(fun1)
+print(f'Сумма от 1 до {fun1} = {fun2}')
