@@ -24,14 +24,48 @@ print('Задача 7. Недоделка')
 
 
 def rock_paper_scissors():
-    # Здесь будет игра "Камень, ножницы, бумага"
+    player1 = 'к'
+    print('\nИгра Камень, ножницы, бумага')
+    print('Выберите к - камень, н - ножницы или б - бумага')
+    player2 = input('')
+    if player1 == player2:
+        print('Ничья. Еще раз?')
+        rock_paper_scissors()
+    elif player2 == 'н':
+        print('Камень бьёт ножницы, проиграл!')
+    elif player2 == 'б':
+        print('Бумага кроет камень, победил!')
+    else:
+        print('Неверный ввод! Повторите')
+        rock_paper_scissors()
 
 
 def guess_the_number():
-    # Здесь будет игра "Угадай число"
+    print('\nИгра Угадай число')
+    myNumber = 7
+    while True:
+        yourNumber = int(input('Выбери число: '))
+        if yourNumber > myNumber:
+            print('Твое число больше')
+        elif yourNumber < myNumber:
+            print('Твое число меньше')
+        else:
+            break
+    print('Угадал!')
 
 
 def mainMenu():
+    print('\nГлавное меню\n')
+    print('1. Камень, ножницы, бумага')
+    print('2. Угадай число')
+    choice = int(input('Введите номер игры: '))
+    if choice == 1:
+        rock_paper_scissors()
+    elif choice == 2:
+        guess_the_number()
+    else:
+        print('Повторите ввод\n')
+        mainMenu()
 
 
 mainMenu()
