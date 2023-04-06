@@ -55,17 +55,21 @@ def guess_the_number():
 
 
 def mainMenu():
-    print('\nГлавное меню\n')
-    print('1. Камень, ножницы, бумага')
-    print('2. Угадай число')
-    choice = int(input('Введите номер игры: '))
-    if choice == 1:
-        rock_paper_scissors()
-    elif choice == 2:
-        guess_the_number()
-    else:
-        print('Повторите ввод\n')
-        mainMenu()
+    while True:
+        print('\nГлавное меню\n')
+        print('1. Камень, ножницы, бумага')
+        print('2. Угадай число')
+        print('3. Выход')
+        choice = int(input('Введите номер игры: '))
+        if choice == 1:
+            rock_paper_scissors()
+        elif choice == 2:
+            guess_the_number()
+        elif choice == 3:
+            break
+        else:
+            print('Повторите ввод\n')
+        continue
 
 
 mainMenu()
