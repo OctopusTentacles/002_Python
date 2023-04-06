@@ -1,3 +1,4 @@
+import random
 print('Задача 7. Недоделка')
 
 # Вы пришли на работу в контору по разработке игр,
@@ -42,7 +43,7 @@ def rock_paper_scissors():
 
 def guess_the_number():
     print('\nИгра Угадай число')
-    myNumber = 7
+    myNumber = random.randint(1, 100)
     while True:
         yourNumber = int(input('Выбери число: '))
         if yourNumber > myNumber:
