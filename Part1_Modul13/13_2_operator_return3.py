@@ -22,7 +22,27 @@
 
 # Первая задача на обработку: 13434
 
+def numeral_count(n):
+    number_count = 0
+    while n > 0:
+        n //= 10
+        number_count += 1
+    return number_count
+
+
+def numeral_check(n):
+    max_count = 0
+    max_number = 0
+    for i in range(n):
+        number = int(input('Введите число: '))
+    if number < 0:
+        number = 0
+    n = numeral_count(number)
+    if n > max_count:
+        max_count = n
+        max_number = number
+    return max_number
+
 
 task = int(input('Введите кол-во задач: '))
-
-for i in range
+print('Первая задача на обработку:', numeral_check(task))
