@@ -22,8 +22,18 @@
 # Кол-во прибавлений: 2
 
 
-n = float(input('Введите число в эксп. форме: '))
+def input_check(n):
+    number = ''
+    correct = '123456789e-'
+    for i in n:
+        number += i
+
+
 x = 1
+n = (input('Введите число в эксп. форме: '))
+input_check(n)
+
+n = float(n)
 count = 0
 while x <= 2:
     x += n
