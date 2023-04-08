@@ -31,7 +31,7 @@ def input_check(n):
     #             print('Неверный ввод')
     #     else:
     #         part1 += i
-    if n > 0.09:
+    if n > 9e-1:
         print('Неверный ввод')
 
 
