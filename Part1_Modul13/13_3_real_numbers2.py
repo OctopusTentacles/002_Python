@@ -23,14 +23,16 @@
 
 
 def input_check(n):
-    part1 = ''
-    for i in n:
-        if i == 'e':
-            part1 = int(part1)
-            if 1 > part1 > 9:
-                print('Неверный ввод')
-        else:
-            part1 += i
+    # part1 = ''
+    # for i in n:
+    #     if i == 'e':
+    #         part1 = int(part1)
+    #         if 1 > part1 > 9:
+    #             print('Неверный ввод')
+    #     else:
+    #         part1 += i
+    if n > 0.09:
+        print('Неверный ввод')
 
 
 x = 1
