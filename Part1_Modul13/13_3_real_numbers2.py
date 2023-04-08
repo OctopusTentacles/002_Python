@@ -23,14 +23,19 @@
 
 
 def input_check(n):
-    number = ''
-    correct = '123456789e-'
+    part1 = ''
     for i in n:
-        number += i
+        if i == 'e':
+            part1 = int(part1)
+            if 1 > part1 > 9:
+                print('Неверный ввод')
+        else:
+            part1 += i
 
 
 x = 1
-n = (input('Введите число в эксп. форме: '))
+
+n = input('Введите число в эксп. форме: ')
 input_check(n)
 
 n = float(n)
