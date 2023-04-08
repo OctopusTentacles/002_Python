@@ -18,3 +18,14 @@ def NOD(n1, n2):
 num_1 = int(input('Введите первое число: '))
 num_2 = int(input('Введите второе число: '))
 NOD(num_1, num_2)
+
+
+# def gcd(a, b):
+#   while a != 0 and b != 0:
+#       if a > b:
+#           a = a % b
+#       else:
+#           b = b % a
+#   print('Наибольший общий делитель:', a + b)
+#
+# gcd(30, 18)
