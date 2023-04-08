@@ -23,21 +23,16 @@
 
 
 def input_check(n):
-    # part1 = ''
-    # for i in n:
-    #     if i == 'e':
-    #         part1 = int(part1)
-    #         if 1 > part1 > 9:
-    #             print('Неверный ввод')
-    #     else:
-    #         part1 += i
-    if n > 9e-1:
-        print('Неверный ввод')
+    while True:
+        if abs(n + 1e-15) > 0.9:
+            print('Неверный ввод')
+            n = float(input('Введите число в эксп. форме: '))
+        else:
+            break
 
 
 x = 1
-
-n = input('Введите число в эксп. форме: ')
+n = float(input('Введите число в эксп. форме: '))
 input_check(n)
 
 n = float(n)
