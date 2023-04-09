@@ -26,8 +26,9 @@ def floating_point(a):
         count += 1
         a /= 10
     while a < 1:
-        count -= 1
         a *= 10
+        count -= 1
+
     return (f'{a} * 10 ** {count}')
 
 
