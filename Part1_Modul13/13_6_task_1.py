@@ -20,12 +20,15 @@ print('Задача 1. Урок информатики 2')
 # Формат плавающей точки: x = 1.2 * 10 ** -3
 
 
-def floating_point(n):
+def floating_point(a):
     count = 0
-    while n > 10:
+    while a > 10:
         count += 1
-        n /= 10
-    return (f'{n} * 10 ** {count}')
+        a /= 10
+    while a < 1:
+        count -= 1
+        a *= 10
+    return (f'{a} * 10 ** {count}')
 
 
 while True:
