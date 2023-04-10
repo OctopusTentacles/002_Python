@@ -48,14 +48,13 @@ def change_number(b):
 def main():
     while True:
         first_n = int(input("\nВведите первое число: "))
-        second_n = int(input("Введите второе число: "))
-
         if count_numbers(first_n) < 3:
             print("В первом числе меньше трёх цифр. Повторите ввод.")
             continue
         else:
             changed_first_n = change_number(first_n)
 
+        second_n = int(input("Введите второе число: "))
         if count_numbers(second_n) < 4:
             print("Во втором числе меньше четырёх цифр. Повторите ввод.")
             continue
@@ -69,28 +68,3 @@ def main():
 
 
 main()
-
-
-# else:
-#     last_digit = first_n % 10
-#     first_digit = first_n // 10 ** (first_num_count - 1)
-#     between_digits = first_n % 10 ** (first_num_count - 1) // 10
-#     first_n = last_digit * 10 ** (first_num_count - 1) + between_digits * 10 + first_digit
-#     print('Изменённое первое число:', first_n)
-#     second_n = int(input("\nВведите второе число: "))
-#     second_num_count = 0
-#     temp = second_n
-
-#     while temp > 0:
-#         second_num_count += 1
-#         temp = temp // 10
-#     if second_num_count < 4:
-#         print("Во втором числе меньше четырёх цифр.")
-#     else:
-#         last_digit = second_n % 10
-#         first_digit = second_n // 10 ** (second_num_count - 1)
-#         between_digits = second_n % 10 ** (second_num_count - 1) // 10
-#         second_n = last_digit * \
-#             10 ** (second_num_count - 1) + between_digits * 10 + first_digit
-#         print('Изменённое второе число:', second_n)
-#         print('\nСумма чисел:', first_n + second_n)
