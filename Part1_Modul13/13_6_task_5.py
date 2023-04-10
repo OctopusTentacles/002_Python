@@ -33,9 +33,12 @@ def damping(a, b):
     return swaying
 
 
-start = float(input('Введите начальную амплитуду: '))
-stop = float(input('Введите амплитуду остановки: '))
-
-
+while True:
+    start = float(input('\nВведите начальную амплитуду: '))
+    stop = float(input('Введите амплитуду остановки: '))
+    if (start < 0 or start < stop) or stop < 0:
+        print('Ошибка ввода.')
+    else:
+        break
 print(
     f'Маятник считается остановившимся через {damping(start, stop)} колебаний')
