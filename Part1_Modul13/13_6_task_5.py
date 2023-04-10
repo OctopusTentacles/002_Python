@@ -25,15 +25,17 @@ print('Задача 5. Маятник ')
 # Маятник считается остановившимся через 27 колебаний
 
 
+def damping(a, b):
+    swaying = 0
+    while a > b:
+        a = a - (a * 8.4 / 100)
+        swaying += 1
+    return swaying
+
+
 start = float(input('Введите начальную амплитуду: '))
 stop = float(input('Введите амплитуду остановки: '))
-damping = start * 8.4 / 100
-swaying = 0
-while start > stop:
-    swaying += 1
-    start -= damping
-    damping = start * 8.4 / 100
-    print()
-    print(start)
-    print(damping)
-print(f'Маятник считается остановившимся через {swaying} колебаний')
+
+
+print(
+    f'Маятник считается остановившимся через {damping(start, stop)} колебаний')
