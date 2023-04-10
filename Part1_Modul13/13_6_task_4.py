@@ -47,23 +47,24 @@ def change_number(b):
 
 def main():
     while True:
+
         first_n = int(input("\nВведите первое число: "))
         if count_numbers(first_n) < 3:
             print("В первом числе меньше трёх цифр. Повторите ввод.")
             continue
         else:
             changed_first_n = change_number(first_n)
+            print('Изменённое первое число:', changed_first_n)
 
-        second_n = int(input("Введите второе число: "))
+        second_n = int(input("\nВведите второе число: "))
         if count_numbers(second_n) < 4:
             print("Во втором числе меньше четырёх цифр. Повторите ввод.")
             continue
         else:
             changed_second_n = change_number(second_n)
+            print('Изменённое второе число:', changed_second_n)
         break
 
-    print('Изменённое первое число:', changed_first_n)
-    print('Изменённое второе число:', changed_second_n)
     print('\nСумма чисел:', changed_first_n + changed_second_n)
 
 
