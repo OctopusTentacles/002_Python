@@ -22,17 +22,39 @@
 # Кол-во прибавлений: 2
 
 
+# def input_check(n):
+#     while True:
+#         if abs(n + 1e-15) > 0.9:
+#             print('Неверный ввод')
+#             n = float(input('Введите число в эксп. форме: '))
+#         else:
+#             break
+
+
+# x = 1
+# n = float(input('Введите число в эксп. форме: '))
+# input_check(n)
+
+# n = float(n)
+# count = 0
+# while x <= 2:
+#     x += n
+#     count += 1
+
+# print('Кол-во прибавлений:', count)
+
+
 def input_check(n):
-    while True:
-        if abs(n + 1e-15) > 0.9:
-            print('Неверный ввод')
-            n = float(input('Введите число в эксп. форме: '))
+    mantissa = ''
+    for i in n:
+        if i == 'e':
+            print('мантисса -', mantissa=float(mantissa))
         else:
-            break
+            mantissa += i
 
 
 x = 1
-n = float(input('Введите число в эксп. форме: '))
+n = (input('Введите число в эксп. форме: '))
 input_check(n)
 
 n = float(n)
