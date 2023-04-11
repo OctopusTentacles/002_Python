@@ -37,14 +37,14 @@ while True:
 
 x_min = 0
 x_max = 4
-x = (x_max + x_min) / 2
-d = x ** 3 - 3 * x ** 2 - 12 * x + 10
+x = (x_max + x_min) / 2                  # метод половинного деления
+d = x ** 3 - 3 * x ** 2 - 12 * x + 10    # формула из условия
 
-while abs(d) > d_max:
+while abs(d) > d_max:                    # нужен abs для сравнения
     x = (x_max + x_min) / 2
     d = x ** 3 - 3 * x ** 2 - 12 * x + 10
 
-    if d > 0:
+    if d > 0:                            # сдвиг границ
         x_min = x
     else:
         x_max = x
