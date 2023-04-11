@@ -51,6 +51,7 @@ def input_check(n):
 
             if float(mantissa) >= 1 and float(mantissa) <= 9:
                 print('мантисса -', (mantissa))
+                print(str(n) - str(mantissa) - 'e')
 
                 return True
 
