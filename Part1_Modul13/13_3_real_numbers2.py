@@ -48,14 +48,24 @@ def input_check(n):
     mantissa = ''
     for i in n:
         if i == 'e':
-            print('мантисса -', mantissa=float(mantissa))
+
+            if float(mantissa) >= 1 and float(mantissa) <= 9:
+                print('мантисса -', (mantissa))
+
+                return True
+
+            else:
+                print('Ввод не соответствует условию!')
         else:
             mantissa += i
 
 
 x = 1
-n = (input('Введите число в эксп. форме: '))
-input_check(n)
+while True:
+    n = (input('Введите число в эксп. форме: '))
+    if input_check(n):
+        break
+
 
 n = float(n)
 count = 0
