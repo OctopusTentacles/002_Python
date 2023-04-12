@@ -46,15 +46,20 @@
 
 def input_check(n):
     mantissa = ''
+    order = False
     for i in n:
-        if i == 'e':
 
+        if order:
+            if i == '-':
+                print('Порядок отрицательный')
+                return True
+            else:
+                print('Ввод не соответствует условию!')
+
+        if i == 'e':
             if float(mantissa) >= 1 and float(mantissa) <= 9:
                 print('мантисса -', (mantissa))
-                print(str(n) - str(mantissa) - 'e')
-
-                return True
-
+                order = True
             else:
                 print('Ввод не соответствует условию!')
         else:
@@ -66,7 +71,6 @@ while True:
     n = (input('Введите число в эксп. форме: '))
     if input_check(n):
         break
-
 
 n = float(n)
 count = 0
