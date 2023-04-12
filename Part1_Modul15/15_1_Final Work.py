@@ -99,6 +99,7 @@ while True:
 
             else:
                 print('Введите корректный пункт меню')
+
     elif option == 2:
         # submenu 2: print info
         while True:
