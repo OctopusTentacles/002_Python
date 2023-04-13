@@ -11,16 +11,17 @@ index = ''
 adress = ''
 info = ''
 # business info
-ogrnip = ''
-inn = ''
-account = ''
+ogrnip = 0
+inn = 0
+account = 0
 bank = ''
-bik = ''
-account2 = ''
+bik = 0
+account2 = 0
 
 
 def general_info_user(name_parameter, age_parameter, 
-                      phone_parameter, email_parameter, info_parameter):
+                      phone_parameter, email_parameter,
+                      index_parameter, adress_parameter, info_parameter):
     print(SEPARATOR)
     print('Имя:    ', name_parameter)
     if 11 <= age_parameter % 100 <= 19:
@@ -35,21 +36,24 @@ def general_info_user(name_parameter, age_parameter,
     print('Возраст:', age_parameter, years_parameter)
     print('Телефон:', phone_parameter)
     print('E-mail: ', email_parameter)
+    print('Индекс: ', index_parameter)
+    print('Адрес:  ', adress_parameter)
     if info:
         print('')
         print('Дополнительная информация:')
         print(info_parameter)
 
 
-def business_info_user(ogrnip_parameter, inn_parameter, account_parameter, bank_parameter, bik_parameter, account2_parameter):
+def business_info_user(ogrnip_parameter, inn_parameter, account_parameter, 
+                       bank_parameter, bik_parameter, account2_parameter):
     print('\nИнформация о предпринимателе')
     print('ОГРНИП:', ogrnip_parameter)
-    print('ИНН:', inn_parameter)
+    print('ИНН:   ', inn_parameter)
     print('Банковские реквизиты')
-    print('Р/с:', account_parameter)
-    print('Банк:', bank_parameter)
-    print('БИК:', bik_parameter)
-    print('К/с:', account2_parameter)
+    print('Р/с:   ', account_parameter)
+    print('Банк:  ', bank_parameter)
+    print('БИК:   ', bik_parameter)
+    print('К/с:   ', account2_parameter)
 
 
 
@@ -76,7 +80,7 @@ while True:
         while True:
             print(SEPARATOR)
             print('ВВЕСТИ ИЛИ ОБНОВИТЬ ИНФОРМАЦИЮ')
-            print('1 - Общая информация')
+            print('1 - Личная информация')
             print('2 - Информация о предпринимателе')
             print('0 - Назад')
 
@@ -84,7 +88,7 @@ while True:
             if option2 == 0:
                 break
 
-            # INPUT GENERAL INFO
+            # INPUT PRIVAT INFO
             if option2 == 1:
                 
                 name = input('Введите имя: ')
@@ -101,7 +105,10 @@ while True:
                     if ch == '+' or ('0' <= ch <= '9'):
                         phone += ch
                 email = input('Введите адрес электронной почты: ')
-                index = input('Введите почтовый индекс: ')
+                user_index = input('Введите почтовый индекс: ')
+                for symbol in user_index:
+                    if '0' <= symbol <= '9':
+                        index += symbol
                 adress = input('Введите почтовый адрес (без индекса): ')
                 info = input('Введите дополнительную информацию:\n')
 
@@ -110,17 +117,19 @@ while True:
             elif option2 == 2:                
                 while True:
                     count = 0
-                    ogrnip = input('Введите ОГРНИП: ')
-                    for i in ogrnip:
+                    ogrnip = int(input('Введите ОГРНИП: '))
+                    while ogrnip > 0:
+                        ogrnip //= 10
                         count += 1                        
                     if count == 15:
                         break
                     print('ОГРНИП должен содержать 15 цифр')
-                inn = input('Введите ИИН: ')
+                inn = int(input('Введите ИИН: '))
                 while True:
                     count = 0
-                    account = input('Введите расчетный счет: ')
-                    for i in account:
+                    account = int(input('Введите расчетный счет: '))
+                    while account > 0:
+                        account //= 10
                         count += 1                        
                     if count == 20:
                         break
@@ -139,7 +148,7 @@ while True:
         while True:
             print(SEPARATOR)
             print('ВЫВЕСТИ ИНФОРМАЦИЮ')
-            print('1 - Общая информация')
+            print('1 - Личная информация')
             print('2 - Вся информация')
             print('0 - Назад')
 
@@ -148,10 +157,10 @@ while True:
                 break
             
             if option2 == 1:
-                general_info_user(name, age, phone, email, info)
+                general_info_user(name, age, phone, email, index, adress, info)
 
             elif option2 == 2:
-                general_info_user(name, age, phone, email, info)
+                general_info_user(name, age, phone, email, index, adress, info)
                 business_info_user(ogrnip, inn, account, bank, bik, account2)
 
             else:
