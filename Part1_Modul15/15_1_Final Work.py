@@ -39,8 +39,7 @@ def general_info_user(name_parameter, age_parameter,
     print('Индекс: ', index_parameter)
     print('Адрес:  ', adress_parameter)
     if info:
-        print('')
-        print('Дополнительная информация:')
+        print('\nДополнительная информация:')
         print(info_parameter)
 
 
@@ -56,10 +55,8 @@ def business_info_user(ogrnip_parameter, inn_parameter, account_parameter,
     print('К/с:   ', account2_parameter)
 
 
-
 print('Приложение MyProfile')
 print('Сохраняй информацию о себе и выводи ее в разных форматах')
-
 
 # MAIN MENU
 while True:    
@@ -99,8 +96,7 @@ while True:
                         break
                     print('Возраст должен быть положительным')
 
-                user_phone = input('Введите номер телефона (+7ХХХХХХХХХХ): ')
-                phone = ''
+                user_phone = input('Введите номер телефона (+7ХХХХХХХХХХ): ')                
                 for ch in user_phone:
                     if ch == '+' or ('0' <= ch <= '9'):
                         phone += ch
@@ -117,29 +113,31 @@ while True:
             elif option2 == 2:                
                 while True:
                     count = 0
-                    ogrnip = int(input('Введите ОГРНИП: '))
-                    while ogrnip > 0:
-                        ogrnip //= 10
+                    user_ogrnip = int(input('Введите ОГРНИП: '))
+                    ogrnip = user_ogrnip
+                    while user_ogrnip > 0:
+                        user_ogrnip //= 10
                         count += 1                        
                     if count == 15:
                         break
                     print('ОГРНИП должен содержать 15 цифр')
-                inn = int(input('Введите ИИН: '))
+                inn = int(input('Введите ИНН: '))
                 while True:
                     count = 0
-                    account = int(input('Введите расчетный счет: '))
-                    while account > 0:
-                        account //= 10
+                    user_account = int(input('Введите расчетный счет: '))
+                    account = user_account
+                    while user_account > 0:
+                        user_account //= 10
                         count += 1                        
                     if count == 20:
                         break
                     print('Расчетный счет должен содержать 20 цифр')
                 bank = input('Введите название банка: ')
-                bik = input('Введите БИК: ')
-                account2 = input('Введите корреспондентский счет: ')
+                bik = int(input('Введите БИК: '))
+                account2 = int(input('Введите корреспондентский счет: '))
 
             else:
-                print('Введите корректный пункт меню')
+                print('Введён некорректный пункт меню')
 
 
     # SUBMENU 2: PRINT INFO
@@ -164,6 +162,6 @@ while True:
                 business_info_user(ogrnip, inn, account, bank, bik, account2)
 
             else:
-                print('Введите корректный пункт меню')
+                print('Введён некорректный пункт меню')
     else:
-        print('Введите корректный пункт меню')
+        print('Введён некорректный пункт меню')
