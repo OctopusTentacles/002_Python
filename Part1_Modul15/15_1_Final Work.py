@@ -3,13 +3,13 @@
 SEPARATOR = '------------------------------------------'
 
 # user profile
-n = ''
-a = 0
-ph = ''
-e = ''
+name = ''
+age = 0
+phone = ''
+email = ''
 index = ''
 adress = ''
-i = ''
+info = ''
 # business info
 ogrnip = ''
 inn = ''
@@ -19,7 +19,8 @@ bik = ''
 account2 = ''
 
 
-def general_info_user(n_parameter, a_parameter, ph_parameter, e_parameter, i_parameter):
+def general_info_user(n_parameter, a_parameter, 
+                      ph_parameter, e_parameter, i_parameter):
     print(SEPARATOR)
     print('Имя:    ', n_parameter)
     if 11 <= a_parameter % 100 <= 19:
@@ -39,11 +40,21 @@ def general_info_user(n_parameter, a_parameter, ph_parameter, e_parameter, i_par
         print('Дополнительная информация:')
         print(i_parameter)
 
+
+def business_info_user(ogrnip_parameter, inn_parameter, account_parameter, bank_parameter, bik_parameter, account2_parameter):
+    print('\nИнформация о предпринимателе')
+    print('ОГРНИП:', ogrnip_parameter)
+    print('ИНН:', inn_parameter)
+    print('Банковские реквизиты')
+    print('Р/с:', account_parameter)
+    print('Банк:', bank_parameter)
+    print('БИК:', bik_parameter)
+    print('К/с:', account2_parameter)
+
+
+
 print('Приложение MyProfile')
 print('Сохраняй информацию о себе и выводи ее в разных форматах')
-
-
-
 
 while True:
     # main menu
@@ -72,12 +83,14 @@ while True:
             if option2 == 0:
                 break
 
+            # INPUT GENERAL INFO
+
             if option2 == 1:
-                # input general info
-                n = input('Введите имя: ')
+                
+                name = input('Введите имя: ')
                 while 1:
                     # validate user age
-                    a = int(input('Введите возраст: '))
+                    age = int(input('Введите возраст: '))
                     if a > 0:
                         break
                     print('Возраст должен быть положительным')
@@ -92,9 +105,10 @@ while True:
                 adress = input('Введите почтовый адрес (без индекса): ')
                 i = input('Введите дополнительную информацию:\n')
 
-            elif option2 == 2:
 
-                # input business info
+            # INPUT BUSINESS INFO
+
+            elif option2 == 2:                
                 while True:
                     count = 0
                     ogrnip = input('Введите ОГРНИП: ')
@@ -120,10 +134,10 @@ while True:
                 print('Введите корректный пункт меню')
 
 
-
+    # SUBMENU 2: PRINT INFO
 
     elif option == 2:
-        # submenu 2: print info
+        
         while True:
             print(SEPARATOR)
             print('ВЫВЕСТИ ИНФОРМАЦИЮ')
@@ -140,12 +154,8 @@ while True:
             elif option2 == 2:
                 general_info_user(n, a, ph, e, i)
 
-                # print social links
-                print('')
-                print('Социальные сети и мессенджеры')
-                print('Вконтакте:', v)
-                print('Telegram: ', t)
-                print('Tiktok:   ', tk)
+                business_info_user(ogrnip, inn, account, bank, bik, account2)
+
             else:
                 print('Введите корректный пункт меню')
     else:
