@@ -55,7 +55,8 @@ def input_check(n):
                 return True
             else:
                 print('Порядок не соответствует условию!')
-
+                break
+                
         if i == 'e':
             if float(mantissa) >= 1 and float(mantissa) <= 9:
                 print('мантисса =', (mantissa))     # для проверки
