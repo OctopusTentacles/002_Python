@@ -24,17 +24,21 @@ while True:
     print('Ошибка: такой операции не существует. Попробуйте ещё раз.')
 
 numbers = int(input('Сколько операндов? '))
-for i in range(1, numbers + 1):    
-    print(f'Введите операнд {i}: ')
-    number = int(input('Введите операнд : '))
 
-if operation == '+':
-    result = number1 + number2
-elif operation == '-':
-    result = number1 - number2
-elif operation == '*':
-    result = number1 * number2
-elif operation == '/':
-    result = number1 / number2
+count = 0
+result = 0
+while numbers!= 0:
+    count += 1 
+    number = int(input(f'Введите операнд {count}: '))
+    numbers -= 1
 
-print(number1, operation, number2, '=', result)
+    if operation == '+':
+        result += number
+    elif operation == '-':
+        result -= number
+    elif operation == '*':
+        result *= number
+    elif operation == '/':
+        result /= number
+    view = 'number' + 'operation'   
+print(view '=' result)
