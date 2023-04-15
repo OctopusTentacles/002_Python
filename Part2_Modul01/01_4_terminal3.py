@@ -31,6 +31,7 @@ while numbers!= 0:
     count += 1 
     number = int(input(f'Введите операнд {count}: '))
     numbers -= 1
+    view = str(number)
 
     if operation == '+':
         result += number
@@ -40,5 +41,5 @@ while numbers!= 0:
         result *= number
     elif operation == '/':
         result /= number
-    view = 'number' + 'operation'   
-print(view '=' result)
+    view +=' ' + view + ' ' + operation   
+print(view, '=', result)
