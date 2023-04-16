@@ -24,13 +24,16 @@ while True:
 
 numbers = int(input('Сколько операндов? '))
 
-count = 0
-result = 0
+count = 1
+number = int(input(f'Введите операнд {count}: '))
+result = number
+view = str(number)
+numbers -= 1
+
 while numbers != 0:
     count += 1
     number = int(input(f'Введите операнд {count}: '))
-    numbers -= 1
-    view = ''
+    numbers -= 1    
 
     if operation == '+':
         result += number
@@ -40,5 +43,5 @@ while numbers != 0:
         result *= number
     elif operation == '/':
         result /= number
-    view = str(number) + ' ' + operation + ' '
+    view += ' ' + operation + ' ' + str(number) 
 print(view, '=', result)
