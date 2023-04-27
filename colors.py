@@ -18,8 +18,8 @@ print("blue")
 print("\033[35m", end="") #purple
 print("purple")
 
-print("\033[36m", end="") #green-blue
-print("green-blue")
+print("\033[36m", end="") #cyan
+print("cyan")
 
 print("\033[37m", end="") #grey
 print("grey")
