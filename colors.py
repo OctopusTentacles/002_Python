@@ -25,3 +25,13 @@ BLINK = "\033[5m"
 NEGATIVE = "\033[7m"
 CROSSED = "\033[9m"
 END = "\033[0m"
+
+print("If you put")
+print("\033[33m", end="") #yellow
+print("nothing as the")
+print("\033[35m", end="") #purple
+print("end character")
+print("\033[32m", end="") #green
+print("then you don't")
+print("\033[0m", end="") #default
+print("get odd gaps")
