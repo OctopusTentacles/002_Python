@@ -1,4 +1,0 @@
-OS info is 
-uname_result(system='Darwin', node='MacBook-Air-Artem.local', release='22.3.0', version='Darwin Kernel Version 22.3.0: Mon Jan 30 20:38:43 PST 2023; root:xnu-8792.81.3~2/RELEASE_ARM64_T8112', machine='arm64')
-
-Python version is 3.11.2 (v3.11.2:878ead1ac1, Feb  7 2023, 10:02:41) [Clang 13.0.0 (clang-1300.0.29.30)] ('64bit', '')
