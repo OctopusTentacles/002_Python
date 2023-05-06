@@ -1,8 +1,10 @@
 # Для установки на macOS нам надо написать в терминале
 # pip3 install pyTelegramBotAPI
 
+import speech_recognition
 import telebot
 from pydub import AudioSegment
+import os
 
 
 token = "5813295603:AAF3y5Y2XUZDz-dzXfyl8evXBrm3ZHMADQg"
@@ -34,3 +36,19 @@ def oga2wav(filename):
     audio.export(..., format=...)
     # Возвратим в качестве результата функции имя нового файла
     return ...
+
+import urllib
+
+url = "https://drive.google.com/uc?export=view&id=1aBZnHgsjg7XIVlvpYasOOJ8hurp7V6Ww"
+filename = "skillbox_voice_sample.ogg"
+urllib.request.urlretrieve(url, filename)
+
+recognizer = ...
+
+with speech_recognition.WavFile('skillbox_voice_sample.wav') as source:     
+     wav_audio = ...
+
+recognizer.recognize_google(..., language='ru')
+
+# Вылетит ошибка, если файл не найден
+os.remove('skillbox_voice_sample.wav')
