@@ -52,3 +52,23 @@ recognizer.recognize_google(..., language='ru')
 
 # Вылетит ошибка, если файл не найден
 os.remove('skillbox_voice_sample.wav')
+
+# Правим ошибку: добавляем условие
+# Если файл существует - удалить с диска
+def recognize_speech(oga_filename):
+    wav_filename = oga2wav(oga_filename)
+    recognizer = speech_recognition.Recognizer()
+
+    with speech_recognition.WavFile(wav_filename) as source:     
+        wav_audio = recognizer.record(source)
+
+    text = recognizer.recognize_google(wav_audio, language='ru')
+
+    if os.path.exists(oga_filename):
+        os.remove(oga_filename)
+
+    if os.path.exists(wav_filename):
+        os.remove(wav_filename)
+
+    return text
+recognize_speech('skillbox_voice_sample.oga')
