@@ -30,3 +30,4 @@ while True:
     if number > 0:
         break
 print('Разность:', sum_of_digits(number) - amt_of_digits(number))
+
