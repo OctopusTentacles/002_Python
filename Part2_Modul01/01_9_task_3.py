@@ -8,3 +8,15 @@
 # Введите число: 6
 # Наименьший делитель, отличный от единицы: 2
 
+
+def small_divisor(num1):
+    for i in range(2, num1 + 1):
+        if num1 % i == 0:
+            return i
+
+while True:
+    number = int(input('Введите число больше 1: '))
+    if number > 1:
+        break
+
+print('Наименьший делитель, отличный от единицы:', small_divisor(number))
