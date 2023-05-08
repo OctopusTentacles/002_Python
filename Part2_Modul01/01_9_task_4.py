@@ -26,3 +26,9 @@
 # Введите радиус: 1
 
 # Монетки в области нет
+
+
+print('Введите координаты монетки')
+number1 = float(input('X: '))
+number2 = float(input('Y: '))
+radius = float(input('Введите радиус: '))
