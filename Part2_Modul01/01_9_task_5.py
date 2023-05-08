@@ -20,3 +20,11 @@
 # 1999
 # 2000
 # 2022
+
+def years(a, b):
+    for i in range(a, b + 1):
+        
+
+
+year_1 = int(input('Введите первый год: '))
+year_2 = int(input('Введите второй год: '))
