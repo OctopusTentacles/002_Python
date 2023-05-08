@@ -28,7 +28,15 @@
 # Монетки в области нет
 
 
+def search(x, y, r):
+    if (x <= r) and (y <= r):
+        print('\nМонетка где-то рядом')
+    else:
+        print('\nМонетки в области нет')
+
 print('Введите координаты монетки')
 number1 = float(input('X: '))
 number2 = float(input('Y: '))
 radius = float(input('Введите радиус: '))
+
+search(number1, number2, radius)
