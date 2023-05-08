@@ -29,7 +29,7 @@
 
 
 def search(x, y, r):
-    if (x <= r) and (y <= r):
+    if (abs(x) <= r) and (abs(y) <= r):
         print('\nМонетка где-то рядом')
     else:
         print('\nМонетки в области нет')
