@@ -22,9 +22,14 @@
 # 2022
 
 def years(a, b):
-    for i in range(a, b + 1):
-        
+    for year in range(a, b + 1):
+        year = str(year)
+        for i in year:
+
+
 
 
 year_1 = int(input('Введите первый год: '))
 year_2 = int(input('Введите второй год: '))
+if year_1 > year_2:
+    year_1, year_2 = year_2, year_1
