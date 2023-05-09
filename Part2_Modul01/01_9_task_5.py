@@ -22,9 +22,14 @@
 # 2022
 
 def years(a, b):
-    for i in range(a, b + 1):
+    for year in range(a, b + 1):
+        print(year)
+        # for digit in year:
+        #     print(digit)
         
 
 
 year_1 = int(input('Введите первый год: '))
 year_2 = int(input('Введите второй год: '))
+
+years(year_1, year_2)
