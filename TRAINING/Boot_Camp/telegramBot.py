@@ -74,10 +74,12 @@ def recognize_speech(oga_filename):
 recognize_speech('skillbox_voice_sample.oga')
 
 
+#3.3 Скачивание файла из Телеграм
+
 def download_file(bot, file_id):
     # Получаем информацию о файле с помощью функции bot.get_file
     file_info = ...
-    
+
     # загружаем файл с помощью функции bot.download_file
     # по информации о файле file_info.file_path
     downloaded_file = ...
@@ -93,3 +95,5 @@ def download_file(bot, file_id):
         f.write(downloaded_file)
 
     return filename
+
+# 3.4 Собираем итоговую функцию
