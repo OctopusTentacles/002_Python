@@ -72,3 +72,24 @@ def recognize_speech(oga_filename):
 
     return text
 recognize_speech('skillbox_voice_sample.oga')
+
+
+def download_file(bot, file_id):
+    # Получаем информацию о файле с помощью функции bot.get_file
+    file_info = ...
+    
+    # загружаем файл с помощью функции bot.download_file
+    # по информации о файле file_info.file_path
+    downloaded_file = ...
+
+    # Имя файла делаем уникальным: id файла + file_info.file_path
+    filename = file_id + file_info.file_path
+
+    # file_info.file_path имеет вид voice/file_123.oga,
+    # чтобы избежать ошибок из-за косой черты, заменим ее на _
+    filename = ...
+
+    with open(filename, 'wb') as f:
+        f.write(downloaded_file)
+
+    return filename
