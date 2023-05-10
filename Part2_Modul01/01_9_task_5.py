@@ -25,21 +25,20 @@ def years(a, b):
     for i in range(a, b + 1):
             year = i
             four = year % 10
-            year //= 1000
+            year //= 10
             three = year % 10
-            year //= 100
+            year //= 10
             two = year % 10
             one = year // 10
-            if (one == two == three) or (one == two == four) or (two == three == four):
+            if (one == two == three) or (one == two == four) or (
+                 one == three == four) or (two == three == four):
                  print(i)
 
 
-
-
-
-
-year_1 = int(input('Введите первый год: '))
+year_1 = int(input('\nВведите первый год: '))
 year_2 = int(input('Введите второй год: '))
 if year_1 > year_2:
     year_1, year_2 = year_2, year_1
+
+print()
 years(year_1, year_2)
