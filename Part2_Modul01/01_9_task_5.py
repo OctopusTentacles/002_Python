@@ -40,5 +40,5 @@ year_2 = int(input('Введите второй год: '))
 if year_1 > year_2:
     year_1, year_2 = year_2, year_1
 
-print()
+print(f'\nГоды от {year_1} до {year_2} с тремя одинаковыми цифрами:')
 years(year_1, year_2)
