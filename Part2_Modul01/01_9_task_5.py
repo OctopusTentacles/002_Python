@@ -22,10 +22,18 @@
 # 2022
 
 def years(a, b):
-    for year in range(a, b + 1):
-        year = str(year)
-        for i in year:
-            num1 = i
+    for i in range(a, b + 1):
+            year = i
+            four = year % 10
+            year //= 1000
+            three = year % 10
+            year //= 100
+            two = year % 10
+            one = year // 10
+            if (one == two == three) or (one == two == four) or (two == three == four):
+                 print(i)
+
+
 
 
 
