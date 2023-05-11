@@ -31,5 +31,5 @@ while True:
     numbers.append(number)
     print('Текущий список чисел:', numbers)
     for i in numbers:
-        print(i ** 2, i ** 3, i ** 4)
+        print(i ** 2, i ** 3, i ** 4, sep='\t')
 
