@@ -97,3 +97,12 @@ def download_file(bot, file_id):
     return filename
 
 # 3.4 Собираем итоговую функцию
+# Новое условие на срабатывание: content_types=['voice']
+@bot.message_handler(...)
+def transcript(message):
+    # id файла - в message.voice.file_id
+    filename = download_file(bot, ...)
+    # Распознаем запись с помощью нашей функции recognize_speech
+    text = ...
+    # Отправляем пользователю в ответ текст
+    bot.send_message(message.chat.id, text)
