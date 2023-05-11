@@ -4,3 +4,7 @@
 # заполняет список числами от 0 до 100 и выводит его на экран.
 
 
+numbers = []
+for i in 100:
+    numbers.append(i)
+print(numbers)
