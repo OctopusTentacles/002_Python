@@ -23,4 +23,10 @@ list_id = []
 
 for _ in range(worker):
     worker_id = int(input('ID сотрудника: '))
+    list_id.append(worker_id)
 
+find_id = int(input('Какой ID ищем? '))
+if find_id in list_id:
+    print('Сотрудник на месте')
+else:
+    print('Сотрудник не работает!')
