@@ -26,3 +26,12 @@ for i in range(1, N + 1):
 divider = int(input('Введите делитель: '))
 index = 0
 sum_indexes = 0
+
+for i in num_list:
+    if i % divider == 0:
+        print(f'Индекс числа {i}: {index}')
+        sum_indexes += index
+    index += 1
+
+print('Сумма индексов:', sum_indexes)
+
