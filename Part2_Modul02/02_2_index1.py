@@ -17,8 +17,8 @@ for _ in range(N):
     num = int(input('Очередное число: '))
     nums_list.append(num)
 
-maximum = 0
-minimum = 0
+maximum = nums_list[0]
+minimum = nums_list[0]
 
 for i in nums_list:
     if maximum < i:
