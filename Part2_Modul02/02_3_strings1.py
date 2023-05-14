@@ -16,3 +16,16 @@
 # Введите строку: гвозди:шурупы:гайки
 # Исправленная строка: гвозди;шурупы;гайки
 # Кол-во замен: 2
+
+S = input('Введите строку: ')
+
+text_list = list(S)
+count = 0
+
+for index in text_list:
+    if index == ':':
+        text_list[index] == ';'
+        count += 1
+
+print(text_list)
+print(count)
