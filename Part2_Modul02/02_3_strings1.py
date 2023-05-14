@@ -21,9 +21,11 @@ S = input('Введите строку: ')
 
 text_list = list(S)
 count = 0
+index = 0
 
-for index in text_list:
-    if index == ':':
+for symbol in text_list:
+    index += 1
+    if symbol == ':':
         text_list[index] == ';'
         count += 1
 
