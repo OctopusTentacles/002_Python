@@ -17,3 +17,11 @@ for dog in range(1, N + 1):
     print(f'У собаки {dog} очков:', end = ' ')
     point = int(input())
     points.append(point)
+
+if list:
+    maximum = points[0]
+    minimum = points[0]
+    
+
+else:
+    print('В списке нет чисел')
