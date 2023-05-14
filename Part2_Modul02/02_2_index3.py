@@ -21,7 +21,17 @@ for dog in range(1, N + 1):
 if list:
     maximum = points[0]
     minimum = points[0]
-    
+    maximum_index = 0
+    minimum_index = 0
+
+    for index, i in enumerate(points):
+        if maximum < i:
+            maximum = i
+            maximum_index = index
+        if minimum > i:
+            minimum = 1
+            minimum_index = index
+
 
 else:
     print('В списке нет чисел')
