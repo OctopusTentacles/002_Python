@@ -18,7 +18,7 @@ for dog in range(1, N + 1):
     point = int(input())
     points.append(point)
 
-if list:
+if points:
     maximum = points[0]
     minimum = points[0]
     maximum_index = 0
@@ -34,6 +34,9 @@ if list:
 
     print('Максимальное число в списке', maximum)
     print('Минимальное число в списке', minimum)
+    print(points)
+
+    points[maximum_index], points[minimum_index] = points[minimum_index], points[maximum_index]
     print(points)
 
 else:
