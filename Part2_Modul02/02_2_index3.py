@@ -29,9 +29,12 @@ if list:
             maximum = i
             maximum_index = index
         if minimum > i:
-            minimum = 1
+            minimum = i
             minimum_index = index
 
+    print('Максимальное число в списке', maximum)
+    print('Минимальное число в списке', minimum)
+    print(points)
 
 else:
     print('В списке нет чисел')
