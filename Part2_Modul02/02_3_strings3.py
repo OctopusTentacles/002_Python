@@ -21,3 +21,12 @@
 # я: 0
 # год: 2
 # лучший: 1
+
+word_list = []
+
+for i in range(1, 4):
+    print(f'Введите {i} слово: ', end='')
+    word = input()
+    word_list.append(word)
+
+print(word_list)
