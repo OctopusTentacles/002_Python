@@ -23,14 +23,21 @@
 # лучший: 1
 
 word_list = []
+counts = [0, 0, 0]
 
 for i in range(1, 4):
     print(f'Введите {i} слово: ', end='')
     word = input()
     word_list.append(word)
 
-print(word_list)
-
-text = ''
+text = input('Слово из текста: ')
 while text != 'end':
+    for index in range(3):
+        if word_list[index] == text:
+            counts[index] += 1
     text = input('Слово из текста: ')
+
+print('Подсчёт слов в тексте')
+for i in range(3):
+    print(word_list[i], ':', counts[i])
+    
