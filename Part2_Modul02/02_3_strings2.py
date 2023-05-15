@@ -27,6 +27,13 @@ S = input('Введите строку: ')
 text_list = list(S)
 
 symbol = int(input('Номер символа: '))
+symbol_1 = symbol - 1
+symbol_left = symbol_1 - 1
+symbol_right = symbol
 
-print('\nСимвол слева:', text_list[(symbol - 1) - 1])
-print('Символ справа:', text_list[(symbol - 1) + 1])
+print('\nСимвол слева:', text_list[symbol_left])
+print('Символ справа:', text_list[symbol_right])
+
+count = 0
+if symbol_1 == symbol_left:
+    count += 1
