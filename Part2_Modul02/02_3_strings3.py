@@ -30,3 +30,7 @@ for i in range(1, 4):
     word_list.append(word)
 
 print(word_list)
+
+text = ''
+while text != 'end':
+    text = input('Слово из текста: ')
