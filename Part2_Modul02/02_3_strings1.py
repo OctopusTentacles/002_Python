@@ -24,10 +24,11 @@ count = 0
 index = 0
 
 for symbol in text_list:
-    index += 1
     if symbol == ':':
-        text_list[index] == ';'
+        text_list[index] = ';'
         count += 1
+    index += 1
 
-print(text_list)
-print(count)
+for i in text_list:
+    print(i, end='')
+print('\nКол-во замен: ',count)
