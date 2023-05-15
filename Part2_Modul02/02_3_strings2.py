@@ -34,6 +34,10 @@ symbol_right = symbol
 print('\nСимвол слева:', text_list[symbol_left])
 print('Символ справа:', text_list[symbol_right])
 
-count = 0
-if symbol_1 == symbol_left:
-    count += 1
+if text_list[symbol_1] == text_list[symbol_left] == text_list[symbol_right]:
+    print('Есть два таких же символа.')
+elif (text_list[symbol_1] == text_list[symbol_left]) or (
+    text_list[symbol_1] == text_list[symbol_right]):
+    print('Есть ровно один такой же символ.')
+else:
+    print('Таких же символов нет.')
