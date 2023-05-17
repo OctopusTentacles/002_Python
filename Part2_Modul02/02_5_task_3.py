@@ -22,7 +22,12 @@
 amount = int(input('Количество видеокарт: '))
 old_list = []
 new_list = []
+
 for i in range(1, amount + 1):
     print(f'{i} Видеокарта: ', end = '')
     nvidia = int(input(''))
+    old_list.append(nvidia)
 
+
+print('Старый список видеокарт:', old_list)
+print('Новый список видеокарт:', new_list)
