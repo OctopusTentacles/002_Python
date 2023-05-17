@@ -4,7 +4,7 @@ car = {
     'brand': 'Форд',
     'model': 'Мустанг',
     'year': 1964,
-    'color': 'красный'
 }
 
+car['color'] = 'красный'
 print(car)
