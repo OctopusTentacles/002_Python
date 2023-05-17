@@ -4,6 +4,7 @@ car = {
     'brand': 'Форд',
     'model': 'Мустанг',
     'year': 1964,
+    'color': 'красный'
 }
 
-print(car.get('model'))
+print(car)
