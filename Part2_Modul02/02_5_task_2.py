@@ -20,4 +20,4 @@ for index in range(len(team_list)):
     if index % 2 == 0:
         first_team.append(team_list[index])
 
-print(first_team)
+print('Первый день:', first_team)
