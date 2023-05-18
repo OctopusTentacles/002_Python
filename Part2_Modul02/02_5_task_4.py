@@ -35,3 +35,5 @@ for i in range(amount):
         my_films.append(film)
     else:
         print(f'Ошибка: фильма {film} у нас нет :(')
+for index in my_films:
+    print(index, end='')
