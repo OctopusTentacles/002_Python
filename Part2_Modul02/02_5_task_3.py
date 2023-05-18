@@ -19,13 +19,19 @@
 # Новый список видеокарт: [ 3070 2060 3070 ]
 
 
-amount = int(input('Количество видеокарт: '))
+amount = int(input('\nКоличество видеокарт: '))
 old_list = []
 new_list = []
 
 for i in range(1, amount + 1):
     nvidia = int(input(f'{i} Видеокарта: '))
     old_list.append(nvidia)
+
+popular = max(old_list)
+
+for index in old_list:
+    if index != popular:
+        new_list.append(index)
 
 
 print('\nСтарый список видеокарт:', old_list)
