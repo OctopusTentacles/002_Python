@@ -28,8 +28,16 @@
 
 # Номер, который получит новый контейнер: 3
 
-
+store = []
 amount = int(input('Количество контейнеров: '))
 
 for i in range(amount):
-    
+    while True:
+        weight = int(input('Введите вес контейнера: '))
+        if weight > 200:
+            print('Вес не должен превышать 200 кг')
+        else:
+            break
+    store.append(weight)
+
+print(store)
