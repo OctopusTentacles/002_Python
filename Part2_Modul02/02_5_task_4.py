@@ -38,4 +38,5 @@ for i in range(amount):
 
 print('Ваш список любимых фильмов: ', end='')
 for index in my_films:
-    print(f'{index},', end =' ')
+    print(f'{index},', end =' ')        # у меня вопрос - как правильно проставить запятые?
+                                        # в моем случае - как убрать последнюю запятую?
