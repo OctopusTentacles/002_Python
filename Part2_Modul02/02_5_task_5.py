@@ -42,12 +42,12 @@ for i in range(amount):
 
 while True:
     new_container = int(input('Введите вес нового контейнера: '))
-    if weight > 200:
+    if new_container > 200:
         print('Вес не должен превышать 200 кг')
     else:
         break
 
-for index in store:
+for index in range(len(store)):
     if new_container > index:
-        print('Номер, который получит новый контейнер:', index)
+        print('Номер, который получит новый контейнер:', index + 1)
         break
