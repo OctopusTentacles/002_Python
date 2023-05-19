@@ -46,3 +46,8 @@ while True:
         print('Вес не должен превышать 200 кг')
     else:
         break
+
+for index in store:
+    if new_container > index:
+        print('Номер, который получит новый контейнер:', index)
+        break
