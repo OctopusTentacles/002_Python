@@ -40,4 +40,9 @@ for i in range(amount):
             break
     store.append(weight)
 
-print(store)
+while True:
+    new_container = int(input('Введите вес нового контейнера: '))
+    if weight > 200:
+        print('Вес не должен превышать 200 кг')
+    else:
+        break
