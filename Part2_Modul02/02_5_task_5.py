@@ -47,7 +47,10 @@ while True:
     else:
         break
 
-for index in range(len(store)):
+count = 0
+for index in store:
+    count += 1
     if new_container > index:
-        print('Номер, который получит новый контейнер:', index + 1)
+        print('Номер, который получит новый контейнер:', count)
         break
+    
