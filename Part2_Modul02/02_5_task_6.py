@@ -20,12 +20,11 @@
 
 def fill_list(N):
     for i in range(N):
-        number = int(input(f'Введите {i + 1} элемент: '))
-        start_list.append(number)
+        start_list.append(int(input(f'Введите {i + 1} элемент: ')))
 
 def shifting(K):
     for index in range(len(start_list)):
-        
+        shift_list.append(start_list[index + K])
 
 
 
@@ -36,5 +35,7 @@ elements = int(input('Введите количество элементов с�
 shift = int(input('Сдвиг: '))
 
 fill_list(elements)
+shifting(shift)
 
-print(start_list)
+print('Изначальный список:', start_list)
+print('Сдвинутый список: ', shift_list)
