@@ -18,10 +18,16 @@
 # Сдвинутый список: [-3, 0, 10, 1, 4]
 
 
-def fill_list(n):
-    for i in range(n):
+def fill_list(N):
+    for i in range(N):
         number = int(input(f'Введите {i + 1} элемент: '))
         start_list.append(number)
+
+def shifting(K):
+    for index in range(len(start_list)):
+        
+
+
 
 start_list = []
 shift_list = []
