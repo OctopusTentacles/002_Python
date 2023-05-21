@@ -32,7 +32,14 @@ start_list = []
 shift_list = []
 
 elements = int(input('Введите количество элементов списка: '))
-shift = int(input('Сдвиг: '))
+while True:
+    shift = int(input('Сдвиг: '))
+    if shift > elements:
+        print('Сдвиг не должен превышать количество элементов')
+    elif shift < 0:
+        print('Сдвиг не должен быть отрицательным')
+    else:
+        break
 
 fill_list(elements)
 shifting(shift)
