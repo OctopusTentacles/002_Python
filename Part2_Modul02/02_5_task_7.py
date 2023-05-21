@@ -16,7 +16,9 @@
 # Введите слово: abbd
 # Слово не является палиндромом
 
-word = (input('Введите слово: '))
+word = list(input('Введите слово: '))
 
-
-print(word_list)
+for index in range(len(word)//2):
+    if word[index] != word[-1 - index]:
+        print('Слово не является палиндромом')
+    
