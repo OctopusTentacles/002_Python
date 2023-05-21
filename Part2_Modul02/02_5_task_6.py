@@ -24,8 +24,8 @@ def fill_list(N):
 
 def shifting(K):
     for index in range(len(start_list)):
-        shift_list.append(start_list[index + K])
-
+        # start_list[index] = index + K
+        shift_list.append(start_list[index - K])
 
 
 start_list = []
