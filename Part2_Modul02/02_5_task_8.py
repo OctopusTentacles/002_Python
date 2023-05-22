@@ -10,4 +10,21 @@
 # Изначальный список: [1, 4, -3, 0, 10]
 # Отсортированный список: [-3, 0, 1, 4, 10]
 
+def fill_list(n):
+    for i in range(n):
+        num_list.append(int(input(f'Введите {i + 1} число: ')))
 
+def sorting(my_list):
+    min_index = my_list[0]
+    for _ in range(len(my_list)):
+        for index in my_list:
+            
+
+
+
+num_list = []
+
+size = int(input('Укажите размер списка: '))
+
+fill_list(size)
+sorting(num_list)
