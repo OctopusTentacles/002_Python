@@ -15,16 +15,18 @@ def fill_list(n):
         num_list.append(int(input(f'Введите {i + 1} число: ')))
 
 def sorting(my_list):
-    min_index = my_list[0]
-    for _ in range(len(my_list)):
+    max_index = my_list[size - 1]
+    for i in range(len(my_list)):
         for index in my_list:
-            
-
-
+            if index > max_index:
+                num_list.append(index)
 
 num_list = []
 
 size = int(input('Укажите размер списка: '))
 
 fill_list(size)
+print('Изначальный список:', num_list)
+
 sorting(num_list)
+print('Отсортированный список:', num_list)
