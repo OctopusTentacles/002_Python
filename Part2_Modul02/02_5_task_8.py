@@ -16,16 +16,11 @@ def fill_list(n):
     return num_list
 
 def sorting(my_list):
-    maximum = my_list[0]
-    minimum = my_list[0]
-    for index in range(len(my_list)):
-        for i in my_list:
-            if maximum < i:
-                maximum = i
-            if minimum > i:
-                minimum = i
-
-
+    for index in range(len(my_list) - 1):
+        for i in range(len(my_list) - index - 1):
+            if my_list[i] > my_list[i + 1]:
+                my_list[i], my_list[i + 1] = my_list[i + 1], my_list[i]
+    return my_list
 
 
 num_list = []
@@ -33,6 +28,4 @@ num_list = []
 size = int(input('Укажите размер списка: '))
 
 print('Изначальный список:', fill_list(size))
-
-sorting(num_list)
-print('Отсортированный список:', num_list)
+print('Отсортированный список:', sorting(num_list))
