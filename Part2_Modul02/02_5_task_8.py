@@ -15,11 +15,15 @@ def fill_list(n):
         num_list.append(int(input(f'Введите {i + 1} число: ')))
 
 def sorting(my_list):
-    max_index = my_list[size - 1]
+    min_index = my_list[0]
     for i in range(len(my_list)):
         for index in my_list:
-            if index > max_index:
-                num_list.append(index)
+            if index < min_index:
+                my_list[i] = index
+                min_index = my_list[i + 1]
+            #elif index > min_index:
+
+
 
 num_list = []
 
