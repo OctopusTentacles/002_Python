@@ -15,15 +15,13 @@
 # Для этого используйте методы списков.
 
 # Результат работы программы:
-
 # Зоопарк: ['lion', 'bear', 'kangaroo', 'monkey']
-
 # Лев сидит в клетке номер 1
-
 # Обезьяна сидит в клетке номер 4
 
 zoo = ['lion', 'kangaroo', 'elephant', 'monkey']
 
 zoo.insert(1, 'bear')
+zoo.remove('elephant')
 
-print(zoo)
+print('Зоопарк', zoo)
