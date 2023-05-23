@@ -49,3 +49,5 @@ for i in salary_list:
 
 print('\nОсталось сотрудников:', len(new_list))
 print('Зарплаты:', new_list)
+print('\nМаксимальная зп:', max(new_list))
+print('Минимальная зп:', min(new_list))
