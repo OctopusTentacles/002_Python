@@ -52,4 +52,15 @@ for i in range(n):
     print('Ваш текущий топ фильмов:', your_films)
     film_name = input('Имя фильма: ')
     print('Команды: добавить, вставить, удалить')
-    
+    command = input('Введите команду: ')
+    if film_name not in your_films:
+        if command == 'добавить':
+            your_films.append(film_name)
+        elif command == 'вставить':
+            insert_index = int(input('Введите индекс для вставки: '))
+            
+            # ограничим индекс списка, чтобы он не вылезал за границу списка
+            insert_index %= len(your_films)
+            your_films.insert(insert_index, film_name)
+    else:
+        
