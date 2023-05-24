@@ -63,4 +63,9 @@ for i in range(n):
             insert_index %= len(your_films)
             your_films.insert(insert_index, film_name)
     else:
-        
+        if command == 'удалить':
+            your_films.remove(film_name)
+        elif command == 'добавить' or command == 'вставить':
+            print('Этот фильм уже есть в вашем списке')
+
+print('Ваш текущий топ фильмов:', your_films)
