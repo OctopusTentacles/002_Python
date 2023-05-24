@@ -22,3 +22,11 @@
 # Первое сообщение: Хм!!
 # Второе сообщение: ?
 # Третье сообщение: Хм!!?
+
+
+message1 = input('Первое сообщение: ')
+message2 = input('Второе сообщение: ')
+
+count1 = message1.count('!') + message1.count('?')
+count2 = message2.count('!') + message2.count('?')
+
