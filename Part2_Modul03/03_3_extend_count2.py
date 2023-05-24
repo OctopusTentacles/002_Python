@@ -30,3 +30,9 @@ message2 = input('Второе сообщение: ')
 count1 = message1.count('!') + message1.count('?')
 count2 = message2.count('!') + message2.count('?')
 
+if count1 < count2:
+    print(message2 + message1)
+elif count1 > count2:
+    print(message1 + message2)
+else:
+    print('Ой')
