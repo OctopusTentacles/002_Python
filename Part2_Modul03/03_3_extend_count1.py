@@ -25,7 +25,11 @@ main.extend(first_company)
 main.extend(second_company)
 main.extend(third_company)
 print(main)
+count = 0
 for i_elem in main:
+    if i_elem == 0:
+        count += 1
+print('Кол-во невыполненных задач:', count)
 
 
 
