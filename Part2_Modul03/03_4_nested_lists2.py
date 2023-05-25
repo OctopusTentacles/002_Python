@@ -28,9 +28,9 @@ n = int(input('Кол-во участников: '))
 k = int(input('Кол-во человек в команде: '))
 
 team_list = []
-num = 0
+num = 1
 
-if n // k:
+if n % k == 0:
     for i_team in range(n // k):
         team_list.append(list(range(num, num + k)))
         num += k
