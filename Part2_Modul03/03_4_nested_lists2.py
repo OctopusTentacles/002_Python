@@ -23,3 +23,17 @@
 
 # 12 участников невозможно поделить на команды по 5 человек!
 
+
+n = int(input('Кол-во участников: '))
+k = int(input('Кол-во человек в команде: '))
+
+team_list = []
+num = 0
+
+if n // k:
+    for i_team in range(n // k):
+        team_list.append(list(range(num, num + k)))
+        num += k
+    print('Общий список команд:', team_list)
+else:
+    print(f'{n} участников невозможно поделить на команды по {k} человек!')
