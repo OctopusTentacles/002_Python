@@ -12,15 +12,12 @@
 
 # Формат вывода ответа:
 # Отсортированный список учеников: [160, 162, …]
-
-def fill_list(n):
-    while n[i] != 176:
-        for i in range(160, 176 + 2, 2):
-            n.append(i)
-        return n
+    
+    
     
 
-class_1 = []
-class_2 = []
+class_1 = list(range(160, 177, 2))
+class_2 = list(range(162, 181, 3))
 
-print(fill_list(class_1))
+print((class_1))
+print((class_2))
