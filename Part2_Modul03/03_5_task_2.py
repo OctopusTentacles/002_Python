@@ -19,12 +19,13 @@ def selection_sort(my_list):
             if my_list[curr] < my_list[i_min]:
                 my_list[curr], my_list[i_min] = my_list[i_min], my_list[curr]
 
-    
+    return my_list
 
+    
 class_1 = list(range(160, 177, 2))
 class_2 = list(range(162, 181, 3))
 
 class_1.extend(class_2)
 
-
 print('\nДва класса в шеренге', class_1)
+print('\nОтсортированный список учеников:', selection_sort(class_1))
