@@ -18,7 +18,6 @@ def selection_sort(my_list):
         for curr in range(i_min, len(my_list)):
             if my_list[curr] < my_list[i_min]:
                 my_list[curr], my_list[i_min] = my_list[i_min], my_list[curr]
-
     return my_list
 
     
