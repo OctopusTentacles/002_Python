@@ -14,9 +14,10 @@
 # Отсортированный список учеников: [160, 162, …]
 
 def fill_list(n):
-    for i in range(160, 176, 2):
-        n.append(i)
-    return n
+    while n[i] != 176:
+        for i in range(160, 176 + 2, 2):
+            n.append(i)
+        return n
     
 
 class_1 = []
