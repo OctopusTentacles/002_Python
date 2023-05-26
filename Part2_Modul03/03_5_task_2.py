@@ -13,11 +13,18 @@
 # Формат вывода ответа:
 # Отсортированный список учеников: [160, 162, …]
     
-    
+def selection_sort(my_list):
+    for i_min in range(len(my_list)):
+        for curr in range(i_min, len(my_list)):
+            if my_list[curr] < my_list[i_min]:
+                my_list[curr], my_list[i_min] = my_list[i_min], my_list[curr]
+
     
 
 class_1 = list(range(160, 177, 2))
 class_2 = list(range(162, 181, 3))
 
-print((class_1))
-print((class_2))
+class_1.extend(class_2)
+
+
+print('\nДва класса в шеренге', class_1)
