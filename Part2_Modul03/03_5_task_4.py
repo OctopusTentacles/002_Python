@@ -57,4 +57,5 @@ while True:
         else:
             print(f'Прости, {name_guest}, но мест нет.')
     elif new_guest == 'ушел':
-        
+        print(f'Пока, {name_guest}!')
+        guests.remove(name_guest)
