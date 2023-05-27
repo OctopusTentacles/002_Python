@@ -29,8 +29,9 @@ for i_good in range(len(shop)):
     if shop[i_good][0] == item:
         count += 1
         price += shop[i_good][1]
-else:
-    print('В базе нет такой детали')
 
-print('Кол-во деталей -', count)
-print('Общая стоимость —', price)
+if count == 0:
+    print('В базе нет такой детали')
+else:
+    print('Кол-во деталей -', count)
+    print('Общая стоимость —', price)
