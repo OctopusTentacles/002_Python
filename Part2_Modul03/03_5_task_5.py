@@ -31,8 +31,9 @@ def playlist(songs):
         for index in range(len(violator_songs)):
             if violator_songs[index][0] == chosen_song:
                 minutes += violator_songs[index][1]
-            else:
-                print('Такой песни нет в этом альбоме!')
+                break
+        else:
+            print('Такой песни нет в этом альбоме!')
     
     return minutes
 
