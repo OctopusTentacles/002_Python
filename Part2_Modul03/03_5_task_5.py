@@ -22,7 +22,7 @@
 
 
 def playlist(songs):
-    minutes = 0
+    
 
     
     for song in range(1, songs + 1):
@@ -32,21 +32,19 @@ def playlist(songs):
             if input_check(chosen_song):
                 break
             else:
-                print('Такой песни нет в этом альбоме! Повторите ввод!')
-    
-        for index in range(len(violator_songs)):
-            if violator_songs[index][0] == chosen_song:   
-                minutes += violator_songs[index][1]
-                
+                print('Такой песни нет в этом альбоме! Повторите ввод!')  
             
     return minutes
 
 
 def input_check(chosen_song):
-    order = False
+    minutes = 0
     for index in range(len(violator_songs)):
         if violator_songs[index][0] == chosen_song:
-            return True
+            minutes += violator_songs[index][1]
+            
+            return minutes
+        
         else:
             break
 
