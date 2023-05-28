@@ -21,6 +21,17 @@
 # Общее время звучания песен: 14.93 минуты
 
 
+def playlist(songs):
+    minutes = 0
+    for index in range(len(violator_songs)):
+        for song in range(1, songs + 1):
+            print(f'Название {song}-й песни: ', end='')
+            chosen_song = input()
+            if chosen_song in violator_songs:
+                minutes += violator_songs[chosen_song][1]
+            else:
+                print('Такой песни нет в этом альбоме!')
+    return minutes
 
 
 violator_songs = [
@@ -36,3 +47,5 @@ violator_songs = [
 ]
 
 num_songs = int(input('Сколько песен выбрать? '))
+
+print(f'Общее время звучания песен: {playlist(num_songs)}')
