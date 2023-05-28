@@ -41,7 +41,7 @@
 guests = ['Петя', 'Ваня', 'Саша', 'Лиза', 'Катя']
 
 while True:
-    print(f'Сейчас на вечеринке {len(guests)} человек: {guests}')
+    print(f'\nСейчас на вечеринке {len(guests)} человек: {guests}')
     new_guest = input('Гость пришёл или ушёл? ')
     
     if new_guest == 'Пора спать':
@@ -52,10 +52,15 @@ while True:
 
     if new_guest == 'пришел':
         if len(guests) < 6:
-            print('Привет,', name_guest)
+            print(f'Привет, {name_guest}!')
             guests.append(name_guest)
         else:
             print(f'Прости, {name_guest}, но мест нет.')
     elif new_guest == 'ушел':
-        print(f'Пока, {name_guest}!')
-        guests.remove(name_guest)
+        if name_guest not in guests:
+            print('Таких тут нет!')
+        else: 
+            print(f'Пока, {name_guest}!')
+            guests.remove(name_guest)
+    else:
+        print('Неверный ввод!')
