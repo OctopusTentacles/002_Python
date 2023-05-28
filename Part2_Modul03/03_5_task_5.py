@@ -52,5 +52,4 @@ violator_songs = [
 
 num_songs = int(input('Сколько песен выбрать? '))
 
-
-print(f'Общее время звучания песен: {playlist(num_songs)}')
+print(f'\nОбщее время звучания песен: {round(playlist(num_songs), 2)} минуты.')
