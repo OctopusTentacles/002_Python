@@ -25,12 +25,21 @@
 
 # Наибольшее кол-во людей, которые могут взять ролики: 2
 
+
 skates_list = []
 people_list = []
 
 skates = int(input('Кол-во коньков: '))
 for skate in range(1, skates + 1):
     print(f'Размер {skate} пары: ', end='')
-    
+    skates_list.append(input())
 
-people = int(input('Кол-во людей: '))
+
+people = int(input('\nКол-во людей: '))
+for i_size in range(1, people + 1):
+    print(f'Размер ноги {i_size}-го человека: ', end='')
+    people_list.append(input())
+
+
+print('коньки', skates_list)
+print('ноги', people_list)
