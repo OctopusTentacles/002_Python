@@ -24,3 +24,13 @@
 # Размер ноги 3-го человека: 42
 
 # Наибольшее кол-во людей, которые могут взять ролики: 2
+
+skates_list = []
+people_list = []
+
+skates = int(input('Кол-во коньков: '))
+for skate in range(1, skates + 1):
+    print(f'Размер {skate} пары: ', end='')
+    
+
+people = int(input('Кол-во людей: '))
