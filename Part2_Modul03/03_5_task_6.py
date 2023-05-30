@@ -51,10 +51,11 @@ people_list.extend(skates_list)
 bubble_sort(people_list)
 
 men = 0
-for i_man in range(people_list):
+length = len(people_list)
+for i_man in range(length):
     if people_list[i_man] == people_list[i_man + 1]:
         men += 1
-        people_list.remove(i_man, i_man + 1)
+        del people_list[i_man:i_man + 2]
 
 
 print('ноги', people_list)
