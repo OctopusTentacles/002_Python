@@ -25,11 +25,12 @@
 
 # Наибольшее кол-во людей, которые могут взять ролики: 2
 
-def selection_sort(my_list):
-    for i_mn in range(len(my_list)):
-        for curr in range(i_mn, len(my_list)):
-            if my_list[curr] < my_list[i_mn]:
-                my_list[curr], my_list[i_mn] = my_list[i_mn], my_list[curr]
+
+def bubble_sort(my_list):
+    for index in range(len(my_list) - 1):
+        for i in range(len(my_list) - index - 1):
+            if my_list[i] > my_list[i + 1]:
+                my_list[i], my_list[i + 1] = my_list[i + 1], my_list[i]
 
 
 skates_list = []
@@ -47,6 +48,8 @@ for i_size in range(1, people + 1):
     people_list.append(input())
 
 people_list.extend(skates_list)
-selection_sort(people_list)
+bubble_sort(people_list)
+
+
 
 print('ноги', people_list)
