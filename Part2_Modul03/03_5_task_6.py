@@ -26,15 +26,9 @@
 # Наибольшее кол-во людей, которые могут взять ролики: 2
 
 
-def bubble_sort(my_list):
-    for index in range(len(my_list) - 1):
-        for i in range(len(my_list) - index - 1):
-            if my_list[i] > my_list[i + 1]:
-                my_list[i], my_list[i + 1] = my_list[i + 1], my_list[i]
-
-
 skates_list = []
 people_list = []
+count = 0
 
 skates = int(input('Кол-во коньков: '))
 for skate in range(1, skates + 1):
@@ -47,15 +41,12 @@ for i_size in range(1, people + 1):
     print(f'Размер ноги {i_size}-го человека: ', end='')
     people_list.append(input())
 
-people_list.extend(skates_list)
-bubble_sort(people_list)
 
-men = 0
-length = len(people_list)
-for i_man in range(length):
-    if people_list[i_man] == people_list[i_man + 1]:
-        men += 1
-        del people_list[i_man:i_man + 2]
+for i_man in people_list:
+    for i_skate in range(len(skates_list)):
+        if skates_list[i_skate] == i_man:
+            skates_list.remove(skates_list[i_skate])
+            count += 1
+            break
 
-
-print('ноги', people_list)
+print('\nНаибольшее кол-во людей, которые могут взять ролики:', count)
