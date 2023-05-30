@@ -50,6 +50,11 @@ for i_size in range(1, people + 1):
 people_list.extend(skates_list)
 bubble_sort(people_list)
 
+men = 0
+for i_man in range(people_list):
+    if people_list[i_man] == people_list[i_man + 1]:
+        men += 1
+        people_list.remove(i_man, i_man + 1)
 
 
 print('ноги', people_list)
