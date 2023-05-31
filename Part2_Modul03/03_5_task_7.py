@@ -34,8 +34,15 @@
 
 
 def create_list(n):
-    for
+    for index in range(1, n + 1):
+        people_list.append(index)
+
+
+people_list = []
 
 n_people = int(input('Кол-во человек: '))
 k_number = int(input('Какое число в считалке? '))
 print(f'Значит, выбывает каждый {k_number}-й человек!')
+
+create_list(n_people)
+print('\nТекущий круг людей:', people_list)
