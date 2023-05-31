@@ -40,5 +40,6 @@ print(f'Значит, выбывает каждый {k_number}-й человек
 people_list = list(range(1, n_people + 1))
 count = 0
 
-while people_list > 1:
+while len(people_list) > 1:
     print('\nТекущий круг людей:', people_list)
+    count += k_number
