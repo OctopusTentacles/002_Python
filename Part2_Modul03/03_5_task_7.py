@@ -38,4 +38,7 @@ k_number = int(input('Какое число в считалке? '))
 print(f'Значит, выбывает каждый {k_number}-й человек!')
 
 people_list = list(range(1, n_people + 1))
-print('\nТекущий круг людей:', people_list)
+count = 0
+
+while people_list > 1:
+    print('\nТекущий круг людей:', people_list)
