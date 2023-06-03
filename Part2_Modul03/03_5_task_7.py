@@ -47,7 +47,7 @@ while len(people_list) > 1:
     srart_number = drop_man + 1
     print('Начало счета с номера', srart_number)
 
-    drop_man = (srart_number + k_number - 1) % len(people_list)
+    drop_man = abs(len(people_list) - k_number)
     
     print('Выбывает человек под номером', drop_man)
     people_list.remove(drop_man)
