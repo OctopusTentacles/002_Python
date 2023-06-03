@@ -38,16 +38,25 @@ k_number = int(input('Какое число в считалке? '))
 print(f'Значит, выбывает каждый {k_number}-й человек!')
 
 people_list = list(range(1, n_people + 1))
-srart_number = 0
+start_number = 0
 drop_man = 0
+
+# for i in range(k_number - len(people_list) + 1):
+#     print('\nТекущий круг людей:', people_list)
+#     if k_number > len(people_list):
+#         k_number -= len(people_list)
+#     if abs(k_number) <= len(people_list):
+#         del (people_list[k_number - 1])
+#     k_number -= 2
+
 
 while len(people_list) > 1:
     print('\nТекущий круг людей:', people_list)
     
-    srart_number = drop_man + 1
-    print('Начало счета с номера', srart_number)
+   
+    print('Начало счета с номера', people_list[start_number])
 
-    drop_man = abs(len(people_list) - k_number)
+    drop_man = (people_list[start_number] + k_number) % len(people_list)
     
     print('Выбывает человек под номером', drop_man)
     people_list.remove(drop_man)
