@@ -48,10 +48,10 @@ while len(people_list) > 1:
     
     print('Выбывает человек под номером', people_list[drop_man])
     
-    
 
     people_list.remove(people_list[drop_man])
 
-    start_number += k_number % len(people_list) - 2
+    start_number = (start_number + k_number) % len(people_list) - 2
+
 
     
