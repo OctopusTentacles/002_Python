@@ -42,4 +42,5 @@ count = 0
 
 while len(people_list) > 1:
     print('\nТекущий круг людей:', people_list)
-    count += k_number
+    x = count % len(people_list)
+    count = ()
