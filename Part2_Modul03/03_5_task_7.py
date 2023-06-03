@@ -38,12 +38,14 @@ k_number = int(input('Какое число в считалке? '))
 print(f'Значит, выбывает каждый {k_number}-й человек!')
 
 people_list = list(range(1, n_people + 1))
-count = 1
+count = 0
 
 while len(people_list) > 1:
     print('\nТекущий круг людей:', people_list)
-    start_number = count % len(people_list)
-    count = (start_number + k_number -1) % len(people_list)
+    
+    start_number = count % len(people_list) + 1
     print('Начало счета с номера', start_number)
+
+    count = (start_number + k_number -1) % len(people_list)
     print('Выбывает человек под номером', count)
-    people_list.pop(count)
+    people_list.remove(count)
