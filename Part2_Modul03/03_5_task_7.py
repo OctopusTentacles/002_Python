@@ -41,19 +41,20 @@ people_list = list(range(1, n_people + 1))
 start_number = 0
 
 while len(people_list) > 1:
-
     
     print('\nТекущий круг людей:', people_list)
-    print('Начало счета с номера', start_number)
+    print('Начало счета с номера', people_list[start_number])
 
-    drop_man = k_number % len(people_list)
+    drop_man = (start_number + k_number - 1) % len(people_list)
     
+
+
     print('Выбывает человек под номером', people_list[drop_man])
     
 
     people_list.remove(people_list[drop_man])
 
-    start_number = k_number % len(people_list)
+    start_number = k_number % n_people - 1
 
 
     
