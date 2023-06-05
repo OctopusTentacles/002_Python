@@ -35,9 +35,15 @@
 # Сами числа: [4, 3, 2, 1]
 
 num_list = []
+prepare_list = []
+revers_list = []
+
 
 n_num = int(input('Кол-во чисел: '))
 for i_num in range(n_num):
     print('Число: ', end='')
     number = int(input())
-    
+    num_list.append(number)
+
+print('Последовательность:', num_list)
+
