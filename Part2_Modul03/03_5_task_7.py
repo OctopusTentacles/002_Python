@@ -43,6 +43,7 @@ start_number = people_list[0]
 while len(people_list) > 1:
     
     print('\nТекущий круг людей:', people_list)
+    
     # print('Начало счета с номера', people_list[start_number])
     print('Начало счета с номера', start_number)
 
@@ -61,5 +62,5 @@ while len(people_list) > 1:
 
     # start_number = start_number + k_number % len(people_list) - 2
 
-print('Остался человек под номером', people_list)
+print('\nОстался человек под номером', people_list[0])
     
