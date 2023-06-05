@@ -47,11 +47,11 @@ while len(people_list) > 1:
 
     drop_man = ((people_list[start_number] + k_number) % len(people_list)) - 1
     print('Выбывает человек под номером', drop_man)
-    people_list.remove(people_list[drop_man])
     
     start_number = k_number % len(people_list) - 1
 
-    
+    people_list.remove(drop_man)
+
 
     
 
