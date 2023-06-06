@@ -37,8 +37,8 @@
 
 def revers(rev_list):
     invert_list = []
-    for i in range(len(rev_list - 1), - 1, - 1):
-        invert_list.append(rev_list, i)
+    for i in range(len(rev_list) - 1, - 1, - 1):
+        invert_list.append(rev_list[i])
     if invert_list == rev_list:
         return True
     else:
@@ -63,3 +63,8 @@ for i_num in range(len(num_list)):
     if revers(prepare_list):
         for i_rev in range(i_num):
             revers_list.append(num_list[i_rev])
+        revers_list.reverse()
+        break
+
+print('Нужно приписать чисел:', len(revers_list))
+print('Сами числа:', revers_list)
