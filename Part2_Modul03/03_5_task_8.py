@@ -40,10 +40,14 @@ revers_list = []
 
 
 n_num = int(input('Кол-во чисел: '))
-for i_num in range(n_num):
+for _ in range(n_num):
     print('Число: ', end='')
     number = int(input())
     num_list.append(number)
 
 print('Последовательность:', num_list)
 
+for i_num in range(len(num_list)):
+    for i in range(i_num, len(num_list)):
+        prepare_list.append(num_list[i])
+        
