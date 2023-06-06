@@ -57,14 +57,16 @@ for _ in range(n_num):
 
 print('Последовательность:', num_list)
 
-for i_num in range(len(num_list)):
+
+for i_num in range(0, len(num_list)):
     for i in range(i_num, len(num_list)):
         prepare_list.append(num_list[i])
     if revers(prepare_list):
-        for i_rev in range(i_num):
+        for i_rev in range(0, i_num):
             revers_list.append(num_list[i_rev])
         revers_list.reverse()
         break
+    prepare_list = []
 
 print('Нужно приписать чисел:', len(revers_list))
 print('Сами числа:', revers_list)
