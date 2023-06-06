@@ -34,10 +34,20 @@
 # Нужно приписать чисел: 4
 # Сами числа: [4, 3, 2, 1]
 
+
+def revers(rev_list):
+    invert_list = []
+    for i in range(len(rev_list - 1), - 1, - 1):
+        invert_list.append(rev_list, i)
+    if invert_list == rev_list:
+        return True
+    else:
+        return False
+    
+
 num_list = []
 prepare_list = []
 revers_list = []
-
 
 n_num = int(input('Кол-во чисел: '))
 for _ in range(n_num):
@@ -50,4 +60,6 @@ print('Последовательность:', num_list)
 for i_num in range(len(num_list)):
     for i in range(i_num, len(num_list)):
         prepare_list.append(num_list[i])
-        
+    if revers(prepare_list):
+        for i_rev in range(i_num):
+            revers_list.append(num_list[i_rev])
