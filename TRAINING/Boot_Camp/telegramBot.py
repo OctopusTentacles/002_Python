@@ -9,14 +9,12 @@ import os
 
 token = "5813295603:AAF3y5Y2XUZDz-dzXfyl8evXBrm3ZHMADQg"
 
-
 # В этой строчке мы заводим бота и даем ему запомнить токен
 bot = telebot.TeleBot(token)
 
 # Пишем первую функцию, которая отвечает "Привет" на команду /start
 # Все функции общения приложения с ТГ спрятаны в функции под @
 @bot.message_handler(commands=['start'])
-
 def say_hi(message):
     bot.send_message(message.chat.id, 'Привет ✌️ ' + message.chat.first_name)   #add user name
 
@@ -72,3 +70,37 @@ def recognize_speech(oga_filename):
 
     return text
 recognize_speech('skillbox_voice_sample.oga')
+
+
+#3.3 Скачивание файла из Телеграм
+
+def download_file(bot, file_id):
+    # Получаем информацию о файле с помощью функции bot.get_file
+    file_info = ...
+
+    # загружаем файл с помощью функции bot.download_file
+    # по информации о файле file_info.file_path
+    downloaded_file = ...
+
+    # Имя файла делаем уникальным: id файла + file_info.file_path
+    filename = file_id + file_info.file_path
+
+    # file_info.file_path имеет вид voice/file_123.oga,
+    # чтобы избежать ошибок из-за косой черты, заменим ее на _
+    filename = ...
+
+    with open(filename, 'wb') as f:
+        f.write(downloaded_file)
+
+    return filename
+
+# 3.4 Собираем итоговую функцию
+# Новое условие на срабатывание: content_types=['voice']
+@bot.message_handler(...)
+def transcript(message):
+    # id файла - в message.voice.file_id
+    filename = download_file(bot, ...)
+    # Распознаем запись с помощью нашей функции recognize_speech
+    text = ...
+    # Отправляем пользователю в ответ текст
+    bot.send_message(message.chat.id, text)
