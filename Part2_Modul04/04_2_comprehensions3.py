@@ -21,4 +21,5 @@
 
 
 
-prices = [for i in range(5)]
+prices = [input('Цена на товар: ') for i in range(5)]
+print(prices)
