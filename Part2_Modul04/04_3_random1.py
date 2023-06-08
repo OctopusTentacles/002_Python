@@ -5,3 +5,9 @@
 # в диапазоне от А до B. Используйте list comprehensions 
 # (как и в следующих задачах).
 
+num_a = int(input('Левая граница: '))
+num_b = int(input('Правая граница: '))
+
+print(f'Четные числа от {num_a} до {num_b}:', 
+      [i for i in range(num_a, num_b + 1) if i % 2 == 0]
+)
