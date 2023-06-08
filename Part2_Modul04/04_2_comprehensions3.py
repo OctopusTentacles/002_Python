@@ -19,7 +19,18 @@
 # Повышение на второй год: 10
 # Сумма цен за каждый год: 93.83 93.83 103.21
 
+def increase(price, percent):
+    return round(price + (price * percent / 100), 2)
+
+prices = [int(input('Цена на товар: ')) for i in range(5)]
+
+year_1 = int(input('Повышение на первый год: '))
+year_2 = int(input('Повышение на второй год: '))
+
+prices_1 = [increase(index, year_1) for index in prices]
+prices_2 = [increase(index, year_2) for index in prices_1]
 
 
-prices = [input('Цена на товар: ') for i in range(5)]
 print(prices)
+print(prices_1)
+print(prices_2)
