@@ -19,7 +19,7 @@
 # Сумма цен за каждый год: 93.83 93.83 103.21
 
 def increase(price, percent):
-    return round(price + (price * percent / 100), 2)
+    return price + (price * percent / 100)
 
 
 prices = [float(input('Цена на товар: ')) for i in range(5)]
@@ -30,4 +30,4 @@ year_2 = float(input('Повышение на второй год: '))
 prices_1 = [increase(index, year_1) for index in prices]
 prices_2 = [increase(index, year_2) for index in prices_1]
 
-print('Сумма цен за каждый год:', sum(prices), sum(prices_1), sum(prices_2))
+print('Сумма цен за каждый год:', round(sum(prices), 2), round(sum(prices_1), 2), round(sum(prices_2), 2))
