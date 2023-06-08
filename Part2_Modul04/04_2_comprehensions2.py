@@ -21,7 +21,7 @@ word = input('Введите строку: ')
 symbol = input('Введите дополнительный символ: ')
 
 double_letter = [i_symbol * 2 for i_symbol in word]
-letter_symbol = [letter + '!' for letter in double_letter]
+letter_symbol = [letter + symbol for letter in double_letter]
 
 print('Список удвоенных символов:', double_letter)
 print('Склейка с дополнительным символом:', letter_symbol)
