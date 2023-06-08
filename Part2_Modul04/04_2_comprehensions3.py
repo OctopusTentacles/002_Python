@@ -22,16 +22,12 @@ def increase(price, percent):
     return round(price + (price * percent / 100), 2)
 
 
-prices = [int(input('Цена на товар: ')) for i in range(5)]
+prices = [float(input('Цена на товар: ')) for i in range(5)]
 
-year_1 = int(input('Повышение на первый год: '))
-year_2 = int(input('Повышение на второй год: '))
+year_1 = float(input('Повышение на первый год: '))
+year_2 = float(input('Повышение на второй год: '))
 
 prices_1 = [increase(index, year_1) for index in prices]
 prices_2 = [increase(index, year_2) for index in prices_1]
 
-print(prices)
-print(prices_1)
-print(prices_2)
-
-print(sum(prices), sum(prices_1), sum(prices_2))
+print('Сумма цен за каждый год:', sum(prices), sum(prices_1), sum(prices_2))
