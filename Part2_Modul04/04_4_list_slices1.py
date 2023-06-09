@@ -23,4 +23,11 @@
 # программу, а также сделайте так, чтобы список цен генерировался 
 # случайно (диапазон можно выбрать любой).
 
+import random
 
+original_prices = [random.randint(-15, 15) for _ in range(5)]
+new_prices = []
+
+print('пакет данных', original_prices)
+print('новый список', new_prices)
+print('Мы потеряли:', )
