@@ -15,4 +15,4 @@
 
 original_prices = [1.25, -9.45, 10.22, 3.78, -5.92, 1.16]
 
-print([(index == 0 if index < 0 else index) for index in original_prices])
+print([(0 if index < 0 else index) for index in original_prices])
