@@ -26,8 +26,16 @@
 import random
 
 original_prices = [random.randint(-15, 15) for _ in range(5)]
-new_prices = []
+new_prices = [i if i > 0 else 0 for i in original_prices]
 
 print('пакет данных', original_prices)
 print('новый список', new_prices)
-print('Мы потеряли:', )
+print('Мы потеряли:', abs(sum(original_prices) - sum(new_prices)))
+
+# or
+
+# new_prices = original_prices[::]          # копирование через срез
+# for index in range(len(original_prices)):
+#     if new_prices[i] < 0:
+#         new_prices[i] = 0
+# print('Мы потеряли:', abs(sum(original_prices) - sum(new_prices)))
