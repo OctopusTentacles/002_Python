@@ -13,6 +13,10 @@ while True:
     num_a = random.randint(0, num_N)
     if num_a < num_b:
         break
+#  or
+# a = random.randint(0, len(numbers) - 2)
+# b = random.randint(a + 1, len(numbers) - 1)
+# Генерируем числа так, чтобы они не выходили за границу списка
 
 my_list = [random.randint(0, num_N) for _ in range(num_N)]
 slice_list = my_list[:num_a] + my_list[num_b + 1:] 
