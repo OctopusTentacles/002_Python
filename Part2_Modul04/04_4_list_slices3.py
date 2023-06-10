@@ -15,8 +15,9 @@ while True:
         break
 
 my_list = [random.randint(0, num_N) for _ in range(num_N)]
-
+slice_list = my_list[:num_a] + my_list[num_b + 1:] 
 
 print('A', num_a)
 print('B', num_b)
 print('List', my_list)
+print('Slice', slice_list)
