@@ -8,16 +8,8 @@ import random
 
 num_N = int(input('Длина списка: '))
 
-while True:
-    num_b = random.randint(0, num_N)
-    num_a = random.randint(0, num_N)
-    if num_a < num_b:
-        break
-
-# or
-# a = random.randint(0, len(numbers) - 2)
-# b = random.randint(a + 1, len(numbers) - 1)
-# Генерируем числа так, чтобы они не выходили за границу списка
+num_a = random.randint(0, num_N - 2)
+num_b = random.randint(num_a + 1, num_N - 1)
 
 my_list = [random.randint(0, num_N) for _ in range(num_N)]
 slice_list = my_list[:num_a] + my_list[num_b + 1:] 
