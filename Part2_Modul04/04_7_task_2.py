@@ -9,3 +9,9 @@
 # Результат: [1, 1, 1, 3, 1, 0, 1, 2, 1, 4]
 
 length = int(input('Введите длину списка: '))
+
+length_list = [1 if i_num % 2 == 0 
+                    else i_num % 5 
+                        for i_num in range(length)]
+
+print('')
