@@ -25,4 +25,4 @@ left = word.index('h')
 right = word.rindex('h')
 
 print('Развёрнутая последовательность между первым и последним h:',
-        word[right:left:-1])
+        word[(right - 1):left:-1])
