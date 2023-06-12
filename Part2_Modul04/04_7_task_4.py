@@ -29,7 +29,7 @@
 
 alphabet = 'abcdefg'
 
-print(alphabet[])
+print(alphabet[::])
 print(alphabet[])
 print(alphabet[])
 print(alphabet[])
