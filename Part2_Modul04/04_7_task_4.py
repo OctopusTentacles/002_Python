@@ -14,7 +14,6 @@
 # 9 все элементы в диапазоне индексов от 3 до 4;
 # 10 то же, что и в предыдущем пункте, но в обратном порядке.
 # Для получения и вывода результатов используйте только команду print и срезы.
-
 # Результаты работы программы:
 # 1: abcdefg
 # 2: gfedcba
@@ -30,12 +29,12 @@
 alphabet = 'abcdefg'
 
 print(alphabet[::])
-print(alphabet[])
-print(alphabet[])
-print(alphabet[])
-print(alphabet[])
-print(alphabet[])
-print(alphabet[])
-print(alphabet[])
-print(alphabet[])
-print(alphabet[])
+print(alphabet[::-1])
+print(alphabet[::2])
+print(alphabet[1::2])
+print(alphabet[:1])
+# print(alphabet[])
+# print(alphabet[])
+# print(alphabet[])
+# print(alphabet[])
+# print(alphabet[])
