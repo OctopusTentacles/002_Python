@@ -8,4 +8,6 @@
 # Напишите программу, которая генерирует такой список и выводит его на экран. 
 # Используйте только list comprehensions.
 
-twod_list = []
+twod_list = [[i] * 1 for i in range(1, 5) ]
+
+print(twod_list)
