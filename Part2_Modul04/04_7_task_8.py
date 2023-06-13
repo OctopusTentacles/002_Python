@@ -13,5 +13,12 @@
 # Введите сдвиг: 3
 # Зашифрованное сообщение: ахс тлхср.
 
+azbuka = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
+code = ''
+
 message = input('Введите сообщение: ')
 shift = int(input('Введите сдвиг: '))
+
+for symbol in message:
+    if symbol in azbuka:
+        code += azbuka[symbol + 3]
