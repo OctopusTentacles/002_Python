@@ -22,11 +22,12 @@ shift = int(input('Введите сдвиг: '))
 for symbol in range(len(message)):
     for letter in range(len(azbuka)):
         if message[symbol] == azbuka[letter]:
-            
-            code += (azbuka[letter + shift])
+            code_symbol = letter + shift
+            if code_symbol >= len(azbuka):
+                code_symbol -= len(azbuka)
+            code += azbuka[code_symbol]
             break
-        else:
-            code += message[symbol]
-            
+    else:
+        code += message[symbol]
 
 print(code)
