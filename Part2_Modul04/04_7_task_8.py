@@ -13,21 +13,25 @@
 # Введите сдвиг: 3
 # Зашифрованное сообщение: ахс тлхср.
 
+
+def cipher(message, shift):
+    code = ''
+    for symbol in range(len(message)):
+        for letter in range(len(azbuka)):
+            if message[symbol] == azbuka[letter]:
+                code_symbol = letter + shift
+                if code_symbol >= len(azbuka):
+                    code_symbol -= len(azbuka)
+                code += azbuka[code_symbol]
+                break
+        else:
+            code += message[symbol]
+    return code            
+
+
 azbuka = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
-code = ''
 
-message = input('Введите сообщение: ')
-shift = int(input('Введите сдвиг: '))
+my_message = input('Введите сообщение: ')
+my_shift = int(input('Введите сдвиг: '))
 
-for symbol in range(len(message)):
-    for letter in range(len(azbuka)):
-        if message[symbol] == azbuka[letter]:
-            code_symbol = letter + shift
-            if code_symbol >= len(azbuka):
-                code_symbol -= len(azbuka)
-            code += azbuka[code_symbol]
-            break
-    else:
-        code += message[symbol]
-
-print(code)
+print('Зашифрованное сообщение:', cipher(my_message, my_shift))
