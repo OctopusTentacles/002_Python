@@ -14,11 +14,18 @@
 # Зашифрованное сообщение: ахс тлхср.
 
 azbuka = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
-code = ''
+code = []
 
 message = input('Введите сообщение: ')
 shift = int(input('Введите сдвиг: '))
 
-for symbol in message:
-    if symbol in azbuka:
-        code += azbuka[symbol + 3]
+for symbol in range(len(message)):
+    for letter in range(len(azbuka)):
+        if message[symbol] == azbuka[letter]:
+            code.append(azbuka[letter + shift])
+            break
+            
+        # else:
+            
+
+# print(code)
