@@ -14,19 +14,28 @@
 # Зашифрованное сообщение: ахс тлхср.
 
 
+# def cipher(message, shift):
+#     code = ''
+#     for symbol in range(len(message)):
+#         for letter in range(len(azbuka)):
+#             if message[symbol] == azbuka[letter]:
+#                 code_symbol = letter + shift
+#                 if code_symbol >= len(azbuka):
+#                     code_symbol -= len(azbuka)
+#                 code += azbuka[code_symbol]
+#                 break
+#         else:
+#             code += message[symbol]
+#     return code            
+
 def cipher(message, shift):
     code = ''
-    for symbol in range(len(message)):
-        for letter in range(len(azbuka)):
-            if message[symbol] == azbuka[letter]:
-                code_symbol = letter + shift
-                if code_symbol >= len(azbuka):
-                    code_symbol -= len(azbuka)
-                code += azbuka[code_symbol]
-                break
-        else:
-            code += message[symbol]
-    return code            
+    code_list = [(azbuka[(azbuka.index(symbol) + shift) % 33] 
+                            if symbol in azbuka else symbol)
+                                        for symbol in message]
+    for sym in code_list:
+        code += sym
+    return code
 
 
 azbuka = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
