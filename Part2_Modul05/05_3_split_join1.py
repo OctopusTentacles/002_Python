@@ -6,7 +6,9 @@
 # Напишите программу, которая посчитает, сколько раз слова 
 # пользователя встречаются в тексте. 
 
-word_list = []
+words = [input('Введите слово: ') for _ in range(3)]
+text = input('Введите текст: ')
 
-for i in range(3):
-    print(f'Введите {i} слово:', end='')
+words_count = [text.count(word) for word in words]
+
+print(words_count)
