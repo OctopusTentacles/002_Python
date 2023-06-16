@@ -22,3 +22,16 @@
 
 # Именинники: Иван Иванов 20, Петя Петров 30, Лена Ленова 18
 
+while True:
+    shablon = input('Введите шаблон поздравления, '
+                    'в шаблоне можно использовать конструкцию '
+                    '{name} и {age}:')
+    if '{name}' in shablon and '{age}' in shablon:
+        break
+    print('Ошибка, нет конструкции')
+
+names = input('Список людей через запятую: ').split(', ')
+
+
+print(shablon)
+print(names)
