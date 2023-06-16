@@ -31,7 +31,18 @@ while True:
     print('Ошибка, нет конструкции')
 
 names = input('Список людей через запятую: ').split(', ')
+ages_str = input('Возраст людей через пробел: ')
+ages_int = [int(age) for age in ages_str.split()]
 
 
-print(shablon)
-print(names)
+for i_man in range(len(names)):
+    print(shablon.format(name=names[i_man], age=ages_int[i_man]))
+
+for age, name in zip(ages_int, names):
+    print(shablon.format(name=name, age=age))
+
+
+people = [' '.join([names[index], str(ages_int[index])]) 
+                                for index in range(len(names))]
+print('Именинники:', ', '.join(people))
+
