@@ -17,3 +17,7 @@ path = input('Путь к файлу: ')
 disk = input('На каком диске файл: ')
 extension = input('Расширение файла: ')
 
+if path.startswith(disk) and path.endswith(extension):
+    print('Путь корректен!')
+else:
+    print('Путь некорректен!')
