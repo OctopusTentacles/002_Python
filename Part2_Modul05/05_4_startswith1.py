@@ -7,12 +7,19 @@
 # шифрования. Не используйте конкатенацию и сделайте так, 
 # чтобы текст был в одном регистре.
 
-def cipher(message, shift):
-    
+print(ord("а"), ord("я"), ord("ё"), chr(1104))
 
-azbuka = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
+text = input("Введите текст: ")
+delta = int(input("Введите сдвиг: "))
 
-my_message = input('Введите сообщение: ')
-my_shift = int(input('Введите сдвиг: '))
+alphabet = [chr(index) for index in range(ord("а"), ord("я") + 1)]  
+# заполняем список буквами алфавита
 
-print('Зашифрованное сообщение:', cipher(my_message, my_shift))
+# Думаем над структурой алгоритма: 
+# [вариант_1 если условие_1 иначе вариант_2 for буква in текст]
+new_text = [alphabet[(alphabet.index(letter) + delta) % len(alphabet)] 
+            if letter in alphabet 
+            else letter 
+            for letter in text.lower()]
+
+print(''.join(new_text))
