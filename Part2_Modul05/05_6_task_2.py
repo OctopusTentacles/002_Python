@@ -23,7 +23,12 @@
 text = input('Введите строку: ').split()
 
 long_word = text[0]
-for index in text:
+
+for i in range(len(text)):
+    if len(long_word) < len(text[i]):
+        long_word = text[i]
+        print(long_word)
+
+# long_word = [index if len(index) > len(long_word) for index in text:]
 
 
-print(text)
