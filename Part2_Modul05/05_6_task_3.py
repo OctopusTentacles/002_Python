@@ -19,3 +19,14 @@
 # Пример 3:
 # Название файла: example.txt
 # Файл назван верно.
+
+symbols = list('@№$%^&\*()')
+extension = '.txt .docx'.split()
+
+print(symbols)
+print(extension)
+
+name_file = input('Название файла: ')
+
+if name_file.startswith(symbols):
+    print('Ошибка: название начинается на один из специальных символов.')
