@@ -20,13 +20,13 @@
 # Название файла: example.txt
 # Файл назван верно.
 
-symbols = list('@№$%^&\*()')
-extension = '.txt .docx'.split()
+symbols = '@№$%^&\*()'
+extension = '.txt .docx'
 
 print(symbols)
 print(extension)
 
 name_file = input('Название файла: ')
 
-if name_file.startswith(symbols):
-    print('Ошибка: название начинается на один из специальных символов.')
+if name_file.startswith(symbols) and name_file.endswith(extension):
+    print('Файл назван верно.')
