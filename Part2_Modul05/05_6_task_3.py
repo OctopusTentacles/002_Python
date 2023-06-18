@@ -23,7 +23,7 @@
 symbols = '@№$%^&\*()'
 extension = '.txt .docx'
 
-print(symbols)
+print(', '.join(symbols))
 print(extension)
 
 name_file = input('Название файла: ')
