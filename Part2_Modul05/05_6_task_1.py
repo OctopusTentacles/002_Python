@@ -14,6 +14,4 @@
 
 menu = input('Доступное меню: ').split(';')
 
-print(menu)
-
 print('Сейчас в меню есть: ', ', '.join(menu))
