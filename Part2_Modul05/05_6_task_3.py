@@ -20,10 +20,13 @@
 # Название файла: example.txt
 # Файл назван верно.
 
-symbols = '@№$%^&\*()'
+symbols = '@№$%^&\*()'.split('')
 extension = '.txt .docx'
+print(symbols)
 
-symbols = (', '.join(symbols.split(',')))
+symbols = (', '.join(symbols))
+print(symbols)
+extension = (', '.join(extension))
 print(extension)
 
 name_file = input('Название файла: ')
