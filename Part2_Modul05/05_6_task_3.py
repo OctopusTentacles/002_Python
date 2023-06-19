@@ -23,10 +23,14 @@
 symbols = '@№$%^&\*()'
 extension = '.txt .docx'
 
-print(', '.join(symbols))
+symbols = (', '.join(symbols.split(',')))
 print(extension)
 
 name_file = input('Название файла: ')
 
-if name_file.startswith(symbols) and name_file.endswith(extension):
+if name_file.startswith(symbols):
+    print('Ошибка: название начинается на один из специальных символов.')
+elif name_file.endswith(extension):
+    print('Ошибка: неверное расширение файла. Ожидалось .txt или .docx.')
+else:
     print('Файл назван верно.')
