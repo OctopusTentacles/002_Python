@@ -20,21 +20,35 @@
 # Название файла: example.txt
 # Файл назван верно.
 
+
+def begining(text, symbol):
+    for i in range(len(symbol)):
+        if text.startswith(symbol[i]):
+            return True
+        
+def ending(text, extension):
+     for i in range(len(extension)):
+        if text.endswith(extension[i]):
+            return True
+
+
 symbols = '@№$%^&\*()'
 extension = '.txt .docx'
 
-symbols_list = ('", "'.join(symbols))
-extension_list = "''".join(list(extension))
+symbols_list = list(symbols)
+extension_list = (extension).split(' ')
 
 print(symbols_list)
 print(extension_list)
 
 name_file = input('Название файла: ')
 
-if name_file.startswith(symbols_list):
-   print('Ошибка: название начинается на один из специальных символов')
-elif not name_file.endswith(extension_list):
-   print('Ошибка: неверное расширение файла. Ожидалось .txt или .docx')
-else:
-   print('Файл назван верно.')    
+if begining(name_file, symbols_list):
+    print('Ошибка: название начинается на один из специальных символов')
+
+elif ending(name_file, extension_list):    
+    print('Файл назван верно.')
+
+else:       
+    print('Ошибка: неверное расширение файла. Ожидалось .txt или .docx')
     
