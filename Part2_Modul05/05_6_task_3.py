@@ -20,20 +20,29 @@
 # Название файла: example.txt
 # Файл назван верно.
 
-symbols = '@№$%^&\*()'.split('')
+symbols = '@№$%^&\*()'
 extension = '.txt .docx'
-print(symbols)
 
-symbols = (', '.join(symbols))
 print(symbols)
-extension = (', '.join(extension))
 print(extension)
 
 name_file = input('Название файла: ')
 
-if name_file.startswith(symbols):
-    print('Ошибка: название начинается на один из специальных символов.')
-elif name_file.endswith(extension):
-    print('Ошибка: неверное расширение файла. Ожидалось .txt или .docx.')
+for index in range(len(symbols)):
+    if name_file.startswith(symbols[index]):
+        print('Ошибка: название начинается на один из специальных символов.')
+        break
+for index in range(len(extension)):
+    if name_file.endswith(extension[index]):
+        print('Ошибка: неверное расширение файла. Ожидалось .txt или .docx.')
+        break
 else:
     print('Файл назван верно.')
+    
+    
+# if name_file.startswith([i for i in len(name_file)]):
+#     print('Ошибка: название начинается на один из специальных символов.')
+# elif name_file.endswith(extension):
+#     print('Ошибка: неверное расширение файла. Ожидалось .txt или .docx.')
+# else:
+#     print('Файл назван верно.')
