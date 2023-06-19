@@ -23,26 +23,18 @@
 symbols = '@№$%^&\*()'
 extension = '.txt .docx'
 
-print(symbols)
-print(extension)
+symbols_list = ('", "'.join(symbols))
+extension_list = "''".join(list(extension))
+
+print(symbols_list)
+print(extension_list)
 
 name_file = input('Название файла: ')
 
-for index in range(len(symbols)):
-    if name_file.startswith(symbols[index]):
-        print('Ошибка: название начинается на один из специальных символов.')
-        break
-for index in range(len(extension)):
-    if name_file.endswith(extension[index]):
-        print('Ошибка: неверное расширение файла. Ожидалось .txt или .docx.')
-        break
+if name_file.startswith(symbols_list):
+   print('Ошибка: название начинается на один из специальных символов')
+elif not name_file.endswith(extension_list):
+   print('Ошибка: неверное расширение файла. Ожидалось .txt или .docx')
 else:
-    print('Файл назван верно.')
+   print('Файл назван верно.')    
     
-    
-# if name_file.startswith([i for i in len(name_file)]):
-#     print('Ошибка: название начинается на один из специальных символов.')
-# elif name_file.endswith(extension):
-#     print('Ошибка: неверное расширение файла. Ожидалось .txt или .docx.')
-# else:
-#     print('Файл назван верно.')
