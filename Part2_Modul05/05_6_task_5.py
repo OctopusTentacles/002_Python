@@ -31,11 +31,11 @@ def pass_strength(password):
         print('Нужны цифры и буквы. ', end='')
         return True
     else: 
-        for i in password.split():
+        for i in list(password):
             if i.isdigit():
                 count += 1
         if count < 3:
-            print('Нужно не менее трёх цифр.' )
+            print('Нужно не менее трёх цифр.', end='')
             return True
 
 
