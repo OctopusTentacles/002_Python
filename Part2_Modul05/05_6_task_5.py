@@ -46,3 +46,8 @@ while pass_strength(my_password):
     my_password = input('Придумайте пароль: ')
 
 print('Это надёжный пароль.')
+
+
+# ну нагородил )))))
+# не получается у меня Pythonic )))))
+# как научиться?
