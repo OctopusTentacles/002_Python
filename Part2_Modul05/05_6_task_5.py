@@ -20,6 +20,7 @@
 # Это надёжный пароль.
 
 def pass_strength(password):
+    count = 0
     if len(password) < 8:
         print('Длина менее 8 символов. ', end='')
         return True
@@ -27,8 +28,16 @@ def pass_strength(password):
         print('Нужен верхний и нижний регистр. ', end='')
         return True
     elif password.isalpha() or password.isdigit():
-        print('Нет цифр. ', end='')
+        print('Нужны цифры и буквы. ', end='')
         return True
+    else: 
+        for i in password.split():
+            if i.isdigit():
+                count += 1
+        if count < 3:
+            print('Нужно не менее трёх цифр.' )
+            return True
+
 
 my_password = input('Придумайте пароль: ')
 
