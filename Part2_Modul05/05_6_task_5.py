@@ -26,7 +26,9 @@ def pass_strength(password):
     elif password.islower() or password.isupper():
         print('Нужен верхний и нижний регистр. ', end='')
         return True
-
+    elif password.isalpha() or password.isdigit():
+        print('Нет цифр. ', end='')
+        return True
 
 my_password = input('Придумайте пароль: ')
 
