@@ -16,3 +16,11 @@
 # Введите строку: aaAAbbсaaaA
 # Закодированная строка: a2A2b2с1a3A1
 
+
+my_text = input('Введите строку: ')
+
+count = 1
+for index in my_text:
+    if index == my_text[1:-1]:
+        count += 1
+        print(my_text[1:-1])
