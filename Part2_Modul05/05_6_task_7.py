@@ -27,8 +27,11 @@
 
 
 def check_ip(ip):
-    for sym in ip.split('.'):
-        if 
+    ip_list = ip.split('.')
+    for sym in ip_list:
+        if not (0 < int(sym) < 255):
+            print(f'{sym} превышает 255.')
+            return False
 
 while True:
     my_ip = input('Введите IP: ')
