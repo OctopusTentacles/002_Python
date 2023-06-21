@@ -28,10 +28,19 @@
 
 def check_ip(ip):
     ip_list = ip.split('.')
+    
+    if len(ip_list) != 4:
+        print('Адрес — это четыре числа, разделённые точками.')
+        return False
+
     for sym in ip_list:
-        if not (0 < int(sym) < 255):
+        if not sym.isdigit():
+            print(f'{sym} — это не целое число.')
+            return False
+        elif int(sym) > 255:
             print(f'{sym} превышает 255.')
             return False
+        
 
 while True:
     my_ip = input('Введите IP: ')
