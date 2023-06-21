@@ -40,9 +40,15 @@ def check_ip(ip):
         elif int(sym) > 255:
             print(f'{sym} превышает 255.')
             return False
-        
+    return True
+
 
 while True:
-    my_ip = input('Введите IP: ')
+    my_ip = input('\nВведите IP: ')
     if check_ip(my_ip):
         print('IP-адрес корректен.')
+        break
+
+# понравилось )))
+# долго думал как посчитать точки, потом стало смешно )))
+# split же по точкам и должно быть 4 числа )))))
