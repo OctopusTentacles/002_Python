@@ -19,12 +19,14 @@
 
 text = input('Введите строку: ')
 
-count = 1
 
-for symbol in text:
-    if text[text.index(symbol) + 1] < 
-    next = text[text.index(symbol) + 1]
-    if symbol == next:
+
+for index in range(len(text)):
+    count = 1
+    if index + 1 <= len(text):
+        next = text[index + 1]
+    if text[index] == next:
         count += 1
     else:
-        print(symbol, count, end='')
+        print(text[index], end='')
+        print(count, end='')
