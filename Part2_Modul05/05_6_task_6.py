@@ -22,7 +22,6 @@ text = input('Введите строку: ')
 count = 1
 
 for index in range(len(text)):
-    a, b = (index + 1, len(text))
             
     if index + 1 < len(text) and text[index] == text[index + 1]:
         count += 1
@@ -30,3 +29,4 @@ for index in range(len(text)):
         print(text[index], end='')
         print(count, end='')
         count = 1
+
