@@ -26,4 +26,11 @@
 # IP-адрес корректен.
 
 
-ip_address = "{0}.{1}.{2}.{3}"
+def check_ip(ip):
+    for sym in ip.split('.'):
+        if 
+
+while True:
+    my_ip = input('Введите IP: ')
+    if check_ip(my_ip):
+        print('IP-адрес корректен.')
