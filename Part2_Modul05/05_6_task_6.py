@@ -17,10 +17,14 @@
 # Закодированная строка: a2A2b2с1a3A1
 
 
-my_text = input('Введите строку: ')
+text = input('Введите строку: ')
 
 count = 1
-for index in my_text:
-    if index == my_text[1:-1]:
+
+for symbol in text:
+    if text[text.index(symbol) + 1] < 
+    next = text[text.index(symbol) + 1]
+    if symbol == next:
         count += 1
-        print(my_text[1:-1])
+    else:
+        print(symbol, count, end='')
