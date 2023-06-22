@@ -21,25 +21,26 @@
 # Первую строку нельзя получить из второй с помощью циклического сдвига.
 
 
-# def find_shift()
 
 text_1 = input('Первая строка: ')
 text_2 = input('Вторая строка: ')
 
 if len(text_1) == len(text_2) and text_1[0] in text_2:
     shift = text_2.index(text_1[0])
-    print('разность', shift)
+    print('сдвиг', shift)
+
+
 
 for symbol in text_2:
     if symbol in text_1:
 
         print('text 2 - ', symbol)
-        print('text 1 - ', text_1[text_2.index(symbol) + shift % len(text_1)])
+        print('text 1 - ', text_1[(text_2.index(symbol) + shift) % len(text_1)])
 
 
-        if text_2.index(symbol) == text_1[text_2.index(symbol) + shift % len(text_1)]:
+        if symbol == text_1[(text_2.index(symbol) + shift) % len(text_1)]:
             continue
         else:
             print('Первую строку нельзя получить из второй с помощью циклического сдвига.')
-            
-    
+            break
+print(f'Первая строка получается из второй со сдвигом {shift}.')
