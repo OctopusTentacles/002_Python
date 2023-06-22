@@ -45,5 +45,11 @@ else:
 
 
 
+text_1 = input('Первая строка: ')
+text_2 = input('Вторая строка: ')
 
+for i_shift in range(len(text_2)):
+    if text_1 == text_2:
+          print()
+    text_1 = text_1[1:] + text_1[0]
             
