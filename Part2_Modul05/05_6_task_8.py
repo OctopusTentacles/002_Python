@@ -21,26 +21,32 @@
 # Первую строку нельзя получить из второй с помощью циклического сдвига.
 
 
+def shifting(text_1, text_2):
+    shift = text_2.index(text_1[0])
+    
+    for symbol in text_2:
+        if symbol in text_1:
+
+            if symbol == text_1[(text_2.index(symbol) + shift) % len(text_1)]:
+                continue
+        else:
+            return print('Первую строку нельзя получить \
+                             из второй с помощью циклического сдвига.')
+            
+    return print(f'Первая строка получается из второй со сдвигом {shift}.')
+
 
 text_1 = input('Первая строка: ')
 text_2 = input('Вторая строка: ')
 
 if len(text_1) == len(text_2) and text_1[0] in text_2:
-    shift = text_2.index(text_1[0])
-    print('сдвиг', shift)
+    shifting(text_1, text_2)
+else:
+    print('Первую строку нельзя получить \
+          из второй с помощью циклического сдвига.')
+   
 
 
 
-for symbol in text_2:
-    if symbol in text_1:
 
-        print('text 2 - ', symbol)
-        print('text 1 - ', text_1[(text_2.index(symbol) + shift) % len(text_1)])
-
-
-        if symbol == text_1[(text_2.index(symbol) + shift) % len(text_1)]:
-            continue
-        else:
-            print('Первую строку нельзя получить из второй с помощью циклического сдвига.')
-            break
-print(f'Первая строка получается из второй со сдвигом {shift}.')
+            
