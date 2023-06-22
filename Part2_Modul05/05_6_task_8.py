@@ -23,3 +23,10 @@
 
 text_1 = input('Первая строка: ')
 text_2 = input('Вторая строка: ')
+
+if len(text_1) == len(text_2):
+    for idx_1 in range(len(text_1)):
+        if text_1[idx_1] in text_2:
+            shift = text_2.index(text_1[idx_1]) - text_1.index(text_1[idx_1])
+            print(text_2.index(text_1[idx_1]))
+            print('разность', shift)
