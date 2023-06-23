@@ -26,10 +26,7 @@ info_dict['Имя'] = info_list[0]
 info_dict['Фамилия'] = info_list[1]
 info_dict['Город'] = info_list[2]
 info_dict['Место учёбы'] = info_list[3]
-info_dict['Оценки'] = []
-
-for idx in info_list[4:]:
-    info_dict['Оценки'].append(int(idx))
+info_dict['Оценки'] = [int(idx) for idx in info_list[4:]]
 
 for key in info_dict:
     print(key, '-', info_dict[key])
