@@ -8,3 +8,10 @@
 # Результат: {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
 
 num = int(input('Введите целое число: '))
+
+dictonary = dict()
+
+for key in range(1, num + 1):
+    dictonary[key] = (key ** 2)
+
+print(dictonary)
