@@ -38,4 +38,8 @@ while True:
         print('<Пусто>')
 
     name = input('Введите имя: ')
-    phone = int(input('Введите номер телефона: '))
+    if name in phone_book:
+        print('Ошибка: такое имя уже существует.')
+    else:
+        phone = int(input('Введите номер телефона: '))
+        phone_book[name] = phone
