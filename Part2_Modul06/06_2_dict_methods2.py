@@ -27,3 +27,19 @@ incomes = {
     'pear': 1020.00,
     'persimmon': 310.00,
 }
+result_sum = 0
+min_value = None
+min_name = ''
+
+for name, value in incomes.items(): 
+# items() позволяет сразу обратиться и к ключам, и а к значениям словаря
+    result_sum += value
+    if min_value is None or min_value > value:
+        min_value = value
+        min_name = name
+
+incomes.pop(min_name)
+
+print(f"Общий доход за год составил {result_sum} рублей")
+print(f"Самый маленький доход у {min_name}. Он составляет {min_value} рублей")
+print("Итоговый словарь:", incomes)
