@@ -24,8 +24,9 @@ big_storage = {
 }
 
 big_storage.update(small_storage)
-for key in big_storage:
-    print(key, big_storage[key])
 
-name = input('название товара: ')
-print(big_storage.get(name))
+user_item = input("Введите название нужного товара: ")
+if big_storage.get(user_item, None):
+    print(big_storage[user_item])
+else:
+    print("Такого товара нет!")
