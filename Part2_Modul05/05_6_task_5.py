@@ -51,3 +51,25 @@ print('Это надёжный пароль.')
 # ну нагородил )))))
 # не получается у меня Pythonic )))))
 # как научиться?
+
+alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+while True:
+
+    password = input('Придумайте пароль: ')
+    upper_count = 0
+    num_count = 0
+    for i_sym in password:
+
+        if i_sym in alphabet:
+            if i_sym.isupper():
+                upper_count += 1
+
+        elif '0' < i_sym < '9':
+            num_count += 1
+
+    if len(password) < 8 or upper_count < 1 or num_count < 3:
+        print('Пароль ненадёжный. Попробуйте ещё раз.')
+
+    else:
+        print('Это надёжный пароль!')
+        break
