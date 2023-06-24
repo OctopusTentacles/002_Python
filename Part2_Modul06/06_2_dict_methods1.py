@@ -23,3 +23,9 @@ big_storage = {
     'рейки': 600
 }
 
+big_storage.update(small_storage)
+for key in big_storage:
+    print(key, big_storage[key])
+
+name = input('название товара: ')
+print(big_storage.get(name))
