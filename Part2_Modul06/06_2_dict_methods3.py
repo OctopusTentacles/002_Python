@@ -42,3 +42,4 @@ hist = histogram(text)
 
 for i in sorted(hist.keys()):
     print(i, ':', hist[i])
+print('Максимальная частота: ', max(hist.values()))
