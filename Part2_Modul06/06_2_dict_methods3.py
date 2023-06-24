@@ -40,4 +40,5 @@ def histogram(string):
 text = input('Введите текст: ')
 hist = histogram(text)
 
-print(hist)
+for i in sorted(hist.keys()):
+    print(i, ':', hist[i])
