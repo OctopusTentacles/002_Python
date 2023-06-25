@@ -31,11 +31,12 @@ incomes = {
     'persimmon': 310.00,
 }
 
-for i_order in order.keys():
-    if i_order in incomes:
-        print(i_order, ':', incomes[i_order] * order[i_order])
-    else:
-        print(i_order, ':', 0)
+sum_price = 0
+
+for fruit_name in order:
+    price_order = incomes.get(fruit_name, 0) * order[fruit_name]
+    print(price_order)
+    sum_price += price_order
         
-print('summa = ', sum(incomes[i_order] * order[i_order]))
+print('price', sum_price)
 
