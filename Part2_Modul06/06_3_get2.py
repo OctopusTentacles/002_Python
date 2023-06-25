@@ -21,6 +21,13 @@ players_dict = {
 } 
 
 
+a_rest = [player['name'] for player in players_dict.values() 
+          if player['team'] == 'A' and player['status'] == 'Rest']
+        
+b_training = []
 for player in players_dict.values():
-    if player['team'] == 'A' and player['status'] == 'Rest':
+    if player['team'] == 'B' and player['status'] == 'Training':
         print(player['name'])
+
+c_travel = [player['name'] for player in players_dict.values() 
+            if player['team'] == 'C' and player['status'] == 'Travel']
