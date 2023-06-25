@@ -20,3 +20,7 @@ players_dict = {
     8: {'name': 'Masha', 'team': 'C', 'status': 'Travel'}
 } 
 
+
+for player in players_dict.values():
+    if player['team'] == 'A' and player['status'] == 'Rest':
+        print(player['name'])
