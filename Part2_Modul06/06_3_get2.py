@@ -21,7 +21,7 @@ players_dict = {
 } 
 
 
-a_rest = [player['name'] for player in players_dict.values() 
+a_rest = [player.get('name') for player in players_dict.values() 
           if player['team'] == 'A' and player['status'] == 'Rest']
         
 b_training = [player['name'] for player in players_dict.values()     
@@ -34,7 +34,7 @@ print('Все члены команды А, которые отдыхают', a_
 print('Все члены команды B, которые тренируются', b_training)
 print('Все члены команды C, которые путешествуют', c_travel)
 
-# _________________________________________________________________________________________________
+# _________________________________________________________________________________
 # Чтобы не прописывать решение "в лоб", вручную подставляя статус и команду - 
 # попробуем сформировать дополнительные словарь и список,
 # чтобы автоматизировать этот процесс:
@@ -48,7 +48,7 @@ team_order = ["A", "B", "C"]
 # чтобы на каждой итерации выбирать одну из команд:
 index = 0
 for state in help_dict:
-    print(f"Все члены команды из команды {team_order[index]}, которые {help_dict[state]}:")
+    print(f"Все члены команды {team_order[index]}, которые {help_dict[state]}:")
     for _, player in players_dict.items():
         if player["status"] == state and player["team"] == team_order[index]:
             print(player["name"])
