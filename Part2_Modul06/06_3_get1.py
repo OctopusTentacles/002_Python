@@ -31,6 +31,11 @@ incomes = {
     'persimmon': 310.00,
 }
 
-order_price = [incomes.values() for order in order.keys() if order in incomes]
+for i_order in order.keys():
+    if i_order in incomes:
+        print(i_order, ':', incomes[i_order] * order[i_order])
+    else:
+        print(i_order, ':', 0)
+        
+print('summa = ', sum(incomes[i_order] * order[i_order]))
 
-print('цены', order_price)
