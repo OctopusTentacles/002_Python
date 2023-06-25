@@ -24,10 +24,12 @@ players_dict = {
 a_rest = [player['name'] for player in players_dict.values() 
           if player['team'] == 'A' and player['status'] == 'Rest']
         
-b_training = []
-for player in players_dict.values():
-    if player['team'] == 'B' and player['status'] == 'Training':
-        print(player['name'])
+b_training = [player['name'] for player in players_dict.values()     
+              if player['team'] == 'B' and player['status'] == 'Training']
 
 c_travel = [player['name'] for player in players_dict.values() 
             if player['team'] == 'C' and player['status'] == 'Travel']
+
+print('Все члены команды А, которые отдыхают', a_rest)
+print('Все члены команды B, которые тренируются', b_training)
+print('Все члены команды C, которые путешествуют', c_travel)
