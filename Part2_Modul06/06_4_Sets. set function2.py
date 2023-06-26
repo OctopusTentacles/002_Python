@@ -53,6 +53,5 @@ nums_set2.add(ran_num2)
 print('\nСлучайное число для 1-го множества:', ran_num1)
 print('Случайное число для 2-го множества:', ran_num2)
 
+print('Объединение множеств:', nums_set1.union(nums_set2))
 
-print(nums_set1)
-print(nums_set2)
