@@ -38,12 +38,21 @@ nums_2 = [16, 21, 30, 24, 5, 7, 23, 13, 11, 5, 21, 5, 19,
 
 nums_set1 = set(nums_1)
 nums_set2 = set(nums_2)
-print('1-е множество:', nums_set1)
+print('\n1-е множество:', nums_set1)
 print('2-е множество:', nums_set2)
 
 nums_set1.discard(min(nums_set1))
 nums_set2.discard(min(nums_set2))
-
-print('Минимальный элемент 1-го множества:', set(nums_1) - nums_set1)
+print('\nМинимальный элемент 1-го множества:', set(nums_1) - nums_set1)
 print('Минимальный элемент 2-го множества:', set(nums_2) - nums_set2)
 
+ran_num1 = random.randint(100, 200)
+nums_set1.add(ran_num1)
+ran_num2 = random.randint(100, 200)
+nums_set2.add(ran_num2)
+print('\nСлучайное число для 1-го множества:', ran_num1)
+print('Случайное число для 2-го множества:', ran_num2)
+
+
+print(nums_set1)
+print(nums_set2)
