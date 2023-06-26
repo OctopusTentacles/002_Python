@@ -41,6 +41,9 @@ nums_set2 = set(nums_2)
 print('1-е множество:', nums_set1)
 print('2-е множество:', nums_set2)
 
-min_set1 = nums_set1.(min(nums_1))
+nums_set1.discard(min(nums_set1))
+nums_set2.discard(min(nums_set2))
 
-print('Минимальный элемент 1-го множества:', min_set1)
+
+print('Минимальный элемент 1-го множества:', nums_set1)
+print('Минимальный элемент 2-го множества:', nums_set2)
