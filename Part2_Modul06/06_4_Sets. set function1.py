@@ -8,7 +8,5 @@
 # Количество знаков пунктуации: 4
 
 symbols = set(".,;:!?")
-text = input('Введите строку: ')
-for i in text:
-    if i in symbols:
-        print(i)
+text = set(input('Введите строку: '))
+print('Количество знаков пунктуации:', len(text.intersection(symbols)))
