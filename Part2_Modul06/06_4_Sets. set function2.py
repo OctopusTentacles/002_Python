@@ -56,3 +56,5 @@ print('Случайное число для 2-го множества:', ran_num
 print('\nОбъединение множеств:', nums_set1.union(nums_set2))
 
 print('\nПересечение множеств:', nums_set1.intersection(nums_set2))
+
+print('\nЭлементы, входящие в nums_2, но не входящие в nums_1:', nums_set2.difference(nums_set1))
