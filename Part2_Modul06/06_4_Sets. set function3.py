@@ -9,3 +9,9 @@
 # Введите строку: ab1n32kz2
 # Различные цифры строки: 123
 
+stroka = set(input('Введите строку: '))
+
+for symbol in stroka:
+    if '0'<= symbol <= '9':
+        
+        print(symbol)
