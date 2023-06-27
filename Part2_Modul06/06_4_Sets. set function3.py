@@ -9,12 +9,20 @@
 # Введите строку: ab1n32kz2
 # Различные цифры строки: 123
 
-# stroka = set(input('Введите строку: '))
-# for symbol in stroka:
-#     if '0'<= symbol <= '9':
-#         print(symbol)
+stroka = set(input('Введите строку: '))
+for symbol in stroka:
+    if '0'<= symbol <= '9':
+        print(symbol, end='')
+print()
 # _________________________________________________________________
 stroka = input('Введите строку: ')
 num = set(stroka)
 final_num = num.intersection(set('0123456789'))
 print(''.join(final_num))
+# _________________________________________________________________
+stroka = input('Введите строку: ')
+str_set = set()
+for symbol in stroka:
+    if '0'<= symbol <= '9':
+        str_set.add(symbol)
+print(''.join(str_set))
