@@ -50,5 +50,4 @@ for i_amt in range(1, amt + 1):
     if song in violator_songs:
         my_playlist[song] = violator_songs[song]
 
-print(my_playlist)
-print('Общее время звучания песен:', round(sum(my_playlist.values()), 2))
+print(f'Общее время звучания песен: {round(sum(my_playlist.values()), 2)} минуты.')
