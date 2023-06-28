@@ -48,6 +48,7 @@ for i_amt in range(1, amt + 1):
     print(f'Название {num_dict[i_amt]} песни: ', end=' ')
     song = input('')
     if song in violator_songs:
-        my_playlist.add(violator_songs[song])
+        my_playlist[song] = violator_songs[song]
 
 print(my_playlist)
+print('Общее время звучания песен:', round(sum(my_playlist.values()), 2))
