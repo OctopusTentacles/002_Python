@@ -55,7 +55,12 @@ data = {
             ]
 }
 # Вывести списки ключей и значений словаря.
-print('Списки ключей и значений словаря', data.items())
+print('Списки ключей и значений словаря', data.keys())
 
 # В ETH добавить ключ total_diff со значением 100.
-data["ETH"] = "ETH"[total_diff][100]
+# data["ETH"] = "ETH"[total_diff][100]
+
+# Внутри fst_token_info значение ключа name поменять с fdf на doge.
+data['tokens'][0]['fst_token_info']['name'] = 'doge'
+print(data['tokens'][0]['fst_token_info']['name'], 
+      type(data['tokens'][0]['fst_token_info']['name']))
