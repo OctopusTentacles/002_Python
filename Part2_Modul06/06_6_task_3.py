@@ -33,8 +33,15 @@ store = {'12345': [{'quantity': 27, 'price': 42},],
                    {'quantity': 43, 'price': 97},],
 }
 
-print(store.keys())
 
-for i_goods in goods:
-    for i_store in store.keys(goods[i_goods]):
-        print(i_goods, i_store)
+for item in goods:
+    for index in store[goods[item]]:
+            print(index.get('quantity'), index.get('price'))
+
+
+    print(f'{item} -  {store[goods[item]]}')
+
+
+
+print()
+print(type(store['12345'][0]))
