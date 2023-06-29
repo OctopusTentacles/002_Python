@@ -67,17 +67,19 @@ data["ETH"]['total_diff'] = 100
 data['tokens'][0]['fst_token_info']['name'] = 'doge'
 
 
-
-
 # Удалить total_out из tokens и присвоить его значение в total_out внутри ETH.
-print('\ndata[ETH] =', data['ETH'])
-
 data['ETH']['total_out'] = data["tokens"][0].pop('total_out')
 del data["tokens"][1]['total_out']
+
+
+# Внутри sec_token_info изменить название ключа price на total_price.
+data["tokens"][1]['sec_token_info']['total_price'] = data[
+    "tokens"][1]['sec_token_info'].pop('price')
+
 
 print('\nadd total_out', data['ETH'])
 print('\ndel total_out', data["tokens"])
 
 
-
-
+# Удалить total_out из tokens и присвоить его значение в total_out внутри ETH.
+# можно сразу с двух словарей удалить одновременно, одним действием?
