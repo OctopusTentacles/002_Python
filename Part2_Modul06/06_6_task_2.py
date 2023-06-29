@@ -70,13 +70,14 @@ data['tokens'][0]['fst_token_info']['name'] = 'doge'
 
 
 # Удалить total_out из tokens и присвоить его значение в total_out внутри ETH.
-print('\nУдалить и присвоить')
-print(data['ETH'], type(data['ETH']))
-print(data["tokens"][0], type(data["tokens"][0]))
+print('\ndata[ETH] =', data['ETH'])
 
-data['ETH']['totalOut'] = data["tokens"][0]['total_out']
-del data["tokens"][0]['total_out']
-print(data['ETH']['totalOut'], type(data['ETH']))
-print(data["tokens"], type(data["tokens"]))
+data['ETH']['total_out'] = data["tokens"][0].pop('total_out')
+del data["tokens"][1]['total_out']
+
+print('\nadd total_out', data['ETH'])
+print('\ndel total_out', data["tokens"])
+
+
 
 
