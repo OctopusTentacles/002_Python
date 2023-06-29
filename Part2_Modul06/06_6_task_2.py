@@ -77,9 +77,9 @@ data["tokens"][1]['sec_token_info']['total_price'] = data[
     "tokens"][1]['sec_token_info'].pop('price')
 
 
-print('\nadd total_out', data['ETH'])
-print('\ndel total_out', data["tokens"])
 
-
-# Удалить total_out из tokens и присвоить его значение в total_out внутри ETH.
-# можно сразу с двух словарей удалить одновременно, одним действием?
+# 4 пункт - Удалить total_out из tokens и присвоить его значение 
+# в total_out внутри ETH. Я же правильно понимаю что total_out у нас 2:
+# один в ["tokens"][0], второй в ["tokens"][1]?
+# Так вот, я удалил их за два действия.
+# А можно сразу с двух словарей удалить одновременно, одним действием?
