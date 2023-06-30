@@ -70,4 +70,4 @@ for item in goods:
                    for index in store[goods[item]]]
     
     print(f'{item} - {sum(total_qnty)} {word_quantity(sum(total_qnty))}, '
-          f'стоимость {sum(total_price)} {word_money(sum(total_price))}.')
+          f'стоимость {sum(total_price):,} {word_money(sum(total_price))}.'.replace(',', ' '))
