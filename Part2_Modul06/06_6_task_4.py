@@ -35,5 +35,24 @@
 # 2 : ['с', ' ', 'т', 'н', 'а']
 # 3 : ['о']
 
-text = input('Введите текст: ')
-print('Оригинальный словарь частот:')
+def histogram(text):
+    symbol_dict = dict()
+    for sym in text:
+        if sym in symbol_dict:
+            symbol_dict[sym] += 1
+        else:
+            symbol_dict[sym] = 1
+    return symbol_dict
+
+def original(hist_dict):
+    print('Оригинальный словарь частот:')
+    for key in sorted(hist_dict):
+        print(f'{key} : {hist_dict[key]}')
+
+
+
+my_text = input('Введите текст: ')
+my_hist = histogram(my_text)
+
+original(my_hist)
+
