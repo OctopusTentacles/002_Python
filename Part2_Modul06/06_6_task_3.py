@@ -35,13 +35,12 @@ store = {'12345': [{'quantity': 27, 'price': 42},],
 
 
 for item in goods:
+    total_qnty = 0
+    total_price = 0
     for index in store[goods[item]]:
-            print(index.get('quantity'), index.get('price'))
+        total_qnty += index.get('quantity')
+        total_price += index.get('price') * index.get('quantity')
+    print(f'{item} - {total_qnty} стоимость {total_price}')
 
 
-    print(f'{item} -  {store[goods[item]]}')
-
-
-
-print()
-print(type(store['12345'][0]))
+# print(f'{item} -  {store[goods[item]]}')
