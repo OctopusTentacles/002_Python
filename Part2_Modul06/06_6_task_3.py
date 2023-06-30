@@ -26,6 +26,17 @@ def word_money(price):
         return 'рубля'
     else:
         return 'рублей'
+    
+def word_quantity(quantity):
+    if 5 <= quantity <= 20 or 5 <= quantity % 100 <= 20:
+        return 'штук'
+    elif quantity % 10 == 1:
+        return 'штука'
+    elif quantity % 10 in (2, 3, 4):
+        return 'штуки'
+    else:
+        return 'штук'
+
 
 
 goods = {'Лампа': '12345', 
@@ -58,5 +69,5 @@ for item in goods:
     total_price = [index.get('price') * index.get('quantity') 
                    for index in store[goods[item]]]
     
-
-    print(f'{item} - {sum(total_qnty)} стоимость {sum(total_price)} {word_money(sum(total_price))}.')
+    print(f'{item} - {sum(total_qnty)} {word_quantity(sum(total_qnty))}, '
+          f'стоимость {sum(total_price)} {word_money(sum(total_price))}.')
