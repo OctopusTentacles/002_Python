@@ -17,6 +17,17 @@
 # Стул — 105 штук, стоимость 10 311 рублей.
 
 
+def word_money(price):
+    if 5 <= price <= 20 or 5 <= price % 100 <= 20:
+        return 'рублей'
+    elif price % 10 == 1:
+        return 'рубль'
+    elif price % 10 in (2, 3, 4):
+        return 'рубля'
+    else:
+        return 'рублей'
+
+
 goods = {'Лампа': '12345', 
          'Стол': '23456', 
          'Диван': '34567', 
@@ -32,15 +43,20 @@ store = {'12345': [{'quantity': 27, 'price': 42},],
                    {'quantity': 12, 'price': 95},
                    {'quantity': 43, 'price': 97},],
 }
-
+# ___________________________________________________________________________
+# for item in goods:
+#     total_qnty = 0
+#     total_price = 0
+#     for index in store[goods[item]]:
+#         total_qnty += index.get('quantity')
+#         total_price += index.get('price') * index.get('quantity')
+#     print(f'{item} - {total_qnty} стоимость {total_price}')
+# ____________________________________________________________________________
 
 for item in goods:
-    total_qnty = 0
-    total_price = 0
-    for index in store[goods[item]]:
-        total_qnty += index.get('quantity')
-        total_price += index.get('price') * index.get('quantity')
-    print(f'{item} - {total_qnty} стоимость {total_price}')
+    total_qnty = [index.get('quantity') for index in store[goods[item]]]
+    total_price = [index.get('price') * index.get('quantity') 
+                   for index in store[goods[item]]]
+    
 
-
-# print(f'{item} -  {store[goods[item]]}')
+    print(f'{item} - {sum(total_qnty)} стоимость {sum(total_price)} {word_money(sum(total_price))}.')
