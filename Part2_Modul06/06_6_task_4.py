@@ -36,12 +36,7 @@
 # 3 : ['о']
 
 def histogram(text):
-    symbol_dict = dict()
-    for sym in text:
-        if sym in symbol_dict:
-            symbol_dict[sym] += 1
-        else:
-            symbol_dict[sym] = 1
+    symbol_dict = {sym: text.count(sym) for sym in text}
     return symbol_dict
 
 def original(hist_dict):
@@ -51,8 +46,8 @@ def original(hist_dict):
 
 def invert(dictonary):
     print('Инвертированный словарь частот:')
-    for key in dictonary:
-        print(f'{key} : {dictonary[key]}')
+    for key, value in dictonary:
+        print(f'{value} : {value}')
 
 
 
@@ -62,3 +57,4 @@ my_hist = histogram(my_text)
 original(my_hist)
 invert(my_hist)
 
+# здесь что-то написано
