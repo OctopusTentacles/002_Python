@@ -51,7 +51,8 @@ def original(hist_dict):
 
 def invert(dictonary):
     print('Инвертированный словарь частот:')
-    invert_dict = {for key in dictonary}
+    for key in dictonary:
+        print(f'{key} : {dictonary[key]}')
 
 
 
