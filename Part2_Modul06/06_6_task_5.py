@@ -20,10 +20,13 @@
 # Синоним: Привет
 
 
-amount = int(input('Введите количество пар слов: '))
-for i in range(1, amount + 1):
-    print('{i}-я пара: {1} - {2}'.format(i, word1 = input(''), word2 = input('')))
-    
-    
-    # pair_dict = 2
-    
+synonyms = dict()
+
+for i in range(int(input('Введите количество пар слов: '))):
+    words = input().split()
+    synonyms[words[0]] = words[1]
+    print(synonyms)
+
+word = input('Введите слово: ')
+if word in synonyms.keys():
+    print('Синоним', synonyms[word])
