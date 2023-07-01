@@ -25,8 +25,15 @@ synonyms = dict()
 for i in range(int(input('Введите количество пар слов: '))):
     words = input().split()
     synonyms[words[0]] = words[1]
-    print(synonyms)
+print(synonyms)
 
-word = input('Введите слово: ')
-if word in synonyms.keys():
-    print('Синоним', synonyms[word])
+while True:
+    word = input('Введите слово: ')
+    if word in synonyms.keys():
+        print('Синоним', synonyms[word])
+        break
+    elif word in synonyms.values():
+        print('Синоним', synonyms.keys())
+        break
+    else:
+        print('Такого слова в словаре нет.')
