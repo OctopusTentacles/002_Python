@@ -21,4 +21,8 @@
 
 
 amount = int(input('Введите количество пар слов: '))
-for 
+for i in range(1, amount + 1):
+    print('{0}-я пара: {1} - {2}'.format(i, word1 = input(''), word2 = input('')))
+    
+    
+    # pair_dict = 
