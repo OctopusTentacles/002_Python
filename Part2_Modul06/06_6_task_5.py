@@ -22,18 +22,19 @@
 
 synonyms = dict()
 
-for i in range(int(input('Введите количество пар слов: '))):
-    words = input().split()
+for i in range(1, int(input('Введите количество пар слов: ')) + 1):
+    words = input(f'{i} пара: ').split(' - ')
     synonyms[words[0]] = words[1]
+    synonyms[words[1]] = words[0]
 print(synonyms)
 
 while True:
     word = input('Введите слово: ')
-    if word in synonyms.keys():
-        print('Синоним', synonyms[word])
-        break
-    elif word in synonyms.values():
-        print('Синоним', synonyms.keys())
-        break
+    if word == key:
+         print('Синоним:', value)
+            
+    elif word == value:
+        print('Синоним:', key)
+            
     else:
-        print('Такого слова в словаре нет.')
+         print('Такого слова в словаре нет.')
