@@ -46,15 +46,21 @@ def original(hist_dict):
 
 def invert(dictonary):
     print('Инвертированный словарь частот:')
-    for key, value in dictonary:
-        print(f'{value} : {value}')
-
+    for key in dictonary:
+        invert_dict = {dictonary[key]: []}
+        
+        if dictonary[key]:
+            invert_dict[dictonary[key]].append(key)
+    
+     
+    print(invert_dict)
 
 
 my_text = input('Введите текст: ')
 my_hist = histogram(my_text)
 
 original(my_hist)
+
 invert(my_hist)
 
 # здесь что-то написано
