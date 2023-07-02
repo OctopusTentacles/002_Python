@@ -28,5 +28,10 @@
 # 	   Де-Люкс: 2
 # 	   Интересная: 5
 
+client_data = dict()
 
-amount = int(input('Введите количество заказов: '))
+for order in range(1, int(input('Введите количество заказов: ')) + 1):
+    client_list = input(f'{order} заказ: ').title().split(' ')
+    print(client_list)
+    client_data[client_list[0]] = client_list[1][2]
+    print(client_data)
