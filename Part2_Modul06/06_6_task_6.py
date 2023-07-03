@@ -32,8 +32,10 @@ client_data = dict()
 
 for order in range(1, int(input('Введите количество заказов: ')) + 1):
     client_list = input(f'{order} заказ: ').title().split(' ')
-    print(client_list)
-    
-    client_data.setdefault(client_list[0], {client_list[1], []})
+    # print(client_list)
+
+    client_data.setdefault(client_list[0], {})
+    client_data[client_list[0]].setdefault(client_list[1], [])
     client_data[client_list[0]][client_list[1]].append(client_list[2])
+
     print(client_data)
