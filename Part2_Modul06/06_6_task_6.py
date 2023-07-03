@@ -37,10 +37,12 @@ for order in range(1, int(input('Введите количество заказ�
     client_data[client_list[0]].setdefault(client_list[1], [])
     client_data[client_list[0]][client_list[1]].append(client_list[2])
 
+print(client_data)
 
 for client in sorted(client_data):
-    print(client_data)
     print(f'{client}:')
 
-    for pizza in client_data[client]:
-        print(f'     {pizza}:')
+    for pizza in sorted(client_data[client]):
+        print(f'     {pizza}: {sum(map(int, client_data[client][pizza]))}')
+
+# Тут функция map применяет функцию int к каждому элементу объекта
