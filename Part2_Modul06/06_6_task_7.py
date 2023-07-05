@@ -22,17 +22,21 @@
 # Решение без множеств: 1
 # Решение с множествами: 1
 
+
 array_1 = [1, 5, 10, 20, 40, 80, 100] 
 array_2 = [6, 7, 20, 80, 100] 
 array_3 = [3, 4, 15, 20, 30, 70, 80, 120]
 
 print('Задача 1:')
-print('Решение без множеств:', [sym for sym in array_1 
+print('Решение без множеств:', *[sym for sym in array_1 
                                 if sym in array_2 and sym in array_3])
 print('Решение с множествами:', *set(array_1).intersection(array_2, array_3))
 
 
-
 print('\nЗадача 2:')
-print('Решение без множеств:', )
+print('Решение без множеств:', *[sym for sym in array_1 
+                                if sym not in array_2 and sym not in array_3])
 print('Решение с множествами:', *set(array_1).difference(array_2, array_3))
+
+
+# не могу отсортировать вывод множества
