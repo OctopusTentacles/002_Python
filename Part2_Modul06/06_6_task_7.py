@@ -26,3 +26,10 @@
 array_1 = [1, 5, 10, 20, 40, 80, 100] 
 array_2 = [6, 7, 20, 80, 100] 
 array_3 = [3, 4, 15, 20, 30, 70, 80, 120]
+
+print('Задача 1:')
+
+print(set.difference(array_1, array_2, array_3))
+
+
+print('Задача 2:')
