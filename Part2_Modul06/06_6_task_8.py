@@ -18,11 +18,11 @@
 def palindron(text_1):
     for index in range(len(text_1)//2):
         if text_1[index] != text_1[-1 - index]:
-            print('Слово не является палиндромом')
+            print(text_1[index], text_1[-1 - index])
             shifting(text_1)
         else:
-            print('Слово является палиндромом')
-
+            print('Можно сделать палиндромом')
+            return
 
 def shifting(shift_text):
     shift_text = shift_text[1:] + shift_text[0]
@@ -30,7 +30,7 @@ def shifting(shift_text):
 
 
 
-word = list(input('Введите слово: '))
+word = (input('Введите слово: '))
 palindron(word)
 
 
