@@ -23,10 +23,15 @@ def shifting(shift_text):
 def palindron(text):
     for index in range(len(text)//2):
         if text[index] != text[-1 - index]:
-            print(text[index], text[-1 - index])
             shifting(text)
-    else:
-        return True
+            break
+        elif text[index] == len(text)//2:
+            return True
+        elif text[index] == text[-1 - index]:
+            continue
+        
+        else: 
+            return False
         
 
 word = (input('Введите слово: '))
