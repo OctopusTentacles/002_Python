@@ -44,16 +44,24 @@
 
 # план Б__________________________________________________________
 
-word = (input('Введите слово: '))
-count = 0
 
-while True:
-    if word == word[::-1]:
-        print('Можно сделать палиндромом')
-        break
-    elif count != len(word):
-        word = word[1:] + word[0]
-        count += 1
-    else:
-        print('Нельзя сделать палиндромом')
-        break
+def palindron(text):
+    count = 0
+    while True:
+        if text == text[::-1]:
+            return True
+        elif count != len(text) - 1:
+            text = text[1:] + text[0]
+            count += 1
+        else:
+            return False
+
+
+word = (input('Введите слово: '))
+
+if palindron(word):     
+    print('Можно сделать палиндромом')
+else:
+    print('Нельзя сделать палиндромом')
+
+
