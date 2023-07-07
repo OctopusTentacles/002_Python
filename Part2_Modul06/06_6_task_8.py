@@ -15,19 +15,19 @@
 # Основной функционал описан в отдельной функции(-ях)
 
 
-def palindron(text_1):
-    for index in range(len(text_1)//2):
-        if text_1[index] != text_1[-1 - index]:
-            print(text_1[index], text_1[-1 - index])
-            shifting(text_1)
-        else:
-            print('Можно сделать палиндромом')
-            return
+def palindron(text):
+    for index in range(len(text)//2):
+        if text[index] != text[-1 - index]:
+            print(text[index], text[-1 - index])
+            shifting(text)
+    else:
+        print('Можно сделать палиндромом')
+        
+
 
 def shifting(shift_text):
     shift_text = shift_text[1:] + shift_text[0]
     palindron(shift_text)
-
 
 
 word = (input('Введите слово: '))
