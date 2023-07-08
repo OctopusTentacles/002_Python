@@ -17,3 +17,4 @@ tuple_3 = tuple_1 + tuple_2
 print(type(tuple_1), tuple_1)
 print(type(tuple_2), tuple_2)
 print(type(tuple_3), tuple_3)
+print('количество нулей', tuple_3.count(0))
