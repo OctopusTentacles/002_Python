@@ -8,7 +8,7 @@
 
 import random
 
-a = [random.randint(0, 5) for _ in range(0, 5)]
+# a = [random.randint(0, 5) for _ in range(0, 5)]
+tuple_1 = tuple(random.randint(0, 5) for _ in range(0, 5))
 
-
-print(type(a), a)
+print(type(tuple_1), tuple_1)
