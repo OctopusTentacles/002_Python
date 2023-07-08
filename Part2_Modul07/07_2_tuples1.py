@@ -9,6 +9,11 @@
 import random
 
 # a = [random.randint(0, 5) for _ in range(0, 5)]
-tuple_1 = tuple(random.randint(0, 5) for _ in range(0, 5))
+tuple_1 = tuple(random.randint(0, 5) for _ in range(5))
+tuple_2 = tuple(random.randint(-5, 0) for _ in range(5))
+tuple_3 = tuple_1 + tuple_2
+
 
 print(type(tuple_1), tuple_1)
+print(type(tuple_2), tuple_2)
+print(type(tuple_3), tuple_3)
