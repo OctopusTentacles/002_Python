@@ -9,10 +9,21 @@
 import random
 
 # a = [random.randint(0, 5) for _ in range(0, 5)]
-tuple_1 = tuple(random.randint(0, 5) for _ in range(5))
-tuple_2 = tuple(random.randint(-5, 0) for _ in range(5))
-tuple_3 = tuple_1 + tuple_2
+# tuple_1 = tuple(random.randint(0, 5) for _ in range(5))
+# tuple_2 = tuple(random.randint(-5, 0) for _ in range(5))
+# tuple_3 = tuple_1 + tuple_2
 
+# print(type(tuple_1), tuple_1)
+# print(type(tuple_2), tuple_2)
+# print(type(tuple_3), tuple_3)
+# print('количество нулей', tuple_3.count(0))
+
+def creat_tuple(a, b, n):
+    return tuple([random.randint(a, b) for _ in range(10)])
+
+tuple_1 = creat_tuple(0, 5, 10)
+tuple_2 = creat_tuple(-5, 0, 10)
+tuple_3 = tuple_1 + tuple_2
 
 print(type(tuple_1), tuple_1)
 print(type(tuple_2), tuple_2)
