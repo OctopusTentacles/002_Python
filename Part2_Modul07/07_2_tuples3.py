@@ -16,11 +16,12 @@ import random
 
 
 def change(nums):
-    index = random.randint(0, 5)
+    index = random.randint(0, 5) % len(nums)
     value = random.randint(100, 1000)
+    nums = list(nums)
     nums[index] = value
 
-    return nums, value
+    return tuple(nums), value
 
  
 
