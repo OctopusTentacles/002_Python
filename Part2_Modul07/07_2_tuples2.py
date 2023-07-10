@@ -13,9 +13,16 @@
 
 import math
 
+def cylinder(r, h):
+    S = math.pi * r ** 2
+    side = 2 * math.pi * r * h
+    full = side + 2 * S
+    return side, full
+
+
 r = int(input('введите радиус: '))
 h = int(input('введите высоту: '))
 
-S = math.pi * r**2
-side = 2 * math.pi * r * h
-full = side + 2 * S
+side, full = cylinder(r, h)
+print('Площадь боковой поверхности', side)
+print('Полная площадь', full)
