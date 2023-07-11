@@ -14,6 +14,6 @@
 
 word = input('Строка: ')
 
-for i_index, i_value in word:
-    if i_value == '~':
-        print('Ответ:', i_index, end=' ')
+i_index = [index for index, i_value in enumerate(word) if i_value == '~']
+
+print('Ответ:', *i_index)
