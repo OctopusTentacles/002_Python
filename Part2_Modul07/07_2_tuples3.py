@@ -20,10 +20,7 @@ def change(nums):
     value = random.randint(100, 1000)
     nums = list(nums)
     nums[index] = value
-
     return tuple(nums), value
-
- 
 
 my_nums = 1, 2, 3, 4, 5
 new_nums, rand_val = change(my_nums)
