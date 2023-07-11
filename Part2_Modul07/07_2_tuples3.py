@@ -26,14 +26,10 @@ def change(nums):
  
 
 my_nums = 1, 2, 3, 4, 5
-
 new_nums, rand_val = change(my_nums)
-
 print(new_nums, rand_val)
 
-new_nums = change(new_nums)
-
-rand_val += change(new_nums)
-
-print(new_nums, rand_val)
+new_nums2, rand_val2 = change(my_nums)
+rand_val += rand_val2
+print(new_nums2, rand_val)
 
