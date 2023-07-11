@@ -12,3 +12,8 @@
 # Строка: so~mec~od~e
 # Ответ: 2 6 9 
 
+word = input('Строка: ')
+
+for i_index, i_value in word:
+    if i_value == '~':
+        print('Ответ:', i_index, end=' ')
