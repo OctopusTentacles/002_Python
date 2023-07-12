@@ -18,5 +18,12 @@ alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
 list_1 = [random.choice(alphabet) for _ in range(10)]
 list_2 = [random.choice(alphabet) for _ in range(10)]
 
-print(list_1)
-print(list_2)
+print('Первый список:', list_1)
+print('Второй список:', list_2)
+
+
+dict_1 = dict(enumerate(list_1))
+dict_2 = dict(enumerate(list_2))
+
+print('Первый словарь:', dict_1)
+print('Второй словарь:', dict_2)
