@@ -41,3 +41,8 @@ list_1 = get_random_letter(10)
 list_1 = get_random_letter(10)
 print('\nПервый список:', list_1)
 print('Второй список:', list_2)
+
+dict_1 = dict(enumerate(list_1))
+dict_2 = dict(enumerate(list_2))
+print('Первый словарь:', dict_1)
+print('Второй словарь:', dict_2)
