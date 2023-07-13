@@ -32,3 +32,12 @@ print('Второй словарь:', dict_2)
 # второй посложнее, реализуем его вместе:
 # посмотрим с какого числа начинаются русские буквы и где заканчиваются 
 print(ord("а"), ord("я"))  
+
+def get_random_letter(n):
+    return random.choices([chr(i) for i in range(ord('а'), ord('я'))], k=n)
+
+
+list_1 = get_random_letter(10)
+list_1 = get_random_letter(10)
+print('\nПервый список:', list_1)
+print('Второй список:', list_2)
