@@ -27,3 +27,7 @@ server_data = {
     }
 }
 
+for i_data in server_data:
+    print(f'{i_data}:')
+    for i_key, i_value in server_data[i_data].items():
+        print(f'\t{i_key}: {i_value}')
