@@ -15,13 +15,15 @@ phone_book = dict()
 while True:
     print('\nТекущие контакты на телефоне:')
     if phone_book:
-        for key in phone_book:
-            print(*key, phone_book[key])
+        for person, phone in phone_book.items():
+            print(*person, '-', phone)
     
     else:
         print('<Пусто>')
 
     name = input('\nВведите имя: ')
+    if name == '':
+        break
     surname = input('Введите фамилию: ')
     person = (name, surname)
     if person in phone_book:
