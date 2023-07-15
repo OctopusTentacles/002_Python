@@ -19,3 +19,7 @@ number = int(input('введите номер паспорта: '))
 
 serial_number = (serial, number)
 
+if serial_number in data:
+    print(data[serial_number])
+else:
+    print("Такого человека нет")
