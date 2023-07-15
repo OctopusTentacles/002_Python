@@ -11,3 +11,21 @@
 # Обеспечьте контроль ввода: если этот человек уже есть в словаре, 
 # то выведите соответствующее сообщение.
 
+phone_book = dict()
+while True:
+    print('\nТекущие контакты на телефоне:')
+    if phone_book:
+        for key in phone_book:
+            print(key, phone_book[key])
+    
+    else:
+        print('<Пусто>')
+
+    name = input('Введите имя: ')
+    surname = input('Введите фамилию: ')
+    person = (name, surname)
+    if person in phone_book:
+        print('Ошибка: такое имя уже существует.')
+    else:
+        phone = int(input('Введите номер телефона: '))
+        phone_book = {person: phone}
