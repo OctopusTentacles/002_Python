@@ -16,16 +16,15 @@ while True:
     print('\nТекущие контакты на телефоне:')
     if phone_book:
         for key in phone_book:
-            print(key, phone_book[key])
+            print(*key, phone_book[key])
     
     else:
         print('<Пусто>')
 
-    name = input('Введите имя: ')
+    name = input('\nВведите имя: ')
     surname = input('Введите фамилию: ')
     person = (name, surname)
     if person in phone_book:
         print('Ошибка: такое имя уже существует.')
     else:
-        phone = int(input('Введите номер телефона: '))
-        phone_book = {person: phone}
+        phone_book[person] = int(input('Введите номер телефона: '))
