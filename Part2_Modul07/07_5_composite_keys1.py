@@ -14,3 +14,8 @@ data = {
     (9000, 444444): ('Георгиева', 'Мария')
 }
 
+serial = int(input('введите сирию паспорта: '))
+number = int(input('введите номер паспорта: '))
+
+serial_number = (serial, number)
+
