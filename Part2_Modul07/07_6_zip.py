@@ -5,4 +5,5 @@ people = zip(names, ages)
 for i_person in people:
     print(i_person)             # кортежи 
 
-print(list(zip(names, ages)))   # список кортежей
+print('\n', list(zip(names, ages)))   # список кортежей
+print(dict(zip(names, ages)))   # словарь из 2х списков
