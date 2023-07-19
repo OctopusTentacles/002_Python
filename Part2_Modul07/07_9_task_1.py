@@ -46,22 +46,19 @@ students = {
 }
 
 
-def f(dict):
-    lst = []
-    string = ''
-    for i in dict:
-        lst += (dict[i]['interests'])
-        string += dict[i]['surname']
-    cnt = 0
-    for s in string:
-        cnt += 1
-    return lst, cnt
+def collect_from_dict(data, serch):
+    collection = set()
+    for key in data.values():
+        if key == serch:
+            collection.add(key.values())
+    return collection
+
+
 
 
 ID_ages = [(key, value['age']) for key, value in students.items()]
-        
+print(ID_ages)
 
+interests = collect_from_dict(students, 'interests')
+print((interests))
 
-my_lst = f(students)[0]
-l = f(students)[1]
-print(my_lst, l)
