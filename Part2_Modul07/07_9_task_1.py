@@ -46,11 +46,10 @@ students = {
 }
 
 
-def collect_from_dict(data, serch):
+def collect_from_dict(data, search):
     collection = set()
-    for key in data.values():
-        if key == serch:
-            collection.add(key.values())
+    for value in data.values():
+            collection.add(value)
     return collection
 
 
