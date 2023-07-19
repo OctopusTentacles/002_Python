@@ -58,9 +58,7 @@ def f(dict):
     return lst, cnt
 
 
-ID_ages = [(i_id, value) 
-           for i_id in students
-            for key, value in i_id if key == 'age']
+ID_ages = [(key, value['age']) for key, value in students.items()]
         
 
 
