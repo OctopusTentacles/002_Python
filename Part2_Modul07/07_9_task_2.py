@@ -20,12 +20,23 @@
 # Ответ в консоли: ['Д', 'и', 'н', 'й', 'в', 'й', 'р']
 
 
-def crypto(text):
+def crypto(data):
+    answer = []
+    if isinstance(data, dict):
+        data = data.values()
+    for index, value in enumerate(data):
+        if is_prime(index):
+            answer.append(value)
+    return answer
 
 
 
-def is_prime():
 
+def is_prime(number):
+    for i_num in range(2, int(number ** 0.5) + 1):
+        if number % i_num == 0:
+            return False
+        return True
 
 
 print(crypto([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
