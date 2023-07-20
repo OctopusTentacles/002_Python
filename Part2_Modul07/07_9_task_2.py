@@ -25,18 +25,18 @@ def crypto(data):
     if isinstance(data, dict):
         data = data.values()
     for index, value in enumerate(data):
-        if is_prime(index):
+        if index > 1 and is_prime(index):
             answer.append(value)
     return answer
 
 
-
-
 def is_prime(number):
-    for i_num in range(2, int(number ** 0.5) + 1):
+    for i_num in range(2, number//2 + 1):
         if number % i_num == 0:
             return False
-        return True
+    return True
 
 
 print(crypto([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
+print(crypto('О Дивный Новый мир!'))
+print(crypto({0:'a', 1:'b', 2:'c', 3:'d', 4:'e', 5:'f'}))
