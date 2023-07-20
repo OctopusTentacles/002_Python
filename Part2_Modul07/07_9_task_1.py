@@ -46,7 +46,7 @@ students = {
 }
 
 
-def collect_from_dict(search):
+def collect_from_dict_1(search):
     collection = []
     for key in students.values():
         for value in key[search]:
@@ -55,10 +55,29 @@ def collect_from_dict(search):
 
 
 ID_ages = [(key, value['age']) for key, value in students.items()]
-print(ID_ages)
+print('Список пар "ID студента — возраст":', ID_ages)
 
-interests = collect_from_dict('interests')
-print(interests)
+interests = collect_from_dict_1('interests')
+print('Полный список интересов всех студентов:', interests)
 
-length_surnames = collect_from_dict('surname')
-print(len(length_surnames))
+length_surnames = collect_from_dict_1('surname')
+print('Общая длина всех фамилий студентов:', len(length_surnames))
+
+# ___________________________________________________________________________
+
+print('вариант - 2')
+
+def collect_from_dict_2(data):
+    if not data:
+        return []
+    collection = []
+    for key in students.values():
+        for value in key[search]:
+            collection.append(value)
+    return collection
+
+
+ID_ages = [(key, value['age']) for key, value in students.items()]
+print('\nСписок пар "ID студента — возраст":', ID_ages)
+
+interests, length_surnames = collect_from_dict2(students)
