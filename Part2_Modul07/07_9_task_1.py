@@ -65,15 +65,15 @@ print('Общая длина всех фамилий студентов:', len(l
 
 # ___________________________________________________________________________
 
-print('вариант - 2')
+print('\nвариант - 2')
 
 def collect_from_dict_2(data):
     if not data:
         return print('словарь пуст')
-    collection_interest = set()
+    collection_interest = []
     collection_surname = 0
     for value in data.values():
-        collection_interest.add(value['interests'])
+        collection_interest.append(value['interests'])
         collection_surname += len(value['surname'])
     return collection_interest, collection_surname
 
@@ -81,5 +81,6 @@ ID_ages = [(key, value['age']) for key, value in students.items()]
 print('\nСписок пар "ID студента — возраст":', ID_ages)
 
 interests, length_surnames = collect_from_dict_2(students)
+
 print('Полный список интересов всех студентов:', interests)
-print('Общая длина всех фамилий студентов:', len(length_surnames))
+print('Общая длина всех фамилий студентов:', length_surnames)
