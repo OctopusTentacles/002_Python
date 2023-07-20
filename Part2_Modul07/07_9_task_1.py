@@ -70,12 +70,15 @@ print('\nвариант - 2')
 def collect_from_dict_2(data):
     if not data:
         return print('словарь пуст')
-    collection_interest = []
+    collection_interest = set()
     collection_surname = 0
+
     for value in data.values():
-        collection_interest.append(value['interests'])
         collection_surname += len(value['surname'])
+        for interest in value['interests']:
+            collection_interest.add(interest)
     return collection_interest, collection_surname
+
 
 ID_ages = [(key, value['age']) for key, value in students.items()]
 print('\nСписок пар "ID студента — возраст":', ID_ages)
@@ -84,3 +87,5 @@ interests, length_surnames = collect_from_dict_2(students)
 
 print('Полный список интересов всех студентов:', interests)
 print('Общая длина всех фамилий студентов:', length_surnames)
+
+# МНЕ ПЕРВЫЙ ВАРИАНТ БОЛЬШЕ НРАВИТСЯ________________________________________
