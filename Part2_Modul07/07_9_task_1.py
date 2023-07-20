@@ -48,11 +48,10 @@ students = {
 
 def collect_from_dict(data, search):
     collection = set()
-    for value in data.values():
-            collection.add(value)
+    for key in students.values():
+        for interest in key[search]:
+            collection.add(interest)
     return collection
-
-
 
 
 ID_ages = [(key, value['age']) for key, value in students.items()]
