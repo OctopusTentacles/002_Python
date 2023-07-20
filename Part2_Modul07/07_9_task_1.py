@@ -69,15 +69,17 @@ print('вариант - 2')
 
 def collect_from_dict_2(data):
     if not data:
-        return []
-    collection = []
-    for key in students.values():
-        for value in key[search]:
-            collection.append(value)
-    return collection
-
+        return print('словарь пуст')
+    collection_interest = set()
+    collection_surname = 0
+    for value in data.values():
+        collection_interest.add(value['interests'])
+        collection_surname += len(value['surname'])
+    return collection_interest, collection_surname
 
 ID_ages = [(key, value['age']) for key, value in students.items()]
 print('\nСписок пар "ID студента — возраст":', ID_ages)
 
-interests, length_surnames = collect_from_dict2(students)
+interests, length_surnames = collect_from_dict_2(students)
+print('Полный список интересов всех студентов:', interests)
+print('Общая длина всех фамилий студентов:', len(length_surnames))
