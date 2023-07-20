@@ -46,17 +46,19 @@ students = {
 }
 
 
-def collect_from_dict(data, search):
-    collection = set()
+def collect_from_dict(search):
+    collection = []
     for key in students.values():
-        for interest in key[search]:
-            collection.add(interest)
+        for value in key[search]:
+            collection.append(value)
     return collection
 
 
 ID_ages = [(key, value['age']) for key, value in students.items()]
 print(ID_ages)
 
-interests = collect_from_dict(students, 'interests')
-print((interests))
+interests = collect_from_dict('interests')
+print(interests)
 
+length_surnames = collect_from_dict('surname')
+print(len(length_surnames))
