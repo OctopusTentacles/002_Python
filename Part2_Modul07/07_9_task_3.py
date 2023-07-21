@@ -16,5 +16,7 @@ players = {
     ("Rob", "Bobbin"): (12, 8, 2)
 }
 
-new_list = [(key + value) for key, value in players.items()]
-print(new_list)
+# new_list = [(key + value) for key, value in players.items()]
+# print(new_list)
+
+print([(key + value) for key, value in players.items()])
