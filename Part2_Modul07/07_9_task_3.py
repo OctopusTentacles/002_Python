@@ -16,6 +16,5 @@ players = {
     ("Rob", "Bobbin"): (12, 8, 2)
 }
 
-for key, value in players.items():
-    чен = zip(key, value)
-    print(чен)
+new_list = [(key + value) for key, value in players.items()]
+print(new_list)
