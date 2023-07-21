@@ -21,13 +21,13 @@
 
 
 def crypto(data):
-    answer = []
-    if isinstance(data, dict):
-        data = data.values()
-    for index, value in enumerate(data):
-        if index > 1 and is_prime(index):
-            answer.append(value)
-    return answer
+    # answer = []
+    # if isinstance(data, dict):
+    #     data = data.values()
+    # for index, value in enumerate(data):
+    #     if index > 1 and is_prime(index):
+    #         answer.append(value)
+    return [value for index, value in enumerate(data) if index > 1 and is_prime(index)]
 
 
 def is_prime(number):
