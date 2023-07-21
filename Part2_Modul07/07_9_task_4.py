@@ -22,5 +22,9 @@ print('Новый список:', new_list)
 random_list = [random.randint(0, 9) for _ in range(10)]
 print('\nОригинальный список:', random_list)
 
-new_list = [random_list[::2], random_list[1::2]]
+new_list = list(zip(random_list[::2], random_list[1::2]))
 print('Новый список:', new_list)
+
+# по сути задача не сложная и если знать все функции и уметь применять их - 
+# то можно решить за пару минут
+# я решил за час (((
