@@ -13,4 +13,8 @@ import random
 
 random_list = [random.randint(0, 9) for _ in range(10)]
 
+new_list = [(value, ) for index, value in enumerate(random_list) if index % 2 == 0]
+
 print(random_list)
+
+print(new_list)
