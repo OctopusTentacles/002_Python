@@ -12,9 +12,15 @@
 import random
 
 random_list = [random.randint(0, 9) for _ in range(10)]
+print('\nОригинальный список:', random_list)
 
-new_list = [(value, ) for index, value in enumerate(random_list) if index % 2 == 0]
+new_list = [(value, random_list[index + 1]) 
+            for index, value in enumerate(random_list) if index % 2 == 0]
+print('Новый список:', new_list)
 
-print(random_list)
+# ________________________________________________________________________________
+random_list = [random.randint(0, 9) for _ in range(10)]
+print('\nОригинальный список:', random_list)
 
-print(new_list)
+new_list = [random_list[::2], random_list[1::2]]
+print('Новый список:', new_list)
