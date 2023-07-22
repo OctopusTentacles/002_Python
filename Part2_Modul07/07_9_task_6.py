@@ -47,7 +47,15 @@
 # …….
 
 def phone_book():
-
+    contact_dict = dict()
+    new_contact = input('Введите имя и фамилию нового контакта (через пробел): ')
+    if new_contact in contact_dict.keys():
+        print('Такой человек уже есть в контактах.')
+        print('Текущий словарь контактов:', contact_dict)
+    else:
+        new_number = int(input('Введите номер телефона: '))
+        contact_dict[new_contact] = new_number
+        print('Текущий словарь контактов:', contact_dict)
 
 
 def search_contact():
