@@ -59,6 +59,9 @@ def phone_book():
 
 
 def search_contact():
+    search_name = input('Введите фамилию для поиска: ')
+    # if search_name in contact_dict
+    
 
 
 while True:
