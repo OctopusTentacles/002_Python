@@ -46,3 +46,22 @@
 #  2. Найти человека 
 # …….
 
+def phone_book():
+
+
+
+def search_contact():
+
+
+while True:
+    print('Введите номер действия:'
+          '\n 1. Добавить контакт'
+          '\n 2. Найти человека'
+          )
+    choice = int(input())
+    if choice == 1:
+        phone_book()
+    elif choice == 2:
+        search_contact()
+    else:
+        break
