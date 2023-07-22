@@ -12,12 +12,12 @@
 
 
 def tpl_sort(data):
-    # for value in data:
-    #     if value is not int:
-    #         return data
+    for value in data:
+        if not isinstance(value, int):
+            return data
     return sorted(data)
 
 
-my_tuple = (6, 3, -1, 8, 4, 10, -5)
+# my_tuple = (6, 'g', -1, 8, 4, 10, -5)
 
-print(tpl_sort(my_tuple))
+# print(tpl_sort(my_tuple))
