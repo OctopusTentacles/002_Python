@@ -47,16 +47,17 @@
 # …….
 
 def phone_book():
-    
+
     print('Введите имя и фамилию нового контакта (через пробел): ', end='')
     new_contact = tuple(input().split(' '))
-    print(new_contact)
+
     if new_contact in contact_dict:
         print('Такой человек уже есть в контактах.')
     else:
         new_number = int(input('Введите номер телефона: '))
         contact_dict[new_contact] = new_number
-    print('Текущий словарь контактов:', contact_dict)
+
+    return ('Текущий словарь контактов:', contact_dict)
 
 
 def search_contact():
@@ -69,13 +70,14 @@ def search_contact():
 while True:
     contact_dict = dict()
 
-    print('Введите номер действия:'
+
+    print('\nВведите номер действия:'
           '\n 1. Добавить контакт'
           '\n 2. Найти человека'
           )
     choice = int(input())
     if choice == 1:
-        phone_book()
+        print(phone_book())
     elif choice == 2:
         search_contact()
     else:
