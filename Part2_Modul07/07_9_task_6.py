@@ -55,9 +55,10 @@ def phone_book():
         print('Такой человек уже есть в контактах.')
     else:
         new_number = int(input('Введите номер телефона: '))
-        contact_dict[new_contact] = new_number
+        contact_dict[new_contact] = (new_number)
 
-    return ('Текущий словарь контактов:', contact_dict)
+    return 'Текущий словарь контактов:', contact_dict
+
 
 
 def search_contact():
@@ -67,10 +68,9 @@ def search_contact():
     
 
 
+contact_dict = dict()
+
 while True:
-    contact_dict = dict()
-
-
     print('\nВведите номер действия:'
           '\n 1. Добавить контакт'
           '\n 2. Найти человека'
