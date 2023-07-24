@@ -57,7 +57,7 @@ def phone_book():
         new_number = int(input('Введите номер телефона: '))
         contact_dict[new_contact] = (new_number)
 
-        return 'Текущий словарь контактов:'
+        return 'Текущий словарь контактов:', contact_dict
 
 
 
@@ -77,7 +77,8 @@ while True:
           )
     choice = int(input())
     if choice == 1:
-        print(phone_book(), contact_dict)
+        result = str(phone_book())
+        print(*(result))
     elif choice == 2:
         print(search_contact())
     else:
