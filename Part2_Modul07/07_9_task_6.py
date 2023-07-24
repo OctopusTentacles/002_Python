@@ -63,8 +63,9 @@ def phone_book():
 
 def search_contact():
     search_name = input('Введите фамилию для поиска: ')
-    if search_name in contact_dict:
-        return (contact_dict.items())
+    for name in contact_dict.keys():
+        if search_name in name:
+            return (name, contact_dict[name])
     
 
 
