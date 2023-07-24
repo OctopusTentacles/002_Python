@@ -63,8 +63,8 @@ def phone_book():
 
 def search_contact():
     search_name = input('Введите фамилию для поиска: ')
-    if search_name in contact_dict.keys():
-        print(contact_dict[search_name])
+    if search_name in contact_dict:
+        return (contact_dict.items())
     
 
 
@@ -79,6 +79,6 @@ while True:
     if choice == 1:
         print(phone_book())
     elif choice == 2:
-        search_contact()
+        print(search_contact())
     else:
         break
