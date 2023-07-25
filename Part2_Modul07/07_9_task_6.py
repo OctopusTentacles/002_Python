@@ -60,14 +60,16 @@ def phone_book():
 
 
 def search_contact():
+    flag = False
     search_name = input('Введите фамилию для поиска: ').title()
     for key, value in contact_dict.items():
         if search_name in key:
+            flag = True
             print(f'{key[0]} {key[1]} {value}')
             continue
-        else:
-            print('Такого человека нет в контактах')
-        return
+    if flag == False:
+        print('Такого человека нет в контактах')
+    return
 
 
 contact_dict = dict()
