@@ -47,7 +47,6 @@
 # …….
 
 def phone_book():
-
     print('Введите имя и фамилию нового контакта (через пробел): ', end='')
     new_contact = tuple(input().split(' '))
 
@@ -65,8 +64,10 @@ def search_contact():
     for key, value in contact_dict.items():
         if search_name in key:
             print(f'{key[0]} {key[1]} {value}')
+            continue
         else:
-            
+            print('Такого человека нет в контактах')
+        return
 
 
 contact_dict = dict()
