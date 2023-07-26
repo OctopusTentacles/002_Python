@@ -26,16 +26,19 @@ def my_zip(data_1, data_2):
     print(type(data_1), data_1)
     print(type(data_2), data_2)
 
-    print((data_1[i], data_2[i]) for i in range(len(data_1)))
-    
-    for i in range(min(len(data_1), len(data_2))):
-        result = data_1[i], data_2[i]
-        print(result)
+    result = ((data_1[i], data_2[i]) for i in range(min(len(data_1), len(data_2))))
+    print(result)
 
-
-
+    for tpl in result:
+        print(tpl)
 
 
 my_str = 'abcd'
 my_tuple = (10, 20, 30, 40)
 my_zip(my_str, my_tuple)
+
+my_list = ['Jim', 'Tom', 'Bob', 'Maks', 'Mario']
+my_tuple = (20, 30, 40)
+my_zip(my_list, my_tuple)
+
+my_dict = 
