@@ -40,5 +40,3 @@ my_zip(my_str, my_tuple)
 my_list = ['Jim', 'Tom', 'Bob', 'Maks', 'Mario']
 my_tuple = (20, 30, 40)
 my_zip(my_list, my_tuple)
-
-my_dict = 
