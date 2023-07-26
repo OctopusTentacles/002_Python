@@ -25,6 +25,10 @@ def my_zip(data_1, data_2):
     print(type(data_1), data_1)
     print(type(data_2), data_2)
 
+    for i in range(len(data_1)):
+        result = data_1[i], data_2[i]
+        print(result)
+
 
 
 
