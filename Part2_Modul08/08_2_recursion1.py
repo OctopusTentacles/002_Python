@@ -13,9 +13,11 @@
 # что будет.
 
 
-def foctorial(num):
+def factorial(num):
 
-    
+    fact_n_minus_1 = factorial(num -1)
+    return num * fact_n_minus_1
 
-num _fact = factorial()
+
+num_fact = factorial(1000)
 print(num_fact)
