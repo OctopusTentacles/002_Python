@@ -13,10 +13,9 @@
 
 
 def power(a, n):
-    count = 0
-    if count == n:
-        return n
-    return a * power(a, n)
+    if n <= 0:
+        return 1
+    return a * power(a, n - 1)
 
  
 float_num = float(input('Введите вещественное число: '))
