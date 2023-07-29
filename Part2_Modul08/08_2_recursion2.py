@@ -13,7 +13,9 @@
 
 
 def power(a, n):
-    if
+    count = 0
+    if count == n:
+        return n
     return a * power(a, n)
 
  
