@@ -15,6 +15,9 @@
 # Такого ключа в структуре сайта нет.
 
 
+def search_element(data, tag):
+
+
 site = {
     'html': {
         'head': {
@@ -27,3 +30,11 @@ site = {
         }
     }
 }
+
+search_key = input("Искомый ключ: ")
+
+value = search_element(site, search_key)
+if value:
+    print("Значение:", value)
+else:
+    print("Такого ключа в структуре сайта нет.")
