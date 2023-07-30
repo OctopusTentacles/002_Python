@@ -16,6 +16,15 @@
 
 
 def search_element(data, tag):
+    result = None
+    if tag in data:
+        return data[tag]
+    for key, value in data.items():
+        if isinstance(value, dict):
+            result = search_element(value, tag)
+            if result:
+                return result
+    return result
 
 
 site = {
