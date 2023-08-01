@@ -48,3 +48,6 @@ import copy
 common_dict = {1: nums_list, 2: some_dict, 3: uniq_nums, 4: (10, 20, 30)}
 common_dict_2 = copy.deepcopy(common_dict)
 # Она будет особенно полезна в структурах, в которых множество вложенных переменных
+change_dict(common_dict_2)
+print(common_dict_2)
+print(nums_list, some_dict, uniq_nums)
