@@ -32,7 +32,16 @@
 def ask_user(question, complaint, retries):
     while True:
         answer = input(question).lower()
-
+        if answer == 'да':
+            return 1
+        if answer == 'нет':
+            return 0
+        retries -= 1
+        if retries == 0:
+            print('количество попыток истекло')
+            break
+        print(complaint)
+        print('Количество попыток:', retries)
 
 
 
