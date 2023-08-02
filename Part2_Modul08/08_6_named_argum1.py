@@ -29,3 +29,13 @@
 # Записать файл? да
 
 
+def ask_user(question, complaint, retries):
+    while True:
+        answer = input(question).lower()
+
+
+
+
+ask_user('Вы действительно хотите выйти?', 
+         'Неверный ввод. Пожалуйста, введите да или нет.',
+         4)
