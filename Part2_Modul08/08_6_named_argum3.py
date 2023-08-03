@@ -21,7 +21,7 @@ def create_dict(data, template=None):
 
     elif isinstance(data, (int, float, str)):
         template = template or dict()
-        template = template[data] = data
+        template[data] = data
         return template
     else:
         return None
@@ -44,3 +44,4 @@ data = data_preparation(data)
 print(data)
 
  
+# [{'sds': 'sds'}, {'sds': 23}, {2323: 2323}]
