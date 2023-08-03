@@ -29,7 +29,9 @@
 # Записать файл? да
 
 
-def ask_user(question, complaint, retries):
+def ask_user(question, 
+             complaint = 'Неверный ввод. Пожалуйста, введите да или нет.', 
+             retries = 4):
     while True:
         answer = input(question).lower()
         if answer == 'да':
@@ -44,15 +46,6 @@ def ask_user(question, complaint, retries):
         print('Количество попыток:', retries)
 
 
-
-ask_user('\nВы действительно хотите выйти? ', 
-         'Неверный ввод. Пожалуйста, введите да или нет.',
-         4)
-
-ask_user('Удалить файл? ', 
-         'Неверный ввод. Пожалуйста, введите да или нет.',
-         4)
-
-ask_user('Записать файл? ', 
-         'Неверный ввод. Пожалуйста, введите да или нет.',
-         4)
+ask_user('\nВы действительно хотите выйти? ')
+ask_user('Удалить файл? ', 'Так удалить или нет?\n')
+ask_user('Записать файл? ', retries=2)
