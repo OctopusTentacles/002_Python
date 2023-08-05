@@ -19,6 +19,10 @@
 # Введите максимальную глубину: 1
 # Значение ключа: None
 
+
+def search_element(data, tag):
+
+
 site = {'html': {
                 'head': {'title': 'Мой сайт'}, 
                 'body': {'h2': 'Здесь будет мой заголовок', 
@@ -28,3 +32,8 @@ site = {'html': {
                 }
         }
 
+search_key = input('Введите искомый ключ: ')
+value = search_element(search_key)
+
+
+print('Значение ключа:', value)
