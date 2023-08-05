@@ -20,8 +20,8 @@
 
 
 def numbers(number):
+    print(number - numbers(number - 1))
 
 
-    
 num = int(input('Введите num: '))
-print(numbers(num))
+numbers(num)
