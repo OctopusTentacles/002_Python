@@ -24,10 +24,12 @@ def search_element(data, tag, deep_value=None):
     result = None
     if tag in data:
         return data[tag]
-    for key, value in data.items():
-        if isinstance(value, dict):
-            result = search_element(value, tag)
-            return result
+    
+    if deep_value >= 1:
+        for key, value in data.items():
+            if isinstance(value, dict):
+                result = search_element(value, tag, deep_value - 1)
+                return result
 
 
 
@@ -41,10 +43,11 @@ site = {'html': {
         }
 
 search_key = input('Введите искомый ключ: ')
-deep = input('Хотите ввести максимальную глубину? Y/N: '.upper())
+deep = input('Хотите ввести максимальную глубину? Y/N: ').title()
 if deep == 'Y':
     deep_value = int(input('Введите максимальную глубину: '))
     value = search_element(site, search_key, deep_value)
-
+else:
+    value = search_element(site, search_key)
 
 print('Значение ключа:', value)
