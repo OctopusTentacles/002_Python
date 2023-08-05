@@ -28,3 +28,5 @@ def numbers(number):
 
 num = int(input('Введите num: '))
 numbers(num)
+
+# рекурсия напрягает мой мозг знатно ))))))))))))))
