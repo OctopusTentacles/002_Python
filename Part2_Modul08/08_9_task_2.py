@@ -21,15 +21,18 @@
 
 
 def search_element(data, tag, deep_value=None):
-    result = None
+
     if tag in data:
         return data[tag]
     
-    if deep_value >= 1:
-        for key, value in data.items():
+    if deep_value > 1:
+        for value in data.values():
             if isinstance(value, dict):
                 result = search_element(value, tag, deep_value - 1)
-                return result
+                if result:
+                    break
+    else:
+        return result
 
 
 
