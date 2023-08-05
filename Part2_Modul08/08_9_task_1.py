@@ -18,3 +18,10 @@
 # 9
 # 10
 
+
+def numbers(number):
+
+
+    
+num = int(input('Введите num: '))
+print(numbers(num))
