@@ -20,7 +20,10 @@
 
 
 def numbers(number):
-    print(number - numbers(number - 1))
+    if number == 0:
+        return 1
+    numbers(number - 1)
+    print(number)
 
 
 num = int(input('Введите num: '))
