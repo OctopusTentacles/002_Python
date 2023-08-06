@@ -20,26 +20,26 @@
 # Значение ключа: None
 
 
-def search_element(data, tag, deep_value=0):
-    
+def search_element(data, tag, deep_value):
     if tag in data:
         return data[tag]
     
-    if deep_value >=1:
+    if deep_value:
         for value in data.values():
             if isinstance(value, dict):
                 result = search_element(value, tag, deep_value - 1)
                 if result:
-                    break
-    else:
+                    return result
+                break
+
+    if not deep_value:
         for value in data.values():
             if isinstance(value, dict):
-                result = search_element(value, tag,)
+                result = search_element(value, tag, deep_value=None)
                 if result:
                     return result
         return
     
-
 
 site = {'html': {
                 'head': {'title': 'Мой сайт'}, 
@@ -53,9 +53,10 @@ site = {'html': {
 search_key = input('Введите искомый ключ: ')
 deep = input('Хотите ввести максимальную глубину? Y/N: ').title()
 if deep == 'Y':
-    deep_value = int(input('Введите максимальную глубину: '))
-    value = search_element(site, search_key, deep_value)
+    value = search_element(site, search_key, 
+                           deep_value=int(input('Введите максимальную глубину: ')))
 else:
-    value = search_element(site, search_key)
+    value = search_element(site, search_key,
+                           deep_value=None)
 
 print('Значение ключа:', value)
