@@ -20,20 +20,25 @@
 # Значение ключа: None
 
 
-def search_element(data, tag, deep_value=None):
-
+def search_element(data, tag, deep_value=0):
+    
     if tag in data:
         return data[tag]
     
-    if deep_value > 1:
+    if deep_value >=1:
         for value in data.values():
             if isinstance(value, dict):
                 result = search_element(value, tag, deep_value - 1)
                 if result:
                     break
     else:
-        return result
-
+        for value in data.values():
+            if isinstance(value, dict):
+                result = search_element(value, tag,)
+                if result:
+                    return result
+        return
+    
 
 
 site = {'html': {
