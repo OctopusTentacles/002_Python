@@ -41,15 +41,15 @@
 #         return
 
 
-def search_element(data, search_key, deep_value):
-    if search_key in data:
-        return data[search_key]
+def search_element(data, tag, deep_value):
+    if tag in data:
+        return data[tag]
     if deep_value > 1:
-        for sub_struct in data.values():
-            if isinstance(sub_struct, dict):
-                result = search_element(sub_struct, search_key, deep_value - 1)
+        for value in data.values():
+            if isinstance(value, dict):
+                result = search_element(value, tag, deep_value - 1)
                 if result:
-                    break
+                    return result
         else:
             result = None
         return result
@@ -58,15 +58,6 @@ site = {'html': {
                 'head': {'title': 'Мой сайт'},
                 'body': {'h2': 'Здесь будет мой заголовок',
                         'div': 'Тут, наверное, какой-то блок',
-                        'p': 'А вот здесь новый абзац'
-                        }
-                }
-        }
-
-site = {'html': {
-                'head': {'title': 'Мой сайт'}, 
-                'body': {'h2': 'Здесь будет мой заголовок', 
-                        'div': 'Тут, наверное, какой-то блок', 
                         'p': 'А вот здесь новый абзац'
                         }
                 }
