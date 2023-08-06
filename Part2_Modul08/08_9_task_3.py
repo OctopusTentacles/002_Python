@@ -72,6 +72,7 @@
 # }
 
 
+def create_sites(data, name, num):
 
 site = {
 	'html': {
@@ -85,3 +86,9 @@ site = {
 		}
 	}
 }
+
+sites_amt = int(input('Сколько сайтов: '))
+product = input('Введите название продукта для нового сайта: ')
+
+print(f'Сайт для {product}:')
+create_sites(site, product, sites_amt)
