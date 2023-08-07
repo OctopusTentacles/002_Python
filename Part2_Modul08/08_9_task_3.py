@@ -71,8 +71,27 @@
 # 	}
 # }
 
+import copy
 
-def create_sites(data, name, num):
+def create_sites(data, num):
+    if num == 0:
+        return data
+    product = input('Введите название продукта для нового сайта: ')
+    new_site = search_element(copy.deepcopy(data), product)
+    
+
+
+def search_element(data, tag, change_1='title', change_2='h2'):
+    result = None
+    if tag in data:
+        return data[tag]
+    for key, value in data.items():
+        if key == change_1:
+            value = 'Куплю/продам {} недорого'.format(tag)
+        if isinstance(value, dict):
+            result = search_element(value, tag)
+            if result
+
 
 site = {
 	'html': {
@@ -80,7 +99,7 @@ site = {
 			'title': 'Куплю/продам телефон недорого'
 		},
 		'body': {
-			'h2': 'У нас самая низкая цена на iPhone',
+			'h2': 'У нас самая низкая цена на телефон',
 			'div': 'Купить',
 			'p': 'Продать'
 		}
@@ -88,7 +107,6 @@ site = {
 }
 
 sites_amt = int(input('Сколько сайтов: '))
-product = input('Введите название продукта для нового сайта: ')
+create_sites(site, sites_amt)
 
 print(f'Сайт для {product}:')
-create_sites(site, product, sites_amt)
