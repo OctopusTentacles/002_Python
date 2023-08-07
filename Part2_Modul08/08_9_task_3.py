@@ -96,14 +96,14 @@ def create_sites(data, num):
         site_name = input('\nВведите название продукта для нового сайта: ')
         new_data['html']['head']['title'] = f'Куплю/продам {site_name} недорого'
         new_data['html']['body']['h2'] = f'У нас самая низкая цена на {site_name}'
+        
+        list_sites[site_name] = new_data
 
-        print(f'Сайт для {site_name}:')
-        print(new_data)
-        # print(search_element(new_data, site_name))
+        for key, value in list_sites.items():
+            print(f'Сайт для {key}:'
+                  f'\nsite = {value}')
+
         create_sites(data, num -1)
-
-
-
 
 
 site = {
@@ -119,7 +119,13 @@ site = {
 	}
 }
 
+list_sites = dict()
+
 sites_amt = int(input('Сколько сайтов: '))
 create_sites(site, sites_amt)
 
 
+# я не понимаю. хотел сделать через дополнительную функцию def search_element
+# где менялось бы содержимое сайта, но не смог сохранить значения для возврата
+# в итоге тыкал - тыкал и вот так получилось, 
+# все работает ))) походу я изначально не туда пошел и сильно заморочился
