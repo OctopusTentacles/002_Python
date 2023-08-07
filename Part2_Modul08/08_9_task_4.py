@@ -20,8 +20,11 @@
 # Ответ в консоли: 15
 
 
-def extended_sum(data):
+def extended_sum(*data):
+    summa = 0
+    for i in data:
+        summa += i
+    print(summa)
 
 
-
-extended_sum([[1, 2, [3]], [1], 3])
+extended_sum(5, 5)
