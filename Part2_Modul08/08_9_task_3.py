@@ -76,19 +76,6 @@
 import copy
 
 
-# def search_element(data_2, tag, change_1='title', change_2='h2'):
-    
-#     for key, value in data_2.items():
-#         if key == change_1:
-#             value = 'Куплю/продам {} недорого'.format(tag)
-#         if key == change_2:
-#             value = 'У нас самая низкая цена на {}'.format(tag)
-#         print(key, value)
-#         if isinstance(value, dict):
-#             search_element(value, tag)
-#         return data_2
-
-
 def create_sites(data, num):
     if num > 0:
         new_data = copy.deepcopy(data)
@@ -127,5 +114,54 @@ create_sites(site, sites_amt)
 
 # я не понимаю. хотел сделать через дополнительную функцию def search_element
 # где менялось бы содержимое сайта, но не смог сохранить значения для возврата
+# значение value не ложится в data_2
 # в итоге тыкал - тыкал и вот так получилось, 
 # все работает ))) походу я изначально не туда пошел и сильно заморочился
+
+
+# def search_element(data_2, tag, change_1='title', change_2='h2'):
+    
+#     for key, value in data_2.items():
+#         if key == change_1:
+#             value = 'Куплю/продам {} недорого'.format(tag)
+            
+#         if key == change_2:
+#             value = 'У нас самая низкая цена на {}'.format(tag)
+            
+#         if isinstance(value, dict):
+#             search_element(value, tag)
+#         list_sites[tag] = data_2
+#         return 
+
+
+# def create_sites(data, num):
+#     if num > 0:
+#         new_data = copy.deepcopy(data)
+        
+#         site_name = input('\nВведите название продукта для нового сайта: ')
+#         search_element(new_data, site_name)
+        
+#         for key, value in list_sites.items():
+#             print(f'Сайт для {key}:'
+#                   f'\nsite = {value}')
+
+#         create_sites(data, num -1)
+
+
+# site = {
+# 	'html': {
+# 		'head': {
+# 			'title': 'Куплю/продам телефон недорого'
+# 		},
+# 		'body': {
+# 			'h2': 'У нас самая низкая цена на телефон',
+# 			'div': 'Купить',
+# 			'p': 'Продать'
+# 		}
+# 	}
+# }
+
+# list_sites = dict()
+
+# sites_amt = int(input('Сколько сайтов: '))
+# create_sites(site, sites_amt)
