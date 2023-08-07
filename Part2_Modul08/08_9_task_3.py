@@ -71,28 +71,35 @@
 # 	}
 # }
 
+
+
 import copy
 
 
-def search_element(data_2, tag, change_1='title', change_2='h2'):
+# def search_element(data_2, tag, change_1='title', change_2='h2'):
     
-    for key, value in data_2.items():
-        if key == change_1:
-            value = 'Куплю/продам {} недорого'.format(tag)
-        if key == change_2:
-            value = 'У нас самая низкая цена на {}'.format(tag)
-        if isinstance(value, dict):
-            search_element(value, tag)
-        return data_2
+#     for key, value in data_2.items():
+#         if key == change_1:
+#             value = 'Куплю/продам {} недорого'.format(tag)
+#         if key == change_2:
+#             value = 'У нас самая низкая цена на {}'.format(tag)
+#         print(key, value)
+#         if isinstance(value, dict):
+#             search_element(value, tag)
+#         return data_2
 
 
 def create_sites(data, num):
     if num > 0:
         new_data = copy.deepcopy(data)
         
-        site_name = input('Введите название продукта для нового сайта: ')
+        site_name = input('\nВведите название продукта для нового сайта: ')
+        new_data['html']['head']['title'] = f'Куплю/продам {site_name} недорого'
+        new_data['html']['body']['h2'] = f'У нас самая низкая цена на {site_name}'
+
         print(f'Сайт для {site_name}:')
-        print(search_element(new_data, site_name))
+        print(new_data)
+        # print(search_element(new_data, site_name))
         create_sites(data, num -1)
 
 
