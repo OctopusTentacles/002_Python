@@ -79,18 +79,22 @@ def create_sites(data, num):
     product = input('Введите название продукта для нового сайта: ')
     new_site = search_element(copy.deepcopy(data), product)
     
+	print(f'Сайт для {product}:')
+    print(new_site)
+    
+	create_sites(data, num-1)
 
 
 def search_element(data, tag, change_1='title', change_2='h2'):
-    result = None
-    if tag in data:
-        return data[tag]
+    
     for key, value in data.items():
         if key == change_1:
             value = 'Куплю/продам {} недорого'.format(tag)
+        if key == change_2:
+            value = 'У нас самая низкая цена на {}'.format(tag)
         if isinstance(value, dict):
-            result = search_element(value, tag)
-            if result
+            search_element(value, tag)
+        return data
 
 
 site = {
@@ -109,4 +113,4 @@ site = {
 sites_amt = int(input('Сколько сайтов: '))
 create_sites(site, sites_amt)
 
-print(f'Сайт для {product}:')
+
