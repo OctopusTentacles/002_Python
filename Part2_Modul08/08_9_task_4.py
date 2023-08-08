@@ -21,12 +21,23 @@
 
 
 def extended_sum(*data, summa = 0):
-    for key, value in enumerate(data):
-        if isinstance(value, int):
-            summa += value
-        elif isinstance(value, list):
-            return extended_sum(data[key])
-    print(summa)
+    for sym in data:
+        if isinstance(sym, int):
+            summa += sym
+        elif isinstance(sym, (list)):
+            summa += extended_sum(*sym)
+    return summa
 
 
-extended_sum([[1, 2, [3]], [1], 3])
+print(extended_sum([[1, 2, [3]], [1], 3]))
+print(extended_sum(1, 2, 3, 4, 5))
+
+# если в листе лист ([1, 2, [3]]) - нам надо разложить его на цифры
+# чтобы сложить. для этого надо передать в функцию вложенный лист 
+# (extended_sum(*sym)) * если в листе несколько значений.
+# и пройти циклом - получится сумма, которая при возрате
+# summa += extended_sum(*sym) прибавится к предыдущей сумме
+
+# не могу в голове осмыслить рекурсию, решение представляю,
+# но написать сразу не могу - методом тыка и отладки только (((
+# много времени уходит
