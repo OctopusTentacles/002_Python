@@ -20,10 +20,12 @@
 # Можно возвращать списки и срезы списков.
 
 
-def expand_list(*data):
-    data = [i_sym if isinstance(i_sym, int) else expand_list(i_sym) for i_sym in data]
-        
+def expand_list(data):
 
+    if data == []:
+        return data
+    if isinstance(data[0], list):
+        return (expand_list(data[0]) + )
 
 
 nice_list = [1, 2, [3, 4], [[5, 6, 7], [8, 9, 10]], 
