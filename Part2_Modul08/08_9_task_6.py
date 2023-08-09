@@ -33,20 +33,14 @@ def quick_sort(data):
     for elem in data:
         if elem != data[-1:]:
             main_elem = data[-1:]
-        else:
-            return data
+            
         
-        low_main = [elem for elem in data if elem < main_elem[0]]
-        if low_main:
-            return quick_sort(low_main)
-        else:
-            return []
+        low_main = [elem for elem in my_list if elem < main_elem[0]]
+        equal_main = [elem for elem in my_list if elem == main_elem[0]]
+        high_main = [elem for elem in my_list if elem > main_elem[0]]
+        return quick_sort(low_main)
     
-    return data[] + quick_sort[]
-
-
-
-
+    return low_main + equal_main + high_main
 
 
 
