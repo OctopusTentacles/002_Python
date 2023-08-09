@@ -29,17 +29,26 @@
 
 
 def quick_sort(data):
-    main_elem = my_list[-1:]
+    
+    for elem in data:
+        if elem != data[-1:]:
+            main_elem = data[-1:]
+        else:
+            return data
+    if [elem for elem in data if elem < main_elem[0]]:
+        return quick_sort()
 
-    less_main = [elem for elem in my_list if elem < main_elem[0]]
-    equal_main = [elem for elem in my_list if elem == main_elem[0]]
-    more_main = [elem for elem in my_list if elem > main_elem[0]]
 
-    print(less_main)
-    print(equal_main)
-    print(more_main)
+
 
 
 
 my_list = [5, 8, 9, 4, 2, 9, 1, 8]
 
+print(quick_sort(my_list))
+
+
+
+    # low_main = [elem for elem in my_list if elem < main_elem[0]]
+    # equal_main = [elem for elem in my_list if elem == main_elem[0]]
+    # high_main = [elem for elem in my_list if elem > main_elem[0]]
