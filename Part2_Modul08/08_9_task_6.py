@@ -26,3 +26,20 @@
 
 # Сложите результаты вызова рекурсий и получите отсортированный список:
 # отсортированный_список = результат_1 + результат_2 + результат_3.
+
+
+def quick_sort(data):
+    main_elem = my_list[-1:]
+
+    less_main = [elem for elem in my_list if elem < main_elem[0]]
+    equal_main = [elem for elem in my_list if elem == main_elem[0]]
+    more_main = [elem for elem in my_list if elem > main_elem[0]]
+
+    print(less_main)
+    print(equal_main)
+    print(more_main)
+
+
+
+my_list = [5, 8, 9, 4, 2, 9, 1, 8]
+
