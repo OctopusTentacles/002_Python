@@ -14,3 +14,6 @@
 # Абсолютный путь до файла: C:\Users\Roman\PycharmProjects\Skillbox\access\admin.bat
 # Относительный путь до файла: Skillbox\access\admin.bat
 
+import os
+
+file_name  = 'admin.bat'
