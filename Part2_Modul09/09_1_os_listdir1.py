@@ -17,3 +17,9 @@
 import os
 
 file_name  = 'admin.bat'
+
+rel_path = os.path.join(file_name)
+abs_path = os.path.abspath(file_name)
+
+print(rel_path)
+print(abs_path)
