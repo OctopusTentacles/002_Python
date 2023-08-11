@@ -8,4 +8,8 @@
 
 import os
 
-print(os.path.abspath('\ '))
+print('Корень диска:', 
+      os.path.abspath(os.path.join(os.sep, ' ')))
+
+print("Корень диска:", 
+      os.path.abspath(os.sep).split(os.sep)[0])
