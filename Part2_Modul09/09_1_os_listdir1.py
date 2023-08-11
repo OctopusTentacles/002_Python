@@ -16,10 +16,8 @@
 
 import os
 
-file_name  = 'admin.bat'
+rel_path = os.path.join('access', 'admin.bat')
+abs_path = os.path.abspath(rel_path)
 
-rel_path = os.path.join(file_name)
-abs_path = os.path.abspath(file_name)
-
-print(rel_path)
-print(abs_path)
+print('Абсолютный путь до файла:', abs_path)
+print('Относительный путь до файла:', rel_path)
