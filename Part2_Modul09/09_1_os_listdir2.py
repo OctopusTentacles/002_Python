@@ -19,3 +19,6 @@
 
 import os
 
+print('Содержимое каталога', os.path.abspath('..'))
+for folder in os.listdir('..'):
+    print(folder)
