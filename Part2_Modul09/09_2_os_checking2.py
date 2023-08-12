@@ -21,4 +21,15 @@
 # C:/Users/Roman/PycharmProjects/Skillbox\Module21\lesson2.py
 # C:/Users/Roman/PycharmProjects/Skillbox\Module22\lesson2.py
 
+import os
 
+def find_file(cur_path, file_name):
+
+
+
+file = 'text.txt'
+path = os.path.abspath('')
+print('Ищем в:', path)
+print('Имя файла:', file)
+
+find_file(path, file)
