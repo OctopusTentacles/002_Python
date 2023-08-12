@@ -20,3 +20,14 @@
 # Путь: C:\Users\Roman\PycharmProjects\Skillbox\Module17\lesson2.py
 # Указанного пути не существует
 
+import os
+
+def print_dirs():
+
+
+
+project_list = ['octopus', 'Skillbox', 'Python']
+for i_proj in project_list:
+
+
+print_dirs(i_proj)
