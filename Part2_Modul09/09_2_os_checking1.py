@@ -23,22 +23,24 @@
 import os
 
 def print_dirs(project):
-    print('Путь:', project)
+    print('\nПуть:', project)
 
     if os.path.isfile(project):
         print('    Это файл')
-        print('    Размер файла:', os.path.getsize(project))
+        print(f'    Размер файла: {os.path.getsize(project)} байт')
 
-    elif os.path.exists(project):
+    elif os.path.isdir(project):
+        print('    Это папка') 
+        print('    Содержимое каталога:')
         for i_elem in os.listdir(project):
-            path = os.path.join(project, i_elem)     
-            print(' ', path)   
+            print('    ',os.path.join(project, i_elem))
+         
 
     else:
-        print(' ', 'Каталога не существует')
+        print('   ', 'Каталога не существует')
 
 
-project_list = ['octopus', 'Prod', 'Python']
+project_list = ['octopus.jpg', 'Prod', 'Python']
 for i_proj in project_list:
     path_project = os.path.abspath(os.path.join('..', i_proj))
     print_dirs(path_project)
