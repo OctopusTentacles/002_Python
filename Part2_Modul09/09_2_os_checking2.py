@@ -27,9 +27,15 @@ def find_file(cur_path, file_name):
     for i_elem in os.listdir(cur_path):
         i_path = os.path.join(cur_path, i_elem)
         if i_elem == file_name:
-            print('Найдены следующие пути:', i_path)
+            print(i_path)
         elif os.path.isdir(i_path):
-            result = 
+            result = find_file(i_path, file_name)
+            if result:
+                break
+    else:
+        result = None
+    
+    return result
             
 
 file = 'test.txt'
@@ -37,4 +43,5 @@ path = os.path.abspath('')
 print('Ищем в:', path)
 print('Имя файла:', file)
 
+print('\nНайдены следующие пути:')
 find_file(path, file)
