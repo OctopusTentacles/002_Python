@@ -22,12 +22,11 @@
 
 import os
 
-def print_dirs():
+def print_dirs(project):
+    print('Путь:', project)
 
 
-
-project_list = ['octopus', 'Skillbox', 'Python']
+project_list = ['octopus', 'Prod', 'Python']
 for i_proj in project_list:
-
-
-print_dirs(i_proj)
+    path_project = os.path.abspath(os.path.join(i_proj))
+    print_dirs(path_project)
