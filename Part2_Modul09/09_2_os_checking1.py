@@ -25,8 +25,20 @@ import os
 def print_dirs(project):
     print('Путь:', project)
 
+    if os.path.isfile(project):
+        print('    Это файл')
+        print('    Размер файла:', os.path.getsize(project))
+
+    elif os.path.exists(project):
+        for i_elem in os.listdir(project):
+            path = os.path.join(project, i_elem)     
+            print(' ', path)   
+
+    else:
+        print(' ', 'Каталога не существует')
+
 
 project_list = ['octopus', 'Prod', 'Python']
 for i_proj in project_list:
-    path_project = os.path.abspath(os.path.join(i_proj))
+    path_project = os.path.abspath(os.path.join('..', i_proj))
     print_dirs(path_project)
