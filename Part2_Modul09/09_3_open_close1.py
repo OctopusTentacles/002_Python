@@ -27,33 +27,29 @@
 
 import os
 
+
 group_1 = open('/Users/artem/Documents/task/group_1.txt', 'r', encoding='UTF-8')
 group_2 = open('/Users/artem/Documents/task/Additional_info/group_2.txt', 'r', encoding='UTF-8')
 
+summa = 0
+diff = 0
+compos = 1
+
 for i_line in group_1:
-    print(i_line)
+    info = i_line.split()
+    if info:
+        summa += int(info[2])
+        diff -= int(info[2])
+        
 
 for i_line in group_2:
-    print(i_line)
+    info = i_line.split()
+    if info:
+        compos *= int(info[2])
 
+group_1.close()
+group_2.close()
 
-# file = open('E:\task\group_1.txt', 'read')
-
-# diff = 0
-
-# for i_line in file:
-#     info = i_line.split()
-#     diff -= info[2]
-
-# file_2 = open('E:\task\group_2.txt', 'read')
-
-# compose = 0
-
-# for i_line in file:
-#     info = i_line.split()
-#     compose *= info[2]
-
-# print(summa)
-# print(diff)
-# print(compose)
-
+print(summa)
+print(diff)
+print(compos)
