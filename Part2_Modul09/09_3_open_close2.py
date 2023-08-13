@@ -13,12 +13,23 @@ import os
 
 
 def find_file(cur_path, file_name):
+    all_path = list()
 
     for i_elem in os.listdir(cur_path):
         path = os.path.join(cur_path, i_elem)
         if i_elem == file_name:
-            print(path)
+            all_path.append(os.path.abspath(path))
         elif os.path.isdir(path):
             result = find_file(path, file_name)
             if result:
-                
+                all_path.extend(result)
+
+    return all_path
+
+
+def check_file_inside(path_to_file):
+    
+
+
+all_path = find_file('..', 'test.txt')
+check_file_inside(all_path)
