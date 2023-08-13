@@ -9,3 +9,16 @@
 
 # Подсказка: можно использовать, например, список для сохранения найденного пути.
 
+import os
+
+
+def find_file(cur_path, file_name):
+
+    for i_elem in os.listdir(cur_path):
+        path = os.path.join(cur_path, i_elem)
+        if i_elem == file_name:
+            print(path)
+        elif os.path.isdir(path):
+            result = find_file(path, file_name)
+            if result:
+                
