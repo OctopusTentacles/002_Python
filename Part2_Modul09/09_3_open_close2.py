@@ -10,6 +10,7 @@
 # Подсказка: можно использовать, например, список для сохранения найденного пути.
 
 import os
+import random
 
 
 def find_file(cur_path, file_name):
@@ -28,8 +29,13 @@ def find_file(cur_path, file_name):
 
 
 def check_file_inside(path_to_file):
-    
+    file = open(path_to_file, 'r', encoding='utf8')
+    for line in file:
+        print(line)
+    file.close()
 
 
 all_path = find_file('..', 'test.txt')
-check_file_inside(all_path)
+print(all_path)
+
+check_file_inside(random.choice(all_path))
