@@ -25,31 +25,32 @@
 # (task, Additional_info, Dont touch me) на своём диске в 
 # соответствии с картинкой и также добавьте файлы group_1.txt и group_2.txt.
 
-file = open('E:\task\group_1.txt', 'read')
+import os
 
-summa = 0
-
-for i_line in file:
-    info = i_line.split()
-    summa += info[2]
-
-file = open('E:\task\group_1.txt', 'read')
-
-diff = 0
+print(os.path.abspath('..'))
+file = open('/Users/artem/Documents/task/group_1.txt', 'r', encoding='UTF-8')
 
 for i_line in file:
-    info = i_line.split()
-    diff -= info[2]
+    print(i_line)
 
-file_2 = open('E:\task\group_2.txt', 'read')
 
-compose = 0
+# file = open('E:\task\group_1.txt', 'read')
 
-for i_line in file:
-    info = i_line.split()
-    compose *= info[2]
+# diff = 0
 
-print(summa)
-print(diff)
-print(compose)
+# for i_line in file:
+#     info = i_line.split()
+#     diff -= info[2]
+
+# file_2 = open('E:\task\group_2.txt', 'read')
+
+# compose = 0
+
+# for i_line in file:
+#     info = i_line.split()
+#     compose *= info[2]
+
+# print(summa)
+# print(diff)
+# print(compose)
 
