@@ -27,10 +27,13 @@
 
 import os
 
-print(os.path.abspath('..'))
-file = open('/Users/artem/Documents/task/group_1.txt', 'r', encoding='UTF-8')
+group_1 = open('/Users/artem/Documents/task/group_1.txt', 'r', encoding='UTF-8')
+group_2 = open('/Users/artem/Documents/task/Additional_info/group_2.txt', 'r', encoding='UTF-8')
 
-for i_line in file:
+for i_line in group_1:
+    print(i_line)
+
+for i_line in group_2:
     print(i_line)
 
 
