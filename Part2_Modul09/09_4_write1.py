@@ -26,11 +26,15 @@ def find_dir(cur_path, folder):
             if result:
                 return result
         
-        
 
+way = find_dir('..', 'Part2_Modul09')
 
+if way:
+    path = os.path.abspath(way)
+    print(path)
+    numbers_file = open(os.path.join(path, 'numbers.txt'), 'w')
+    
 
-path = os.path.abspath(find_dir('..', 'Part2_Modul09'))
-print(path)
+else:
+    print('NO Directory!!!')
 
-# numbers_file = open('numbers.txt', 'w')
