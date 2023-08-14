@@ -16,15 +16,21 @@
 
 import os
 
-def find_path(cur_path, name):
-    for i_elem in os.listdir(cur_path):
-        search_path = os.path.join(cur_path, i_elem)
-        if i_elem == name:
-            return search_path
+def find_dir(cur_path, folder):
+    for i_dir in os.listdir(cur_path):
+        find_path = os.path.join(cur_path, i_dir)
+        if i_dir == folder:
+            return find_path
+        elif os.path.isdir(find_path):
+            result = find_dir(find_path, folder)
+            if result:
+                return result
+        
+        
 
 
-path = find_path('', 'Part2_Modul09')
 
+path = os.path.abspath(find_dir('..', 'Part2_Modul09'))
 print(path)
 
 # numbers_file = open('numbers.txt', 'w')
