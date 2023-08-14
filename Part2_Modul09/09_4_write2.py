@@ -51,11 +51,20 @@
 
 import os
 
-def find_file(cur_path, ending):
+def find_file(cur_path, starting, ending):
     all_paths = list()
 
     for i_elem in os.listdir(cur_path):
-        
+        path = os.path.join(cur_path, i_elem)
+        if i_elem.startswith(starting) and i_elem.endswith(ending):
+            all_paths.append(os.path.abspath(path))
+        elif os.path.isdir(path):
+            result = find_file(path, starting, ending)
+            if result:
+                all_paths.extend(result)
 
+    return all_paths
+# находим пути к необходимым файлам и складываем их в all_paths
 
-all_py_files = find_file('..', '.py')
+all_py_files = find_file('..', '09_1', '.py')
+print(all_py_files)
