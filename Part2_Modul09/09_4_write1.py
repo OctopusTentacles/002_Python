@@ -45,6 +45,19 @@ if way:
         print(line, end='')
     numbers_file.close()
 
+    answer_file = open(os.path.join(path, 'answer.txt'), 'w', encoding='utf8')
+    answer_file.write(str(numbers_sum))
+    answer_file.close()
+
+    print('\nСодержимое файла answer.txt:')
+    answer_file = open(os.path.join(path, 'answer.txt'), 'r', encoding='utf8')
+    for line in answer_file:
+        print(line, end='')
+    answer_file.close()
+
+
+
+
 else:
     print('NO Directory!!!')
 
