@@ -32,8 +32,18 @@ way = find_dir('..', 'Part2_Modul09')
 if way:
     path = os.path.abspath(way)
     print(path)
-    numbers_file = open(os.path.join(path, 'numbers.txt'), 'w')
-    
+
+    numbers_sum = 0
+    numbers_file = open(os.path.join(path, 'numbers.txt'), 'w', encoding='utf8')
+    numbers_file.write(str('1 \n2 \n3 \n4 \n10'))
+    numbers_file.close()
+
+    print('Содержимое файла numbers.txt:')
+    numbers_file = open(os.path.join(path, 'numbers.txt'), 'r', encoding='utf8')
+    for line in numbers_file:
+        numbers_sum += int(line)
+        print(line, end='')
+    numbers_file.close()
 
 else:
     print('NO Directory!!!')
