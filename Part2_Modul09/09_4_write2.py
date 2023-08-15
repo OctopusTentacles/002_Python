@@ -66,6 +66,17 @@ def find_file(cur_path, starting, ending):
     return all_paths
 # находим пути к необходимым файлам и складываем их в all_paths
 
+def get_text_from_file(path_to_file):
+    file = open(path_to_file, 'r', encoding='utf8')
+
+    result = ''
+    for line in file:
+        result += line
+    return result
+# передаем в функцию путь к файлу из all_py_files
+# открываем файл и копируем каждую строку из файла в result
+
+
 
 all_py_files = find_file('..', '09_1', '.py')
 print(all_py_files)
@@ -74,3 +85,9 @@ file_result = open(os.path.join(all_py_files[0], '../', 'scripts.txt'),
                    'w', encoding='utf8')
 # создаем и открываем для записи файл по одному из путей из all_py_files
 # с возвратом на одну ступень
+
+for file_path in all_py_files:
+    file_result.write(get_text_from_file(file_path))
+    file_result.write('\n'*2 + '*'*40 + '\n'*2)
+# прописываем result из функции  get_text_from_file в файл scripts.txt
+# и делаем разрыв из символов *
