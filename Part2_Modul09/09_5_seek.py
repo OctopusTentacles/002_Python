@@ -4,7 +4,9 @@ import os
 
 path = os.getcwd()
 
-speakers_file = open(os.path.join(path,'Part2_Modul09\speakers.txt'), 'r', encoding='utf-8')
+speakers_file = open(os.path.join(path,'Part2_Modul09', 'speakers.txt'), 'r', encoding='utf-8')
+# на windows \, на macOS / - поэтому написал раздельно через запятую
+
 data = speakers_file.read(12)
 data2 = speakers_file.read(8)
 # read(20) перемещает курсор по файлу, 
