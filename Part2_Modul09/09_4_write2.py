@@ -66,5 +66,11 @@ def find_file(cur_path, starting, ending):
     return all_paths
 # находим пути к необходимым файлам и складываем их в all_paths
 
+
 all_py_files = find_file('..', '09_1', '.py')
 print(all_py_files)
+
+file_result = open(os.path.join(all_py_files[0], '../', 'scripts.txt'), 
+                   'w', encoding='utf8')
+# создаем и открываем для записи файл по одному из путей из all_py_files
+# с возвратом на одну ступень
