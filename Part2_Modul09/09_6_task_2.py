@@ -38,3 +38,4 @@ path = find_dir('..', 'zen.txt')
 zen_file = open(path, 'r', encoding='utf8')
 zen_list = [i_line for i_line in zen_file]
 print(*zen_list[::-1])
+# * - распаковывает объект в отдельные элементы
