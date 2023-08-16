@@ -16,3 +16,27 @@
 
 import os
 
+def find_dir(cur_puth, file):
+    for i_dir in os.listdir(cur_puth):
+        find_path = os.path.join(cur_puth, i_dir)
+        if i_dir == file:
+            return find_path
+        elif os.path.isdir(find_path):
+            result = find_dir(find_path, file)
+            if result:
+                return result
+
+
+way = os.path.abspath(find_dir('..', 'Part2_Modul09'))
+# для работы в определенной директории, 
+# это не по ТЗ, но мне так удобнее, 
+# что бы относящиеся друг к другу файлы были в одном месте
+
+if way:
+
+
+
+else:
+    print('NO such Directory!')
+
+
