@@ -13,6 +13,7 @@
 
 # Содержимое файла answer.txt
 # 8
+# ____________________________________________________________________________
 
 import os
 
@@ -30,7 +31,7 @@ def find_dir(cur_puth, file):
 way = os.path.abspath(find_dir('..', 'Part2_Modul09'))
 # для работы в определенной директории, 
 # это не по ТЗ, но мне так удобнее, 
-# что бы относящиеся друг к другу файлы были в одном месте
+# что бы сопутствующие файлы были в одном месте
 
 if way:
     numbers_sum = 0
@@ -47,6 +48,10 @@ if way:
     for line in numbers_file:
         numbers_sum += int(line.strip())
     numbers_file.close()
+
+    answer_file = open(os.path.join(way, 'answer.txt'), 'w', encoding='utf8')
+    answer_file.write(str(numbers_sum))
+    answer_file.close()
 
 
 else:
