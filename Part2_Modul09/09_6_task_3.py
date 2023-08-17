@@ -17,5 +17,20 @@
 
 import os
 
+
+def dir_size(cur_path):
+    file_amt = 0
+    dir_amt = 0
+
+    if os.path.isdir():
+
+
 dir = os.path.dirname(__file__)
+dir_size(dir)
 print(dir)
+
+
+
+print('Размер каталога (в Кбайтах):')
+print('Количество подкаталогов:')
+print('Количество файлов:')
