@@ -1,0 +1,10 @@
+    for i_dir in os.listdir(cur_path):
+        find_path = os.path.join(cur_path, i_dir)
+        if os.path.isfile(find_path):
+            file_amt += 1
+            files_size.append(os.path.getsize(find_path))
+
+        elif os.path.isdir(find_path):
+            dir_amt += 1
+            dir_size(find_path)
+                

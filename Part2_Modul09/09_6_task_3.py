@@ -18,34 +18,28 @@
 import os
 
 
-def dir_size(cur_path):
-    files_size = list()
-    file_amt = 0
-    dir_amt = 0
+def properties(cur_path):
 
     for i_dir in os.listdir(cur_path):
         find_path = os.path.join(cur_path, i_dir)
+
         if os.path.isfile(find_path):
-            file_amt += 1
+            file_amt.append(1)
             files_size.append(os.path.getsize(find_path))
 
         elif os.path.isdir(find_path):
-            dir_amt += 1
-            result = dir_size(find_path)
-            if result:
-                return result
+            dir_amt.append(1)
+            properties(find_path)
+            
     
-    
-    print('Размер каталога (в Кбайтах):', files_size)
-    print('Размер каталога (в Кбайтах):', sum(files_size) / 1024)
-
-    print('Количество подкаталогов:', dir_amt)
-    print('Количество файлов:', file_amt)
-
-
-
 dir = os.path.dirname(__file__)
-dir_size(dir)
+files_size = list()
+file_amt = list()
+dir_amt = list()
 
 
-
+properties(dir)
+print(dir)
+print('Размер каталога (в Кбайтах):', sum(files_size) / 1024)
+print('Количество подкаталогов:', sum(dir_amt))
+print('Количество файлов:', sum(file_amt))
