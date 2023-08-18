@@ -63,7 +63,6 @@ def read_file(cur_path):
 # получаются пробелы и убрать их не смог. lstrip() никуда не встает )))
 
 
-
 def quick_sort(data):
     if not data:
         return data
@@ -76,19 +75,18 @@ def quick_sort(data):
     return quick_sort(high_main) + equal_main + quick_sort(low_main)
 
 
-
 def write_file(cur_path, file_name, content):
     sort_content = quick_sort(content)
 
-    
     w_file = open(os.path.join(cur_path, file_name), 'w', encoding='utf8')
     w_file.write(str(len(sort_content)) + '\n')
 
     for key, value in enumerate(sort_content):
-        w_file.write(str(key + 1) + ') ' + value[1][:1] + str(value[0]) + str(value[2]) + '\n')
+        w_file.write(f'{str(key + 1)}) {value[1][:1]}. {value[0]} {value[2]} \n')
+    
+    w_file.close
 
-
-# start_________________________________________________________________________
+# main_________________________________________________________________________
 first_tour_file = find_file('..', 'first_tour.txt')
 work_dir, file_name_1 = os.path.split(first_tour_file)
 
