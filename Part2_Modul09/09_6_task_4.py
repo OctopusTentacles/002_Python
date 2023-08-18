@@ -40,5 +40,21 @@ def find_file(cur_path, file_name):
                 return result
             
 
+def read_file(cur_path):
+    r_file = open(cur_path, 'r', encoding='utf8')
+    for i_line in r_file:
+        print(i_line, end='')
+
+
+
+
+# # With...as обрабатывает открытие/закрытие ресурсов; закрывает 
+# # автоматически часть приложения, с которой больше не нужно работать
+#     with open(cur_path) as read_file:
+
+
+
 first_tour_file = find_file('..', 'first_tour.txt')
 print(first_tour_file)
+
+read_file(first_tour_file)
