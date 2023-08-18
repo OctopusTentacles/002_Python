@@ -27,7 +27,9 @@
 # 1) V. Petrov 98
 # 2) P. Sergeev 92
 
+
 import os
+
 
 def find_file(cur_path, file_name):
     for i_dir in os.listdir(cur_path):
@@ -41,21 +43,35 @@ def find_file(cur_path, file_name):
             
 
 def read_file(cur_path):
-    # r_file = open(cur_path, 'r', encoding='utf8')
-    # for i_line in r_file:
-    #     print(i_line, end='')
-    # r_file.close
+    file_content = list()
 
+    r_file = open(cur_path, 'r', encoding='utf8')
+    for i_line in r_file:
+        file_content.append(i_line)
+        print(i_line, end='')
+    r_file.close
+    return file_content
 # With...as обрабатывает открытие/закрытие ресурсов; закрывает 
 # автоматически часть приложения, с которой больше не нужно работать
-    with open(cur_path) as r_file:
-        for i in r_file.readlines(): # прочитать все строки (list)
-            print(i, end='')
-# хотел сделать красиво - print(*r_file.readlines()), но слева
+    # with open(cur_path) as r_file:
+    #     for i_line in r_file.readlines(): # прочитать все строки (list)
+    #         print(i_line, end='')
+# хотел сделать красиво - print(*r_file.readlines()) без цикла, но слева
 # получаются пробелы и убрать их не смог. lstrip() никуда не встает )))
 
 
-first_tour_file = find_file('..', 'first_tour.txt')
-print(first_tour_file)
+def write_file(cur_path, file_name, content):
+    w_file = open(os.path.join(cur_path, file_name), 'w', encoding='utf8')
+    w_file.write(str(content))
 
-read_file(first_tour_file)
+
+
+first_tour_file = find_file('..', 'first_tour.txt')
+work_dir, file_dir = os.path.split(first_tour_file)
+print(work_dir)
+
+print('Содержимое файла first_tour.txt:')
+content = read_file(first_tour_file)
+
+print('Содержимое файла second_tour.txt:')
+write_file(work_dir, 'second_tour.txt', content)
