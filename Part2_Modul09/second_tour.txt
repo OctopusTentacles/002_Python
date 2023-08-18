@@ -1,1 +1,1 @@
-['80\n', 'Ivanov Serg 80\n', 'Sergeev Petr 92\n', 'Petrov Vasiliy 98\n', 'Vasiliev Maxim 78\n']
+[['Ivanov', 'Serg', '80'], ['Sergeev', 'Petr', '92'], ['Petrov', 'Vasiliy', '98'], ['Vasiliev', 'Maxim', '78']]
