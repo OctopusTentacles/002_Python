@@ -80,11 +80,12 @@ def quick_sort(data):
 def write_file(cur_path, file_name, content):
     sort_content = quick_sort(content)
 
+    
     w_file = open(os.path.join(cur_path, file_name), 'w', encoding='utf8')
     w_file.write(str(len(sort_content)) + '\n')
 
     for key, value in enumerate(sort_content):
-        w_file.write(str(key + 1) + ') ' + str(value) + '\n')
+        w_file.write(str(key + 1) + ') ' + value[1][:1] + str(value[0]) + str(value[2]) + '\n')
 
 
 # start_________________________________________________________________________
@@ -94,9 +95,10 @@ work_dir, file_name_1 = os.path.split(first_tour_file)
 
 print('\nСодержимое файла first_tour.txt:')
 content, rise_limit = read_file(first_tour_file)
-
+print(content, rise_limit)
 
 rise_limit = (rise_limit.pop())
+print(rise_limit)
 new_content = [value 
                for _, value in enumerate(content) 
                if int(rise_limit[0]) < int(value[-1])]
