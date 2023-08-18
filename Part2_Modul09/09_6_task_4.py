@@ -47,10 +47,13 @@ def read_file(cur_path):
 
     r_file = open(cur_path, 'r', encoding='utf8')
     for i_line in r_file:
-        file_content.append(i_line)
+
+        line = i_line.split()
+        file_content.append(line)
         print(i_line, end='')
     r_file.close
-    return file_content
+    
+    return file_content[1:], file_content[:1]
 # With...as обрабатывает открытие/закрытие ресурсов; закрывает 
 # автоматически часть приложения, с которой больше не нужно работать
     # with open(cur_path) as r_file:
@@ -67,11 +70,16 @@ def write_file(cur_path, file_name, content):
 
 
 first_tour_file = find_file('..', 'first_tour.txt')
-work_dir, file_dir = os.path.split(first_tour_file)
-print(work_dir)
+work_dir, file_name_1 = os.path.split(first_tour_file)
 
-print('Содержимое файла first_tour.txt:')
-content = read_file(first_tour_file)
 
-print('Содержимое файла second_tour.txt:')
+print('\nСодержимое файла first_tour.txt:')
+content, rise_limit = read_file(first_tour_file)
+
+
+# new_content = [value for _, value in enumerate(content) if int(*rise_limit) < int(*value[-1])]
+# print('winners',new_content)
+
+
+print('\nСодержимое файла second_tour.txt:')
 write_file(work_dir, 'second_tour.txt', content)
