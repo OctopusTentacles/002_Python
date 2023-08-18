@@ -50,7 +50,7 @@ def read_file(cur_path):
 
         line = i_line.split()
         file_content.append(line)
-        print(i_line, end='')
+
     r_file.close
     
     return file_content[1:], file_content[:1]
@@ -86,21 +86,26 @@ def write_file(cur_path, file_name, content):
     
     w_file.close
 
+
 # main_________________________________________________________________________
 first_tour_file = find_file('..', 'first_tour.txt')
 work_dir, file_name_1 = os.path.split(first_tour_file)
 
 
-print('\nСодержимое файла first_tour.txt:')
 content, rise_limit = read_file(first_tour_file)
-print(content, rise_limit)
 
 rise_limit = (rise_limit.pop())
-print(rise_limit)
 new_content = [value 
                for _, value in enumerate(content) 
                if int(rise_limit[0]) < int(value[-1])]
 
 
-print('\nСодержимое файла second_tour.txt:')
 write_file(work_dir, 'second_tour.txt', new_content)
+
+# ух, классная задача, понравилось
+# но написал я тут - будь здоров, как-то запутанно
+
+# w_file.write(f'{str(key + 1)}) {value[1][:1]}. {value[0]} {value[2]} \n')
+# в этом месте завис я надолго, не мог убрать[]
+
+# почему в second_tour.txt скобочка прописывается красная?
