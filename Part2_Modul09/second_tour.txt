@@ -1,1 +1,3 @@
-[['Ivanov', 'Serg', '80'], ['Sergeev', 'Petr', '92'], ['Petrov', 'Vasiliy', '98'], ['Vasiliev', 'Maxim', '78']]
+2
+1)['Sergeev', 'Petr', '92']
+2)['Petrov', 'Vasiliy', '98']

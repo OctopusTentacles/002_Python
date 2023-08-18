@@ -65,7 +65,10 @@ def read_file(cur_path):
 
 def write_file(cur_path, file_name, content):
     w_file = open(os.path.join(cur_path, file_name), 'w', encoding='utf8')
-    w_file.write(str(content))
+    w_file.write(str(len(content)) + '\n')
+
+    for key, value in enumerate(content):
+        w_file.write(str(key + 1) + ')' + str(value) + '\n')
 
 
 
@@ -77,9 +80,9 @@ print('\nСодержимое файла first_tour.txt:')
 content, rise_limit = read_file(first_tour_file)
 
 
-# new_content = [value for _, value in enumerate(content) if int(*rise_limit) < int(*value[-1])]
-# print('winners',new_content)
+rise_limit = (rise_limit.pop())
+new_content = [value for _, value in enumerate(content) if int(rise_limit[0]) < int(value[-1])]
 
 
 print('\nСодержимое файла second_tour.txt:')
-write_file(work_dir, 'second_tour.txt', content)
+write_file(work_dir, 'second_tour.txt', new_content)
