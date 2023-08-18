@@ -63,15 +63,31 @@ def read_file(cur_path):
 # получаются пробелы и убрать их не смог. lstrip() никуда не встает )))
 
 
+
+def quick_sort(data):
+    if not data:
+        return data
+    main_elem = int(data[-1][-1])
+
+    low_main = [elem for _, elem in enumerate(data) if int(elem[-1]) < main_elem]
+    equal_main = [elem for _, elem in enumerate(data) if int(elem[-1]) == main_elem]
+    high_main = [elem for _, elem in enumerate(data) if int(elem[-1]) > main_elem]
+
+    return quick_sort(high_main) + equal_main + quick_sort(low_main)
+
+
+
 def write_file(cur_path, file_name, content):
+    sort_content = quick_sort(content)
+
     w_file = open(os.path.join(cur_path, file_name), 'w', encoding='utf8')
-    w_file.write(str(len(content)) + '\n')
+    w_file.write(str(len(sort_content)) + '\n')
 
-    for key, value in enumerate(content):
-        w_file.write(str(key + 1) + ')' + str(value) + '\n')
+    for key, value in enumerate(sort_content):
+        w_file.write(str(key + 1) + ') ' + str(value) + '\n')
 
 
-
+# start_________________________________________________________________________
 first_tour_file = find_file('..', 'first_tour.txt')
 work_dir, file_name_1 = os.path.split(first_tour_file)
 
@@ -81,7 +97,9 @@ content, rise_limit = read_file(first_tour_file)
 
 
 rise_limit = (rise_limit.pop())
-new_content = [value for _, value in enumerate(content) if int(rise_limit[0]) < int(value[-1])]
+new_content = [value 
+               for _, value in enumerate(content) 
+               if int(rise_limit[0]) < int(value[-1])]
 
 
 print('\nСодержимое файла second_tour.txt:')
