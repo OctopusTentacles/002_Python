@@ -41,17 +41,18 @@ def find_file(cur_path, file_name):
             
 
 def read_file(cur_path):
-    r_file = open(cur_path, 'r', encoding='utf8')
-    for i_line in r_file:
-        print(i_line, end='')
+    # r_file = open(cur_path, 'r', encoding='utf8')
+    # for i_line in r_file:
+    #     print(i_line, end='')
+    # r_file.close
 
-
-
-
-# # With...as обрабатывает открытие/закрытие ресурсов; закрывает 
-# # автоматически часть приложения, с которой больше не нужно работать
-#     with open(cur_path) as read_file:
-
+# With...as обрабатывает открытие/закрытие ресурсов; закрывает 
+# автоматически часть приложения, с которой больше не нужно работать
+    with open(cur_path) as r_file:
+        for i in r_file.readlines(): # прочитать все строки (list)
+            print(i, end='')
+# хотел сделать красиво - print(*r_file.readlines()), но слева
+# получаются пробелы и убрать их не смог. lstrip() никуда не встает )))
 
 
 first_tour_file = find_file('..', 'first_tour.txt')
