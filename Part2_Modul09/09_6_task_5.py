@@ -31,7 +31,7 @@ def new_file(cur_dir, file_name):
     created_file.close()
 
     count = 0
-   
+    # считаем символы и готовим словарь для анализа    
     created_file = open(os.path.join(cur_dir, file_name), 'r', encoding='utf8')
     for i_line in created_file:
         for sym in i_line.lower():
@@ -47,8 +47,9 @@ def new_file(cur_dir, file_name):
         dict_sym[key] = round(value / count, 3)
 
     
+    
 
-
+# main_________________________________________________________________
 alfabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 dict_sym = dict()
 sorted_dict = dict()
@@ -57,11 +58,15 @@ sorted_dict = dict()
 files_dir = os.path.dirname(__file__)
 new_file(files_dir, 'text.txt')
 
+# сортируем по ключам
 dict_sym = dict(sorted(dict_sym.items()))
-sorted_values = sorted(dict_sym.values(), reverse=True)
 print(dict_sym)
+
+# список сортированных значений
+sorted_values = sorted(dict_sym.values(), reverse=True)
 print(sorted_values)
 
+# получаем сортированный словарь по значениям и ключам по порядку
 for item in sorted_values:
     for key in dict_sym.keys():
         if dict_sym[key] == item:
