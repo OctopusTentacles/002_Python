@@ -24,3 +24,16 @@
 
 import os
 
+
+def new_file(cur_dir, file_name):
+    created_file = open(os.path.join(cur_dir, file_name), 'w', encoding='utf8')
+    created_file.write('Mama myla ramu.')
+    created_file.close()
+
+
+files_dir = os.path.dirname(__file__)
+new_file(files_dir, 'text.txt')
+
+
+
+print(files_dir)
