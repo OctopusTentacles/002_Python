@@ -46,6 +46,11 @@ def new_file(cur_dir, file_name):
     for key, value in dict_sym.items():
         dict_sym[key] = round(value / count, 3)
 
+
+def write_file(cur_dir, file_name, content):
+    w_file = open(os.path.join(cur_dir, file_name), 'w', encoding='utf8')
+    for key, value in content.items():
+        w_file.write(str(key, str(value)))
     
     
 
@@ -74,3 +79,4 @@ for item in sorted_values:
 print(sorted_dict)
 
 
+write_file(files_dir, 'analysis.txt', sorted_dict)
