@@ -30,6 +30,24 @@ def new_file(cur_dir, file_name):
     created_file.write('Mama myla ramu.')
     created_file.close()
 
+    count = 0
+    dict_sym = dict()
+    created_file = open(os.path.join(cur_dir, file_name), 'r', encoding='utf8')
+    for i_line in created_file:
+        for sym in i_line:
+            if sym in alfabet:
+                count += 1
+                if sym in dict_sym.keys():
+                    dict_sym[sym] += 1
+                else:
+                    dict_sym[sym] = 1
+    print(dict_sym)
+
+
+
+
+
+alfabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 
 files_dir = os.path.dirname(__file__)
 new_file(files_dir, 'text.txt')
