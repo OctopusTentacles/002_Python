@@ -42,19 +42,30 @@ def new_file(cur_dir, file_name):
                 else:
                     dict_sym[sym] = 1
     print(dict_sym)
-
+    dict_sym
     for key, value in dict_sym.items():
         dict_sym[key] = round(value / count, 3)
-    print(dict_sym)
 
+    
 
 
 alfabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 dict_sym = dict()
+sorted_dict = dict()
+
 
 files_dir = os.path.dirname(__file__)
 new_file(files_dir, 'text.txt')
 
+dict_sym = dict(sorted(dict_sym.items()))
+sorted_values = sorted(dict_sym.values(), reverse=True)
+print(dict_sym)
+print(sorted_values)
+
+for item in sorted_values:
+    for key in dict_sym.keys():
+        if dict_sym[key] == item:
+            sorted_dict[key] = dict_sym[key]
+print(sorted_dict)
 
 
-print(files_dir)
