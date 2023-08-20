@@ -23,8 +23,8 @@ def read_file(cur_dir, file_name):
 
 
 # MAIN_CODE==========================================================
-# chr(1072 1103) - rus  chr(1040 1071) - RUS 
-# chr(97 122) - eng     chr(65 90) - ENG 
+# chr(1040 1071) - RUS  chr(1072 1103) - rus 
+# chr(65 90) - ENG      chr(97 122) - eng 
 # alphabet_ru = ''.join(chr(i) for i in range(1040, 1104))
 # print(alphabet_ru)
 
@@ -32,8 +32,8 @@ current_directory = os.path.dirname(__file__)
 print(current_directory)
 
 
-# with zipfile.ZipFile('voina-i-mir.zip', 'r') as zf:
-#     zf.extractall('voina-i-mir.txt')
+with zipfile.ZipFile((os.path.join(current_directory, 'voina-i-mir.zip')), 'r') as zf:
+    zf.extractall('voina-i-mir.txt')
 
 
 read_file(current_directory, 'second_tour.txt')
