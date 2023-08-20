@@ -25,7 +25,8 @@ def read_file(cur_dir, file_name):
 # MAIN_CODE==========================================================
 # chr(1072 1103) - rus  chr(1040 1071) - RUS 
 # chr(97 122) - eng     chr(65 90) - ENG 
-
+# alphabet_ru = ''.join(chr(i) for i in range(1040, 1104))
+# print(alphabet_ru)
 
 current_directory = os.path.dirname(__file__)
 print(current_directory)
