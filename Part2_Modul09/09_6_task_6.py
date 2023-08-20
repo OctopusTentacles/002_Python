@@ -13,3 +13,15 @@
 
 
 import os
+import zipfile
+
+
+def read_file():
+
+
+
+current_directory = os.path.dirname(__file__)
+print(current_directory)
+
+with zipfile.ZipFile('voina-i-mir.zip', 'r') as zf:
+    zf.extractall('voina-i-mir.txt')
