@@ -25,9 +25,9 @@
 import os
 
 
-def new_file(cur_dir, file_name):
+def new_file(cur_dir, file_name, content):
     created_file = open(os.path.join(cur_dir, file_name), 'w', encoding='utf8')
-    created_file.write('Mama myla ramu.')
+    created_file.write(content)
     created_file.close()
 
     count = 0
@@ -44,34 +44,33 @@ def new_file(cur_dir, file_name):
     # print(dict_sym)
     for key, value in dict_sym.items():
         dict_sym[key] = round(value / count, 3)
+    created_file.close()
 
 
-def sort_dict(dict_sym):
+def sort_dict(dict_symbol):
     # сортируем по ключам
-    dict_sym = dict(sorted(dict_sym.items()))
+    dict_symbol = dict(sorted(dict_symbol.items()))
     # print(dict_sym)
 
-    # список сортированных значений
-    sorted_values = sorted(dict_sym.values(), reverse=True)
+    # сортируем по значениям в список и переворачиваем
+    sorted_values = sorted(dict_symbol.values(), reverse=True)
     # print(sorted_values)
 
     # получаем сортированный словарь по значениям и ключам по порядку
     for item in sorted_values:
-        for key in dict_sym.keys():
-            if dict_sym[key] == item:
-                sorted_dict[key] = dict_sym[key]
+        for key in dict_symbol.keys():
+            if dict_symbol[key] == item:
+                sorted_dict[key] = dict_symbol[key]
     
     
-
-
 def write_file(cur_dir, file_name, content):
     w_file = open(os.path.join(cur_dir, file_name), 'w', encoding='utf8')
     for key, value in content.items():
         w_file.write(f'{key} {value}\n')
+    w_file.close()
     
     
-
-# main_________________________________________________________________
+# main__________________________________________________________
 alfabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 dict_sym = dict()
 sorted_dict = dict()
@@ -79,9 +78,9 @@ sorted_dict = dict()
 
 files_dir = os.path.dirname(__file__)
 # print(files_dir)
-new_file(files_dir, 'text.txt')
+new_file(files_dir, 'text.txt', 'Mama myla ramu.')
 
 
 sort_dict(dict_sym)
-print(sorted_dict)
+# print(sorted_dict)
 write_file(files_dir, 'analysis.txt', sorted_dict)
