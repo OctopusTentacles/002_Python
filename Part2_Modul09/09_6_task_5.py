@@ -41,16 +41,33 @@ def new_file(cur_dir, file_name):
                     dict_sym[sym] += 1
                 else:
                     dict_sym[sym] = 1
-    print(dict_sym)
-    dict_sym
+    # print(dict_sym)
     for key, value in dict_sym.items():
         dict_sym[key] = round(value / count, 3)
+
+
+def sort_dict(dict_sym):
+    # сортируем по ключам
+    dict_sym = dict(sorted(dict_sym.items()))
+    # print(dict_sym)
+
+    # список сортированных значений
+    sorted_values = sorted(dict_sym.values(), reverse=True)
+    # print(sorted_values)
+
+    # получаем сортированный словарь по значениям и ключам по порядку
+    for item in sorted_values:
+        for key in dict_sym.keys():
+            if dict_sym[key] == item:
+                sorted_dict[key] = dict_sym[key]
+    
+    
 
 
 def write_file(cur_dir, file_name, content):
     w_file = open(os.path.join(cur_dir, file_name), 'w', encoding='utf8')
     for key, value in content.items():
-        w_file.write(str(key, str(value)))
+        w_file.write(f'{key} {value}\n')
     
     
 
@@ -61,22 +78,10 @@ sorted_dict = dict()
 
 
 files_dir = os.path.dirname(__file__)
+# print(files_dir)
 new_file(files_dir, 'text.txt')
 
-# сортируем по ключам
-dict_sym = dict(sorted(dict_sym.items()))
-print(dict_sym)
 
-# список сортированных значений
-sorted_values = sorted(dict_sym.values(), reverse=True)
-print(sorted_values)
-
-# получаем сортированный словарь по значениям и ключам по порядку
-for item in sorted_values:
-    for key in dict_sym.keys():
-        if dict_sym[key] == item:
-            sorted_dict[key] = dict_sym[key]
+sort_dict(dict_sym)
 print(sorted_dict)
-
-
 write_file(files_dir, 'analysis.txt', sorted_dict)
