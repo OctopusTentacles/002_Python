@@ -22,6 +22,11 @@ def read_file(cur_dir, file_name):
     print(file_list)
 
 
+def extract(cur_dir, end_name):
+    for i_elem in os.path.listdir(current_directory):
+        
+
+
 # MAIN_CODE==========================================================
 # chr(1040 1071) - RUS  chr(1072 1103) - rus 
 # chr(65 90) - ENG      chr(97 122) - eng 
@@ -31,9 +36,9 @@ def read_file(cur_dir, file_name):
 current_directory = os.path.dirname(__file__)
 print(current_directory)
 
-
-with zipfile.ZipFile((os.path.join(current_directory, 'voina-i-mir.zip')), 'r') as zf:
-    zf.extractall('voina-i-mir.txt')
+# распаковываем архив zip 
+with zipfile.ZipFile(os.path.join(current_directory, 'voyna-i-mir.zip'), 'r') as zf:
+    zf.extractall(current_directory)
 
 
 read_file(current_directory, 'second_tour.txt')
