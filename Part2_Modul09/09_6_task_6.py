@@ -18,13 +18,26 @@ import zipfile
 
 def read_file(cur_dir, file_name):
     with open(os.path.join(cur_dir, file_name), 'r') as read_file:
-        file_list = read_file.readlines()
-    print(file_list)
+        for i_line in read_file.readlines():
+            for i_sym in i_line:
+
+                if (64 < ord(i_sym) < 91) or (96 < ord(i_sym) < 123) or \
+                    1039 < ord(i_sym) < 123:
+
+                    if i_sym in dict_symbol.keys():
+                        dict_symbol[i_sym] += 1
+                    else:
+                        dict_symbol[i_sym] = 1
+            
+        print(dict_symbol)
 
 
-def extract(cur_dir, end_name):
-    for i_elem in os.path.listdir(current_directory):
-        
+def extract(cur_dir, ending_name):
+    for i_elem in os.listdir(cur_dir):
+        if i_elem.endswith(ending_name):
+            with zipfile.ZipFile(os.path.join(cur_dir, i_elem), 'r') as zf:
+                zf.extractall(cur_dir)
+
 
 
 # MAIN_CODE==========================================================
@@ -33,13 +46,17 @@ def extract(cur_dir, end_name):
 # alphabet_ru = ''.join(chr(i) for i in range(1040, 1104))
 # print(alphabet_ru)
 
+dict_symbol = dict()
+
+# текущая директория
 current_directory = os.path.dirname(__file__)
 print(current_directory)
 
+
 # распаковываем архив zip 
-with zipfile.ZipFile(os.path.join(current_directory, 'voyna-i-mir.zip'), 'r') as zf:
-    zf.extractall(current_directory)
+extract(current_directory, '.zip')
 
 
-read_file(current_directory, 'second_tour.txt')
+
+read_file(current_directory, 'first_tour.txt')
 
