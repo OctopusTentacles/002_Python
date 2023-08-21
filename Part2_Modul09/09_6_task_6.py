@@ -30,8 +30,8 @@ def read_file(cur_dir, file_name):
                         dict_symbol[i_sym] += 1
                     else:
                         dict_symbol[i_sym] = 1
-        print(count) 
-        print(dict_symbol)
+        print('Количество букв в файле:', count) 
+        # print(dict_symbol)
         # for key, value in dict_symbol.items():
         #     dict_symbol[key] = round(value / count, 2)
         # print(dict_symbol)
@@ -53,14 +53,13 @@ def sort_dict(sorting_dict):
         for key in sorting_dict.keys():
             if sorting_dict[key] == item:
                 sorted_dict[key] = item
-    print(sorted_dict)
+    # print(sorted_dict)
 
 
 def write_file(cur_dir, content, file_name):
     with open(os.path.join(cur_dir, file_name), 'w', encoding='utf8') as write_file:
         for key, value in content.items():
-            write_file.write(f'{key} {value}')
-
+            write_file.write(f'{key}\t{value}\n')
 
 
 # MAIN_CODE==========================================================
@@ -76,10 +75,10 @@ sorted_dict = dict()
 current_directory = os.path.dirname(__file__)
 print(current_directory)
 
-# распаковываем архив zip 
+# распаковать архив zip 
 extract(current_directory, '.zip')
 
-# читаем распакованный файл и тамже заполняем словарь символами
+# прочитать распакованный файл и заполнить словарь символами
 read_file(current_directory, 'voyna-i-mir.txt')
 
 # полученный словарь нужно отсортировать
