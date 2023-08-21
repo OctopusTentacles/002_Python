@@ -30,7 +30,7 @@ def read_file(cur_dir, file_name):
                         dict_symbol[i_sym] += 1
                     else:
                         dict_symbol[i_sym] = 1
-        print('Количество букв в файле:', count) 
+        print(f'Количество букв в файле: {count:,}'.replace(',', ' '))
         # print(dict_symbol)
         # for key, value in dict_symbol.items():
         #     dict_symbol[key] = round(value / count, 2)
