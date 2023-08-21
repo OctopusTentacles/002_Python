@@ -17,13 +17,13 @@ import zipfile
 
 
 def read_file(cur_dir, file_name):
-    count = 0
+    count = 0 # просто интересно
     with open(os.path.join(cur_dir, file_name), 'r', encoding='utf8') as read_file:
         for i_line in read_file.readlines():
             for i_sym in i_line:
-
+                # если символ - буква, то добавляем в слварь и считаем кол-во
                 if (64 < ord(i_sym) < 91) or (96 < ord(i_sym) < 123) or \
-                    (1039 < ord(i_sym) < 1103) or (ord(i_sym) == 1025) or (ord(i_sym) == 1105):
+                    (1039 < ord(i_sym) < 1104) or (ord(i_sym) == 1025) or (ord(i_sym) == 1105):
                     count += 1
 
                     if i_sym in dict_symbol.keys():
@@ -37,12 +37,24 @@ def read_file(cur_dir, file_name):
         # print(dict_symbol)
 
 
-
 def extract(cur_dir, ending_name):
     for i_elem in os.listdir(cur_dir):
         if i_elem.endswith(ending_name):
             with zipfile.ZipFile(os.path.join(cur_dir, i_elem), 'r') as zf:
                 zf.extractall(cur_dir)
+
+
+def sort_dict(sorting_dict):
+    # сортируем по значениям в список и переворачиваем
+    sorted_values = sorted(sorting_dict.values(), reverse=True)
+
+    # сортируем словарь по значению от большего к меньшему
+    for item in sorted_values:
+        for key in sorting_dict.keys():
+            if sorting_dict[key] == item:
+                sorted_dict[key] = item
+    print(sorted_dict)
+
 
 
 
@@ -53,16 +65,20 @@ def extract(cur_dir, ending_name):
 # print(alphabet_ru)
 
 dict_symbol = dict()
+sorted_dict = dict()
 
 # текущая директория
 current_directory = os.path.dirname(__file__)
 print(current_directory)
 
-
 # распаковываем архив zip 
 extract(current_directory, '.zip')
 
-
-
+# читаем распакованный файл и тамже заполняем словарь символами
 read_file(current_directory, 'voyna-i-mir.txt')
 
+# полученный словарь нужно отсортировать
+sort_dict(dict_symbol)
+
+# записываем результат в файл 'voyna-result.txt'
+write_file(current_directory, sorted_dict, 'voyna-result.txt')
