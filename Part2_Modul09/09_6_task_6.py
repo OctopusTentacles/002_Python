@@ -23,7 +23,7 @@ def read_file(cur_dir, file_name):
             for i_sym in i_line:
 
                 if (64 < ord(i_sym) < 91) or (96 < ord(i_sym) < 123) or \
-                    (1039 < ord(i_sym) < 1103):
+                    (1039 < ord(i_sym) < 1103) or (ord(i_sym) == 1025) or (ord(i_sym) == 1105):
                     count += 1
 
                     if i_sym in dict_symbol.keys():
