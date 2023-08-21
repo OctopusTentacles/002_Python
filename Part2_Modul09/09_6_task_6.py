@@ -56,6 +56,11 @@ def sort_dict(sorting_dict):
     print(sorted_dict)
 
 
+def write_file(cur_dir, content, file_name):
+    with open(os.path.join(cur_dir, file_name), 'w', encoding='utf8') as write_file:
+        for key, value in content.items():
+            write_file.write(f'{key} {value}')
+
 
 
 # MAIN_CODE==========================================================
@@ -80,5 +85,5 @@ read_file(current_directory, 'voyna-i-mir.txt')
 # полученный словарь нужно отсортировать
 sort_dict(dict_symbol)
 
-# записываем результат в файл 'voyna-result.txt'
+# и записать в файл 'voyna-result.txt'
 write_file(current_directory, sorted_dict, 'voyna-result.txt')
