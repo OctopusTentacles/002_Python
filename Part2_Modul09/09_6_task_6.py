@@ -86,3 +86,7 @@ sort_dict(dict_symbol)
 
 # и записать в файл 'voyna-result.txt'
 write_file(current_directory, sorted_dict, 'voyna-result.txt')
+
+
+# или я чего-то не понял или это такая же задача как предыдущая
+# но постарался написать чуть красивее и аккуратнее
