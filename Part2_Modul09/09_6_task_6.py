@@ -17,19 +17,25 @@ import zipfile
 
 
 def read_file(cur_dir, file_name):
-    with open(os.path.join(cur_dir, file_name), 'r') as read_file:
+    count = 0
+    with open(os.path.join(cur_dir, file_name), 'r', encoding='utf8') as read_file:
         for i_line in read_file.readlines():
             for i_sym in i_line:
 
                 if (64 < ord(i_sym) < 91) or (96 < ord(i_sym) < 123) or \
-                    1039 < ord(i_sym) < 123:
+                    (1039 < ord(i_sym) < 1103):
+                    count += 1
 
                     if i_sym in dict_symbol.keys():
                         dict_symbol[i_sym] += 1
                     else:
                         dict_symbol[i_sym] = 1
-            
+        print(count) 
         print(dict_symbol)
+        # for key, value in dict_symbol.items():
+        #     dict_symbol[key] = round(value / count, 2)
+        # print(dict_symbol)
+
 
 
 def extract(cur_dir, ending_name):
@@ -58,5 +64,5 @@ extract(current_directory, '.zip')
 
 
 
-read_file(current_directory, 'first_tour.txt')
+read_file(current_directory, 'voyna-i-mir.txt')
 
