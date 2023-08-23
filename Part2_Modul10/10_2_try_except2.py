@@ -32,3 +32,15 @@ try:
             print(new_file)
 except PermissionError  as exc:
     print('Поймано исключение: ', exc, type(exc))
+
+names = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+with open(os.path.join(current_directory, 'ages.txt'), 'r', encoding='utf8') as ages_file:
+    for i_line in ages_file.readlines():
+        ages_file = i_line
+
+try:
+    with open(os.path.join(current_directory, 'result.txt'), 'w', encoding='utf8') as result_file:
+        result_file.write(names + str(ages_file))
+except TypeError as exc:
+    print("Поймано исключение: ", exc, type(exc))
