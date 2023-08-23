@@ -32,12 +32,12 @@ try:
             print(new_file)
 except PermissionError  as exc:
     print('Поймано исключение: ', exc, type(exc))
-count = 0
+count = 1
 names = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
 
 with open(os.path.join(current_directory, 'ages.txt'), 'r', encoding='utf8') as ages_file:
     for i_line in ages_file.readlines():
-        ages_file = i_line.lstrip()
+        ages_file = i_line.split(', ')
         print(ages_file)
 
 try:
@@ -53,6 +53,9 @@ except (ValueError, TypeError) as exc:
 
     
 with open(os.path.join(current_directory, 'result.txt'), 'w', encoding='utf8') as result_file:
-    for elem in ages_file:
-        result_file.write(f'{names[count]} живет {int(elem)} лет\n')
+    
+    for item in ages_file:
+        
+        
+        result_file.write(f'{names[count-1]} живет {item} лет\n')
         count += 1
