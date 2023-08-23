@@ -11,3 +11,15 @@
 # Неверный тип данных и некорректное значение (две ошибки обрабатываются одинаково).
 # При желании воспользуйтесь подсказкой, чтобы найти подходящие имена ошибок.
 
+import os
+
+current_directory = os.path.dirname(__file__)
+
+try:
+    with open(os.path.join(current_directory, 'ages.txt'), 'x', encoding='utf8') as new_file:
+    # режим 'x' - это эксклюзивное создание, 
+    # бросается исключение FileExistsError, если файл уже существует.
+        for i_line in new_file.readlines():
+            print(new_file)
+except FileExistsError as exc:
+    print('попытка создания файла или директории, которая уже существует', type(exc))
