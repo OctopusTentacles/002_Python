@@ -8,3 +8,17 @@
 # Неожиданная ошибка.
 
 
+import os
+
+file = None
+try:
+    file = open(os.path.join(os.path.dirname(__file__), '23.3.txt'), 'w', encoding='utf8')
+    number = int(input('Введите текст: '))
+    file.write(str(number))
+except (FileNotFoundError, PermissionError) as exc:
+    print(type(exc), exc)
+except ValueError as exc:
+    print(type(exc), exc)
+
+else:
+    print("Запись прошла без ошибок")
