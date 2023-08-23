@@ -23,3 +23,12 @@ try:
             print(new_file)
 except FileExistsError as exc:
     print('попытка создания файла или директории, которая уже существует', type(exc))
+
+try:
+    with open(current_directory, 'r', encoding='utf8') as new_file:
+    # режим 'x' - это эксклюзивное создание, 
+    # бросается исключение FileExistsError, если файл уже существует.
+        for i_line in new_file.readlines():
+            print(new_file)
+except PermissionError  as exc:
+    print('Поймано исключение: ', exc, type(exc))
