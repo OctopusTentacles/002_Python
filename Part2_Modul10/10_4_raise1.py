@@ -43,3 +43,17 @@ except FileNotFoundError as exc:
 finally:
     print('общее число символов:', total_sym)
     
+
+# ===================================================================================
+
+# Файл people.txt создать можно вручную или кодом.
+
+# peoples = open('people.txt', 'r', encoding='utf8')
+# result = 0
+# for line in peoples:
+#     clear_line_len = len(line.rstrip())
+#     result += clear_line_len
+#     if clear_line_len < 3:
+#         raise Exception
+
+# print(result)
