@@ -19,6 +19,12 @@ except (FileNotFoundError, PermissionError) as exc:
     print(type(exc), exc)
 except ValueError as exc:
     print(type(exc), exc)
+except Exception as exc:
+    print(type(exc), exc)
 
 else:
     print("Запись прошла без ошибок")
+
+finally:
+    if file and not file.closed:
+        file.close()
