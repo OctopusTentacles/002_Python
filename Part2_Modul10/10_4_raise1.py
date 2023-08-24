@@ -14,6 +14,7 @@
 import os
 
 cur_dir = os.path.dirname(__file__)
+line_count = 0
 total_sym = 0
     
 try:
@@ -21,6 +22,7 @@ try:
     
     
     for i_line in open_file.readlines():
+        line_count += 1
         sym_in_line = 0
         for i_sym in i_line:
             if i_sym.isalpha():
@@ -29,7 +31,8 @@ try:
         print('в строке', sym_in_line, 'символов')
             
         if sym_in_line < 3:
-           print('вызывается ошибка, и программа завершается')
+           raise BaseException('Длина {} строки меньше 3 символов'.format(line_count))
+
     open_file.close()
         
 
