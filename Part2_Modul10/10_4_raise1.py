@@ -13,3 +13,13 @@
 
 import os
 
+
+def open_file(cur_path, file_name):
+    open_file = open(os.path.join(cur_path, file_name), 'r', encoding='utf8')
+
+
+
+
+cur_dir = os.path.dirname(__file__)
+
+open_file(cur_dir, 'people.txt')
