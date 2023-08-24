@@ -16,6 +16,17 @@ import os
 
 def open_file(cur_path, file_name):
     open_file = open(os.path.join(cur_path, file_name), 'r', encoding='utf8')
+    total_sym = 0
+    for i_line in open_file.readlines():
+        sym_in_line = 0
+        for i_sym in i_line:
+            if i_sym.isalpha():
+                sym_in_line += 1
+                total_sym += 1
+        print('в строке', sym_in_line, 'символов')
+    print('общее число символов:', total_sym)
+
+    
 
 
 
