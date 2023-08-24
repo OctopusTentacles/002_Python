@@ -13,38 +13,30 @@
 
 import os
 
-
-def open_file(cur_path, file_name):
-    
-    try:
-        open_file = open(os.path.join(cur_path, file_name), 'r', encoding='utf8')
-    except FileNotFoundError as exc:
-        print(type(exc), 'Нет такого файла или директории')
-
-    else:
-        total_sym = 0
-        for i_line in open_file.readlines():
-            sym_in_line = 0
-            for i_sym in i_line:
-                if i_sym.isalpha():
-                    sym_in_line += 1
-                    total_sym += 1
-            print('в строке', sym_in_line, 'символов')
-            
-            if sym_in_line < 3:
-                print('вызывается ошибка, и программа завершается')
-
-        print('общее число символов:', total_sym)
-        
-    finally:
-        if not open_file.closed:
-            open_file.close()
-            print('файл закрылся')
-    
-
-
-
-
 cur_dir = os.path.dirname(__file__)
+total_sym = 0
+    
+try:
+    open_file = open(os.path.join(cur_dir, 'people.txt'), 'r', encoding='utf8')
+    
+    
+    for i_line in open_file.readlines():
+        sym_in_line = 0
+        for i_sym in i_line:
+            if i_sym.isalpha():
+                sym_in_line += 1
+                total_sym += 1
+        print('в строке', sym_in_line, 'символов')
+            
+        if sym_in_line < 3:
+           print('вызывается ошибка, и программа завершается')
+    open_file.close()
+        
 
-open_file(cur_dir, 'people.txt')
+except FileNotFoundError as exc:
+    print(type(exc), 'Нет такого файла или директории')    
+    
+    
+finally:
+    print('общее число символов:', total_sym)
+    
