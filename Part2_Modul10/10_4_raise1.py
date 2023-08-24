@@ -18,10 +18,8 @@ def open_file(cur_path, file_name):
     
     try:
         open_file = open(os.path.join(cur_path, file_name), 'r', encoding='utf8')
-    except FileNotFoundError as exc:
-        print(type(exc), 'Нет такого файла или директории')
 
-    else:
+        
         total_sym = 0
         for i_line in open_file.readlines():
             sym_in_line = 0
@@ -30,17 +28,23 @@ def open_file(cur_path, file_name):
                     sym_in_line += 1
                     total_sym += 1
             print('в строке', sym_in_line, 'символов')
-            
+                
             if sym_in_line < 3:
                 print('вызывается ошибка, и программа завершается')
+                raise BaseException
 
         print('общее число символов:', total_sym)
-        
+            
+
+    except FileNotFoundError as exc:
+        print(type(exc), 'Нет такого файла или директории')
+
+
     finally:
         if not open_file.closed:
             open_file.close()
             print('файл закрылся')
-    
+
 
 
 
