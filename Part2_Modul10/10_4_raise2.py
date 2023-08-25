@@ -11,22 +11,21 @@
 # ValueError и записывает эту ошибку в файл errors.log
 
 import os
+count_poli = 0
+
+def palindrom(word):
+    return word == word[::-1]
 
 
-def palindron(string):
-    char_dict = {}
-    for i_sym in string:
-        char_dict[i_sym] = char_dict.get(i_sym, 0) + 1
+current_dir = os.path.dirname(__file__)
 
-    odd_count = 0
-    for i_value in char_dict.values():
-        if i_value % 2 != 0:
-            odd_count += 1
-    return odd_count <= 1
+with open(os.path.join(current_dir, 'words.txt'), 'r', encoding='utf8') as file, \
+    open(os.path.join(current_dir, 'errors.log'), 'w', encoding='utf8') as log_file:
 
-word = (input('Введите слово: '))
-
-if palindron(word):     
-    print('Можно сделать палиндромом')
-else:
-    print('Нельзя сделать палиндромом')
+    for line in file:
+        try:
+            clear_line = line.rstrip()
+            if clear_line.isalpha():
+                count_poli += palindrom(clear_line)
+            else:
+                
