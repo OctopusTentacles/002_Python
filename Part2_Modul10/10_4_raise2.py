@@ -16,7 +16,6 @@ count_poli = 0
 def palindrom(word):
     return word == word[::-1]
 
-
 current_dir = os.path.dirname(__file__)
 
 with open(os.path.join(current_dir, 'words.txt'), 'r', encoding='utf8') as file, \
@@ -28,4 +27,8 @@ with open(os.path.join(current_dir, 'words.txt'), 'r', encoding='utf8') as file,
             if clear_line.isalpha():
                 count_poli += palindrom(clear_line)
             else:
-                
+                raise ValueError('строка не полностью состоит из букв!')
+        except ValueError as exc:
+            log_file.write(f'{str(exc)}\n')
+
+    print('число палиндромов в файле', count_poli)
