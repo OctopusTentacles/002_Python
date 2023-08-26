@@ -32,25 +32,23 @@ def open_file(cur_dir, file_name):
     with open(os.path.join(cur_dir, file_name), 'r', encoding='utf8') as r_file, \
         open(os.path.join(cur_dir, 'errors.log'), 'w', encoding='utf8') as w_file:
         
-        for i_line in r_file:
-            try:
-                error_line += 1
-                sym_in_line = len(i_line.rstrip())
-                amt_sym += sym_in_line
-                if sym_in_line < 3:
-                    raise ValueError('Ошибка: менее трёх символов в строке {}'.format(error_line))
-            except ValueError as exc:
-                print(exc)
-                w_file.write(f'{str(exc)}\n')     
-    
-    print('Общее количество символов:', amt_sym)
-
-
+            for i_line in r_file:
+                try:
+                    error_line += 1
+                    sym_in_line = len(i_line.rstrip())
+                    amt_sym += sym_in_line
+                    if sym_in_line < 3:
+                        raise ValueError('Ошибка: менее трёх символов в строке {}'.format(error_line))
+                
+                except ValueError as exc:
+                    print(exc)
+                    w_file.write(f'{str(exc)}\n')     
+                
+            print('Общее количество символов:', amt_sym)
 
 
 # текущая директория
 current_dir = os.path.dirname(__file__)
-print(current_dir)
 
 # открыть файл и прочитать строки
 open_file(current_dir, 'people.txt')
