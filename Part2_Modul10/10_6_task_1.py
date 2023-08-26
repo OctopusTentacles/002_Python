@@ -38,9 +38,10 @@ def open_file(cur_dir, file_name):
                     sym_in_line = len(i_line.rstrip())
                     amt_sym += sym_in_line
                     if sym_in_line < 3:
-                        raise ValueError('Ошибка: менее трёх символов в строке {}'.format(error_line))
+                        raise BaseException('Ошибка: менее трёх символов в строке {}'\
+                                         .format(error_line))
                 
-                except ValueError as exc:
+                except BaseException as exc:
                     print(exc)
                     w_file.write(f'{str(exc)}\n')     
                 
