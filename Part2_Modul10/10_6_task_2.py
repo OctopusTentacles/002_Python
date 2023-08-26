@@ -27,7 +27,16 @@
 
 
 import os
+import random
 
-
+sum_num = 0
 
 current_dir = os.path.dirname(__file__)
+with open(os.path.join(current_dir, 'out_file.txt'), 'w', encoding='utf8') as out_file:
+
+    while True:
+        try:
+            number = float(input('Введите число: '))
+            if number == random.
+            
+
