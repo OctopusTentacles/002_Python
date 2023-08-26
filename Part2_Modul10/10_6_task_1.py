@@ -29,13 +29,19 @@ import os
 def open_file(cur_dir, file_name):
     amt_sym = 0
     error_line = 0
-    with open(os.path.join(cur_dir, file_name), 'r', encoding='utf8') as r_file:
+    with open(os.path.join(cur_dir, file_name), 'r', encoding='utf8') as r_file, \
+        open(os.path.join(cur_dir, 'errors.log'), 'w', encoding='utf8') as w_file:
+        
         for i_line in r_file:
-            error_line += 1
-            sym_in_line = len(i_line.rstrip())
-            amt_sym += sym_in_line
-            if sym_in_line < 3:
-                print('Ошибка: менее трёх символов в строке', error_line)
+            try:
+                error_line += 1
+                sym_in_line = len(i_line.rstrip())
+                amt_sym += sym_in_line
+                if sym_in_line < 3:
+                    raise ValueError('Ошибка: менее трёх символов в строке {}'.format(error_line))
+            except ValueError as exc:
+                print(exc)
+                w_file.write(f'{str(exc)}\n')     
     
     print('Общее количество символов:', amt_sym)
 
