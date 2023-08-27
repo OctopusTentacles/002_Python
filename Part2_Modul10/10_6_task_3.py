@@ -38,14 +38,29 @@
 import os
 
 
+def check_line(list_line):
+
+    # проверить имя
+    if list_line[0].isalpha():
+        print(list_line[0])
+
+
+
 def read_file(cur_dir, file_name):
     with open(os.path.join(cur_dir, file_name), 'r', encoding='utf8') as read_file:
         for i_line in read_file:
-            list_reg = i_line.split(' ')
-        return list_reg
+            list_registr = (i_line.rstrip()).split(' ')
+
+            if check_line(list_registr):
+
+                print(list_registr)
+
+
+
             
 
 
+# MAIN_CODE==========================================================
 
 # текущая директория 
 current_directory = os.path.dirname(__file__)
@@ -53,8 +68,7 @@ current_directory = os.path.dirname(__file__)
 
 # прочитать строки в файле
 # создать лист для проверки
-list_registr = read_file(current_directory, 'registrations.txt')
-print(list_registr)
+read_file(current_directory, 'registrations.txt')
 
 
 
