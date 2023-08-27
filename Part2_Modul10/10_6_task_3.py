@@ -38,12 +38,25 @@
 import os
 
 
+def read_file(cur_dir, file_name):
+    with open(os.path.join(cur_dir, file_name), 'r', encoding='utf8') as read_file:
+        for i_line in read_file:
+            list_reg = i_line.split(' ')
+        return list_reg
+            
 
-current_dir = os.path.dirname(__file__)
+
+
+# текущая директория 
+current_directory = os.path.dirname(__file__)
+
 
 # прочитать строки в файле
-
 # создать лист для проверки
+list_registr = read_file(current_directory, 'registrations.txt')
+print(list_registr)
+
+
 
 # проверить поля на правильность
 
