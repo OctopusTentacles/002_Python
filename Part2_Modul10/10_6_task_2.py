@@ -37,6 +37,19 @@ with open(os.path.join(current_dir, 'out_file.txt'), 'w', encoding='utf8') as ou
     while True:
         try:
             number = float(input('Введите число: '))
-            if number == random.
+            if random.randint(1, 13) == 1:
+                raise SystemError('Вас постигла неудача!')
+        except SystemError as exc:
+            print('Вас постигла неудача!')
+            break
+            
+        else:
+            sum_num += 0
+            out_file.write(f'{str(number)}\n')
+
+            sum_num += number
+            if sum_num >= 777:
+                print('Вы успешно выполнили условие для выхода из порочного цикла!')
+                break
             
 
