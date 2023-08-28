@@ -38,63 +38,46 @@
 import os
 
 
+# def bad_log(cur_dir, good_data):
+
+
+
 def check_line(list_line):
     field = 0
 
     for index, value in enumerate(list_line):
         
+        try:
+            if index == 0 and value.isalpha():
+                field += 1
+                
+                try:
+                    if index == 1 and ('@' and '.') in value:
+                        field += 1
+                        try:
+                            if index ==2 and (9 < int(value) < 100):
+                                field += 1
 
-        if index == 0 and value.isalpha():
-            field += 1
-            continue
+                            else:
+                                raise ValueError('Поле «Возраст» НЕ'
+                                                 'является числом от 10 до 99')
+                        except ValueError as exc:
+                            return False
 
-        if index == 1 and ('@' and '.') in value:
-            field += 1
-            continue
-            
-        if index ==2 and (9 < int(value) < 100):
-            field += 1
+                    else:
+                        raise SyntaxError('Поле «Имейл» НЕ содержит @ и . (точку)')
+                except SyntaxError as exc:
+                    return False
+        
+            else:
+                raise NameError('Поле «Имя» содержит НЕ только буквы')
+        except NameError as exc:
+            return False
 
-        if field == 3:
-            return True
-
-    # try:
-    #     # проверить имя________________________________________________
-    #     if list_line[0].isalpha():
-    #         good_str += list_line[0]
-    #     else:
-    #         raise NameError('Поле «Имя» содержит НЕ только буквы')
-    # except NameError as exc:
-    #         raise IndexError('НЕ присутствуют все три поля')
-    # except IndexError:
-    
-    #     # проверить почту______________________________________________
-    #     if ('@' and '.') in list_line[1]:
-    #         good_str += list_line[1]
-    #     else:
-    #         raise SyntaxError('Поле «Имейл» НЕ содержит @ и . (точку)')
-    # except SyntaxError as exc:
-    #         raise IndexError('НЕ присутствуют все три поля')
-    # except IndexError:
-    #     print(exc)
-
-    
-    #     # проверить возраст___________________________________________
-    #     if 9 < int(list_line[2]) < 100:
-    #         good_str += list_line[2]
-    #     else:
-    #         raise ValueError('Поле «Возраст» НЕ является числом от 10 до 99')
-    # except ValueError as exc:
-    #         raise IndexError('НЕ присутствуют все три поля')
-    # except IndexError as exc:
-    #     print(exc)
-         
-    # finally:
+    if field == 3:
+        return True
          
     
-
-
-
 
 def good_log(cur_dir, good_data):
     with open(os.path.join(cur_dir, 'registrations_good.log'), 
@@ -113,11 +96,8 @@ def read_file(cur_dir, file_name):
                 good_log(cur_dir, list_registr)
 
             else:
-                print(list_registr)
+                bad_log(cur_dir, list_registr)
 
-
-
-            
 
 
 # MAIN_CODE==========================================================
