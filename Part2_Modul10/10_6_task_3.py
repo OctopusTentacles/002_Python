@@ -38,10 +38,6 @@
 import os
 
 
-# def bad_log(cur_dir, good_data):
-
-
-
 def check_line(list_line):
     # field = 0
 
@@ -88,6 +84,12 @@ def good_log(cur_dir, good_data):
         good_file.write(str(good_data))
         return
 
+
+def bad_log(cur_dir, bad_data):
+        with open(os.path.join(cur_dir, 'registrations_bad.log'), 
+              'a', encoding='utf8') as bad_file:
+            bad_file.write(str(bad_data))
+            return
 
 
 def read_file(cur_dir, file_name):
