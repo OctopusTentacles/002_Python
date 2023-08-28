@@ -43,20 +43,21 @@ import os
 
 
 def check_line(list_line):
-    field = 0
+    # field = 0
 
-    for index, value in enumerate(list_line):
+    # for index, value in enumerate(list_line):
         
         try:
-            if index == 0 and value.isalpha():
-                field += 1
+            if list_line[0].isalpha():
+                # field += 1
                 
                 try:
-                    if index == 1 and ('@' and '.') in value:
-                        field += 1
+                    if ('@' and '.') in list_line[1]:
+                        # field += 1
                         try:
-                            if index ==2 and (9 < int(value) < 100):
-                                field += 1
+                            if 9 < int(list_line[2]) < 100:
+                                return True
+                                # field += 1
 
                             else:
                                 raise ValueError('Поле «Возраст» НЕ'
@@ -73,9 +74,11 @@ def check_line(list_line):
                 raise NameError('Поле «Имя» содержит НЕ только буквы')
         except NameError as exc:
             return False
+        except IndexError as exc:
+            return False
 
-    if field == 3:
-        return True
+    # if field == 3:
+    # return True
          
     
 
