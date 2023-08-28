@@ -41,9 +41,12 @@ import os
 def check_line(list_line):
     # field = 0
 
-    # for index, value in enumerate(list_line):
+    
         
         try:
+            if len(list_line) < 3:
+                raise IndexError('НЕ присутствуют все три поля')
+            
             if list_line[0].isalpha():
                 # field += 1
                 
@@ -59,19 +62,19 @@ def check_line(list_line):
                                 raise ValueError('Поле «Возраст» НЕ'
                                                  'является числом от 10 до 99')
                         except ValueError as exc:
-                            return False
+                            bad_log(list_line, exc)
 
                     else:
                         raise SyntaxError('Поле «Имейл» НЕ содержит @ и . (точку)')
                 except SyntaxError as exc:
-                    return False
+                    bad_log(list_line, exc)
         
             else:
                 raise NameError('Поле «Имя» содержит НЕ только буквы')
         except NameError as exc:
-            return False
+            bad_log(list_line, exc)
         except IndexError as exc:
-            return False
+            bad_log(list_line, exc)
 
     # if field == 3:
     # return True
@@ -85,10 +88,12 @@ def good_log(cur_dir, good_data):
         return
 
 
-def bad_log(cur_dir, bad_data):
-        with open(os.path.join(cur_dir, 'registrations_bad.log'), 
+def bad_log(bad_data, exc):
+        with open(os.path.join(os.path.dirname(__file__), 'registrations_bad.log'), 
               'a', encoding='utf8') as bad_file:
-            bad_file.write(' '.join(bad_data) + '\n')
+            # bad_file.write(str(exc))
+
+            bad_file.write(' '.join(bad_data) + '\t' + str(exc) + '\n')
             return
 
 
@@ -97,13 +102,12 @@ def read_file(cur_dir, file_name):
         for i_line in read_file:
             list_registr = (i_line.rstrip()).split(' ')
 
+            
+
             if check_line(list_registr):
                 good_log(cur_dir, list_registr)
 
-            else:
-                bad_log(cur_dir, list_registr)
-
-
+            
 
 # MAIN_CODE==========================================================
 
