@@ -80,15 +80,15 @@ def check_line(list_line):
 
 def good_log(cur_dir, good_data):
     with open(os.path.join(cur_dir, 'registrations_good.log'), 
-              'a', encoding='utf8') as good_file:
-        good_file.write(str(good_data))
+              'a', encoding='utf8') as good_file:            
+        good_file.write(' '.join(good_data) + '\n')
         return
 
 
 def bad_log(cur_dir, bad_data):
         with open(os.path.join(cur_dir, 'registrations_bad.log'), 
               'a', encoding='utf8') as bad_file:
-            bad_file.write(str(bad_data))
+            bad_file.write(' '.join(bad_data) + '\n')
             return
 
 
