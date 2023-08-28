@@ -53,6 +53,12 @@ def check_line(list_line):
         print(list_line[2])
 
 
+def good_log(cur_dir, good_data):
+    with open(os.path.join(cur_dir, 'registrations_good.log'), 
+              'w', encoding='utf8') as good_file:
+        good_file.write((good_data))
+
+
 
 def read_file(cur_dir, file_name):
     with open(os.path.join(cur_dir, file_name), 'r', encoding='utf8') as read_file:
@@ -60,8 +66,7 @@ def read_file(cur_dir, file_name):
             list_registr = (i_line.rstrip()).split(' ')
 
             if check_line(list_registr):
-
-                print(list_registr)
+                good_log(cur_dir, list_registr)
 
 
 
