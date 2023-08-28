@@ -39,24 +39,47 @@ import os
 
 
 def check_line(list_line):
+    good_str = ''
+    try:
+        # проверить имя________________________________________________
+        if list_line[0].isalpha():
+            good_str += list_line[0]
+        else:
+            raise NameError('Поле «Имя» содержит НЕ только буквы')
+    except NameError as exc:
+            raise IndexError('НЕ присутствуют все три поля')
+    except IndexError:
+    
+        # проверить почту______________________________________________
+        if ('@' and '.') in list_line[1]:
+            good_str += list_line[1]
+        else:
+            raise SyntaxError('Поле «Имейл» НЕ содержит @ и . (точку)')
+    except SyntaxError as exc:
+            raise IndexError('НЕ присутствуют все три поля')
+    except IndexError:
+    
+        # проверить возраст___________________________________________
+        if 9 < int(list_line[2]) < 100:
+            good_str += list_line[2]
+        else:
+            raise ValueError('Поле «Возраст» НЕ является числом от 10 до 99')
+    except ValueError as exc:
+            raise IndexError('НЕ присутствуют все три поля')
+    except IndexError:
+         
+    finally:
+         
+    
 
-    # проверить имя
-    if list_line[0].isalpha():
-        print(list_line[0])
 
-    # проверить почту
-    if ('@' and '.') in list_line[1]:
-        print(list_line[1])
-
-    # проверить возраст
-    if 9 < int(list_line[2]) < 100:
-        print(list_line[2])
 
 
 def good_log(cur_dir, good_data):
     with open(os.path.join(cur_dir, 'registrations_good.log'), 
-              'w', encoding='utf8') as good_file:
-        good_file.write((good_data))
+              'a', encoding='utf8') as good_file:
+        good_file.write(str(good_data))
+        return
 
 
 
@@ -67,6 +90,9 @@ def read_file(cur_dir, file_name):
 
             if check_line(list_registr):
                 good_log(cur_dir, list_registr)
+
+            else:
+                print(list_registr)
 
 
 
