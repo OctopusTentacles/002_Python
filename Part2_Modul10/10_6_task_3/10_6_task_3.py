@@ -39,8 +39,6 @@ import os
 
 
 def check_line(list_line):
-    # field = 0
-
     
         
         try:
@@ -48,15 +46,13 @@ def check_line(list_line):
                 raise IndexError('НЕ присутствуют все три поля')
             
             if list_line[0].isalpha():
-                # field += 1
                 
                 try:
                     if ('@' and '.') in list_line[1]:
-                        # field += 1
+                        
                         try:
                             if 9 < int(list_line[2]) < 100:
                                 return True
-                                # field += 1
 
                             else:
                                 raise ValueError('Поле «Возраст» НЕ'
@@ -76,9 +72,6 @@ def check_line(list_line):
         except IndexError as exc:
             bad_log(list_line, exc)
 
-    # if field == 3:
-    # return True
-         
     
 
 def good_log(cur_dir, good_data):
@@ -93,7 +86,7 @@ def bad_log(bad_data, exc):
               'a', encoding='utf8') as bad_file:
             # bad_file.write(str(exc))
 
-            bad_file.write(' '.join(bad_data) + '\t' + str(exc) + '\n')
+            bad_file.write('{:<30}'.format(' '.join(bad_data)) + '\t' + str(exc) + '\n')
             return
 
 
@@ -119,10 +112,3 @@ current_directory = os.path.dirname(__file__)
 # создать лист для проверки
 list_registration = read_file(current_directory, 'registrations.txt')
 
-
-
-# проверить поля на правильность
-
-# функция для исключений
-
-# запись в файлы
