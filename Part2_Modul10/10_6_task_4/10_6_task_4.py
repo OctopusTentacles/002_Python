@@ -17,6 +17,11 @@
 import os
 
 
+def read_file(cur_dir):
+    with open(os.path.join(cur_dir, 'chat.txt'), 
+              'r', encoding='utf8') as read_chat:
+        print(read_chat.readlines)
+
 
 
 
@@ -33,3 +38,6 @@ while True:
 
     if action == 0:
         break
+
+    elif action == 1:
+        read_file(current_directory)
