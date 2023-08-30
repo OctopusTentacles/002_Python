@@ -39,8 +39,7 @@ import os
 
 
 def check_line(list_line):
-    
-        
+           
         try:
             if len(list_line) < 3:
                 raise IndexError('НЕ присутствуют все три поля')
@@ -72,7 +71,6 @@ def check_line(list_line):
         except IndexError as exc:
             bad_log(list_line, exc)
 
-    
 
 def good_log(cur_dir, good_data):
     with open(os.path.join(cur_dir, 'registrations_good.log'), 
@@ -82,20 +80,16 @@ def good_log(cur_dir, good_data):
 
 
 def bad_log(bad_data, exc):
-        with open(os.path.join(os.path.dirname(__file__), 'registrations_bad.log'), 
+    with open(os.path.join(os.path.dirname(__file__), 'registrations_bad.log'), 
               'a', encoding='utf8') as bad_file:
-            # bad_file.write(str(exc))
-
-            bad_file.write('{:<30}'.format(' '.join(bad_data)) + '\t' + str(exc) + '\n')
-            return
+        bad_file.write('{:<35}'.format(' '.join(bad_data)) + str(exc) + '\n')
+        return
 
 
 def read_file(cur_dir, file_name):
     with open(os.path.join(cur_dir, file_name), 'r', encoding='utf8') as read_file:
         for i_line in read_file:
             list_registr = (i_line.rstrip()).split(' ')
-
-            
 
             if check_line(list_registr):
                 good_log(cur_dir, list_registr)
@@ -108,7 +102,6 @@ def read_file(cur_dir, file_name):
 current_directory = os.path.dirname(__file__)
 
 
-# прочитать строки в файле
-# создать лист для проверки
+# прочитать строки в файле, создать лист для проверки
 list_registration = read_file(current_directory, 'registrations.txt')
 
