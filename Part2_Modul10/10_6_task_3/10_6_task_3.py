@@ -103,5 +103,5 @@ current_directory = os.path.dirname(__file__)
 
 
 # прочитать строки в файле, создать лист для проверки
-list_registration = read_file(current_directory, 'registrations.txt')
+read_file(current_directory, 'registrations.txt')
 
