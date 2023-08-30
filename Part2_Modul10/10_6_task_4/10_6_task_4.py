@@ -14,20 +14,19 @@
 # работы с сетями, создания GUI-приложений и прочих штук. 
 # (Но если очень хочется, то останавливать вас никто не будет!)
 
+
 import os
 
 
 def read_file(cur_dir):
     with open(os.path.join(cur_dir, 'chat.txt'), 
               'r', encoding='utf8') as read_chat:
-        for i_line in read_chat:
-            print(i_line, end='')
+        print('\n', read_chat.read())
 
 
 def write_file(cur_dir, name):
         with open(os.path.join(cur_dir, 'chat.txt'), 
               'a', encoding='utf8') as text_chat:
-            # message = input('')
             text_chat.write('{:<10}'.format(name + ':') + input('') + '\n')
 
 
