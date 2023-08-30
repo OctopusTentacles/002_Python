@@ -20,16 +20,17 @@ import os
 def read_file(cur_dir):
     with open(os.path.join(cur_dir, 'chat.txt'), 
               'r', encoding='utf8') as read_chat:
-        print(read_chat.readlines)
+        for i_line in read_chat:
+            print(i_line, end='')
 
 
 
-def write_file(cur_dir):
+def write_file(cur_dir, name):
         with open(os.path.join(cur_dir, 'chat.txt'), 
               'a', encoding='utf8') as text_chat:
             # message = input('')
-            text_chat.write(input('') + '\n')
-            
+            text_chat.write('{:<10}'.format(name + ':') + input('') + '\n')
+
 
 
 
@@ -37,7 +38,7 @@ current_directory = os.path.dirname(__file__)
 
 while True:
 
-    user_name = input('Введите имя пользователя: ')
+    user_name = input('\nВведите имя пользователя: ')
     print('1. Посмотреть текущий текст чата.')
     print('2. Отправить сообщение')
     print('0. Завершить')
@@ -51,4 +52,4 @@ while True:
         read_file(current_directory)
 
     elif action == 2:
-        write_file(current_directory)
+        write_file(current_directory, user_name)
