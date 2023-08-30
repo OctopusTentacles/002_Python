@@ -24,6 +24,14 @@ def read_file(cur_dir):
 
 
 
+def write_file(cur_dir):
+        with open(os.path.join(cur_dir, 'chat.txt'), 
+              'a', encoding='utf8') as text_chat:
+            # message = input('')
+            text_chat.write(input('') + '\n')
+            
+
+
 
 current_directory = os.path.dirname(__file__)
 
@@ -41,3 +49,6 @@ while True:
 
     elif action == 1:
         read_file(current_directory)
+
+    elif action == 2:
+        write_file(current_directory)
