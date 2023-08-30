@@ -47,7 +47,7 @@ def check_line(list_line):
             if list_line[0].isalpha():
                 
                 try:
-                    if ('@' and '.') in list_line[1]:
+                    if ('@' in list_line[1]) and ('.' in list_line[1]):
                         
                         try:
                             if 9 < int(list_line[2]) < 100:
