@@ -22,16 +22,14 @@
 # которые не были пойманы предыдущими except).
 
 
-import os
 import math
+
 
 def square_num(num):
     try:
-
         if num == 0:
-            raise Exception('корень 0 равен 0')
-        
-        
+            raise Exception('0 всегда 0')
+                
         sqrt_num = math.sqrt(num)
         return sqrt_num
     
@@ -42,20 +40,19 @@ def square_num(num):
         return exc
 
 
-
-
-
 # MAIN_CODE====================================================================
 
-while True:
+for _ in range(6):
     try:
         number = float(input('Введите число: '))
         if isinstance(number, str):
             raise Exception
 
-    
         sqrt_number = square_num(number)
 
-        print(f'квадратный корень {number}: {sqrt_number}')
+        print(f'квадратный корень числа: {sqrt_number}')
     except Exception:
-        print('это не число')
+        print('Вы ввели не число, повторите ввод')
+
+
+#
