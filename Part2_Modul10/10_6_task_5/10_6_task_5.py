@@ -28,17 +28,19 @@ import math
 def square_num(num):
     try:
 
-        sqrt_num = math.sqrt(num)
-        if sqrt_num == 0:
+        if num == 0:
             raise Exception('корень 0 равен 0')
         
+        
+        sqrt_num = math.sqrt(num)
         return sqrt_num
     
+    except ValueError:
+        return('не может быть найден так как число отрицательное')
+
     except Exception as exc:
         return exc
 
-    except ValueError:
-        return('не может быть найден так как число отрицательное')
 
 
 
@@ -46,10 +48,14 @@ def square_num(num):
 # MAIN_CODE====================================================================
 
 while True:
-    number = float(input('введите число: '))
-    if number == 0:
-        
-    if number:
-        print('квадратный корень числа: ', square_num(number))
-    else:
-        break
+    try:
+        number = float(input('Введите число: '))
+        if isinstance(number, str):
+            raise Exception
+
+    
+        sqrt_number = square_num(number)
+
+        print(f'квадратный корень {number}: {sqrt_number}')
+    except Exception:
+        print('это не число')
