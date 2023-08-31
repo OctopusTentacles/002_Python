@@ -21,13 +21,12 @@ import os
 def read_file(cur_dir):
     try:
         with open(os.path.join(cur_dir, 'chat.txt'), 
-                'r', encoding='utf8') as read_chat:
-            print('\n', read_chat.read())
+                  'r', encoding='utf8') as read_chat:
+            print(read_chat.read())
 
-    except FileNotFoundError as exc:
-        print('Вы первыы в чате, начните общение!')
+    except FileNotFoundError:
+        print('\nВы первый в чате, начните общение!')
         
-
 
 def write_file(cur_dir, name):
         with open(os.path.join(cur_dir, 'chat.txt'), 
@@ -51,9 +50,7 @@ while True:
 
     if action == 1:
         read_file(current_directory)
-
     elif action == 2:
         write_file(current_directory, user_name)
-
     else:
         break
