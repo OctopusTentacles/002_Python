@@ -26,13 +26,30 @@ import os
 import math
 
 def square_num(num):
-    sqrt_num = math.sqrt(num)
-    return sqrt_num
+    try:
+
+        sqrt_num = math.sqrt(num)
+        if sqrt_num == 0:
+            raise Exception('корень 0 равен 0')
+        
+        return sqrt_num
+    
+    except Exception as exc:
+        return exc
+
+    except ValueError:
+        return('не может быть найден так как число отрицательное')
 
 
 
 
 # MAIN_CODE====================================================================
 
-number = float(input('введите число: '))
-print('квадратный корень числа: ', square_num(number))
+while True:
+    number = float(input('введите число: '))
+    if number == 0:
+        
+    if number:
+        print('квадратный корень числа: ', square_num(number))
+    else:
+        break
