@@ -25,34 +25,58 @@
 import math
 
 
-def square_num(num):
+# def square_num(num):
+#     try:
+#         if num == 0:
+#             raise Exception('0 всегда 0')
+                
+#         sqrt_num = math.sqrt(num)
+#         return sqrt_num
+    
+#     except ValueError:
+#         return('не может быть найден так как число отрицательное')
+
+#     except Exception as exc:
+#         return exc
+
+
+# # MAIN_CODE====================================================================
+
+# for _ in range(6):
+#     try:
+#         number = float(input('Введите число: '))
+#         if isinstance(number, str):
+#             raise Exception
+
+#         sqrt_number = square_num(number)
+
+#         print(f'квадратный корень числа: {sqrt_number}')
+#     except Exception:
+#         print('Вы ввели не число, повторите ввод')
+
+
+def get_sage_sqrt(num):
     try:
         if num == 0:
             raise Exception('0 всегда 0')
-                
+
+        if isinstance(num, str):
+            raise Exception('Вы ввели не число, повторите ввод')
+
         sqrt_num = math.sqrt(num)
+        if isinstance(num, float):
+            raise Exception(round(sqrt_num, 1))
         return sqrt_num
-    
+
     except ValueError:
-        return('не может быть найден так как число отрицательное')
+        return 'не может быть найден так как число отрицательное'
 
     except Exception as exc:
         return exc
 
 
-# MAIN_CODE====================================================================
-
-for _ in range(6):
-    try:
-        number = float(input('Введите число: '))
-        if isinstance(number, str):
-            raise Exception
-
-        sqrt_number = square_num(number)
-
-        print(f'квадратный корень числа: {sqrt_number}')
-    except Exception:
-        print('Вы ввели не число, повторите ввод')
-
-
-#
+# Тестовые случаи
+numbers = [16, 25, -9, 0, 4.5, "abc"]
+for number in numbers:
+    result = get_sage_sqrt(number)
+    print(f"Квадратный корень numbers {number}: {result}")
