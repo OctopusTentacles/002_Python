@@ -19,15 +19,20 @@ import os
 
 
 def read_file(cur_dir):
-    with open(os.path.join(cur_dir, 'chat.txt'), 
-              'r', encoding='utf8') as read_chat:
-        print('\n', read_chat.read())
+    try:
+        with open(os.path.join(cur_dir, 'chat.txt'), 
+                'r', encoding='utf8') as read_chat:
+            print('\n', read_chat.read())
+
+    except FileNotFoundError as exc:
+        print('Вы первыы в чате, начните общение!')
+        
 
 
 def write_file(cur_dir, name):
         with open(os.path.join(cur_dir, 'chat.txt'), 
               'a', encoding='utf8') as text_chat:
-            text_chat.write('{:<10}'.format(name + ':') + input('') + '\n')
+            text_chat.write('{:<15}'.format(name + ':') + input('') + '\n')
 
 
 # MAIN_CODE====================================================================
