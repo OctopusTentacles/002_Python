@@ -23,8 +23,16 @@
 
 
 import os
+import math
+
+def square_num(num):
+    sqrt_num = math.sqrt(num)
+    return sqrt_num
+
 
 
 
 # MAIN_CODE====================================================================
 
+number = float(input('введите число: '))
+print('квадратный корень числа: ', square_num(number))
