@@ -8,7 +8,7 @@ user_name = input('Как вас зовут?')
 while True:
     print('Чтобы увидеть текущий текст чата введите 1,\n'
           'Чтобы написать сообщение введите 2')
-    response = input('введите 1 или 2')
+    response = input('введите 1 или 2:  ')
 
     if response == '1':
         try:
