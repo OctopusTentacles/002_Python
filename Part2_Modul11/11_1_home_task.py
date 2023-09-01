@@ -3,7 +3,7 @@
 
 import os
 
-name = input('Как вас зовут?')
+user_name = input('Как вас зовут?')
 
 while True:
     print('Чтобы увидеть текущий текст чата введите 1,\n'
@@ -19,3 +19,17 @@ while True:
 
         except FileNotFoundError:
             print('Служебное сообщение: пока ничего нет\n')
+
+    elif response == '2':
+        new_message = input('Введите сообщение: ')
+        with open(os.path.join(os.path.dirname(__file__), 'chat.txtx'),
+                  'a', encoding='utf8') as file:
+            file.write('{name}: {messages}\n'.format(
+                name = user_name, messages = new_message))
+            
+    else:
+        print('неизвестная команда\n')
+
+# скрипт один, но его открывает каждый пользователь у себя отдельно
+# таким образом в файл записывается история от каждого пользователя.
+# чтобы это проверить нужно открыть несколько скриптов
