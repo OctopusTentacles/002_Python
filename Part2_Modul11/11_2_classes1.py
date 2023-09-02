@@ -11,5 +11,9 @@
 class Toyota(object):
     """docstring"""
 
-    def __init__(self, ):
-        pass
+    def __init__(self, color, price, max_speed, cur_speed):
+        """Constructor"""
+        self.color = color
+        self.price = price
+        self.max_speed = max_speed
+        self.cur_speed = cur_speed
