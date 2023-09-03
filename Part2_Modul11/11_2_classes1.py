@@ -8,12 +8,15 @@
 # Создайте три экземпляра класса и каждому из них поменяйте 
 # значение текущей скорости на случайное число от нуля до 200.
 
-class Toyota(object):
-    """docstring"""
 
-    def __init__(self, color, price, max_speed, cur_speed):
-        """Constructor"""
-        self.color = color
-        self.price = price
-        self.max_speed = max_speed
-        self.cur_speed = cur_speed
+# класс Toyota
+class Toyota:
+
+# состоящий из четырёх статических атрибутов:
+    color = 'red'
+    price = 1000000000
+    max_speed = 200
+    cur_speed = 0
+
+
+
