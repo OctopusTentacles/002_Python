@@ -16,29 +16,37 @@ class Monitor:
     name = 'Samsung'
     matrix = 'VA'
     resolution = 'WQHD'
-    frequency = 60
-
-monitor_1 = Monitor()
-monitor_2 = Monitor()
-monitor_3 = Monitor()
-monitor_4 = Monitor()
-
-monitor_1.frequency = 60
-monitor_2.frequency = 144
-monitor_3.frequency = 70
-monitor_4.frequency = 60
-
+    frequency = 0
 
 class Headphones:
     name = 'Sony'
     sensitivity = 108
-    microphone = False
+    microphone = True
 
-headphones_1 = Headphones()
-headphones_2 = Headphones()
-headphones_3 = Headphones()
+monitors = [Monitor() for _ in range(4)]
+headphones = [Headphones() for _ in range(3)]
 
-headphones_1.microphone = False
-headphones_2.microphone = True
-headphones_3.microphone = True
+for index, number in enumerate([60, 144, 70, 60]):
+    monitors[index].frequency = number
 
+headphones[0].microphone = False
+
+
+# monitor_1 = Monitor()
+# monitor_2 = Monitor()
+# monitor_3 = Monitor()
+# monitor_4 = Monitor()
+
+# monitor_1.frequency = 60
+# monitor_2.frequency = 144
+# monitor_3.frequency = 70
+# monitor_4.frequency = 60
+
+
+# headphones_1 = Headphones()
+# headphones_2 = Headphones()
+# headphones_3 = Headphones()
+
+# headphones_1.microphone = False
+# headphones_2.microphone = True
+# headphones_3.microphone = True
