@@ -17,7 +17,7 @@ class Toyota:
 
 # состоящий из четырёх статических атрибутов:
     color = 'red'
-    price = 1000000000
+    price = 1e6
     max_speed = 200
     cur_speed = 0
 
@@ -29,3 +29,5 @@ toyota_3 = Toyota()
 toyota_1.cur_speed = random.randint(0, 200)
 toyota_2.cur_speed = random.randint(0, 200)
 toyota_3.cur_speed = random.randint(0, 200)
+
+print(toyota_1.cur_speed, toyota_2.cur_speed, toyota_3.cur_speed)
