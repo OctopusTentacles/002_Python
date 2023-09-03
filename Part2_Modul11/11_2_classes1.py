@@ -9,6 +9,9 @@
 # значение текущей скорости на случайное число от нуля до 200.
 
 
+import random
+
+
 # класс Toyota
 class Toyota:
 
@@ -18,5 +21,11 @@ class Toyota:
     max_speed = 200
     cur_speed = 0
 
+# экземпляр класса:
+toyota_1 = Toyota()
+toyota_2 = Toyota()
+toyota_3 = Toyota()
 
-
+toyota_1.cur_speed = random.randint(0, 200)
+toyota_2.cur_speed = random.randint(0, 200)
+toyota_3.cur_speed = random.randint(0, 200)
