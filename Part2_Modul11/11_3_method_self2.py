@@ -24,3 +24,12 @@
 # Family funds: 0.0
 # Having a house: True
 
+
+class Family:
+    name = ''
+    money = 0
+    house = False
+
+    def print_info(self):
+        print('Family name: {}\nFamily funds: {}\nHaving a house: {}'.format(
+                self.name, self.money, self.house))
