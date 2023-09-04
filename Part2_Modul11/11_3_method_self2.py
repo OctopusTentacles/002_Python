@@ -38,4 +38,12 @@ class Family:
         self.money += count
         print(f'Earned {count} money! Current value: {self.money}')
 
-    
+    def buy_a_house(self, price, discount=0):
+        house_price = (price - price * (discount / 100))
+        if self.money >= house_price:
+            self.money -= house_price
+            print(f'House purchased! Current money: {self.money}')
+            self.house = True
+        else:
+            print('Not enough money!')
+
