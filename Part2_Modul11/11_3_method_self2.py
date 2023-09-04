@@ -31,15 +31,16 @@ class Family:
     house = False
 
     def print_info(self):
-        print('Family name: {}\nFamily funds: {}\nHaving a house: {}'.format(
+        print('\nFamily name: {}\nFamily funds: {}\nHaving a house: {}'.format(
                 self.name, self.money, self.house))
         
     def get_money(self, count):
         self.money += count
-        print(f'Earned {count} money! Current value: {self.money}')
+        print(f'\nEarned {count} money! Current value: {self.money}')
 
     def buy_a_house(self, price, discount=0):
         house_price = (price - price * (discount / 100))
+        print('\nTry to buy a house')
         if self.money >= house_price:
             self.money -= house_price
             print(f'House purchased! Current money: {self.money}')
@@ -47,3 +48,13 @@ class Family:
         else:
             print('Not enough money!')
 
+human = Family()
+human.name = 'Common family'
+human.money = 100000
+
+human.print_info()
+house_price = 900000
+human.buy_a_house(house_price)
+human.get_money(house_price - human.money)
+human.buy_a_house(house_price)
+human.print_info()
