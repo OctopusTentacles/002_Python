@@ -33,3 +33,9 @@ class Family:
     def print_info(self):
         print('Family name: {}\nFamily funds: {}\nHaving a house: {}'.format(
                 self.name, self.money, self.house))
+        
+    def get_money(self, count):
+        self.money += count
+        print(f'Earned {count} money! Current value: {self.money}')
+
+    
