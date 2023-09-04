@@ -16,4 +16,12 @@ class Toyota:
     price = 1e6
     max_speed = 200
     cur_speed = 0
-    
+
+    def print_info(self):
+        print('color: {}\nprice: {}\nmax_speed: {}\n'
+              'cur_speed: {}'.format(self.color, self.price,
+                                     self.max_speed, self.cur_speed))
+        
+
+car_1 = Toyota()
+car_1.print_info()
