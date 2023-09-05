@@ -19,10 +19,12 @@
 import random
 
 class Toyota:
-    color = 'red'
-    price = 1e6
-    max_speed = 200
-    cur_speed = 0
+
+    def __init__(self, color, price, max_speed, cur_speed):
+        self.color = color
+        self.price = price
+        self.max_speed = max_speed
+        self.cur_speed = cur_speed
 
     def print_info(self):
         print('color: {}\nprice: {}\nmax_speed: {}\n'
@@ -34,7 +36,8 @@ class Toyota:
         car_1.print_info()
 
 
-car_1 = Toyota()
-car_1.print_info()
-car_1.set_speed(random.randint(0, 200))
+car_1 = Toyota('red', 1e6, 200, 0)
+car_2 = Toyota('red', 1e6, 200, random.randint(0, 200))
 
+car_1.print_info()
+car_2.print_info()
