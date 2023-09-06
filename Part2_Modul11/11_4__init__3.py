@@ -67,3 +67,30 @@ class PotatoGarden:
 
     def __init__(self, count):
         self.potatos = [Potato(index) for index in range(1, count + 1)]
+
+    def grow_all(self):
+        print('Картошка прорастает!')
+        for potato in self.potatos:
+            potato.grow()
+
+    def are_all_ripe(self):
+        if not all([i_potato.is_ripe() for i_potato in self.potatos]):
+            print('Картошка еще не созрела!\n')
+            return False
+# такой Return поможет получить информацию о зрелости снаружи этого объекта
+
+        else: 
+            print('Вся картошка созрела. Можно собирать!\n')
+            return True
+        
+    def print_all_states(self):
+        for potato in self.potatos:
+            potato.print_state()
+
+
+garden = PotatoGarden(5)
+
+for _ in range(3):
+    garden.grow_all()
+
+garden.are_all_ripe()
