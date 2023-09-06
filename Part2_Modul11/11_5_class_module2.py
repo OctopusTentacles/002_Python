@@ -3,11 +3,11 @@
 # ОСНОВНОЙ СКРИПТ
 
 
-import 11_5_class_module1
+import garden
 
 
 
-garden = 11_5_class_module1.PotatoGarden(5)
+garden = garden.PotatoGarden(5)
 
 for _ in range(3):
     garden.grow_all()
