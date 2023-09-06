@@ -15,3 +15,13 @@ class Point:
         self.x = x
         self.y = y
         Point.count += 1
+
+    def print_info(self):
+        print(self.x, self.y)
+
+point_1 = Point(5, 10)
+point_2 = Point(10, 15)
+
+point_1.print_info()
+point_2.print_info()
+print(Point.count)
