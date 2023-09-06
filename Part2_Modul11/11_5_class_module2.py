@@ -3,11 +3,15 @@
 # ОСНОВНОЙ СКРИПТ
 
 
-import garden
+# import garden
+# чтобы избавиться от приписки garden.PotatoGarden(5)
 
+# from garden import *
+# но еще лучше вместо * указывать какие классы нам нужно импортировать
 
+from garden import PotatoGarden
 
-garden = garden.PotatoGarden(5)
+garden = PotatoGarden(5)
 
 for _ in range(3):
     garden.grow_all()
