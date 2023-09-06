@@ -41,3 +41,14 @@
 
 # Вся картошка созрела. Можно собирать!
 
+class Potato:
+    states = {0: 'Отсутствует', 1: 'Росток', 2: 'Зеленая', 3: 'Зрелая'}
+
+
+
+
+
+class PotatoGarden:
+
+    def __init__(self, count):
+        self.potatos = []
