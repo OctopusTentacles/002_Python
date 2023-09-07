@@ -12,12 +12,27 @@
 
 # Реализуйте такую программу.
 
+
+import random
+
 class Warrior:
     def __init__(self, name, health=100):
         self.name = name
         self.health = health
 
-    def 
+    def hit(self, target):
+
+
+    def fight(self):
+        if random.randint(1,2) == 1:
+            warrior_1.hit(warrior_2)
+            print(f'{warrior_1.name} бьет {warrior_2.name}')
+        else:
+            warrior_2.hit(warrior_1)
+            print(f'{warrior_2.name} бьет {warrior_1.name}')
+
+    def print_status(self):
+        print('')
 
 
 
