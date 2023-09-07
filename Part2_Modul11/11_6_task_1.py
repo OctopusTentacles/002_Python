@@ -12,5 +12,15 @@
 
 # Реализуйте такую программу.
 
-class Warior:
-    
+class Warrior:
+    def __init__(self, name, health=100):
+        self.name = name
+        self.health = health
+
+    def 
+
+
+
+warrior_1 = Warrior('Воин_1')
+warrior_2 = Warrior('Воин_2')
+
