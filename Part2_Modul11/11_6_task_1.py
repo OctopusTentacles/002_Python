@@ -20,7 +20,20 @@ class Warrior:
         self.name = name
         self.health = health
 
+
+    def print_status(self):
+        print(warrior_1, warrior_2)
+
+
+
     def hit(self, target):
+        if self.health > 0:
+            self.health -= 20
+            print(f'{target} атаковал!')
+        else:
+            print('нет здоровья')
+        print_status()
+         
 
 
     def fight(self):
@@ -31,11 +44,10 @@ class Warrior:
             warrior_2.hit(warrior_1)
             print(f'{warrior_2.name} бьет {warrior_1.name}')
 
-    def print_status(self):
-        print('')
 
 
 
 warrior_1 = Warrior('Воин_1')
 warrior_2 = Warrior('Воин_2')
 
+fight()
