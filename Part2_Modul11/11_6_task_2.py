@@ -6,3 +6,17 @@
 # (данные о студентах можете придумать свои или запросить их у пользователя) 
 # и отсортируйте его по возрастанию среднего балла. Выведите результат на экран.
 
+
+class Student:
+
+    def __init__(self, name, group_num, grade):
+        self.name = name
+        self.group_num = group_num
+        self.grade = grade
+
+    def print_info(self):
+        print(f'Фамилия Имя: {self.name}'
+              f'Номер группы: {self.group_num}'
+              f'Успеваемость: {self.grade}')
+        
+    
