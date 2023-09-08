@@ -24,12 +24,24 @@ class Warrior:
     def print_info(self):
         print(f'У {self.name} здоровье: {self.health}')
 
+
 warrior_1 = Warrior('Воин_1', 100)
 warrior_2 = Warrior('Воин_2', 100)
 
-while True:
+while warrior_1.health > 0 and warrior_2.health > 0:
+
+    if random.randint(1, 2) == 1:
+        print(f'Атакует {warrior_1.name}')
+        warrior_2.health -= 20
+    else:
+        print(f'Атакует {warrior_2.name}')
+        warrior_1.health -= 20
+
     warrior_1.print_info()
     warrior_2.print_info()
 
-    if random.randint(1, 2) == 1:
-        
+
+if warrior_1.health <= 0:
+    print(f'Победил {warrior_2.name}')
+else:
+    print(f'Победил {warrior_1.name}')
