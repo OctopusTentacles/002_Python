@@ -17,43 +17,19 @@ import random
 
 
 class Warrior:
-    def __init__(self, index):
-        self.index = index
-        self.name = 'Воин_' + str(index)
-        self.health = 100
+    def __init__(self, name, health):
+        self.name = name
+        self.health = health
 
-    def print_status(self):
-        print(f'{self.name} здоровье: {self.health}')
+    def print_info(self):
+        print(f'У {self.name} здоровье: {self.health}')
 
+warrior_1 = Warrior('Воин_1', 100)
+warrior_2 = Warrior('Воин_2', 100)
 
+while True:
+    warrior_1.print_info()
+    warrior_2.print_info()
 
-
-
-
-class Fight:
-    def __init__(self, count):
-        self.warriors = [Warrior(index) for index in range(1, count + 1)]
-
-        for warrior in self.warriors:
-            warrior.print_status()
-
-
-
-
-
-
-
-
-
-    def hit(self, target):
-        if self.health > 0:
-            self.health -= 20
-            print(f'{target} атаковал!')
-        else:
-            print('нет здоровья')
-      
-         
-
-
+    if random.randint(1, 2) == 1:
         
-tour = Fight(2)
