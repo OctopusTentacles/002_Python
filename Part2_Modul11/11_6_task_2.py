@@ -14,9 +14,23 @@ class Student:
         self.group_num = group_num
         self.grade = grade
 
+# вывод информации о студенте:
     def print_info(self):
         print(f'Фамилия Имя: {self.name}'
               f'Номер группы: {self.group_num}'
               f'Успеваемость: {self.grade}')
         
+
+class Team:
+
+# создание группы студентов:
+    def __init__(self, count):
+        self.students = [Student(index) for index in range(1, count + 1)]
+
+# заполнение иформации о студентах:
+
     
+# вывод информации всей группы:
+    def print_all_info(self):
+        for student in self.students:
+            student.print_info()
