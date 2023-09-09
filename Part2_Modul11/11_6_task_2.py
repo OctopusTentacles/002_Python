@@ -9,7 +9,7 @@
 
 class Student:
 
-    def __init__(self, name, group_num='10A', grade=[4, 5, 4, 3, 5]):
+    def __init__(self, name, group_num, grade=[]):
         self.name = name
         self.group_num = group_num
         self.grade = grade
@@ -28,15 +28,24 @@ class Team:
         self.students = [Student(index) for index in range(1, count + 1)]
 
 # заполнение иформации о студентах:
+    def student_info(self):
+        for student in self.students:
+            student.name = input('Введите имя студента: ')
+            student.group_num = input('Введите номер группы: ')
+            for i in range(1, 6):
+                score = int(input(f'{i} оценка студента {student.name}: '))
+                student.grade.append(score)
 
-
+            student.print_info()
     
+
+
 # вывод информации всей группы:
     def print_all_info(self):
         for student in self.students:
-            student.print_info()
+            student.student_info()
 
 
 
 students = Team(10)
-students.print_all_info()
+students.student_info()
