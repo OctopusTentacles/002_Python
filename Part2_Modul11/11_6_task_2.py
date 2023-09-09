@@ -9,15 +9,15 @@
 
 class Student:
 
-    def __init__(self, name, group_num, grade):
+    def __init__(self, name, group_num='10A', grade=[4, 5, 4, 3, 5]):
         self.name = name
         self.group_num = group_num
         self.grade = grade
 
 # вывод информации о студенте:
     def print_info(self):
-        print(f'Фамилия Имя: {self.name}'
-              f'Номер группы: {self.group_num}'
+        print(f'Фамилия Имя: {self.name}. '
+              f'Номер группы: {self.group_num}. '
               f'Успеваемость: {self.grade}')
         
 
@@ -29,8 +29,14 @@ class Team:
 
 # заполнение иформации о студентах:
 
+
     
 # вывод информации всей группы:
     def print_all_info(self):
         for student in self.students:
             student.print_info()
+
+
+
+students = Team(10)
+students.print_all_info()
