@@ -8,21 +8,20 @@
 
 
 class Student:
-
-    def __init__(self, name, group_num, grade):
-        self.name = name
-        self.group_num = group_num
-        self.grade = grade
+    def __init__(self, index):
+        self.index = index
+        self.name = ''
+        self.group_num = ''
+        self.grade = []
 
 # вывод информации о студенте:
     def print_info(self):
-        print(f'Фамилия Имя: {self.name}. '
-              f'Номер группы: {self.group_num}. '
+        print(f'{self.index}. Фамилия Имя: {self.name}. \t'
+              f'Номер группы: {self.group_num}. \t'
               f'Успеваемость: {self.grade}')
         
 
 class Team:
-
 # создание группы студентов:
     def __init__(self, count):
         self.students = [Student(index) for index in range(1, count + 1)]
@@ -30,7 +29,7 @@ class Team:
 # заполнение иформации о студентах:
     def student_info(self):
         for student in self.students:
-            student.name = input('\nВведите имя студента: ')
+            student.name = input(f'\nВведите ФИ студента {student.index}: ')
             student.group_num = input('Введите номер группы: ')
 # при вводе оценок нужно поймать исключение ValueError,
 # while True ))) - долго мучился без него:
@@ -44,14 +43,13 @@ class Team:
                         continue
                     break    
 
-
 # вывод информации всей группы:
     def print_all_info(self):
+        print()
         for student in self.students:
             student.print_info()
 
 
-
-students = Team(10)
+students = Team(2)
 students.student_info()
 students.print_all_info()
