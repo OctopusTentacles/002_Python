@@ -9,7 +9,7 @@
 
 class Student:
 
-    def __init__(self, name, group_num='', grade=[]):
+    def __init__(self, name, group_num, grade):
         self.name = name
         self.group_num = group_num
         self.grade = grade
@@ -32,30 +32,26 @@ class Team:
         for student in self.students:
             student.name = input('\nВведите имя студента: ')
             student.group_num = input('Введите номер группы: ')
+# при вводе оценок нужно поймать исключение ValueError,
+# while True ))) - долго мучился без него:
             for i in range(1, 6):
-                try:
-                    score = int(input(f'{i} оценка студента {student.name}: '))
-                    if score is not int:
-                        raise ValueError('Введите число!')
-                    else:
+                while True:
+                    try:
+                        score = int(input(f'{i} оценка студента {student.name}: '))
                         student.grade.append(score)
-
-                except ValueError as exc:
-                    print(exc)
-                    
-                    
-
-        
-        student.print_info()
-    
+                    except ValueError:
+                        print('Введите целое число!')
+                        continue
+                    break    
 
 
 # вывод информации всей группы:
     def print_all_info(self):
         for student in self.students:
-            student.student_info()
+            student.print_info()
 
 
 
 students = Team(10)
 students.student_info()
+students.print_all_info()
