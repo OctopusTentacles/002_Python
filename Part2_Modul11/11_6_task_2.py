@@ -16,8 +16,9 @@ class Student:
 
 # вывод информации о студенте:
     def print_info(self):
-        print(f'{self.index}. Фамилия Имя: {self.name:<30}'
-              f'Номер группы: {self.group_num:<10}'
+# фу, намучился с format:<25...не мог правильно синтаксис прописать )))))
+        print(f'{self.index:<3} Фамилия Имя: {self.name:<25}'
+              f'Номер группы: {self.group_num:<8}'
               f'Успеваемость: {self.grade}')
         
 
@@ -50,6 +51,6 @@ class Team:
             student.print_info()
 
 
-students = Team(1)
+students = Team(10)
 students.student_info()
 students.print_all_info()
