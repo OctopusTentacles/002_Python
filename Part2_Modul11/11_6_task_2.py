@@ -9,7 +9,7 @@
 
 class Student:
 
-    def __init__(self, name, group_num, grade=[]):
+    def __init__(self, name, group_num='', grade=[]):
         self.name = name
         self.group_num = group_num
         self.grade = grade
@@ -30,13 +30,23 @@ class Team:
 # заполнение иформации о студентах:
     def student_info(self):
         for student in self.students:
-            student.name = input('Введите имя студента: ')
+            student.name = input('\nВведите имя студента: ')
             student.group_num = input('Введите номер группы: ')
             for i in range(1, 6):
-                score = int(input(f'{i} оценка студента {student.name}: '))
-                student.grade.append(score)
+                try:
+                    score = int(input(f'{i} оценка студента {student.name}: '))
+                    if score is not int:
+                        raise ValueError('Введите число!')
+                    else:
+                        student.grade.append(score)
 
-            student.print_info()
+                except ValueError as exc:
+                    print(exc)
+                    
+                    
+
+        
+        student.print_info()
     
 
 
