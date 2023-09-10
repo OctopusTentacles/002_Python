@@ -64,7 +64,7 @@ class Team:
                     self.students[i_min].avarage_grade:
                     self.students[curr], self.students[i_min] = \
                         self.students[i_min], self.students[curr]
-        print('Сортировка по возрастанию средней успеваемости:')
+        print('\nsСортировка по возрастанию средней успеваемости:')
 
 
 students = Team(10)
