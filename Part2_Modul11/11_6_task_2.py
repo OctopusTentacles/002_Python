@@ -13,13 +13,18 @@ class Student:
         self.name = ''
         self.group_num = ''
         self.grade = []
+        self.avarage_grade = int
 
 # вывод информации о студенте:
     def print_info(self):
+        # grade = ''.join(str(self.grade))
 # фу, намучился с format:<25...не мог правильно синтаксис прописать )))))
         print(f'{self.index:<3} Фамилия Имя: {self.name:<25}'
               f'Номер группы: {self.group_num:<8}'
               f'Успеваемость: {self.grade}')
+        
+
+
         
 
 class Team:
@@ -50,7 +55,21 @@ class Team:
         for student in self.students:
             student.print_info()
 
+    def selection_sort(self):
+        for student in self.students:
+            avarage_grade = int(sum(student.grade) / len(student.grade))
+            print(avarage_grade)
 
-students = Team(10)
+        for i_min in range(len(self.students)):
+            for curr in range(i_min, len(self.students)):
+                if avarage_grade[curr] < avarage_grade[i_min]:
+                    avarage_grade[curr], avarage_grade[i_min] = avarage_grade[i_min], 
+                    avarage_grade[curr]
+
+
+
+students = Team(1)
 students.student_info()
+students.print_all_info()
+students.selection_sort()
 students.print_all_info()
