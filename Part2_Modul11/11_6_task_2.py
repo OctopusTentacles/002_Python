@@ -24,9 +24,6 @@ class Student:
               f'Успеваемость: {self.grade}')
         
 
-
-        
-
 class Team:
 # создание группы студентов:
     def __init__(self, count):
@@ -67,10 +64,10 @@ class Team:
                     self.students[i_min].avarage_grade:
                     self.students[curr], self.students[i_min] = \
                         self.students[i_min], self.students[curr]
-                    
+        print('Сортировка по возрастанию средней успеваемости:')
 
 
-students = Team(3)
+students = Team(10)
 students.student_info()
 students.print_all_info()
 students.selection_sort()
