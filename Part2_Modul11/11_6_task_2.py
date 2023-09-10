@@ -13,7 +13,7 @@ class Student:
         self.name = ''
         self.group_num = ''
         self.grade = []
-        self.avarage_grade = int
+        self.avarage_grade = 0
 
 # вывод информации о студенте:
     def print_info(self):
@@ -57,18 +57,21 @@ class Team:
 
     def selection_sort(self):
         for student in self.students:
-            avarage_grade = int(sum(student.grade) / len(student.grade))
-            print(avarage_grade)
+            student.avarage_grade = int(sum(student.grade) / len(student.grade))
+            print(student.avarage_grade)
 
         for i_min in range(len(self.students)):
             for curr in range(i_min, len(self.students)):
-                if avarage_grade[curr] < avarage_grade[i_min]:
-                    avarage_grade[curr], avarage_grade[i_min] = avarage_grade[i_min], 
-                    avarage_grade[curr]
+# как-то сложно для меня это получается, тяжело осмыслить 
+# как правильно написать...методом тыка - 2 дня (((
+                if self.students[curr].avarage_grade < \
+                    self.students[i_min].avarage_grade:
+                    self.students[curr], self.students[i_min] = \
+                        self.students[i_min], self.students[curr]
 
 
 
-students = Team(1)
+students = Team(2)
 students.student_info()
 students.print_all_info()
 students.selection_sort()
