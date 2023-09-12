@@ -19,3 +19,15 @@
 # Реализация состояний на ваше усмотрение. 
 # Это может быть и простой «флаг», и словарь состояний, и что-нибудь ещё интереснее.
 
+
+class Parent:
+    def __init__(self, name, age, kids):
+        self.name = name
+        self.age = age
+        self.kids = kids
+
+
+class Child:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
