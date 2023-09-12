@@ -21,13 +21,20 @@
 
 
 class Parent:
-    def __init__(self, name, age, kids):
-        self.name = name
-        self.age = age
-        self.kids = kids
-
-
-class Child:
     def __init__(self, name, age):
         self.name = name
         self.age = age
+        self.kids = []
+        
+
+    def parent_info(self):
+        print(f'Меня зовут {self.name}, мой возраст {self.age}'
+              f'и у меня есть {len(self.kids)} детей.')
+
+
+class Child:
+    def __init__(self, name, age, calm, hungry):
+        self.name = name
+        self.age = age
+        self.calm = calm
+        self.hungry = hungry
