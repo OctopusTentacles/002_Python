@@ -33,8 +33,11 @@ class Parent:
 
 
 class Child:
-    def __init__(self, name, age, calm, hungry):
+    def __init__(self, name, age):
         self.name = name
         self.age = age
-        self.calm = calm
-        self.hungry = hungry
+        self.calm = {0: 'спокоен', 1: 'кричит'}
+        self.hungry = {0: 'сытый', 1: 'голодный'}
+
+    def child_info(self):
+        print(f'Ребенку {self.name} ')
