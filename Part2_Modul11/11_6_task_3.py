@@ -36,8 +36,11 @@ class Child:
     def __init__(self, name, age):
         self.name = name
         self.age = age
-        self.calm = {0: 'спокоен', 1: 'кричит'}
+        self.cry = {0: 'спокоен', 1: 'кричит'}
         self.hungry = {0: 'сытый', 1: 'голодный'}
 
     def child_info(self):
-        print(f'Ребенку {self.name} ')
+        print(f'Ребенок {self.name:<5}, возраст: {self.age} ')
+
+    def child_status(self):
+        print(f'')
