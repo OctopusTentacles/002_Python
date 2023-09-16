@@ -20,6 +20,8 @@
 # Это может быть и простой «флаг», и словарь состояний, и что-нибудь ещё интереснее.
 
 
+import random
+
 class Parent:
     def __init__(self, name, age):
         self.name = name
@@ -43,4 +45,5 @@ class Child:
         print(f'Ребенок {self.name:<5}, возраст: {self.age} ')
 
     def child_status(self):
-        print(f'')
+        print(f'Ребенок {self.name} {self.hungry[
+            random.randint(0, 1)]} и {self.cry[random.randint(0, 1)]}')
