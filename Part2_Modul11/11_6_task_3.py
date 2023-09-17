@@ -26,7 +26,7 @@ class Parent:
     def __init__(self, name, age):
         self.name = name
         self.age = age
-        self.kids = []
+        self.kids = {}
         
 
     def parent_info(self):
@@ -34,8 +34,10 @@ class Parent:
         self.age = int(input('сколько вам лет: '))
         child = Child('', 0)
         child.child_info()
-        print(f'Меня зовут {self.name}, мой возраст {self.age} '
+        print(f'\nМеня зовут {self.name}, мой возраст {self.age} '
               f'и у меня есть {len(self.kids)} детей.')
+        for name, age in self.kids.items():
+            print(f'Ребенок {name:<5} возраст: {age} ')
 
 
 class Child:
@@ -46,13 +48,13 @@ class Child:
         self.hungry = {0: 'сытый', 1: 'голодный'}
 
     def child_info(self):
-        count_kids = int(input('сколько детей? '))
+        count_kids = int(input('\nСколько детей? '))
 
         for _ in range(count_kids):
             self.name = (input('Имя ребенка: '))
             self.age = int(input('Возраст ребенка: '))
-            parent.kids.append(self.name)
-            print(f'Ребенок {self.name:<5} возраст: {self.age} ')
+            parent.kids[self.name] = self.age
+            
 
     def child_status(self):
         print(f'Ребенок {self.name} {self.hungry[random.randint(0, 1)]} '
