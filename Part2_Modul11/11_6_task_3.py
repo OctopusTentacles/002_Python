@@ -30,7 +30,7 @@ class Parent:
         
 
     def parent_info(self):
-        print(f'Меня зовут {self.name}, мой возраст {self.age}'
+        print(f'Меня зовут {self.name}, мой возраст {self.age} '
               f'и у меня есть {len(self.kids)} детей.')
 
 
@@ -42,8 +42,15 @@ class Child:
         self.hungry = {0: 'сытый', 1: 'голодный'}
 
     def child_info(self):
-        print(f'Ребенок {self.name:<5}, возраст: {self.age} ')
+        print(f'Ребенок {self.name:<5} возраст: {self.age} ')
 
     def child_status(self):
-        print(f'Ребенок {self.name} {self.hungry[
-            random.randint(0, 1)]} и {self.cry[random.randint(0, 1)]}')
+        print(f'Ребенок {self.name} {self.hungry[random.randint(0, 1)]} '
+              f'и {self.cry[random.randint(0, 1)]}')
+        
+
+parent = Parent('John', 35)
+kids_1 = Child('Ben', 8)
+
+parent.parent_info()
+child.child_info()
