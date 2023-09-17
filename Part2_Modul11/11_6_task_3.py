@@ -30,6 +30,10 @@ class Parent:
         
 
     def parent_info(self):
+        self.name = input('Как вас зовут: ')
+        self.age = int(input('сколько вам лет: '))
+        child = Child('', 0)
+        child.child_info()
         print(f'Меня зовут {self.name}, мой возраст {self.age} '
               f'и у меня есть {len(self.kids)} детей.')
 
@@ -44,9 +48,10 @@ class Child:
     def child_info(self):
         count_kids = int(input('сколько детей? '))
 
-        for i in range(count_kids):
-            parent.kids.append(input('Имя ребенка: '))
+        for _ in range(count_kids):
+            self.name = (input('Имя ребенка: '))
             self.age = int(input('Возраст ребенка: '))
+            parent.kids.append(self.name)
             print(f'Ребенок {self.name:<5} возраст: {self.age} ')
 
     def child_status(self):
@@ -54,7 +59,5 @@ class Child:
               f'и {self.cry[random.randint(0, 1)]}')
         
 
-parent = Parent('John', 35)
-
+parent = Parent('', 0)
 parent.parent_info()
-child.child_info()
