@@ -42,7 +42,12 @@ class Child:
         self.hungry = {0: 'сытый', 1: 'голодный'}
 
     def child_info(self):
-        print(f'Ребенок {self.name:<5} возраст: {self.age} ')
+        count_kids = int(input('сколько детей? '))
+
+        for i in range(count_kids):
+            parent.kids.append(input('Имя ребенка: '))
+            self.age = int(input('Возраст ребенка: '))
+            print(f'Ребенок {self.name:<5} возраст: {self.age} ')
 
     def child_status(self):
         print(f'Ребенок {self.name} {self.hungry[random.randint(0, 1)]} '
@@ -50,7 +55,6 @@ class Child:
         
 
 parent = Parent('John', 35)
-kids_1 = Child('Ben', 8)
 
 parent.parent_info()
 child.child_info()
