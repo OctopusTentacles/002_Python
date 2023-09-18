@@ -39,6 +39,17 @@ class Parent:
         for name, age in self.kids.items():
             print(f'Ребенок {name:<7} Возраст: {age} ')
         child.child_status()
+
+    def parent_feed(self, name):
+        print(f'{self.name} торопится накормить {name}')
+
+    def parent_action(self, name):
+        print(f'{self.name} успокаивает {name}')
+
+    def parent_rest(self):
+        print(f'{self.name} спит')
+
+
         
         
 
@@ -71,9 +82,21 @@ class Child:
                 break
 
     def child_status(self):
+        print('\nСейчас:')
         for name in parent.kids.keys():
-            print(f'Ребенок {name:<7} {self.hungry[random.randint(0, 1)]} '
-                    f'и {self.cry[random.randint(0, 1)]}')
+            status_hugry = random.randint(0, 1)
+            status_cry = random.randint(0, 1)
+            print(f'Ребенок {name:<7} {self.hungry[status_hugry]} '
+                    f'и {self.cry[status_cry]}')
+            
+            if
+            if self.hungry == 1:
+                parent.parent_feed(name)
+            elif self.cry == 1:
+                parent.parent_action(name)
+            else:
+                parent.parent_rest()
+
         
 
 parent = Parent('', 0)
