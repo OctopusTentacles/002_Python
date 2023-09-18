@@ -55,13 +55,15 @@ class Child:
             while True:
                 try:
                     self.age = int(input('Возраст ребенка: '))
-                    if
-
-
+                    if parent.age - self.age < 16:
+                        raise Exception
                     parent.kids[self.name] = self.age
                 except ValueError:
                     print('Введите целое число')
-
+                    continue
+                except Exception:
+                    print('Ваш возраст и возраст ребенка не соответствуют')
+                    continue
                 break
 
     def child_status(self):
