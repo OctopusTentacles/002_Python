@@ -52,9 +52,17 @@ class Child:
 
         for _ in range(count_kids):
             self.name = (input('Имя ребенка: '))
-            self.age = int(input('Возраст ребенка: '))
-            parent.kids[self.name] = self.age
-            
+            while True:
+                try:
+                    self.age = int(input('Возраст ребенка: '))
+                    if
+
+
+                    parent.kids[self.name] = self.age
+                except ValueError:
+                    print('Введите целое число')
+
+                break
 
     def child_status(self):
         print(f'Ребенок {self.name} {self.hungry[random.randint(0, 1)]} '
