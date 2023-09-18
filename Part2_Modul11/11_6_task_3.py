@@ -22,6 +22,7 @@
 
 import random
 
+
 class Parent:
     def __init__(self, name, age):
         self.name = name
@@ -40,6 +41,9 @@ class Parent:
             print(f'Ребенок {name:<7} Возраст: {age} ')
         child.child_status()
 
+    def parent_crazy(self):
+        print(f'{self.name} сейчас сойдет с ума!!!')
+
     def parent_feed(self, name):
         print(f'{self.name} торопится накормить {name}')
 
@@ -47,7 +51,7 @@ class Parent:
         print(f'{self.name} успокаивает {name}')
 
     def parent_rest(self):
-        print(f'{self.name} спит')
+        print(f'{self.name} наконец-то! спит!')
 
 
         
@@ -82,20 +86,23 @@ class Child:
                 break
 
     def child_status(self):
-        print('\nСейчас:')
+        print('\n\033[0;32mСейчас:\033[0m')
         for name in parent.kids.keys():
-            status_hugry = random.randint(0, 1)
-            status_cry = random.randint(0, 1)
-            print(f'Ребенок {name:<7} {self.hungry[status_hugry]} '
-                    f'и {self.cry[status_cry]}')
-            
-            if
-            if self.hungry == 1:
-                parent.parent_feed(name)
-            elif self.cry == 1:
-                parent.parent_action(name)
-            else:
-                parent.parent_rest()
+            while True:
+                status_hugry = random.randint(0, 1)
+                status_cry = random.randint(0, 1)
+                print(f'\nРебенок {name:<7} {self.hungry[status_hugry]} '
+                        f'и {self.cry[status_cry]}')
+                
+                if status_hugry == 1 and status_cry == 1:
+                    parent.parent_crazy()
+                elif status_hugry == 1:
+                    parent.parent_feed(name)
+                elif status_cry == 1:
+                    parent.parent_action(name)
+                else:
+                    parent.parent_rest()
+                    break
 
         
 
