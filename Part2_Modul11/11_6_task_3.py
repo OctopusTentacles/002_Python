@@ -54,10 +54,6 @@ class Parent:
         print(f'{self.name} наконец-то! спит!')
 
 
-        
-        
-
-
 class Child:
     def __init__(self, name, age):
         self.name = name
@@ -104,7 +100,10 @@ class Child:
                     parent.parent_rest()
                     break
 
-        
-
+# MAIN CODE=======================================================================  
 parent = Parent('', 0)
 parent.parent_info()
+
+
+# трудно мне далось
+# проблема с осмыслением объектов и обращением к ним
