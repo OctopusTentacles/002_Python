@@ -34,3 +34,34 @@
 # Дополнительно: придумайте свой элемент (или элементы), а также реализуйте 
 # его взаимодействие с остальными элементами.
 
+class Water:
+    def __add__(self, other):
+        if isinstance(other, Air):
+            return Lightning()
+
+
+class Air:
+
+
+class Fire:
+
+
+class Earth:
+
+
+class Storm:
+
+
+class Steam:
+
+
+class Dirt:
+
+
+class Lightning:
+
+
+class Dust:
+
+
+class Lava:
