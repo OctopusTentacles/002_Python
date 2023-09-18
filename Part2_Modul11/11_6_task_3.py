@@ -37,7 +37,7 @@ class Parent:
         print(f'\nМеня зовут {self.name}, мой возраст {self.age} '
               f'и у меня есть {len(self.kids)} детей.')
         for name, age in self.kids.items():
-            print(f'Ребенок {name:<5} возраст: {age} ')
+            print(f'Ребенок {name:<7} Возраст: {age} ')
 
 
 class Child:
@@ -59,10 +59,11 @@ class Child:
                         raise Exception
                     parent.kids[self.name] = self.age
                 except ValueError:
-                    print('Введите целое число')
+                    print('\033[0;31mвведите целое число\033[0m')
                     continue
                 except Exception:
-                    print('Ваш возраст и возраст ребенка не соответствуют')
+                    print('\033[0;31mваш возраст и возраст ребенка '
+                          'не соответствуют действительности\033[0m')
                     continue
                 break
 
