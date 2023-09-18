@@ -28,16 +28,19 @@ class Parent:
         self.age = age
         self.kids = {}
         
-
     def parent_info(self):
         self.name = input('Как вас зовут: ')
         self.age = int(input('сколько вам лет: '))
+
         child = Child('', 0)
         child.child_info()
         print(f'\nМеня зовут {self.name}, мой возраст {self.age} '
               f'и у меня есть {len(self.kids)} детей.')
         for name, age in self.kids.items():
             print(f'Ребенок {name:<7} Возраст: {age} ')
+            child.child_status()
+        
+        
 
 
 class Child:
@@ -68,8 +71,9 @@ class Child:
                 break
 
     def child_status(self):
-        print(f'Ребенок {self.name} {self.hungry[random.randint(0, 1)]} '
-              f'и {self.cry[random.randint(0, 1)]}')
+        for name in parent.kids.keys():
+            print(f'Ребенок {name:<7} {self.hungry[random.randint(0, 1)]} '
+                    f'и {self.cry[random.randint(0, 1)]}')
         
 
 parent = Parent('', 0)
