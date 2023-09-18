@@ -38,7 +38,7 @@ class Parent:
               f'и у меня есть {len(self.kids)} детей.')
         for name, age in self.kids.items():
             print(f'Ребенок {name:<7} Возраст: {age} ')
-            child.child_status()
+        child.child_status()
         
         
 
