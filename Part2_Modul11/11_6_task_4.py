@@ -61,6 +61,10 @@ class Air:
 
 class Fire:
     name = 'Огонь'
+    def __add__(self, other):
+        if isinstance(other, Earth):
+            return Lava.name
+
 
 
 
@@ -84,3 +88,11 @@ class Dust:
 
 class Lava:
     name = 'Лава'
+
+
+water = Water()
+air = Air()
+fire = Fire()
+earth = Earth()
+
+print(fire + earth)
