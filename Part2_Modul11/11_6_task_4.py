@@ -34,6 +34,7 @@
 # Дополнительно: придумайте свой элемент (или элементы), а также реализуйте 
 # его взаимодействие с остальными элементами.
 
+
 class Water:
     name = 'Вода'
     def __add__(self, other):
@@ -64,9 +65,6 @@ class Fire:
         else:
             return None
 
-
-
-
 class Earth:
     name = 'Земля'
 
@@ -89,6 +87,7 @@ class Lava:
     name = 'Лава'
 
 
+# MAIN CODE=========================================================================
 water = Water()
 air = Air()
 fire = Fire()
@@ -100,6 +99,8 @@ print(f'Вода + Земля = {water + earth}')
 
 print(f'Воздух + Огонь = {air + fire}')
 print(f'Воздух + Земля = {air + earth}')
+print(f'Воздух + Вода = {air + water}')
 
-
-print(water + earth)
+print(f'Огонь + Земля = {fire + earth}')
+print(f'Огонь + Воздух = {fire + air}')
+print(f'Огонь + Вода = {fire + water}')
