@@ -33,3 +33,14 @@
 # Реализуйте такую программу и создайте двух людей, живущих в одном доме. 
 # Проверьте работу программы несколько раз.
 
+
+class House:
+    def __init__(self):
+        self.fridge = 50
+        self.table_money = 0
+        
+
+class Human:
+    def __init__(self, name):
+        self.name = name
+        self.satiety = 50
