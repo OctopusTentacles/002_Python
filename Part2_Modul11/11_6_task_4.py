@@ -35,33 +35,43 @@
 # его взаимодействие с остальными элементами.
 
 class Water:
+    name = 'Вода'
     def __add__(self, other):
         if isinstance(other, Air):
             return Lightning()
+        elif isinstance(other, Fire):
+            return Steam()
+        elif isinstance(other, Earth):
+            return Dirt()
 
 
 class Air:
+    name = 'Воздух'
+
 
 
 class Fire:
+    name = 'Огонь'
+
 
 
 class Earth:
-
+    name = 'Земля'
 
 class Storm:
-
+    name = 'Шторм'
 
 class Steam:
-
+    name = 'Пар'
 
 class Dirt:
-
+    name = 'Грязь'
 
 class Lightning:
-
+    name = 'Молния'
 
 class Dust:
-
+    name = 'Пыль'
 
 class Lava:
+    name = 'Лава'
