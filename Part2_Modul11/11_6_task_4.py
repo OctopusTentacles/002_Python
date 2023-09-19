@@ -38,32 +38,31 @@ class Water:
     name = 'Вода'
     def __add__(self, other):
         if isinstance(other, Air):
-            return Storm()
+            return Storm.name
         elif isinstance(other, Fire):
-            return Steam()
+            return Steam.name
         elif isinstance(other, Earth):
-            return Dirt()
+            return Dirt.name
         else:
             return None
-
 
 class Air:
     name = 'Воздух'
     def __add__(self, other):
         if isinstance(other, Fire):
-            return Lightning()
+            return Lightning.name
         elif isinstance(other, Earth):
-            return Dust()
+            return Dust.name
         else:
             return None
-
-
 
 class Fire:
     name = 'Огонь'
     def __add__(self, other):
         if isinstance(other, Earth):
             return Lava.name
+        else:
+            return None
 
 
 
@@ -95,4 +94,12 @@ air = Air()
 fire = Fire()
 earth = Earth()
 
-print(fire + earth)
+print(f'Вода + Воздух = {water + air}')
+print(f'Вода + Огонь = {water + fire}')
+print(f'Вода + Земля = {water + earth}')
+
+print(f'Воздух + Огонь = {air + fire}')
+print(f'Воздух + Земля = {air + earth}')
+
+
+print(water + earth)
