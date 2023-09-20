@@ -34,13 +34,21 @@
 # Проверьте работу программы несколько раз.
 
 
-class House:
-    def __init__(self):
-        self.fridge = 50
-        self.table_money = 0
-        
-
 class Human:
     def __init__(self, name):
         self.name = name
         self.satiety = 50
+
+    def to_eat(self, cube_number):
+        self.satiety += cube_number
+        House.fridge -= cube_number
+
+
+
+class House:
+    def __init__(self):
+        self.fridge = 50
+        self.table_money = 0
+
+
+    
