@@ -34,6 +34,9 @@
 # Проверьте работу программы несколько раз.
 
 
+import random
+
+
 class Human:
     def __init__(self, name):
         self.name = name
@@ -42,23 +45,32 @@ class Human:
     def to_eat(self, cube_number):
         self.satiety += cube_number
         House.fridge -= cube_number
+        print(f'{self.name} кушает')
 
     def to_work(self, cube_number):
         self.satiety -= cube_number
-        House.table_money += cube_number
+        House.money += cube_number
+        print(f'{self.name} работает')
 
     def to_play(self, cube_number):
         self.satiety -= cube_number
+        print(f'{self.name} играет')
 
     def buy_food(self, cube_number):
-        House.fridge -= cube_number
-        House.table_money += cube_number
+        House.fridge += cube_number
+        House.money -= cube_number
+        print(f'{self.name} покупает продукты')
 
 
 class House:
     def __init__(self):
         self.fridge = 50
-        self.table_money = 0
+        self.money = 0
+
+    def info(self):
+        print(f'еды: {self.fridge:>10}'
+              f'денег: {self.money:>10}'
+              f'сытость: {Human.satiety:>10}')
 
 
     
