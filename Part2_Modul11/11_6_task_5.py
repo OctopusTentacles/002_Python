@@ -43,6 +43,10 @@ class Human:
         self.satiety += cube_number
         House.fridge -= cube_number
 
+    def to_work(self, cube_number):
+        self.satiety -= cube_number
+        House.table_money += cube_number
+
 
 
 class House:
