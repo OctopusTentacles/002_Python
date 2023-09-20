@@ -42,6 +42,23 @@ class Human:
         self.name = name
         self.satiety = 50
 
+    def year(self):
+        for day in range(1, 5):
+            House.info()
+
+            cube_number = random.randint(1, 6)
+            print(f'\033[0;32mДень {day}:\033[0m')
+            
+            if self.satiety < 0:
+                print(f'{self.name} умирает.')
+                break
+
+            elif cube_number == 1:
+                self.to_work(cube_number)
+
+                
+
+
     def to_eat(self, cube_number):
         self.satiety += cube_number
         House.fridge -= cube_number
@@ -72,5 +89,6 @@ class House:
               f'денег: {self.money:>10}'
               f'сытость: {Human.satiety:>10}')
 
-
-    
+# MAIN CODE=======================================================================  
+person = Human('Artem')
+person.year()
