@@ -47,6 +47,12 @@ class Human:
         self.satiety -= cube_number
         House.table_money += cube_number
 
+    def to_play(self, cube_number):
+        self.satiety -= cube_number
+
+    def buy_food(self, cube_number):
+        House.fridge -= cube_number
+        House.table_money += cube_number
 
 
 class House:
