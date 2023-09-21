@@ -38,25 +38,24 @@ import random
 
 
 class House:
-    def __init__(self, family):
+    def __init__(self, person):
         self.fridge = 50
         self.money = 0
-        self.family = family
+        self.person = person
 
     def info(self):
-        for name in family:
-            print(f'\033[0;33 {name:<10} еда: {self.fridge:<10}'
-                f'деньги: {self.money:<10}'
-                f'сытость: {name.satiety:<10}\033[0m')
+        print(f'\033[0;33mеды: {self.fridge:<10}'
+              f'денег: {self.money:<10}'
+              f'сытость: {person.satiety:<10}\033[0m')
 
 
-class Family:
-    def __init__(self, name, satiety):
+class Human:
+    def __init__(self, name):
         self.name = name
-        self.satiety = satiety
+        self.satiety = 50
         
     def life_year(self):
-        for day in range(1, 31):
+        for day in range(1, 366):
             print(f'\n\033[1;32mДень {day}:\033[0m')
             house.info()
 
@@ -117,15 +116,11 @@ class Family:
 
 
 # MAIN CODE=======================================================================  
-family = []
-person_1 = Family('Вася', 50)
-family.append(person_1)
+person_1 = Human('Вася')
+person_2 = Human('Маша')
 
-person_2 = Family('Маша', 50)
-family.append(person_2)
-
-house = House(family)
-person_1.life_year()
+house = House(person)
+person.life_year()
 
 
 
