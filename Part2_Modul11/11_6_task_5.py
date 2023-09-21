@@ -39,7 +39,7 @@ import random
 
 class House:
     def __init__(self, person):
-        self.fridge = 3
+        self.fridge = 50
         self.money = 0
         self.person = person
 
@@ -55,8 +55,7 @@ class Human:
         self.satiety = satiety
         
     def life_year(self):
-        
-        for day in range(1, 50):
+        for day in range(1, 366):
             print(f'\n\033[1;32mДень {day}:\033[0m')
             house.info()
 
@@ -71,7 +70,7 @@ class Human:
                 print(f'Нужно поесть!', end=' ')
                 self.to_eat(cube_number)
             elif house.fridge < 10:
-                print(f'Еда кончается! Идем в магазин', end=' ')
+                print(f'Еда кончается! Идем в магазин,', end=' ')
                 self.buy_food(cube_number)
             elif house.money < 50:
                 print(f'Мало денег! Идем работать!', end=' ')
@@ -117,7 +116,7 @@ class Human:
 
 
 # MAIN CODE=======================================================================  
-person = Human('Artem', 1)
+person = Human('Вася', 50)
 house = House(person)
 person.life_year()
 
