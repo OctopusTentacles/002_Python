@@ -38,14 +38,15 @@ import random
 
 
 class House:
-    def __init__(self):
+    def __init__(self, person):
         self.fridge = 50
         self.money = 0
+        self.person = person
 
     def info(self):
         print(f'еды: {self.fridge:<10}'
               f'денег: {self.money:<10}'
-              f'сытость: {Human.satiety:<10}')
+              f'сытость: {person.satiety:<10}')
 
 
 class Human:
@@ -60,6 +61,7 @@ class Human:
             house.info()
 
             cube_number = random.randint(1, 6)
+            print('\033[1;33mГенерируется число кубика:', cube_number,'\033[0m')
             
             if self.satiety < 0:
                 print(f'{self.name} умирает.')
@@ -97,7 +99,7 @@ class Human:
 
 # MAIN CODE=======================================================================  
 person = Human('Artem', 19)
-house = House()
+house = House(person)
 person.year()
 
 
@@ -108,3 +110,7 @@ person.year()
 # я не могу понять...у Human есть self.satiety = satiety, в основном коде
 # я передаю person = Human('Artem', 19)
 # а тут (f'сытость: {Human.satiety:<10}') мне выдает что у Human нет 'satiety'
+# спустя время: добавил в класс House - self.person = person
+#               и в основном передал house = House(person) - вроде сработало
+
+# вот с такими моментами я не разобрался - PROBLEM )))))
