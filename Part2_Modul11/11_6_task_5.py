@@ -44,9 +44,9 @@ class House:
         self.person = person
 
     def info(self):
-        print(f'еды: {self.fridge:<10}'
+        print(f'\033[1;33mеды: {self.fridge:<10}'
               f'денег: {self.money:<10}'
-              f'сытость: {person.satiety:<10}')
+              f'сытость: {person.satiety:<10}\033[0m')
 
 
 class Human:
@@ -61,16 +61,23 @@ class Human:
             house.info()
 
             cube_number = random.randint(1, 6)
-            print('\033[1;33mГенерируется число кубика:', cube_number,'\033[0m')
+            print('Генерируется число кубика:', cube_number,)
             
             if self.satiety < 0:
                 print(f'{self.name} умирает.')
                 break
+            elif self.satiety < 10:
+                print(f'Еда кончается! Идем в магазин', end=' ')
+                self.buy_food(cube_number)
             elif self.satiety < 20:
                 print(f'Нужно поесть!', end=' ')
                 self.to_eat(cube_number)
 
             elif cube_number == 1:
+                print(f'Нужно работать!', end=' ')
+                self.to_work(cube_number)
+            elif house.money < 50:
+                print(f'Мало денег! Идем работать!', end=' ')
                 self.to_work(cube_number)
 
                 
@@ -112,5 +119,6 @@ person.year()
 # а тут (f'сытость: {Human.satiety:<10}') мне выдает что у Human нет 'satiety'
 # спустя время: добавил в класс House - self.person = person
 #               и в основном передал house = House(person) - вроде сработало
+#               это получается вроде какой-то связи между классами?
 
 # вот с такими моментами я не разобрался - PROBLEM )))))
