@@ -39,12 +39,12 @@ import random
 
 class House:
     def __init__(self, person):
-        self.fridge = 50
+        self.fridge = 3
         self.money = 0
         self.person = person
 
     def info(self):
-        print(f'\033[1;33mеды: {self.fridge:<10}'
+        print(f'\033[0;33mеды: {self.fridge:<10}'
               f'денег: {self.money:<10}'
               f'сытость: {person.satiety:<10}\033[0m')
 
@@ -56,15 +56,15 @@ class Human:
         
     def life_year(self):
         
-        for day in range(1, 31):
-            print(f'\n\033[0;32mДень {day}:\033[0m')
+        for day in range(1, 50):
+            print(f'\n\033[1;32mДень {day}:\033[0m')
             house.info()
 
             cube_number = random.randint(1, 6)
             print('Генерируется число кубика:', cube_number,)
             
             if self.satiety < 0:
-                print(f'{self.name} умирает.')
+                print(f'\033[1;31m{self.name} умирает.')
                 break
 
             elif self.satiety < 20:
@@ -89,9 +89,13 @@ class Human:
 
                 
     def to_eat(self, cube_number):
-        self.satiety += cube_number
-        house.fridge -= cube_number
-        print(f'{self.name} кушает')
+        if house.fridge < cube_number or house.fridge == 0:
+            print(f'Недостаточно продуктов, надо идти в магазиин!')
+            self.buy_food(cube_number)
+        else:    
+            self.satiety += cube_number
+            house.fridge -= cube_number
+            print(f'{self.name} кушает')
 
     def to_work(self, cube_number):
         self.satiety -= cube_number
@@ -103,13 +107,17 @@ class Human:
         print(f'{self.name} играет')
 
     def buy_food(self, cube_number):
-        house.fridge += cube_number
-        house.money -= cube_number
-        print(f'{self.name} покупает продукты')
+        if house.money < cube_number or house.money == 0:
+            print(f'Недостаточно денег, надо идти работать!')
+            self.to_work(cube_number)
+        else:
+            house.fridge += cube_number
+            house.money -= cube_number
+            print(f'{self.name} покупает продукты')
 
 
 # MAIN CODE=======================================================================  
-person = Human('Artem', 50)
+person = Human('Artem', 1)
 house = House(person)
 person.life_year()
 
