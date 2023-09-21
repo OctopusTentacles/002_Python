@@ -54,9 +54,9 @@ class Human:
         self.name = name
         self.satiety = satiety
         
-    def year(self):
+    def life_year(self):
         
-        for day in range(1, 6):
+        for day in range(1, 11):
             print(f'\n\033[0;32mДень {day}:\033[0m')
             house.info()
 
@@ -66,11 +66,14 @@ class Human:
             if self.satiety < 0:
                 print(f'{self.name} умирает.')
                 break
-            elif self.satiety < 10:
+            elif house.fridge < 10:
                 print(f'Еда кончается! Идем в магазин', end=' ')
                 self.buy_food(cube_number)
             elif self.satiety < 20:
                 print(f'Нужно поесть!', end=' ')
+                self.to_eat(cube_number)
+            elif cube_number == 2:
+                print(f'Охото поесть!', end=' ')
                 self.to_eat(cube_number)
 
             elif cube_number == 1:
@@ -80,14 +83,15 @@ class Human:
                 print(f'Мало денег! Идем работать!', end=' ')
                 self.to_work(cube_number)
 
+            else:
+                print(f'Время расслабиться!', end=' ')
+                self.to_play(cube_number)
+
                 
-
-
     def to_eat(self, cube_number):
         self.satiety += cube_number
         house.fridge -= cube_number
         print(f'{self.name} кушает')
-        # return self.satiety, house.fridge
 
     def to_work(self, cube_number):
         self.satiety -= cube_number
@@ -107,7 +111,7 @@ class Human:
 # MAIN CODE=======================================================================  
 person = Human('Artem', 19)
 house = House(person)
-person.year()
+person.life_year()
 
 
 
