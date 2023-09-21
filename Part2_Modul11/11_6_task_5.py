@@ -37,21 +37,38 @@
 import random
 
 
-class Human:
-    def __init__(self, name):
-        self.name = name
-        self.satiety = 50
+class House:
+    def __init__(self):
+        self.fridge = 50
+        self.money = 0
 
+    def info(self):
+        human = Human('', )
+        print(f'еды: {self.fridge:<10}'
+              f'денег: {self.money:<10}'
+              f'сытость: {human.satiety:<10}')
+
+
+class Human:
+    def __init__(self, name, satiety):
+        self.name = name
+        self.satiety = satiety
+        self.house = house
+        
     def year(self):
-        for day in range(1, 5):
-            House.info()
+        
+        for day in range(1, 6):
+            print(f'\n\033[0;32mДень {day}:\033[0m')
+            house.info()
 
             cube_number = random.randint(1, 6)
-            print(f'\033[0;32mДень {day}:\033[0m')
             
             if self.satiety < 0:
                 print(f'{self.name} умирает.')
                 break
+            elif self.satiety < 20:
+                print(f'Нужно поесть!', end=' ')
+                self.to_eat(cube_number)
 
             elif cube_number == 1:
                 self.to_work(cube_number)
@@ -61,12 +78,13 @@ class Human:
 
     def to_eat(self, cube_number):
         self.satiety += cube_number
-        House.fridge -= cube_number
+        house.fridge -= cube_number
         print(f'{self.name} кушает')
+        # return self.satiety, house.fridge
 
     def to_work(self, cube_number):
         self.satiety -= cube_number
-        House.money += cube_number
+        house.money += cube_number
         print(f'{self.name} работает')
 
     def to_play(self, cube_number):
@@ -74,21 +92,12 @@ class Human:
         print(f'{self.name} играет')
 
     def buy_food(self, cube_number):
-        House.fridge += cube_number
-        House.money -= cube_number
+        house.fridge += cube_number
+        house.money -= cube_number
         print(f'{self.name} покупает продукты')
 
 
-class House:
-    def __init__(self):
-        self.fridge = 50
-        self.money = 0
-
-    def info(self):
-        print(f'еды: {self.fridge:>10}'
-              f'денег: {self.money:>10}'
-              f'сытость: {Human.satiety:>10}')
-
 # MAIN CODE=======================================================================  
-person = Human('Artem')
+person = Human('Artem', 19)
+house = House()
 person.year()
