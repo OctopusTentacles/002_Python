@@ -43,17 +43,15 @@ class House:
         self.money = 0
 
     def info(self):
-        human = Human('', )
         print(f'еды: {self.fridge:<10}'
               f'денег: {self.money:<10}'
-              f'сытость: {human.satiety:<10}')
+              f'сытость: {Human.satiety:<10}')
 
 
 class Human:
     def __init__(self, name, satiety):
         self.name = name
         self.satiety = satiety
-        self.house = house
         
     def year(self):
         
@@ -101,3 +99,12 @@ class Human:
 person = Human('Artem', 19)
 house = House()
 person.year()
+
+
+
+# AttributeError: 'Human' object has no attribute 'fridge'
+# AttributeError: type object 'Human' has no attribute 'satiety'
+
+# я не могу понять...у Human есть self.satiety = satiety, в основном коде
+# я передаю person = Human('Artem', 19)
+# а тут (f'сытость: {Human.satiety:<10}') мне выдает что у Human нет 'satiety'
