@@ -78,30 +78,30 @@ class Member:
             for name in Create.family:
 
                 cube_number = random.randint(1, 6)
-                print('\033[0m\nГенерируется число кубика:', cube_number)
+                print(f'\033[0m\n{name} действует на: {cube_number}')
                 
                 if Member.satiety < 0:
                     print(f'\033[1;31m{name} умирает.')
                     break
 
                 elif Member.satiety < 20:
-                    print(f'Нужно поесть!', end=' ')
+                    print(f'Нужно поесть, {name}!', end=' ')
                     Member.to_eat(cube_number)
                 elif House.fridge < 10:
-                    print(f'Еда кончается! Идем в магазин,', end=' ')
+                    print(f'Еда кончается, {name}! Идем в магазин,', end=' ')
                     Member.buy_food(cube_number)
                 elif House.money < 50:
-                    print(f'Мало денег! Идем работать!', end=' ')
+                    print(f'Мало денег, {name}! Идем работать!', end=' ')
                     Member.to_work(self, cube_number)
                 elif cube_number == 1:
-                    print(f'Нужно работать!', end=' ')
+                    print(f'Нужно работать, {name}!', end=' ')
                     Member.to_work(self, cube_number)
                 elif cube_number == 2:
-                    print(f'Охото поесть!', end=' ')
+                    print(f'Охото поесть, {name}!', end=' ')
                     Member.to_eat(cube_number)
 
                 else:
-                    print(f'Время расслабиться!', end=' ')
+                    print(f'Время расслабиться, {name}!', end=' ')
                     Member.to_play(cube_number)
 
                 
