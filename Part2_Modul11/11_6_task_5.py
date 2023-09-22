@@ -38,15 +38,23 @@ import random
 
 
 class House:
-    def __init__(self):
+    def __init__(self, count):
+        count = count
         self.fridge = 50
         self.money = 0
 
+    def family(self, count):
+        family = []
+        for index in range(1, count+1):
+            Member.name = input(f'Введите имя жильца {index}: ')
+            family.append(Member.name)
+      
     def info(self):
         print(f'\033[0;33mеды: {self.fridge:<10}'
               f'денег: {self.money:<10}')
-        for member in family:
-            print(f'сытость {member.name}: {member.satiety:<5}\033[0m')
+        for member in self.family:
+            print(f'сытость {member}: {Member.satiety:<5}\033[0m')
+
 
 
 class Member:
@@ -58,7 +66,7 @@ class Member:
     def life_year(self):
         for day in range(1, 36):
             print(f'\n\033[1;32mДень {day}:\033[0m')
-            house.info()
+            House.info()
 
             cube_number = random.randint(1, 6)
             print('Генерируется число кубика:', cube_number,)
@@ -115,20 +123,12 @@ class Member:
             house.money -= cube_number
             print(f'{self.name} покупает продукты')
 
-class Family:
-    def __init__(self, count):
-        self.family = []
-        for index in range(1, count+1):
-            Member.name = input(f'Введите имя жильца {index}: ')
-            self.family.append(Member.name)
 
 
 
 # MAIN CODE=======================================================================  
-family = Family(2)
-family = House()
+family = House.family(2)
 family.info()
-
 
 # AttributeError: 'Human' object has no attribute 'fridge'
 # AttributeError: type object 'Human' has no attribute 'satiety'
