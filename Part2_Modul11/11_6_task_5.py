@@ -62,6 +62,7 @@ class Create:
 class Member:
     name = ''
     satiety = 50
+    cube_number = 0
     def __init__(self, index):
         self.index = index
         # self.name = ''
@@ -75,29 +76,29 @@ class Member:
             cube_number = random.randint(1, 6)
             print('\033[0m\nГенерируется число кубика:', cube_number,)
             
-            if self.satiety < 0:
-                print(f'\033[1;31m{self.name} умирает.')
+            if Member.satiety < 0:
+                print(f'\033[1;31m{Member.name} умирает.')
                 break
 
-            elif self.satiety < 20:
+            elif Member.satiety < 20:
                 print(f'Нужно поесть!', end=' ')
-                self.to_eat(cube_number)
+                Member.to_eat(cube_number)
             elif House.fridge < 10:
                 print(f'Еда кончается! Идем в магазин,', end=' ')
-                self.buy_food(cube_number)
+                Member.buy_food(cube_number)
             elif House.money < 50:
                 print(f'Мало денег! Идем работать!', end=' ')
                 self.to_work(cube_number)
             elif cube_number == 1:
                 print(f'Нужно работать!', end=' ')
-                self.to_work(cube_number)
+                Member.to_work(cube_number)
             elif cube_number == 2:
                 print(f'Охото поесть!', end=' ')
-                self.to_eat(cube_number)
+                Member.to_eat(cube_number)
 
             else:
                 print(f'Время расслабиться!', end=' ')
-                self.to_play(cube_number)
+                Member.to_play(cube_number)
 
                 
     def to_eat(self, cube_number):
@@ -105,17 +106,17 @@ class Member:
             print(f'Недостаточно продуктов, надо идти в магазиин!')
             self.buy_food(cube_number)
         else:    
-            self.satiety += cube_number
+            Member.satiety += cube_number
             House.fridge -= cube_number
             print(f'{self.name} кушает')
 
     def to_work(self, cube_number):
-        self.satiety -= cube_number
+        Member.satiety -= cube_number
         House.money += cube_number
         print(f'{self.name} работает')
 
     def to_play(self, cube_number):
-        self.satiety -= cube_number
+        Member.satiety -= cube_number
         print(f'{self.name} играет')
 
     def buy_food(self, cube_number):
