@@ -38,24 +38,26 @@ import random
 
 
 class House:
-    def __init__(self, person):
+    def __init__(self, family):
         self.fridge = 50
         self.money = 0
-        self.person = person
+        self.family = family
 
     def info(self):
         print(f'\033[0;33mеды: {self.fridge:<10}'
-              f'денег: {self.money:<10}'
-              f'сытость: {person_1.satiety:<10}\033[0m')
+              f'денег: {self.money:<10}')
+        for member in family:
+            print(f'сытость {member.name}: {member.satiety:<5}\033[0m')
 
 
-class Human:
-    def __init__(self, name):
-        self.name = name
+class Member:
+    def __init__(self, index):
+        self.index = index
+        self.name = ''
         self.satiety = 50
         
     def life_year(self):
-        for day in range(1, 366):
+        for day in range(1, 36):
             print(f'\n\033[1;32mДень {day}:\033[0m')
             house.info()
 
@@ -114,16 +116,19 @@ class Human:
             house.money -= cube_number
             print(f'{self.name} покупает продукты')
 
+class Family:
+    def __init__(self, count):
+        self.family = [Member(index) for index in range(1, count+1)]
+
+    def member_name(self):
+        for member in self.family:
+            member.name = input(f'Введите имя жильца {member.index}: ')
+
 
 # MAIN CODE=======================================================================  
-person_1 = Human('Вася')
-person_2 = Human('Маша')
-
-house = House(person_1)
-house = House(person_2)
-
-person_1.life_year()
-
+family = Family(2)
+family.member_name()
+family.life_year()
 
 
 # AttributeError: 'Human' object has no attribute 'fridge'
@@ -137,3 +142,5 @@ person_1.life_year()
 #               это получается вроде какой-то связи между классами?
 
 # вот с такими моментами я не разобрался - PROBLEM )))))
+
+# теперь не могу второго человека добавить
