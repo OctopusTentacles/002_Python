@@ -66,7 +66,6 @@ class Member:
     
     def __init__(self, index):
         self.index = index
-        self.cube_number = int
         # self.name = ''
         # self.satiety = 50
         
@@ -75,8 +74,10 @@ class Member:
             print(f'\n\033[1;32mДень {day}:\033[0m')
             Create.info(self)
 
-            self.cube_number = random.randint(1, 6)
-            print('\033[0m\nГенерируется число кубика:', self.cube_number,)
+            
+
+            cube_number = random.randint(1, 6)
+            print('\033[0m\nГенерируется число кубика:', cube_number,)
             
             if Member.satiety < 0:
                 print(f'\033[1;31m{Member.name} умирает.')
@@ -90,10 +91,10 @@ class Member:
                 Member.buy_food(cube_number)
             elif House.money < 50:
                 print(f'Мало денег! Идем работать!', end=' ')
-                Member.to_work(cube_number)
+                Member.to_work(self, cube_number)
             elif cube_number == 1:
                 print(f'Нужно работать!', end=' ')
-                Member.to_work(cube_number)
+                Member.to_work(self, cube_number)
             elif cube_number == 2:
                 print(f'Охото поесть!', end=' ')
                 Member.to_eat(cube_number)
@@ -112,10 +113,10 @@ class Member:
             House.fridge -= cube_number
             print(f'{self.name} кушает')
 
-    def to_work(self):
-        Member.satiety -= self.cube_number
-        House.money += self.cube_number
-        print(f'{self.name} работает')
+    def to_work(self, cube_number):
+        Member.satiety -= cube_number
+        House.money += cube_number
+        print(f'{Member.name} работает')
 
     def to_play(self, cube_number):
         Member.satiety -= cube_number
