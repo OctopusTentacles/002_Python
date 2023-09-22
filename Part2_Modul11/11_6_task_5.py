@@ -38,38 +38,42 @@ import random
 
 
 class House:
-    def __init__(self, count):
-        count = count
-        self.fridge = 50
-        self.money = 0
+        fridge = 50
+        money = 0
 
-    def family(self, count):
-        family = []
-        for index in range(1, count+1):
+
+class Create:
+    def __init__(self, count):
+        self.count = count
+        self.family = []
+        for index in range(1, self.count + 1):
             Member.name = input(f'Введите имя жильца {index}: ')
-            family.append(Member.name)
+            self.family.append(Member.name)
+        Member.life_year(self)
       
     def info(self):
-        print(f'\033[0;33mеды: {self.fridge:<10}'
-              f'денег: {self.money:<10}')
+        print(f'\033[0;33mеды: {House.fridge:<10}'
+              f'денег: {House.money:<10}', end='')
         for member in self.family:
-            print(f'сытость {member}: {Member.satiety:<5}\033[0m')
+            print(f'сытость {member}: {Member.satiety:<5}', end='')
 
 
 
 class Member:
+    name = ''
+    satiety = 50
     def __init__(self, index):
         self.index = index
-        self.name = ''
-        self.satiety = 50
+        # self.name = ''
+        # self.satiety = 50
         
     def life_year(self):
         for day in range(1, 36):
             print(f'\n\033[1;32mДень {day}:\033[0m')
-            House.info()
+            Create.info(self)
 
             cube_number = random.randint(1, 6)
-            print('Генерируется число кубика:', cube_number,)
+            print('\033[0m\nГенерируется число кубика:', cube_number,)
             
             if self.satiety < 0:
                 print(f'\033[1;31m{self.name} умирает.')
@@ -78,10 +82,10 @@ class Member:
             elif self.satiety < 20:
                 print(f'Нужно поесть!', end=' ')
                 self.to_eat(cube_number)
-            elif house.fridge < 10:
+            elif House.fridge < 10:
                 print(f'Еда кончается! Идем в магазин,', end=' ')
                 self.buy_food(cube_number)
-            elif house.money < 50:
+            elif House.money < 50:
                 print(f'Мало денег! Идем работать!', end=' ')
                 self.to_work(cube_number)
             elif cube_number == 1:
@@ -97,17 +101,17 @@ class Member:
 
                 
     def to_eat(self, cube_number):
-        if house.fridge < cube_number or house.fridge == 0:
+        if House.fridge < cube_number or House.fridge == 0:
             print(f'Недостаточно продуктов, надо идти в магазиин!')
             self.buy_food(cube_number)
         else:    
             self.satiety += cube_number
-            house.fridge -= cube_number
+            House.fridge -= cube_number
             print(f'{self.name} кушает')
 
     def to_work(self, cube_number):
         self.satiety -= cube_number
-        house.money += cube_number
+        House.money += cube_number
         print(f'{self.name} работает')
 
     def to_play(self, cube_number):
@@ -115,20 +119,18 @@ class Member:
         print(f'{self.name} играет')
 
     def buy_food(self, cube_number):
-        if house.money < cube_number or house.money == 0:
+        if House.money < cube_number or House.money == 0:
             print(f'Недостаточно денег, надо идти работать!')
             self.to_work(cube_number)
         else:
-            house.fridge += cube_number
-            house.money -= cube_number
+            House.fridge += cube_number
+            House.money -= cube_number
             print(f'{self.name} покупает продукты')
 
 
-
-
 # MAIN CODE=======================================================================  
-family = House.family(2)
-family.info()
+family = Create(2)
+
 
 # AttributeError: 'Human' object has no attribute 'fridge'
 # AttributeError: type object 'Human' has no attribute 'satiety'
