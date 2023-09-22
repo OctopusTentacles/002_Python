@@ -38,10 +38,9 @@ import random
 
 
 class House:
-    def __init__(self, family):
+    def __init__(self):
         self.fridge = 50
         self.money = 0
-        self.family = family
 
     def info(self):
         print(f'\033[0;33mеды: {self.fridge:<10}'
@@ -118,17 +117,17 @@ class Member:
 
 class Family:
     def __init__(self, count):
-        self.family = [Member(index) for index in range(1, count+1)]
+        self.family = []
+        for index in range(1, count+1):
+            Member.name = input(f'Введите имя жильца {index}: ')
+            self.family.append(Member.name)
 
-    def member_name(self):
-        for member in self.family:
-            member.name = input(f'Введите имя жильца {member.index}: ')
 
 
 # MAIN CODE=======================================================================  
 family = Family(2)
-family.member_name()
-family.life_year()
+family = House()
+family.info()
 
 
 # AttributeError: 'Human' object has no attribute 'fridge'
