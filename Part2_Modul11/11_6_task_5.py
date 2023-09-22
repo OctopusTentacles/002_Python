@@ -43,9 +43,10 @@ class House:
 
 
 class Create:
+    family = []
     def __init__(self, count):
         self.count = count
-        self.family = []
+        
         for index in range(1, self.count + 1):
             Member.name = input(f'Введите имя жильца {index}: ')
             self.family.append(Member.name)
@@ -74,34 +75,34 @@ class Member:
             print(f'\n\033[1;32mДень {day}:\033[0m')
             Create.info(self)
 
-            
+            for name in Create.family:
 
-            cube_number = random.randint(1, 6)
-            print('\033[0m\nГенерируется число кубика:', cube_number,)
-            
-            if Member.satiety < 0:
-                print(f'\033[1;31m{Member.name} умирает.')
-                break
+                cube_number = random.randint(1, 6)
+                print('\033[0m\nГенерируется число кубика:', cube_number)
+                
+                if Member.satiety < 0:
+                    print(f'\033[1;31m{name} умирает.')
+                    break
 
-            elif Member.satiety < 20:
-                print(f'Нужно поесть!', end=' ')
-                Member.to_eat(cube_number)
-            elif House.fridge < 10:
-                print(f'Еда кончается! Идем в магазин,', end=' ')
-                Member.buy_food(cube_number)
-            elif House.money < 50:
-                print(f'Мало денег! Идем работать!', end=' ')
-                Member.to_work(self, cube_number)
-            elif cube_number == 1:
-                print(f'Нужно работать!', end=' ')
-                Member.to_work(self, cube_number)
-            elif cube_number == 2:
-                print(f'Охото поесть!', end=' ')
-                Member.to_eat(cube_number)
+                elif Member.satiety < 20:
+                    print(f'Нужно поесть!', end=' ')
+                    Member.to_eat(cube_number)
+                elif House.fridge < 10:
+                    print(f'Еда кончается! Идем в магазин,', end=' ')
+                    Member.buy_food(cube_number)
+                elif House.money < 50:
+                    print(f'Мало денег! Идем работать!', end=' ')
+                    Member.to_work(self, cube_number)
+                elif cube_number == 1:
+                    print(f'Нужно работать!', end=' ')
+                    Member.to_work(self, cube_number)
+                elif cube_number == 2:
+                    print(f'Охото поесть!', end=' ')
+                    Member.to_eat(cube_number)
 
-            else:
-                print(f'Время расслабиться!', end=' ')
-                Member.to_play(cube_number)
+                else:
+                    print(f'Время расслабиться!', end=' ')
+                    Member.to_play(cube_number)
 
                 
     def to_eat(self, cube_number):
