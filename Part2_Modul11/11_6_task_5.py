@@ -46,7 +46,7 @@ class House:
     def info(self):
         print(f'\033[0;33mеды: {self.fridge:<10}'
               f'денег: {self.money:<10}'
-              f'сытость: {person.satiety:<10}\033[0m')
+              f'сытость: {person_1.satiety:<10}\033[0m')
 
 
 class Human:
@@ -119,8 +119,10 @@ class Human:
 person_1 = Human('Вася')
 person_2 = Human('Маша')
 
-house = House(person)
-person.life_year()
+house = House(person_1)
+house = House(person_2)
+
+person_1.life_year()
 
 
 
