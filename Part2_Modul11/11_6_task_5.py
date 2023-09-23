@@ -38,7 +38,7 @@ import random
 
 
 class House:
-        fridge = 2
+        fridge = 50
         money = 0
 
 
@@ -49,9 +49,11 @@ class Create:
         
         for index in range(1, self.count + 1):
             Member.name = input(f'Введите имя жильца {index}: ')
-            self.family[Member.name.title()] = 10
+# сытость________________________________________:
+            self.family[Member.name.title()] = 50
         Member.life_year(self)
-      
+
+# статистика ресурсов____________________________:   
     def info(self):
         print(f'\033[0;33mеды: {House.fridge:<5}'
               f'денег: {House.money:<5}', end='')
@@ -67,20 +69,16 @@ class Member:
         
     def life_year(self):
         try:
-            for day in range(1, 31):
+            for day in range(1, 62):
                 print(f'\n\033[1;32mДень {day}:\033[0m')
                 Create.info(self)
 
                 for name in Create.family:
-
                     cube_number = random.randint(1, 6)
                     print(f'\033[0m\nОчки действия {name}: {cube_number}')
                     
                     if Create.family[name] < 0:
                         raise Exception
-                        print(f'\033[1;31m{name} умирает.')
-                        print('Такое проживание не допустимо!\033[0m')
-                        break
 
                     elif Create.family[name] < 20:
                         print(f'Нужно поесть!', end=' ')
@@ -101,8 +99,11 @@ class Member:
                     else:
                         print(f'Время расслабиться!', end=' ')
                         Member.to_play(self, cube_number, name)
-        except Exception:
             print(f'\033[1;32mУдалось прожить {day} дней!')
+        except Exception:
+            print(f'\033[1;31m{name} умирает.')
+            print('Такое проживание не допустимо!\033[0m')
+            
        
 
     def to_eat(self, cube_number, name):
@@ -134,7 +135,8 @@ class Member:
 
 
 # MAIN CODE=======================================================================  
-family = Create(2)
+num = int(input('Сколько человек будут жить вместе?: '))
+family = Create(num)
 
 
 # AttributeError: 'Human' object has no attribute 'fridge'
