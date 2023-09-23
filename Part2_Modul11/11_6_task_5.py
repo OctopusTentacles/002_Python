@@ -38,7 +38,7 @@ import random
 
 
 class House:
-        fridge = 50
+        fridge = 2
         money = 0
 
 
@@ -47,10 +47,9 @@ class Create:
     def __init__(self, count):
         self.count = count
         
-        
         for index in range(1, self.count + 1):
             Member.name = input(f'Введите имя жильца {index}: ')
-            self.family[Member.name.title()] = 50
+            self.family[Member.name.title()] = 10
         Member.life_year(self)
       
     def info(self):
@@ -60,55 +59,56 @@ class Create:
             print(f'сытость {member}: {satiety:<5}', end='')
 
 
-
 class Member:
     name = ''
-    # satiety = 50
-    
     
     def __init__(self, index):
         self.index = index
-        self.satiety = 50
         
     def life_year(self):
-        for day in range(1, 36):
-            print(f'\n\033[1;32mДень {day}:\033[0m')
-            Create.info(self)
+        try:
+            for day in range(1, 31):
+                print(f'\n\033[1;32mДень {day}:\033[0m')
+                Create.info(self)
 
-            for name in Create.family:
+                for name in Create.family:
 
-                cube_number = random.randint(1, 6)
-                print(f'\033[0m\nОчки действия {name}: {cube_number}')
-                
-                if Create.family[name] < 0:
-                    print(f'\033[1;31m{name} умирает.')
-                    break
+                    cube_number = random.randint(1, 6)
+                    print(f'\033[0m\nОчки действия {name}: {cube_number}')
+                    
+                    if Create.family[name] < 0:
+                        raise Exception
+                        print(f'\033[1;31m{name} умирает.')
+                        print('Такое проживание не допустимо!\033[0m')
+                        break
 
-                elif Create.family[name] < 20:
-                    print(f'Нужно поесть, {name}!', end=' ')
-                    Member.to_eat(self, cube_number, name)
-                elif House.fridge < 10:
-                    print(f'Еда кончается, {name}! Идем в магазин,', end=' ')
-                    Member.buy_food(self, cube_number, name)
-                elif House.money < 50:
-                    print(f'Мало денег, {name}! Идем работать!', end=' ')
-                    Member.to_work(self, cube_number, name)
-                elif cube_number == 1:
-                    print(f'Нужно работать, {name}!', end=' ')
-                    Member.to_work(self, cube_number, name)
-                elif cube_number == 2:
-                    print(f'Охото поесть, {name}!', end=' ')
-                    Member.to_eat(self, cube_number, name)
+                    elif Create.family[name] < 20:
+                        print(f'Нужно поесть!', end=' ')
+                        Member.to_eat(self, cube_number, name)
+                    elif House.fridge < 10:
+                        print(f'Еда кончается! Идем в магазин!', end=' ')
+                        Member.buy_food(self, cube_number, name)
+                    elif House.money < 50:
+                        print(f'Мало денег! Идем работать!', end=' ')
+                        Member.to_work(self, cube_number, name)
+                    elif cube_number == 1:
+                        print(f'Нужно работать!', end=' ')
+                        Member.to_work(self, cube_number, name)
+                    elif cube_number == 2:
+                        print(f'Охото поесть!', end=' ')
+                        Member.to_eat(self, cube_number, name)
 
-                else:
-                    print(f'Время расслабиться, {name}!', end=' ')
-                    Member.to_play(self, cube_number, name)
+                    else:
+                        print(f'Время расслабиться!', end=' ')
+                        Member.to_play(self, cube_number, name)
+        except Exception:
+            print(f'\033[1;32mУдалось прожить {day} дней!')
+       
 
-                
     def to_eat(self, cube_number, name):
         if House.fridge < cube_number or House.fridge == 0:
             print(f'Недостаточно продуктов, надо идти в магазиин!')
-            self.buy_food(cube_number)
+            Member.buy_food(self, cube_number, name)
         else:    
             Create.family[name] += cube_number
             House.fridge -= cube_number
@@ -126,7 +126,7 @@ class Member:
     def buy_food(self, cube_number, name):
         if House.money < cube_number or House.money == 0:
             print(f'Недостаточно денег, надо идти работать!')
-            self.to_work(cube_number, name)
+            Member.to_work(self, cube_number, name)
         else:
             House.fridge += cube_number
             House.money -= cube_number
