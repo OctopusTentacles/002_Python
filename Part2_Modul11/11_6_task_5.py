@@ -44,19 +44,22 @@ class House:
 
 class Create:
     family = []
+    satiety = []
     def __init__(self, count):
         self.count = count
+        
         
         for index in range(1, self.count + 1):
             Member.name = input(f'Введите имя жильца {index}: ')
             self.family.append(Member.name.title())
+            self.satiety.append(50)
         Member.life_year(self)
       
     def info(self):
         print(f'\033[0;33mеды: {House.fridge:<10}'
               f'денег: {House.money:<10}', end='')
         for member in self.family:
-            print(f'сытость {member}: {Member.satiety:<5}', end='')
+            print(f'сытость {member}: {self.satiety:<5}', end='')
 
 
 
@@ -79,11 +82,11 @@ class Member:
                 cube_number = random.randint(1, 6)
                 print(f'\033[0m\nОчки действия {name}: {cube_number}')
                 
-                if Member.satiety < 0:
+                if self.satiety < 0:
                     print(f'\033[1;31m{name} умирает.')
                     break
 
-                elif Member.satiety < 20:
+                elif self.satiety < 20:
                     print(f'Нужно поесть, {name}!', end=' ')
                     Member.to_eat(self, cube_number, name)
                 elif House.fridge < 10:
@@ -109,17 +112,17 @@ class Member:
             print(f'Недостаточно продуктов, надо идти в магазиин!')
             self.buy_food(cube_number)
         else:    
-            Member.satiety += cube_number
+            self.satiety += cube_number
             House.fridge -= cube_number
             print(f'{name} кушает')
 
     def to_work(self, cube_number, name):
-        Member.satiety -= cube_number
+        self.satiety -= cube_number
         House.money += cube_number
         print(f'{name} работает')
 
     def to_play(self, cube_number, name):
-        Member.satiety -= cube_number
+        self.satiety -= cube_number
         print(f'{name} играет')
 
     def buy_food(self, cube_number, name):
