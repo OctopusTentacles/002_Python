@@ -49,7 +49,7 @@ class Create:
         
         for index in range(1, self.count + 1):
             Member.name = input(f'Введите имя жильца {index}: ')
-            self.family.append(Member.name)
+            self.family.append(Member.name.title())
         Member.life_year(self)
       
     def info(self):
@@ -78,7 +78,7 @@ class Member:
             for name in Create.family:
 
                 cube_number = random.randint(1, 6)
-                print(f'\033[0m\n{name} действует на: {cube_number}')
+                print(f'\033[0m\nОчки действия {name}: {cube_number}')
                 
                 if Member.satiety < 0:
                     print(f'\033[1;31m{name} умирает.')
@@ -105,7 +105,7 @@ class Member:
                     Member.to_play(cube_number)
 
                 
-    def to_eat(self, cube_number):
+    def to_eat(self, cube_number, ):
         if House.fridge < cube_number or House.fridge == 0:
             print(f'Недостаточно продуктов, надо идти в магазиин!')
             self.buy_food(cube_number)
