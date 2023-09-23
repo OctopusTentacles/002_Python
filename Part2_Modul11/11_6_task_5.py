@@ -43,23 +43,21 @@ class House:
 
 
 class Create:
-    family = []
-    satiety = []
+    family = dict()
     def __init__(self, count):
         self.count = count
         
         
         for index in range(1, self.count + 1):
             Member.name = input(f'Введите имя жильца {index}: ')
-            self.family.append(Member.name.title())
-            self.satiety.append(50)
+            self.family[Member.name.title()] = 50
         Member.life_year(self)
       
     def info(self):
-        print(f'\033[0;33mеды: {House.fridge:<10}'
-              f'денег: {House.money:<10}', end='')
-        for member in self.family:
-            print(f'сытость {member}: {self.satiety:<5}', end='')
+        print(f'\033[0;33mеды: {House.fridge:<5}'
+              f'денег: {House.money:<5}', end='')
+        for member, satiety in self.family.items():
+            print(f'сытость {member}: {satiety:<5}', end='')
 
 
 
@@ -82,11 +80,11 @@ class Member:
                 cube_number = random.randint(1, 6)
                 print(f'\033[0m\nОчки действия {name}: {cube_number}')
                 
-                if self.satiety < 0:
+                if Create.family[name] < 0:
                     print(f'\033[1;31m{name} умирает.')
                     break
 
-                elif self.satiety < 20:
+                elif Create.family[name] < 20:
                     print(f'Нужно поесть, {name}!', end=' ')
                     Member.to_eat(self, cube_number, name)
                 elif House.fridge < 10:
@@ -112,17 +110,17 @@ class Member:
             print(f'Недостаточно продуктов, надо идти в магазиин!')
             self.buy_food(cube_number)
         else:    
-            self.satiety += cube_number
+            Create.family[name] += cube_number
             House.fridge -= cube_number
             print(f'{name} кушает')
 
     def to_work(self, cube_number, name):
-        self.satiety -= cube_number
+        Create.family[name] -= cube_number
         House.money += cube_number
         print(f'{name} работает')
 
     def to_play(self, cube_number, name):
-        self.satiety -= cube_number
+        Create.family[name] -= cube_number
         print(f'{name} играет')
 
     def buy_food(self, cube_number, name):
