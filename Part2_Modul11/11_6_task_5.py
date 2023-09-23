@@ -62,13 +62,12 @@ class Create:
 
 class Member:
     name = ''
-    satiety = 50
+    # satiety = 50
     
     
     def __init__(self, index):
         self.index = index
-        # self.name = ''
-        # self.satiety = 50
+        self.satiety = 50
         
     def life_year(self):
         for day in range(1, 36):
@@ -86,51 +85,51 @@ class Member:
 
                 elif Member.satiety < 20:
                     print(f'Нужно поесть, {name}!', end=' ')
-                    Member.to_eat(cube_number)
+                    Member.to_eat(self, cube_number, name)
                 elif House.fridge < 10:
                     print(f'Еда кончается, {name}! Идем в магазин,', end=' ')
-                    Member.buy_food(cube_number)
+                    Member.buy_food(self, cube_number, name)
                 elif House.money < 50:
                     print(f'Мало денег, {name}! Идем работать!', end=' ')
-                    Member.to_work(self, cube_number)
+                    Member.to_work(self, cube_number, name)
                 elif cube_number == 1:
                     print(f'Нужно работать, {name}!', end=' ')
-                    Member.to_work(self, cube_number)
+                    Member.to_work(self, cube_number, name)
                 elif cube_number == 2:
                     print(f'Охото поесть, {name}!', end=' ')
-                    Member.to_eat(cube_number)
+                    Member.to_eat(self, cube_number, name)
 
                 else:
                     print(f'Время расслабиться, {name}!', end=' ')
-                    Member.to_play(cube_number)
+                    Member.to_play(self, cube_number, name)
 
                 
-    def to_eat(self, cube_number, ):
+    def to_eat(self, cube_number, name):
         if House.fridge < cube_number or House.fridge == 0:
             print(f'Недостаточно продуктов, надо идти в магазиин!')
             self.buy_food(cube_number)
         else:    
             Member.satiety += cube_number
             House.fridge -= cube_number
-            print(f'{self.name} кушает')
+            print(f'{name} кушает')
 
-    def to_work(self, cube_number):
+    def to_work(self, cube_number, name):
         Member.satiety -= cube_number
         House.money += cube_number
-        print(f'{Member.name} работает')
+        print(f'{name} работает')
 
-    def to_play(self, cube_number):
+    def to_play(self, cube_number, name):
         Member.satiety -= cube_number
-        print(f'{self.name} играет')
+        print(f'{name} играет')
 
-    def buy_food(self, cube_number):
+    def buy_food(self, cube_number, name):
         if House.money < cube_number or House.money == 0:
             print(f'Недостаточно денег, надо идти работать!')
-            self.to_work(cube_number)
+            self.to_work(cube_number, name)
         else:
             House.fridge += cube_number
             House.money -= cube_number
-            print(f'{self.name} покупает продукты')
+            print(f'{name} покупает продукты')
 
 
 # MAIN CODE=======================================================================  
