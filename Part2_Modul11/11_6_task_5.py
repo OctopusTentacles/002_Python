@@ -69,7 +69,7 @@ class Member:
         
     def life_year(self):
         try:
-            for day in range(1, 62):
+            for day in range(1, 366):
                 print(f'\n\033[1;32mДень {day}:\033[0m')
                 Create.info(self)
 
@@ -100,12 +100,12 @@ class Member:
                         print(f'Время расслабиться!', end=' ')
                         Member.to_play(self, cube_number, name)
             print(f'\033[1;32mУдалось прожить {day} дней!')
+
         except Exception:
             print(f'\033[1;31m{name} умирает.')
             print('Такое проживание не допустимо!\033[0m')
             
        
-
     def to_eat(self, cube_number, name):
         if House.fridge < cube_number or House.fridge == 0:
             print(f'Недостаточно продуктов, надо идти в магазиин!')
