@@ -25,9 +25,14 @@ class Board:
 # доска 3х3, делаем список из экземпляров Сell() с номером от 1 до 9 
         self.num_board = [Cell(cell) for cell in range(1, 10)]
 
+    def show_board(self):
+        for _ in range(2):
+            print('_' * 3)
+            for _ in range(3):
+                print('|')
+
+
         
-
-
 
 class Player:
 #  У игрока может быть
@@ -59,3 +64,6 @@ class Game:
     # После каждой игры выводится текущий счёт игроков.
     pass
 
+
+example = Board()
+example.show_board
