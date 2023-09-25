@@ -9,6 +9,12 @@ class Cell:
     #  Клетка, у которой есть значения
     #   - занята она или нет
     #   - номер клетки
+    def __init__(self, num):
+        self.num = num
+
+# __str__ – метод для отображения информации об объекте класса для пользователей  
+
+
     pass
 
 class Board:
@@ -16,10 +22,14 @@ class Board:
     pass
 
 class Player:
-    #  У игрока может быть
-    #   - имя
-    #   - на какую клетку ходит
-    pass
+#  У игрока может быть
+#   - имя
+#   - на какую клетку ходит
+    def __init__(self, name, num_сell):
+        self.name = name
+        self.num_sell = num_сell
+        
+        pass
 
 class Game:    
     # класс «Игры» содержит атрибуты:
