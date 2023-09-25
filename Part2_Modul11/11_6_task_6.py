@@ -26,12 +26,11 @@ class Board:
         self.num_board = [Cell(cell) for cell in range(1, 10)]
 
     def show_board(self):
-        for _ in range(2):
-            print('_' * 3)
-            for _ in range(3):
-                print('|')
-
-
+        for i in range(1,8):
+            if i % 2 == 0:
+                print('|  ' * 4)
+            else:
+                print('-' * 9)
         
 
 class Player:
