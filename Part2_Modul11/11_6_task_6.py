@@ -27,12 +27,13 @@ class Board:
 
     def show_board(self):
         for raw in range(3):
-            print('\n'+'-' * 19)
+            print('\n' + '\033[1m-' * 19)
             print('|', end=' ')
             
             for cul in range(3):
-                print(f' \033[2m{self.num_board[cul * 3 + raw]}\033[0m  | ', end='')
-        print('\n'+'-' * 19)
+                print(f' \033[2m{self.num_board[raw * 3 + cul]}\033[0m  | ', end='')
+        print('\n' + '\033[1m-\033[0m' * 19)
+
 
 class Player:
 #  У игрока может быть
