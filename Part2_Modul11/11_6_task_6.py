@@ -26,14 +26,13 @@ class Board:
         self.num_board = [Cell(cell) for cell in range(1, 10)]
 
     def show_board(self):
-        for raw in range(1, 3):
-            print()
-            print('-' * 19)
+        for raw in range(3):
+            print('\n'+'-' * 19)
             print('|', end=' ')
             
             for cul in range(3):
-                print(f' \033[2m{self.num_board[cul * raw]}\033[0m  | ', end='')
-        
+                print(f' \033[2m{self.num_board[cul * 3 + raw]}\033[0m  | ', end='')
+        print('\n'+'-' * 19)
 
 class Player:
 #  У игрока может быть
