@@ -15,7 +15,7 @@ class Cell:
         
 # __str__ – метод для отображения информации об объекте класса для пользователей  
     def __str__(self):
-        return self.sym_cell
+        return str(self.num)
 
 
 
@@ -26,11 +26,12 @@ class Board:
         self.num_board = [Cell(cell) for cell in range(1, 10)]
 
     def show_board(self):
-        for i in range(1,8):
-            if i % 2 == 0:
-                print('|  ' * 4)
-            else:
-                print('-' * 9)
+        for raw in range(1, 10):
+            print()
+            print('-' * 12)
+            
+            for cul in range(3):
+                print(f' {self.num_board[cul * raw]} | ', end='')
         
 
 class Player:
@@ -65,4 +66,4 @@ class Game:
 
 
 example = Board()
-example.show_board
+example.show_board()
