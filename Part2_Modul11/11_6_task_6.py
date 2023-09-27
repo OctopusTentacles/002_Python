@@ -43,10 +43,15 @@ class Player:
 #  У игрока может быть
 #   - имя
 #   - на какую клетку ходит
-    def __init__(self, name, marker):
+    def __init__(self, name, cell_num):
         self.name = name
-        self.marker = marker
+        self.cell_num = cell_num
         self.score = 0
+
+    def choose_cell(self):
+        try:
+            self.cell_num = int(input(self.name, 'choose cell number: '))
+        except ValueError:
         
     def choose_marker():
         marker_1 = '\033[1;32mX\033[0m'
