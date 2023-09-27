@@ -47,19 +47,21 @@ class Player:
         self.name = name
         self.marker = marker
         self.score = 0
-        self.marker_1 = '\033[1;32mX\033[0m'
-        self.marker_2 = '\033[1;33mO\033[0m'
         
-    def choose_marker(self):
-        name_1 = input(f'игрок, выбири {self.marker_1} или {self.marker_2}: ')
+    def choose_marker():
+        marker_1 = '\033[1;32mX\033[0m'
+        marker_2 = '\033[1;33mO\033[0m'
+
+        name_1 = input(f'  игрок, выбири {marker_1} или {marker_2}: ')
         name_2 = ''
-        if name_1.title() == 'X':
-            name_1 == self.marker_1
-            name_2 == self.marker_2
+        if name_1 == 'x':
+            name_1 = marker_1
+            name_2 = marker_2
         else:
-            name_1 == self.marker_2
-            name_2 == self.marker_1
+            name_1 = marker_2
+            name_2 = marker_1
         return name_1, name_2
+        
 
     #     print('Игрок_1 = ')
 
@@ -101,11 +103,14 @@ class Game:
     # После каждой игры выводится текущий счёт игроков.
         pass
 
+# MAIN CODE===========================================================
+print('\tКРЕСТИКИ - НОЛИКИ')
+input('  нажмите ENTER для начала игры')
+player_1, player_2 = Player.choose_marker()
 
-player_1, player_2 = Player.choose_marker(self='')
-
-print(f'player_1 - {player_1}, player_2 - {player_2}')
-
+print(f'\nPlayer_1 - {player_1}, Player_2 - {player_2}')
+player_1 = Player(player_1, player_1)
+player_2 = Player(player_2, player_2)
 
 example = Board()
 example.show_board()
