@@ -35,23 +35,24 @@ class Board:
             # в ячеку вписываем цифры, чтобы игрок как-то мог выбрать куда ходить
             # и делеам их менее заметными 
             for cul in range(3):
-                print(f' \033[2m{self.num_board[raw * 3 + cul]}\033[0m  | ', end='')
-        print('\n' + '\033[1m-\033[0m' * 19)
+                print(f' \033[2m{self.num_board[raw * 3 + cul]}\033[0m  \033[1m| ', end='')
+        print('\n' + '-\033[0m' * 19)
 
 
 class Player:
 #  У игрока может быть
 #   - имя
 #   - на какую клетку ходит
-    def __init__(self, name, cell_num):
+    def __init__(self, name, marker):
         self.name = name
-        self.cell_num = cell_num
+        self.marker = marker
         self.score = 0
 
     def choose_cell(self):
         try:
             self.cell_num = int(input(self.name, 'choose cell number: '))
         except ValueError:
+            print('Enter number from 1 to 9')
         
     def choose_marker():
         marker_1 = '\033[1;32mX\033[0m'
@@ -68,20 +69,17 @@ class Player:
         return name_1, name_2
         
 
-    #     print('Игрок_1 = ')
-
-    #     pass
 
 class Game:    
     def __init__(self, player_1, player_2):
         self.player_1 = player_1
         self.player_2 = player_2
         self.board = Board()
-    # класс «Игры» содержит атрибуты:
-    # состояние игры,
-    # игроки,
-    # поле.
-    # А также методы:
+        # класс «Игры» содержит атрибуты:
+        # состояние игры,
+        # игроки,
+        # поле.
+        # А также методы:
     
     def new_step(self, index, marker):
         # Метод запуска одного хода игры. Получает одного из игроков, 
@@ -109,10 +107,10 @@ class Game:
         # Если игра завершена, метод возвращает True, иначе False.
         round = 1
         print('Round', round)
-        player_1, player_2 = Player.choose_marker()
-        print(f'\nPlayer_1 - {player_1}, Player_2 - {player_2}')
-        player_1 = Player(player_1, player_1)
-        player_2 = Player(player_2, player_2)
+        # player_1, player_2 = Player.choose_marker()
+        print(f'\nPlayer_1 - {self.player_1}, Player_2 - {self.player_2}')
+        player_1 = Player('player_1', self.player_1)
+        player_2 = Player('player_2', self.player_2)
         self.board = Board()
         self.board.show_board()
         
@@ -123,13 +121,13 @@ class Game:
         # Основной метод запуска игр. В цикле запускает игры, запрашивая 
         # после каждой игры, хотят ли игроки продолжать играть. 
         # После каждой игры выводится текущий счёт игроков.
-        print('New Game')
+        print('\nNew Game')
         self.new_round()
        
 
 # MAIN CODE===========================================================
-print('\tTIC TAC TOE')
-input('press ENTER for new game')
+print('\n     TIC TAC TOE')
+input('press ENTER for new game...')
 player_1, player_2 = Player.choose_marker()
 
 # print(f'\nPlayer_1 - {player_1}, Player_2 - {player_2}')
