@@ -78,10 +78,11 @@ class Game:
     # поле.
     # А также методы:
     
-    # Метод запуска одного хода игры. Получает одного из игроков, 
-    # запрашивает у игрока номер клетки, изменяет поле, проверяет, 
-    # выиграл ли игрок. Если игрок победил, возвращает True, иначе False.
     def new_step(self, index, marker):
+        # Метод запуска одного хода игры. Получает одного из игроков, 
+        # запрашивает у игрока номер клетки, изменяет поле, проверяет, 
+        # выиграл ли игрок. Если игрок победил, возвращает True, иначе False.
+
 
         if (9 < index < 1 or Board.num_board[index - 1] in ('X', 'O')):
             return False
@@ -98,11 +99,15 @@ class Game:
         pass
 
     def new_round(self):
-    # Метод запуска одной игры. Очищает поле, запускает цикл с игрой, 
-    # который завершается победой одного из игроков или ничьей. 
-    # Если игра завершена, метод возвращает True, иначе False.
+        # Метод запуска одной игры. Очищает поле, запускает цикл с игрой, 
+        # который завершается победой одного из игроков или ничьей. 
+        # Если игра завершена, метод возвращает True, иначе False.
         round = 1
         print('Round', round)
+        player_1, player_2 = Player.choose_marker()
+        print(f'\nPlayer_1 - {player_1}, Player_2 - {player_2}')
+        player_1 = Player(player_1, player_1)
+        player_2 = Player(player_2, player_2)
         self.board = Board()
         self.board.show_board()
         
@@ -122,9 +127,9 @@ print('\tTIC TAC TOE')
 input('press ENTER for new game')
 player_1, player_2 = Player.choose_marker()
 
-print(f'\nPlayer_1 - {player_1}, Player_2 - {player_2}')
-player_1 = Player(player_1, player_1)
-player_2 = Player(player_2, player_2)
+# print(f'\nPlayer_1 - {player_1}, Player_2 - {player_2}')
+# player_1 = Player(player_1, player_1)
+# player_2 = Player(player_2, player_2)
 
 game = Game(player_1, player_2)
 game.new_game()
