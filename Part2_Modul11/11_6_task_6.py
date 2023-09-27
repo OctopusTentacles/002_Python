@@ -52,7 +52,7 @@ class Player:
         marker_1 = '\033[1;32mX\033[0m'
         marker_2 = '\033[1;33mO\033[0m'
 
-        name_1 = input(f'  игрок, выбири {marker_1} или {marker_2}: ')
+        name_1 = input(f'choose {marker_1} or {marker_2}: ')
         name_2 = ''
         if name_1 == 'x':
             name_1 = marker_1
@@ -68,6 +68,10 @@ class Player:
     #     pass
 
 class Game:    
+    def __init__(self, player_1, player_2):
+        self.player_1 = player_1
+        self.player_2 = player_2
+        self.board = Board()
     # класс «Игры» содержит атрибуты:
     # состояние игры,
     # игроки,
@@ -77,7 +81,7 @@ class Game:
     # Метод запуска одного хода игры. Получает одного из игроков, 
     # запрашивает у игрока номер клетки, изменяет поле, проверяет, 
     # выиграл ли игрок. Если игрок победил, возвращает True, иначе False.
-    def step_process(self, index, marker):
+    def new_step(self, index, marker):
 
         if (9 < index < 1 or Board.num_board[index - 1] in ('X', 'O')):
             return False
@@ -92,25 +96,35 @@ class Game:
         #         continue
 
         pass
-    
+
+    def new_round(self):
     # Метод запуска одной игры. Очищает поле, запускает цикл с игрой, 
     # который завершается победой одного из игроков или ничьей. 
     # Если игра завершена, метод возвращает True, иначе False.
-    def new_game():
+        round = 1
+        print('Round', round)
+        self.board = Board()
+        self.board.show_board()
+        
 
-    # Основной метод запуска игр. В цикле запускает игры, запрашивая 
-    # после каждой игры, хотят ли игроки продолжать играть. 
-    # После каждой игры выводится текущий счёт игроков.
-        pass
+        
+
+    def new_game(self):
+        # Основной метод запуска игр. В цикле запускает игры, запрашивая 
+        # после каждой игры, хотят ли игроки продолжать играть. 
+        # После каждой игры выводится текущий счёт игроков.
+        print('New Game')
+        self.new_round()
+       
 
 # MAIN CODE===========================================================
-print('\tКРЕСТИКИ - НОЛИКИ')
-input('  нажмите ENTER для начала игры')
+print('\tTIC TAC TOE')
+input('press ENTER for new game')
 player_1, player_2 = Player.choose_marker()
 
 print(f'\nPlayer_1 - {player_1}, Player_2 - {player_2}')
 player_1 = Player(player_1, player_1)
 player_2 = Player(player_2, player_2)
 
-example = Board()
-example.show_board()
+game = Game(player_1, player_2)
+game.new_game()
