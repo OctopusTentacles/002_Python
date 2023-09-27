@@ -43,11 +43,17 @@ class Player:
 #  У игрока может быть
 #   - имя
 #   - на какую клетку ходит
-    def __init__(self, name, num_сell):
+    def __init__(self, name, marker):
         self.name = name
-        self.num_sell = num_сell
+        self.marker = marker
+        self.score = 0
         
-        pass
+    def choose_marker(self):
+    #     self.name = input(f'выбири {self.marker_1} или {self.marker_2}: ')
+
+    #     print('Игрок_1 = ')
+
+    #     pass
 
 class Game:    
     # класс «Игры» содержит атрибуты:
@@ -59,14 +65,19 @@ class Game:
     # Метод запуска одного хода игры. Получает одного из игроков, 
     # запрашивает у игрока номер клетки, изменяет поле, проверяет, 
     # выиграл ли игрок. Если игрок победил, возвращает True, иначе False.
-    def step_process(self, marker):
-        self.marker = marker
+    def step_process(self, index, marker):
 
-        while True:
-            step = input('Куда ходим: ' + marker)
-            if not (step in '123456789'):
-                print('Повторите ввод.')
-                continue
+        if (9 < index < 1 or Board.num_board[index - 1] in ('X', 'O')):
+            return False
+        Board.num_board[index - 1] = marker
+
+
+
+        # while True:
+        #     step = input('Куда ходим: ' + marker)
+        #     if not (step in '123456789'):
+        #         print('Повторите ввод.')
+        #         continue
 
         pass
     
@@ -78,6 +89,8 @@ class Game:
     # после каждой игры, хотят ли игроки продолжать играть. 
     # После каждой игры выводится текущий счёт игроков.
     pass
+
+
 
 
 example = Board()
