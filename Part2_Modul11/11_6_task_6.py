@@ -28,15 +28,24 @@ class Board:
         self.num_board = [Cell(cell) for cell in range(1, 10)]
 
     def show_board(self):
-        # делаем линии поля жирными
+        # # делаем линии поля жирными
+        # for raw in range(3):
+        #     print('\n' + '\033[1m-' * 19)
+        #     print('|', end=' ')
+        #     # в ячеку вписываем цифры, чтобы игрок как-то мог выбрать куда ходить
+        #     # и делеам их менее заметными 
+        #     for cul in range(3):
+        #         print(f' \033[2m{self.num_board[raw * 3 + cul]}\033[0m  \033[1m| ', end='')
+        # print('\n' + '-\033[0m' * 19)
         for raw in range(3):
-            print('\n' + '\033[1m-' * 19)
-            print('|', end=' ')
-            # в ячеку вписываем цифры, чтобы игрок как-то мог выбрать куда ходить
-            # и делеам их менее заметными 
+            print('       |       |')
             for cul in range(3):
-                print(f' \033[2m{self.num_board[raw * 3 + cul]}\033[0m  \033[1m| ', end='')
-        print('\n' + '-\033[0m' * 19)
+                print('   {}'.format(self.num_board[raw * 3 + cul]), end='')
+                if cul < 2:
+                    print('   |',end='')
+            print('\n       |       |')
+            if raw < 2:
+                print('-' * 23)
 
 
 class Player:
