@@ -65,14 +65,21 @@ class Player:
     def __str__(self):
         return (f'{self.name} - {self.marker}, score: {str(self.score)}')
 
-    
 
-    def choose_cell(self):
+    def choose_cell(self, mover):
         try:
-            self.cell_num = int(input(self.name, 'choose cell number: '))
+            self.cell_num = int(input('choose cell number: '))
         except ValueError:
             print('Enter number from 1 to 9')
         
+        # if Board.num_board[index - 1] in ('X', 'O'):
+        #     return False
+        Board.num_board[self.cell_num - 1] = self.marker
+        Board.show_board()
+
+
+        
+
     def choose_marker():
         marker_1 = '\033[1;32mX\033[0m'
         marker_2 = '\033[1;33mO\033[0m'
@@ -88,7 +95,6 @@ class Player:
         return name_1, name_2
         
 
-
 class Game:    
     def __init__(self, player_1, player_2):
         self.player_1 = player_1
@@ -101,7 +107,7 @@ class Game:
         # А также методы:
 
     def __str__(self):
-        return self.player_1.name, self.player_2
+        return self.player_1, self.player_2
 
     def display(self):
         print(f'{self.player_1} |'
@@ -120,7 +126,9 @@ class Game:
             mover = self.player_2
         else:
             mover = self.player_1
-        print('\nTurn', mover, '\n')
+        print('\nTurn', mover)
+        Player.choose_cell(self, mover)
+
 
 
         # if (9 < index < 1 or Board.num_board[index - 1] in ('X', 'O')):
@@ -146,11 +154,14 @@ class Game:
 
         self.delay()
         print('\nRound', round)
+        self.board = Board()
+        self.board.show_board()
+
+
+
         self.new_step()
         
 
-        self.board = Board()
-        self.board.show_board()
         
 
         
