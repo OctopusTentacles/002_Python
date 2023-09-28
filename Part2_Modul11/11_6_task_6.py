@@ -68,12 +68,19 @@ class Player:
 
 
     def choose_cell(self, player):
-        try:
-            print('\nTurn', player.marker, end=', ')
-            num_cell = int(input('choose cell number: '))
-        except ValueError:
-            print('Enter number from 1 to 9')
-        self.board.num_cell[num_cell - 1] = player.marker
+        while True:
+            try:
+                print('\nTurn', player.marker, end=', ')
+                num_cell = int(input('choose cell number: '))
+                if num_cell not in (1,2,3,4,5,6,7,8,9):
+                    raise ValueError
+                self.board.num_cell[num_cell - 1] = player.marker
+            except ValueError:
+                print('Enter number from 1 to 9')
+                continue
+            break
+
+            
         
 
     def choose_marker():
@@ -122,6 +129,7 @@ class Game:
         # выиграл ли игрок. Если игрок победил, возвращает True, иначе False.
         if self.step % 2 == 0:
             num_cell = Player.choose_cell(self, self.player_2)
+            
         else:
             num_cell = Player.choose_cell(self, self.player_1)
         
@@ -161,11 +169,15 @@ class Game:
                 break
             self.new_round()
             self.round += 1
+
+    def greating():
+        print('\n      TIC TAC TOE')
+        input('press ENTER for new game...')
+
        
 
 # MAIN CODE===========================================================
-print('\n      TIC TAC TOE')
-input('press ENTER for new game...')
+start = Game.greating()
 player_1, player_2 = Player.choose_marker()
 
 game = Game(player_1, player_2)
