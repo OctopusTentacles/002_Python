@@ -74,7 +74,7 @@ class Player:
         except ValueError:
             print('Enter number from 1 to 9')
         self.board.num_cell[num_cell - 1] = player.marker
-        self.board.show_board()
+        
 
 
         
@@ -127,23 +127,6 @@ class Game:
             num_cell = Player.choose_cell(self, self.player_1)
         
 
-        
-
-
-
-        # if (9 < index < 1 or Board.num_board[index - 1] in ('X', 'O')):
-        #     return False
-        # Board.num_board[index - 1] = marker
-
-
-
-        # while True:
-        #     step = input('Куда ходим: ' + marker)
-        #     if not (step in '123456789'):
-        #         print('Повторите ввод.')
-        #         continue
-
-        pass
 
     def new_round(self):
         # Метод запуска одной игры. Очищает поле, запускает цикл с игрой, 
@@ -155,11 +138,11 @@ class Game:
         self.delay()
         print('\nRound', round)
         self.board = Board()
-        self.board.show_board()
-
-
-
-        self.new_step()
+        
+        while self.step < 10:
+            self.board.show_board()
+            self.new_step()
+            self.step += 1
         
 
         
