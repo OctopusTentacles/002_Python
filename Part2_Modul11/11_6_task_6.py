@@ -40,7 +40,8 @@ class Board:
         for raw in range(3):
             print('       |       |')
             for cul in range(3):
-                print('   {}'.format(self.num_board[raw * 3 + cul]), end='')
+                print('   \033[2;30m{}\033[0m'.format
+                      (self.num_board[raw * 3 + cul]), end='')
                 if cul < 2:
                     print('   |',end='')
             print('\n       |       |')
@@ -115,12 +116,12 @@ class Game:
         # который завершается победой одного из игроков или ничьей. 
         # Если игра завершена, метод возвращает True, иначе False.
         round = 1
-        print('Round', round)
+        print('\nRound', round)
         # player_1, player_2 = Player.choose_marker()
-        print(f'\nPlayer_1 - {self.player_1}, Player_2 - {self.player_2}')
         player_1 = Player('player_1', self.player_1)
         player_2 = Player('player_2', self.player_2)
         self.board = Board()
+        
         self.board.show_board()
         
 
@@ -131,6 +132,8 @@ class Game:
         # после каждой игры, хотят ли игроки продолжать играть. 
         # После каждой игры выводится текущий счёт игроков.
         print('\nNew Game')
+        print(f'Player_1 - {self.player_1}, Player_2 - {self.player_2}')
+
         self.new_round()
        
 
