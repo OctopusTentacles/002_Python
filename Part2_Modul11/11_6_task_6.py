@@ -63,7 +63,7 @@ class Player:
         self.score = 0
 
     def __str__(self):
-        return print(f'{self.name} - {self.marker}, score: {str(self.score)}')
+        return (f'{self.name} - {self.marker}, score: {str(self.score)}')
 
     
 
@@ -99,23 +99,33 @@ class Game:
         # игроки,
         # поле.
         # А также методы:
-    
+
+    def __str__(self):
+        return self.player_1.name, self.player_2
+
+    def display(self):
+        print(f'{self.player_1} |'
+              f'\n{self.player_2} |')
 
     def delay(self):
         for _ in range(27):
             print('.', end='', flush=True)
             time.sleep(0.04)
     
-    def new_step(self, index, marker):
+    def new_step(self):
         # Метод запуска одного хода игры. Получает одного из игроков, 
         # запрашивает у игрока номер клетки, изменяет поле, проверяет, 
         # выиграл ли игрок. Если игрок победил, возвращает True, иначе False.
-        print('now turn', self.player_1)
+        if self.step % 2 == 0:
+            mover = self.player_2
+        else:
+            mover = self.player_1
+        print('\nTurn', mover, '\n')
 
 
-        if (9 < index < 1 or Board.num_board[index - 1] in ('X', 'O')):
-            return False
-        Board.num_board[index - 1] = marker
+        # if (9 < index < 1 or Board.num_board[index - 1] in ('X', 'O')):
+        #     return False
+        # Board.num_board[index - 1] = marker
 
 
 
@@ -132,6 +142,7 @@ class Game:
         # который завершается победой одного из игроков или ничьей. 
         # Если игра завершена, метод возвращает True, иначе False.
         round = 1
+        self.step = 1
 
         self.delay()
         print('\nRound', round)
@@ -151,16 +162,14 @@ class Game:
         self.delay()
 
         print('\nNew Game')
-        print(f'{self.player_1}')
-        print(f'{self.player_2}')
+        self.display()
         self.new_round()
        
 
 # MAIN CODE===========================================================
-print('\n     TIC TAC TOE')
+print('\n      TIC TAC TOE')
 input('press ENTER for new game...')
 player_1, player_2 = Player.choose_marker()
-
 
 game = Game(player_1, player_2)
 game.new_game()
