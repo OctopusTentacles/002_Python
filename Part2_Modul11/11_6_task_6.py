@@ -76,9 +76,6 @@ class Player:
         self.board.num_cell[num_cell - 1] = player.marker
         
 
-
-        
-
     def choose_marker():
         marker_1 = '\033[1;32mX\033[0m'
         marker_2 = '\033[1;33mO\033[0m'
@@ -98,6 +95,8 @@ class Game:
     def __init__(self, player_1, player_2):
         self.player_1 = player_1
         self.player_2 = player_2
+        self.round = 1
+        self.step = 0
         self.board = Board()
         # класс «Игры» содержит атрибуты:
         # состояние игры,
@@ -132,21 +131,19 @@ class Game:
         # Метод запуска одной игры. Очищает поле, запускает цикл с игрой, 
         # который завершается победой одного из игроков или ничьей. 
         # Если игра завершена, метод возвращает True, иначе False.
-        round = 1
-        self.step = 1
-
         self.delay()
-        print('\nRound', round)
+        print('\nRound', self.round)
+        self.display()
         self.board = Board()
         
-        while self.step < 10:
+        while True:
             self.board.show_board()
             self.new_step()
             self.step += 1
-        
-
-        
-
+            if self.step == 9:
+                self.board.show_board()
+                print('THIS ROUND IS A DRAW!')
+                break
         
 
     def new_game(self):
@@ -156,8 +153,14 @@ class Game:
         self.delay()
 
         print('\nNew Game')
-        self.display()
-        self.new_round()
+        
+
+        while self.round < 4:
+            out = input('press ENTER for continue\npress 0 for Exit  ')
+            if out == '0':
+                break
+            self.new_round()
+            self.round += 1
        
 
 # MAIN CODE===========================================================
