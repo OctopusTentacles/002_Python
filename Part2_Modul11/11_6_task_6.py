@@ -29,7 +29,7 @@ class Board:
     # Класс поля, который создаёт у себя экземпляры клетки
     def __init__(self):
     # доска 3х3, делаем список из экземпляров Сell() с номером от 1 до 9 
-        self.num_board = [Cell(cell) for cell in range(1, 10)]
+        self.num_cell = [Cell(cell) for cell in range(1, 10)]
 
     def show_board(self):
         # # делаем линии поля жирными
@@ -45,7 +45,7 @@ class Board:
             print('       |       |')
             for cul in range(3):
                 print('   \033[2;30m{}\033[0m'.format
-                      (self.num_board[raw * 3 + cul]), end='')
+                      (self.num_cell[raw * 3 + cul]), end='')
                 if cul < 2:
                     print('   |',end='')
             print('\n       |       |')
@@ -61,21 +61,20 @@ class Player:
         self.name = name
         self.marker = (marker)
         self.score = 0
+        self.board = Board()
 
     def __str__(self):
         return (f'{self.name} - {self.marker}, score: {str(self.score)}')
 
 
-    def choose_cell(self, mover):
+    def choose_cell(self, player):
         try:
-            self.cell_num = int(input('choose cell number: '))
+            print('\nTurn', player.marker, end=', ')
+            num_cell = int(input('choose cell number: '))
         except ValueError:
             print('Enter number from 1 to 9')
-        
-        # if Board.num_board[index - 1] in ('X', 'O'):
-        #     return False
-        Board.num_board[self.cell_num - 1] = self.marker
-        Board.show_board()
+        self.board.num_cell[num_cell - 1] = player.marker
+        self.board.show_board()
 
 
         
@@ -123,11 +122,12 @@ class Game:
         # запрашивает у игрока номер клетки, изменяет поле, проверяет, 
         # выиграл ли игрок. Если игрок победил, возвращает True, иначе False.
         if self.step % 2 == 0:
-            mover = self.player_2
+            num_cell = Player.choose_cell(self, self.player_2)
         else:
-            mover = self.player_1
-        print('\nTurn', mover)
-        Player.choose_cell(self, mover)
+            num_cell = Player.choose_cell(self, self.player_1)
+        
+
+        
 
 
 
