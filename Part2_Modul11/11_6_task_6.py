@@ -59,8 +59,13 @@ class Player:
 #   - на какую клетку ходит
     def __init__(self, name, marker):
         self.name = name
-        self.marker = marker
+        self.marker = (marker)
         self.score = 0
+
+    def __str__(self):
+        return print(f'{self.name} - {self.marker}, score: {str(self.score)}')
+
+    
 
     def choose_cell(self):
         try:
@@ -75,11 +80,11 @@ class Player:
         name_1 = input(f'choose {marker_1} or {marker_2}: ')
         name_2 = ''
         if name_1 == 'x':
-            name_1 = marker_1
-            name_2 = marker_2
+            name_1 = Player('Player_1', marker_1)
+            name_2 = Player('Player_2', marker_2)
         else:
-            name_1 = marker_2
-            name_2 = marker_1
+            name_1 = Player('Player_1', marker_2)
+            name_2 = Player('Player_2', marker_1)
         return name_1, name_2
         
 
@@ -94,6 +99,7 @@ class Game:
         # игроки,
         # поле.
         # А также методы:
+    
 
     def delay(self):
         for _ in range(27):
@@ -104,6 +110,7 @@ class Game:
         # Метод запуска одного хода игры. Получает одного из игроков, 
         # запрашивает у игрока номер клетки, изменяет поле, проверяет, 
         # выиграл ли игрок. Если игрок победил, возвращает True, иначе False.
+        print('now turn', self.player_1)
 
 
         if (9 < index < 1 or Board.num_board[index - 1] in ('X', 'O')):
@@ -128,12 +135,10 @@ class Game:
 
         self.delay()
         print('\nRound', round)
+        self.new_step()
         
-        # player_1, player_2 = Player.choose_marker()
-        player_1 = Player('player_1', self.player_1)
-        player_2 = Player('player_2', self.player_2)
-        self.board = Board()
 
+        self.board = Board()
         self.board.show_board()
         
 
@@ -146,8 +151,8 @@ class Game:
         self.delay()
 
         print('\nNew Game')
-        print(f'Player_1 - {self.player_1}, Player_2 - {self.player_2}')
-
+        print(f'{self.player_1}')
+        print(f'{self.player_2}')
         self.new_round()
        
 
@@ -156,9 +161,6 @@ print('\n     TIC TAC TOE')
 input('press ENTER for new game...')
 player_1, player_2 = Player.choose_marker()
 
-# print(f'\nPlayer_1 - {player_1}, Player_2 - {player_2}')
-# player_1 = Player(player_1, player_1)
-# player_2 = Player(player_2, player_2)
 
 game = Game(player_1, player_2)
 game.new_game()
