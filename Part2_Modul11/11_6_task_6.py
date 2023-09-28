@@ -5,6 +5,10 @@
 
 # Ваши классы в этой задаче могут выглядеть так:
 
+
+import time
+
+
 class Cell:
 # Клетка, у которой есть значения   
     def __init__(self, num):
@@ -90,6 +94,11 @@ class Game:
         # игроки,
         # поле.
         # А также методы:
+
+    def delay(self):
+        for _ in range(27):
+            print('.', end='', flush=True)
+            time.sleep(0.04)
     
     def new_step(self, index, marker):
         # Метод запуска одного хода игры. Получает одного из игроков, 
@@ -116,12 +125,15 @@ class Game:
         # который завершается победой одного из игроков или ничьей. 
         # Если игра завершена, метод возвращает True, иначе False.
         round = 1
+
+        self.delay()
         print('\nRound', round)
+        
         # player_1, player_2 = Player.choose_marker()
         player_1 = Player('player_1', self.player_1)
         player_2 = Player('player_2', self.player_2)
         self.board = Board()
-        
+
         self.board.show_board()
         
 
@@ -131,6 +143,8 @@ class Game:
         # Основной метод запуска игр. В цикле запускает игры, запрашивая 
         # после каждой игры, хотят ли игроки продолжать играть. 
         # После каждой игры выводится текущий счёт игроков.
+        self.delay()
+
         print('\nNew Game')
         print(f'Player_1 - {self.player_1}, Player_2 - {self.player_2}')
 
