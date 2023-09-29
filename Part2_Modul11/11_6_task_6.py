@@ -24,8 +24,9 @@ class Board:
         self.num_cell = [Cell(cell) for cell in range(1, 10)]
 
     def show_board(self):
+        print()
         for raw in range(3):
-            print('\n       |       |')
+            print('       |       |')
             for cul in range(3):
                 print('   \033[2;30m{}\033[0m'.format
                       (self.num_cell[raw * 3 + cul]), end='')
@@ -163,6 +164,7 @@ class Game:
                 if self.step == 10:
                     self.board.show_board()
                     print('\n======THIS ROUND IS A DRAW!======')
+                    self.display()
                     return False
         
 
@@ -176,7 +178,7 @@ class Game:
         self.display()
         self.delay()
 
-        while self.round < 4:
+        while True:
             try:
                 out = input('\nContinue... Y/N...  ')
                 if out.title() == 'N':
