@@ -71,16 +71,23 @@ class Player:
     def choose_marker():
         marker_1 = '\033[1;32mX\033[0m'
         marker_2 = '\033[1;33mO\033[0m'
-
-        name_1 = input(f'choose {marker_1} or {marker_2}: ')
-        name_2 = ''
-        if name_1 == 'x' or name_1 == 'X':
-            name_1 = Player('Player_1', marker_1)
-            name_2 = Player('Player_2', marker_2)
-        else:
-            name_1 = Player('Player_1', marker_2)
-            name_2 = Player('Player_2', marker_1)
-        return name_1, name_2
+        while True:
+            try:
+                name_1 = input(f'choose {marker_1} or {marker_2}: ')
+                name_2 = ''
+        
+                if name_1 == 'x' or name_1 == 'X':
+                    name_1 = Player('Player_1', marker_1)
+                    name_2 = Player('Player_2', marker_2)
+                elif name_1 == 'o' or name_1 == 'O':
+                    name_1 = Player('Player_1', marker_2)
+                    name_2 = Player('Player_2', marker_1)
+                else:
+                    raise Exception
+                return name_1, name_2
+            except Exception:
+                print('Try again...')
+                continue
         
 # ---------------------------------------------------------------------------------------
 class Game:    
