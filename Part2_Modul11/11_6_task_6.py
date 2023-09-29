@@ -43,14 +43,18 @@ class Player:
 #  У игрока может быть
 #   - имя
 #   - на какую клетку ходит
-    def __init__(self, name, marker):
+    def __init__(self, name, marker, score = 0):
         self.name = name
-        self.marker = (marker)
-        self.score = 0
+        self.marker = marker
+        self.score = score
         self.board = Board()
 
     def __str__(self):
         return (f'{self.name} - {self.marker}, score: {str(self.score)}')
+
+    # def win_point(self, marker):
+    #     self.marker = marker
+    #     self.score += 1
 
 
     def choose_cell(self, player):
@@ -74,8 +78,7 @@ class Player:
             except Exception:
                 print('\033[1;31mCell is occupied, select another!\033[0m')
                 continue
-            break
-
+        
 
     def choose_marker():
         marker_1 = '\033[1;32mX\033[0m'
@@ -96,6 +99,7 @@ class Game:
     def __init__(self, player_1, player_2):
         self.player_1 = player_1
         self.player_2 = player_2
+        self.score = 0
         self.round = 1
         self.step = 0
         self.board = Board()
@@ -123,7 +127,6 @@ class Game:
         # выиграл ли игрок. Если игрок победил, возвращает True, иначе False.
         if self.step % 2 == 0:
             num_cell = Player.choose_cell(self, self.player_2)
-
         else:
             num_cell = Player.choose_cell(self, self.player_1)
         
@@ -132,10 +135,11 @@ class Game:
                      (0, 4, 8), (2, 4, 6))
         for cell in check_win:
             for symbol in cell:
-                if symbol != num_cell:
-                    return False
-                else:
-                    return True
+                if self.board.num_cell[symbol] != num_cell:
+                    break
+            else:
+                
+                return True
 
 
     def new_round(self):
@@ -150,12 +154,21 @@ class Game:
         
         while True:
             self.board.show_board()
-            self.new_step()
-            self.step += 1
-            if self.step == 9:
+            if self.new_step():
+                self.score += 1
+                
                 self.board.show_board()
-                print('THIS ROUND IS A DRAW!')
-                break
+                print('=====WIN=====')
+                self.display()
+                
+                return True
+
+            else:
+                self.step += 1
+                if self.step == 9:
+                    self.board.show_board()
+                    print('THIS ROUND IS A DRAW!')
+                    break
         
 
     def new_game(self):
@@ -171,8 +184,11 @@ class Game:
             out = input('press ENTER for continue\npress 0 for Exit  ')
             if out == '0':
                 break
-            self.new_round()
+            if self.new_round():
+                continue
+
             self.round += 1
+
 
     def greating():
         print('\n      TIC TAC TOE')
