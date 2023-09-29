@@ -189,16 +189,25 @@ class Game:
             self.round += 1
 
     def greating():
-        print('\n      TIC TAC TOE')
-        input('press ENTER for new game...')
+        print('\n===========TIC TAC TOE===========')
+        button = input('press Y/N for New Game or Exit... ')
+        if button.title() == 'Y':
+            return True
+        elif button.title() == 'N':
+            return False
+            
 
 
 # MAIN CODE====================================================================
 while True:
     start = Game.greating()
-    player_1, player_2 = Player.choose_marker()
+    if start:
+        player_1, player_2 = Player.choose_marker()
 
-    game = Game(player_1, player_2)
-    game.new_game()
-    print('=======GAME OVER=======')
-    continue
+        game = Game(player_1, player_2)
+        game.new_game()
+        print('=======GAME OVER=======')
+        continue
+    else:
+        print('===============EXIT==============')
+        break
