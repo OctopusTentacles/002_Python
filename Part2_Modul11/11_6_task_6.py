@@ -58,12 +58,15 @@ class Player:
             try:
                 print('\nTurn', player.marker, end=', ')
                 num_cell = int(input('choose cell number: '))
+               
                 if num_cell not in (1,2,3,4,5,6,7,8,9):
                     raise ValueError
-                if self.board.num_cell[num_cell - 1] in ('\033[1;32mX\033[0m', '\033[1;33mO\033[0m'):
+                if self.board.num_cell[num_cell - 1] in (
+                    '\033[1;32mX\033[0m', '\033[1;33mO\033[0m'):
                     raise Exception
                 
                 self.board.num_cell[num_cell - 1] = player.marker
+                return player.marker
             
             except ValueError:
                 print('\033[1;31mEnter number from 1 to 9!\033[0m')
@@ -73,8 +76,6 @@ class Player:
                 continue
             break
 
-            
-        
 
     def choose_marker():
         marker_1 = '\033[1;32mX\033[0m'
@@ -126,6 +127,15 @@ class Game:
         else:
             num_cell = Player.choose_cell(self, self.player_1)
         
+        check_win = ((0, 1, 2), (3, 4, 5), (6, 7, 8),
+                     (0, 3, 6), (1, 4, 7), (2, 5, 8),
+                     (0, 4, 8), (2, 4, 6))
+        for cell in check_win:
+            for symbol in cell:
+                if symbol != num_cell:
+                    return False
+                else:
+                    return True
 
 
     def new_round(self):
