@@ -25,7 +25,7 @@ class Board:
 
     def show_board(self):
         for raw in range(3):
-            print('       |       |')
+            print('\n       |       |')
             for cul in range(3):
                 print('   \033[2;30m{}\033[0m'.format
                       (self.num_cell[raw * 3 + cul]), end='')
@@ -114,9 +114,10 @@ class Game:
               f'\n{self.player_2} |')
 
     def delay(self):
-        for _ in range(27):
+        for _ in range(31):
             print('.', end='', flush=True)
             time.sleep(0.04)
+        print()
     
     def new_step(self):
         # Метод запуска одного хода игры. Получает одного из игроков, 
@@ -147,7 +148,7 @@ class Game:
         # Если игра завершена, метод возвращает True, иначе False.
         self.step = 1
         self.delay()
-        print('\nRound', self.round, '\n')
+        print('\nRound', self.round)
         self.board = Board()
         
         while True:
@@ -159,9 +160,9 @@ class Game:
 
             else:
                 self.step += 1
-                if self.step == 9:
+                if self.step == 10:
                     self.board.show_board()
-                    print('THIS ROUND IS A DRAW!')
+                    print('\n======THIS ROUND IS A DRAW!======')
                     return False
         
 
@@ -176,37 +177,48 @@ class Game:
         self.delay()
 
         while self.round < 4:
-            out = input('\npress ENTER for continue\npress 0 for Exit  ')
-            if out == '0':
-                break
-            if self.new_round():
-                self.display()
-                self.delay()
+            try:
+                out = input('\nContinue... Y/N...  ')
+                if out.title() == 'N':
+                    break
+                elif out.title() == 'Y':
+                    if self.new_round():
+                        self.display()
+                        self.delay()
+                    else:
+                        self.delay()
 
-            else:
-                self.delay()
+                    self.round += 1
+                else:
+                    raise Exception
+            except Exception:
+                continue   
 
-            self.round += 1
-
-    def greating():
-        print('\n===========TIC TAC TOE===========')
-        button = input('press Y/N for New Game or Exit... ')
-        if button.title() == 'Y':
-            return True
-        elif button.title() == 'N':
-            return False
-            
+    def Y_N():
+        
+        while True:
+            try:
+                button = input('press Y/N for New Game or Exit... ')
+                if button.title() == 'Y':
+                    return True
+                elif button.title() == 'N':
+                    return False
+                else:
+                    raise Exception
+            except Exception:
+                continue    
 
 
 # MAIN CODE====================================================================
 while True:
-    start = Game.greating()
+    print('\n===========TIC TAC TOE===========')
+    start = Game.Y_N()
     if start:
         player_1, player_2 = Player.choose_marker()
 
         game = Game(player_1, player_2)
         game.new_game()
-        print('=======GAME OVER=======')
+        print('============GAME OVER============')
         continue
     else:
         print('===============EXIT==============')
