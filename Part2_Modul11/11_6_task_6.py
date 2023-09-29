@@ -10,20 +10,15 @@ import time
 
 
 class Cell:
-# Клетка, у которой есть значения   
     def __init__(self, num):
-# занята клетка или нет
         self.sym_cell = ' '
-# номер клетки
         self.num = num
         
-# __str__ – метод для отображения информации об объекте класса для пользователей 
-# благодаря этому методу в строке 38 мы видим в поле игры цифры 
     def __str__(self):
         return str(self.num)
 
 
-
+# ---------------------------------------------------------------------------------------
 class Board:
     '''поле игры'''
     # Класс поля, который создаёт у себя экземпляры клетки
@@ -32,15 +27,6 @@ class Board:
         self.num_cell = [Cell(cell) for cell in range(1, 10)]
 
     def show_board(self):
-        # # делаем линии поля жирными
-        # for raw in range(3):
-        #     print('\n' + '\033[1m-' * 19)
-        #     print('|', end=' ')
-        #     # в ячеку вписываем цифры, чтобы игрок как-то мог выбрать куда ходить
-        #     # и делеам их менее заметными 
-        #     for cul in range(3):
-        #         print(f' \033[2m{self.num_board[raw * 3 + cul]}\033[0m  \033[1m| ', end='')
-        # print('\n' + '-\033[0m' * 19)
         for raw in range(3):
             print('       |       |')
             for cul in range(3):
@@ -52,7 +38,7 @@ class Board:
             if raw < 2:
                 print('-' * 23)
 
-
+# ---------------------------------------------------------------------------------------
 class Player:
 #  У игрока может быть
 #   - имя
@@ -74,9 +60,16 @@ class Player:
                 num_cell = int(input('choose cell number: '))
                 if num_cell not in (1,2,3,4,5,6,7,8,9):
                     raise ValueError
+                if self.board.num_cell[num_cell - 1] in ('\033[1;32mX\033[0m', '\033[1;33mO\033[0m'):
+                    raise Exception
+                
                 self.board.num_cell[num_cell - 1] = player.marker
+            
             except ValueError:
-                print('Enter number from 1 to 9')
+                print('\033[1;31mEnter number from 1 to 9!\033[0m')
+                continue
+            except Exception:
+                print('\033[1;31mCell is occupied, select another!\033[0m')
                 continue
             break
 
@@ -97,7 +90,7 @@ class Player:
             name_2 = Player('Player_2', marker_1)
         return name_1, name_2
         
-
+# ---------------------------------------------------------------------------------------
 class Game:    
     def __init__(self, player_1, player_2):
         self.player_1 = player_1
@@ -129,7 +122,7 @@ class Game:
         # выиграл ли игрок. Если игрок победил, возвращает True, иначе False.
         if self.step % 2 == 0:
             num_cell = Player.choose_cell(self, self.player_2)
-            
+
         else:
             num_cell = Player.choose_cell(self, self.player_1)
         
@@ -139,6 +132,7 @@ class Game:
         # Метод запуска одной игры. Очищает поле, запускает цикл с игрой, 
         # который завершается победой одного из игроков или ничьей. 
         # Если игра завершена, метод возвращает True, иначе False.
+        self.step = 1
         self.delay()
         print('\nRound', self.round)
         self.display()
@@ -176,7 +170,7 @@ class Game:
 
        
 
-# MAIN CODE===========================================================
+# MAIN CODE====================================================================
 start = Game.greating()
 player_1, player_2 = Player.choose_marker()
 
