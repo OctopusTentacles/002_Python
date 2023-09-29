@@ -20,10 +20,7 @@ class Cell:
 
 # ---------------------------------------------------------------------------------------
 class Board:
-    '''поле игры'''
-    # Класс поля, который создаёт у себя экземпляры клетки
     def __init__(self):
-    # доска 3х3, делаем список из экземпляров Сell() с номером от 1 до 9 
         self.num_cell = [Cell(cell) for cell in range(1, 10)]
 
     def show_board(self):
@@ -150,7 +147,7 @@ class Game:
         # Если игра завершена, метод возвращает True, иначе False.
         self.step = 1
         self.delay()
-        print('\nRound', self.round)
+        print('\nRound', self.round, '\n')
         self.board = Board()
         
         while True:
@@ -186,13 +183,10 @@ class Game:
                 self.display()
                 self.delay()
 
-
             else:
                 self.delay()
 
-
             self.round += 1
-
 
     def greating():
         print('\n      TIC TAC TOE')
@@ -200,8 +194,11 @@ class Game:
 
 
 # MAIN CODE====================================================================
-start = Game.greating()
-player_1, player_2 = Player.choose_marker()
+while True:
+    start = Game.greating()
+    player_1, player_2 = Player.choose_marker()
 
-game = Game(player_1, player_2)
-game.new_game()
+    game = Game(player_1, player_2)
+    game.new_game()
+    print('=======GAME OVER=======')
+    continue
