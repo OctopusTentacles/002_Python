@@ -17,7 +17,6 @@ class Cell:
     def __str__(self):
         return str(self.num)
 
-
 # ---------------------------------------------------------------------------------------
 class Board:
     def __init__(self):
@@ -38,9 +37,6 @@ class Board:
 
 # ---------------------------------------------------------------------------------------
 class Player:
-#  У игрока может быть
-#   - имя
-#   - на какую клетку ходит
     def __init__(self, name, marker, score = 0):
         self.name = name
         self.marker = marker
@@ -49,11 +45,6 @@ class Player:
 
     def __str__(self):
         return (f'{self.name} - {self.marker}, score: {str(self.score)}')
-
-    # def win_point(self, marker):
-    #     self.marker = marker
-    #     self.score += 1
-
 
     def choose_cell(self, player):
         while True:
@@ -76,7 +67,6 @@ class Player:
             except Exception:
                 print('\033[1;31mCell is occupied, select another!\033[0m')
                 continue
-        
 
     def choose_marker():
         marker_1 = '\033[1;32mX\033[0m'
@@ -84,7 +74,7 @@ class Player:
 
         name_1 = input(f'choose {marker_1} or {marker_2}: ')
         name_2 = ''
-        if name_1 == 'x':
+        if name_1 == 'x' or name_1 == 'X':
             name_1 = Player('Player_1', marker_1)
             name_2 = Player('Player_2', marker_2)
         else:
@@ -97,7 +87,6 @@ class Game:
     def __init__(self, player_1, player_2):
         self.player_1 = player_1
         self.player_2 = player_2
-        # self.score = 0
         self.round = 1
         self.step = 0
         self.board = Board()
@@ -158,7 +147,6 @@ class Game:
                 self.board.show_board()
                 print('==========WIN==========')
                 return True
-
             else:
                 self.step += 1
                 if self.step == 10:
@@ -173,7 +161,6 @@ class Game:
         # после каждой игры, хотят ли игроки продолжать играть. 
         # После каждой игры выводится текущий счёт игроков.
         self.delay()
-
         print('\nNew Game')
         self.display()
         self.delay()
@@ -197,7 +184,6 @@ class Game:
                 continue   
 
     def Y_N():
-        
         while True:
             try:
                 button = input('press Y/N for New Game or Exit... ')
