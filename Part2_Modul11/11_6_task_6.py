@@ -99,7 +99,7 @@ class Game:
     def __init__(self, player_1, player_2):
         self.player_1 = player_1
         self.player_2 = player_2
-        self.score = 0
+        # self.score = 0
         self.round = 1
         self.step = 0
         self.board = Board()
@@ -126,9 +126,11 @@ class Game:
         # запрашивает у игрока номер клетки, изменяет поле, проверяет, 
         # выиграл ли игрок. Если игрок победил, возвращает True, иначе False.
         if self.step % 2 == 0:
-            num_cell = Player.choose_cell(self, self.player_2)
+            turn_player = self.player_2
         else:
-            num_cell = Player.choose_cell(self, self.player_1)
+            turn_player = self.player_1
+
+        num_cell = Player.choose_cell(self, turn_player)
         
         check_win = ((0, 1, 2), (3, 4, 5), (6, 7, 8),
                      (0, 3, 6), (1, 4, 7), (2, 5, 8),
@@ -138,7 +140,7 @@ class Game:
                 if self.board.num_cell[symbol] != num_cell:
                     break
             else:
-                
+                turn_player.score += 1
                 return True
 
 
@@ -149,18 +151,13 @@ class Game:
         self.step = 1
         self.delay()
         print('\nRound', self.round)
-        self.display()
         self.board = Board()
         
         while True:
             self.board.show_board()
             if self.new_step():
-                self.score += 1
-                
                 self.board.show_board()
-                print('=====WIN=====')
-                self.display()
-                
+                print('==========WIN==========')
                 return True
 
             else:
@@ -168,7 +165,7 @@ class Game:
                 if self.step == 9:
                     self.board.show_board()
                     print('THIS ROUND IS A DRAW!')
-                    break
+                    return False
         
 
     def new_game(self):
@@ -178,14 +175,21 @@ class Game:
         self.delay()
 
         print('\nNew Game')
-        
+        self.display()
+        self.delay()
 
         while self.round < 4:
-            out = input('press ENTER for continue\npress 0 for Exit  ')
+            out = input('\npress ENTER for continue\npress 0 for Exit  ')
             if out == '0':
                 break
             if self.new_round():
-                continue
+                self.display()
+                self.delay()
+
+
+            else:
+                self.delay()
+
 
             self.round += 1
 
@@ -194,7 +198,6 @@ class Game:
         print('\n      TIC TAC TOE')
         input('press ENTER for new game...')
 
-       
 
 # MAIN CODE====================================================================
 start = Game.greating()
