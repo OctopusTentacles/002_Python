@@ -123,12 +123,13 @@ class Matrix:
         return result_matrix
 
     def subtract(self, not_self):
+        result_matrix = Matrix(self.rows, self.columns)
+        result_matrix.data = [[0 for _ in range(self.columns)] for _ in range(self.rows)]
         for row in range(self.rows):
             for col in range(self.columns):
-                self.data[row][col] = self.data[row][col] - not_self.data[row][col]
-        return self
+                result_matrix.data[row][col] = self.data[row][col] - not_self.data[row][col]
+        return result_matrix
     
-        pass
 
 
     def multiply():
@@ -157,18 +158,21 @@ print(m2)
 print("Сложение матриц:")
 print(m1.add(m2))
 # для проверки, что матрицы не меняются
-print(m1)
-print(m2)
+# print(m1)
+# print(m2)
 
 print("Вычитание матриц:")
 print(m1.subtract(m2))
 # для проверки, что матрицы не меняются
-print(m1)
-print(m2)
+# print(m1)
+# print(m2)
 
 
-# m3 = Matrix(3, 2)
-# m3.data = [[1, 2], [3, 4], [5, 6]]
+m3 = Matrix(3, 2)
+m3.data = [[1, 2], [3, 4], [5, 6]]
+print("Матрица 3:")
+print(m3)
+
 
 # print("Умножение матриц:")
 # print(m1.multiply(m3))
