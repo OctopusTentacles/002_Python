@@ -35,3 +35,7 @@ print("\033[32m", end="") #green
 print("then you don't")
 print("\033[0m", end="") #default
 print("get odd gaps")
+
+marker_1 = '\033[1;32mX\033[0m'
+marker_2 = '\033[1;33mO\033[0m'
+print(marker_1, marker_2)

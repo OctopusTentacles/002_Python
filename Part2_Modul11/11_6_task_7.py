@@ -133,10 +133,17 @@ class Matrix:
 
 
     def multiply(self, not_self):
-        result_matrix = Matrix(self.rows, self.columns)
-        result_matrix.data = [[0 for _ in range(self.columns)] for _ in range(self.rows)]
+        # self     2-rows, 3-cols   [[1, 2, 3], [4, 5, 6]]
+        # not-self 3-rows, 2-cols   [[1, 2], [3, 4], [5, 6]]
+        # need     2-rows, 2-cols   
+        result_matrix = Matrix(self.rows, not_self.columns)
+        result_matrix.data = [[0 for _ in range(result_matrix.columns)] 
+                            for _ in range(result_matrix.rows)]
         print(self.data)
         print(not_self.data)
+        print(result_matrix)
+    
+
         for row in range(self.rows):
             for col in range(self.columns):
                 result_matrix.data[row][col] = self.data[row][col] * not_self.data[row][col]
