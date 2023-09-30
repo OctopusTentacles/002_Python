@@ -98,6 +98,14 @@ class Matrix:
         self.column = column
         self.data = list()
 
+    def __str__(self):
+        res = str()
+        for index in self.data:
+            for value in index:
+                res += str(value) + ' '
+            res += '\n'
+        return res
+
     def add():
 
         pass
@@ -123,8 +131,8 @@ m2 = Matrix(2, 3)
 m2.data = [[7, 8, 9], [10, 11, 12]]
 
 # Тестирование операций
-# print("Матрица 1:")
-# print(m1)
+print("Матрица 1:")
+print(m1)
 
 # print("Матрица 2:")
 # print(m2)
