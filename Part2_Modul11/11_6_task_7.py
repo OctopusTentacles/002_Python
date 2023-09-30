@@ -100,17 +100,11 @@ class Matrix:
 
     def __str__(self):
         show_matrix = str()
-        for row in range(self.rows):
-            for column in range(self.columns):
-                show_matrix += ('{} {:<5}'.format(self.data[column]))
+        for index in self.data:
+            for value in index:
+                show_matrix += '{:<5}'.format(value)
             show_matrix += '\n'
         return show_matrix
-        # res = str()
-        # for index in self.data:
-        #     for value in index:
-        #         res += str(value) + f'{:<4}'
-        #     res += '\n'
-        # return res
 
     def add():
 
@@ -143,8 +137,8 @@ print(m1)
 print("Матрица 2:")
 print(m2)
 
-# print("Сложение матриц:")
-# print(m1.add(m2))
+print("Сложение матриц:")
+print(m1.add(m2))
 
 # print("Вычитание матриц:")
 # print(m1.subtract(m2))
