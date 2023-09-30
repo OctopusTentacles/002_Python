@@ -132,9 +132,18 @@ class Matrix:
     
 
 
-    def multiply():
+    def multiply(self, not_self):
+        result_matrix = Matrix(self.rows, self.columns)
+        result_matrix.data = [[0 for _ in range(self.columns)] for _ in range(self.rows)]
+        print(self.data)
+        print(not_self.data)
+        for row in range(self.rows):
+            for col in range(self.columns):
+                result_matrix.data[row][col] = self.data[row][col] * not_self.data[row][col]
 
-        pass
+        # result_matrix.data = [row * col for row, col in zip(self.data, not_self.data)]
+
+        print(result_matrix.data)
 
     def transpose():
 
@@ -174,8 +183,8 @@ print("Матрица 3:")
 print(m3)
 
 
-# print("Умножение матриц:")
-# print(m1.multiply(m3))
+print("Умножение матриц:")
+print(m1.multiply(m3))
 
 # print("Транспонирование матрицы 1:")
 # print(m1.transpose())
