@@ -141,12 +141,13 @@ class Matrix:
                             for _ in range(result_matrix.rows)]
         print(self.data)
         print(not_self.data)
-        print(result_matrix)
+        print(result_matrix.data)
     
 
         for row in range(self.rows):
-            for col in range(self.columns):
-                result_matrix.data[row][col] = self.data[row][col] * not_self.data[row][col]
+            for col in range(not_self.columns):
+                for colum in range(self.columns):
+                    result_matrix.data[row][col] = self.data[row][colum] * not_self.data[colum][col]
 
         # result_matrix.data = [row * col for row, col in zip(self.data, not_self.data)]
 
