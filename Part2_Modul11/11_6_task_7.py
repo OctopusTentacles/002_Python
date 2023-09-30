@@ -110,19 +110,26 @@ class Matrix:
         # self = m1, not_self = m2
         # print(self)
         # print(not_self)
+        # надо создать новую матрицу для результата
+        result_matrix = Matrix(self.rows, self.columns)
+        result_matrix.data = [[0 for _ in range(self.columns)] for _ in range(self.rows)]
+        # print(result_matrix.data)
         for row in range(self.rows):
             for col in range(self.columns):
                 # print(self.data[row][col] + not_self.data[row][col])
-                self.data[row][col] = self.data[row][col] + not_self.data[row][col]
+                # self.data[row][col] = self.data[row][col] + not_self.data[row][col]
+                result_matrix.data[row][col] = self.data[row][col] + not_self.data[row][col]
+        # return self
+        return result_matrix
 
+    def subtract(self, not_self):
+        for row in range(self.rows):
+            for col in range(self.columns):
+                self.data[row][col] = self.data[row][col] - not_self.data[row][col]
         return self
-
-
-
-
-    def subtract():
-
+    
         pass
+
 
     def multiply():
 
@@ -149,9 +156,16 @@ print(m2)
 
 print("Сложение матриц:")
 print(m1.add(m2))
+# для проверки, что матрицы не меняются
+print(m1)
+print(m2)
 
-# print("Вычитание матриц:")
-# print(m1.subtract(m2))
+print("Вычитание матриц:")
+print(m1.subtract(m2))
+# для проверки, что матрицы не меняются
+print(m1)
+print(m2)
+
 
 # m3 = Matrix(3, 2)
 # m3.data = [[1, 2], [3, 4], [5, 6]]
