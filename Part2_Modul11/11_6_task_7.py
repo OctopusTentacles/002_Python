@@ -106,9 +106,19 @@ class Matrix:
             show_matrix += '\n'
         return show_matrix
 
-    def add():
+    def add(self, not_self):
+        # self = m1, not_self = m2
+        print(self)
+        print(not_self)
+        result = []
+        for row in range(self.rows):
+            for col in range(self.columns):
+                result.append(sum(self.data[row][col], not_self.data[row][col]))
 
-        pass
+        print(result)
+
+
+
 
     def subtract():
 
