@@ -93,18 +93,24 @@
 
 
 class Matrix:
-    def __init__(self, row, column):
-        self.row = row
-        self.column = column
+    def __init__(self, rows, columns):
+        self.rows = rows
+        self.columns = columns
         self.data = list()
 
     def __str__(self):
-        res = str()
-        for index in self.data:
-            for value in index:
-                res += str(value) + ' '
-            res += '\n'
-        return res
+        show_matrix = str()
+        for row in range(self.rows):
+            for column in range(self.columns):
+                show_matrix += ('{} {:<5}'.format(self.data[column]))
+            show_matrix += '\n'
+        return show_matrix
+        # res = str()
+        # for index in self.data:
+        #     for value in index:
+        #         res += str(value) + f'{:<4}'
+        #     res += '\n'
+        # return res
 
     def add():
 
@@ -134,8 +140,8 @@ m2.data = [[7, 8, 9], [10, 11, 12]]
 print("Матрица 1:")
 print(m1)
 
-# print("Матрица 2:")
-# print(m2)
+print("Матрица 2:")
+print(m2)
 
 # print("Сложение матриц:")
 # print(m1.add(m2))
