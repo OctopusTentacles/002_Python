@@ -129,8 +129,6 @@ class Matrix:
             for col in range(self.columns):
                 result_matrix.data[row][col] = self.data[row][col] - not_self.data[row][col]
         return result_matrix
-    
-
 
     def multiply(self, not_self):
         
@@ -166,15 +164,20 @@ class Matrix:
                     cell += self.data[row][cols] * not_self.data[cols][col]
                 result_matrix.data[row][col] = cell
 
-
                 # for colum in range(self.columns):
                 #     result_matrix.data[row][col] = self.data[row][colum] * not_self.data[colum][col]
-
         # result_matrix.data = [row * col for row, col in zip(self.data, not_self.data)]
-
         return result_matrix
 
     def transpose():
+        
+        # 2-rows, 3-cols == 3-rows, 2-cols
+
+        # [[1, 2, 3], [4, 5, 6]] == [[1, 4], [2, 5], [3, 6]]
+         
+        # 1 2 3     1 4
+        # 4 5 6     2 5
+        #           3 6
 
         pass
 
@@ -215,9 +218,8 @@ print(m3)
 print("Умножение матриц:")
 print(m1.multiply(m3))
 
-# print("Транспонирование матрицы 1:")
-# print(m1.transpose())
-
+print("Транспонирование матрицы 1:")
+print(m1.transpose())
 
 
 # multiply понравилось!!! пока не расписал все - ответ не получался!!! 
