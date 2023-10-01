@@ -148,25 +148,31 @@ class Matrix:
         # 
         # 1*1 + 2*3 + 3*5 | 1*2 + 2*4 + 3*6
         # 4*1 + 5*3 + 6*5 | 4*2 + 5*4 + 6*6
-
-
+        # 
+        # 0:0*0:0 + 0:1*1:0 + 0:2*2:0 | 0:0*0:1 + 0:1*1:1 + 0:2*2:1
+        # 1:0*0:0 + 1:1*1:0 + 1:2*2:0 | 1:0*0:1 + 1:1*1:1 + 1:2*2:1
 
         result_matrix = Matrix(self.rows, not_self.columns)
         result_matrix.data = [[0 for _ in range(result_matrix.columns)] 
                             for _ in range(result_matrix.rows)]
-        print(self.data)
-        print(not_self.data)
-        print(result_matrix.data)
+        # print(self.data)
+        # print(not_self.data)
+        # print(result_matrix.data)
     
-
         for row in range(self.rows):
             for col in range(not_self.columns):
-                for colum in range(self.columns):
-                    result_matrix.data[row][col] = self.data[row][colum] * not_self.data[colum][col]
+                cell = 0
+                for cols in range(self.columns):
+                    cell += self.data[row][cols] * not_self.data[cols][col]
+                result_matrix.data[row][col] = cell
+
+
+                # for colum in range(self.columns):
+                #     result_matrix.data[row][col] = self.data[row][colum] * not_self.data[colum][col]
 
         # result_matrix.data = [row * col for row, col in zip(self.data, not_self.data)]
 
-        print(result_matrix.data)
+        return result_matrix
 
     def transpose():
 
@@ -211,3 +217,7 @@ print(m1.multiply(m3))
 
 # print("Транспонирование матрицы 1:")
 # print(m1.transpose())
+
+
+
+# multiply понравилось!!! пока не расписал все - ответ не получался!!! 
