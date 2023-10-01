@@ -133,9 +133,24 @@ class Matrix:
 
 
     def multiply(self, not_self):
+        
         # self     2-rows, 3-cols   [[1, 2, 3], [4, 5, 6]]
         # not-self 3-rows, 2-cols   [[1, 2], [3, 4], [5, 6]]
-        # need     2-rows, 2-cols   
+        # need     2-rows, 2-cols  
+        # 
+        # получается надо умножать строку на столб: 
+        #               
+        # 123   12   1*1 2*3 3*5 | 1*2 2*4 3*6
+        # 456   34   4*1 5*3 6*5 | 4*2 5*4 6*6 
+        #       56
+        # 
+        # и сложить:
+        # 
+        # 1*1 + 2*3 + 3*5 | 1*2 + 2*4 + 3*6
+        # 4*1 + 5*3 + 6*5 | 4*2 + 5*4 + 6*6
+
+
+
         result_matrix = Matrix(self.rows, not_self.columns)
         result_matrix.data = [[0 for _ in range(result_matrix.columns)] 
                             for _ in range(result_matrix.rows)]
