@@ -169,7 +169,7 @@ class Matrix:
         # result_matrix.data = [row * col for row, col in zip(self.data, not_self.data)]
         return result_matrix
 
-    def transpose():
+    def transpose(self):
         
         # 2-rows, 3-cols == 3-rows, 2-cols
 
@@ -183,7 +183,18 @@ class Matrix:
         # 0:2 = 2:0 | 1:0 = 0:1
         # 1:1 = 1:1 | 1:2 = 2:1
 
-        pass
+        result_matrix = Matrix(self.columns, self.rows)
+        result_matrix.data = [[0 for _ in range(result_matrix.columns)] 
+                            for _ in range(result_matrix.rows)]
+        print(self.data)
+        print(result_matrix.data)
+
+        for row in range(self.rows):
+            for col in range(self.columns):
+                result_matrix.data[col][row] = self.data[row][col]
+        print(result_matrix.data)
+
+
 
 
 # Создание экземпляров класса Matrix
