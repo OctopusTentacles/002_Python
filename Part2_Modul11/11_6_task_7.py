@@ -186,15 +186,13 @@ class Matrix:
         result_matrix = Matrix(self.columns, self.rows)
         result_matrix.data = [[0 for _ in range(result_matrix.columns)] 
                             for _ in range(result_matrix.rows)]
-        print(self.data)
-        print(result_matrix.data)
+        # print(self.data)
+        # print(result_matrix.data)
 
         for row in range(self.rows):
             for col in range(self.columns):
                 result_matrix.data[col][row] = self.data[row][col]
-        print(result_matrix.data)
-
-
+        return result_matrix
 
 
 # Создание экземпляров класса Matrix
@@ -238,3 +236,13 @@ print(m1.transpose())
 
 
 # multiply понравилось!!! пока не расписал все - ответ не получался!!! 
+
+# transpose тоже интересная, но после multiply уже не такая сложная )))))
+
+# хотел спросить...
+# умножение матрицы в этом задании - это стандартный алгоритм умножения
+# для разноразмерных матриц (строка на столб и сложение)?
+# или это зависит от того какой размер нужен конечной матрицы?
+# тут есть какое-то правило или инструкция как нужно действовать?
+# я решал это путем подгона под размер конечной матрицы.
+# а если итоговый размер нам не известен? как тогда умножать?
