@@ -14,7 +14,7 @@ class Water:
         if isinstance(other, Air):
             return Storm()
         elif isinstance(other, Fire):
-            return Steam()
+            return Vapor()
         elif isinstance(other, Earth):
             return Dirt()
         else:
@@ -46,11 +46,22 @@ class Storm:
         return 'Шторм'
         
 
+class Vapor:
+    def __str__(self):
+        return 'Пар'
+
+
+class Dirt:
+    def __str__(self):
+        return 'Грязь'
 
 
 
 water = Water()
 air = Air()
-
+fire = Fire()
+earth = Earth()
 
 print(f'Вода + Воздух = {water + air}')
+print(f'Вода + Огонь = {water + fire}')
+
