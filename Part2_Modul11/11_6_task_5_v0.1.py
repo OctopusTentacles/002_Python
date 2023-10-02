@@ -52,3 +52,13 @@ class Person:
         if self.satiety <= 0:
             raise ValueError(f'{self.name} умер от голода!')
 
+
+house = House()
+person1 = Person('Artem', house)
+person2 = Person('Alice', house)
+
+for day in range(365):
+    print(f'--- День {day + 1} ---')
+    person1.live_one_day()
+    person2.live_one_day()
+    print(f'В доме осталось {house.fridge} еды и {house.money} денег.')
