@@ -34,3 +34,21 @@ class Person:
             self.house.money -= 20
             print(f'{self.name} сходил в магазин.')
 
+    def live_one_day(self):
+        action_dice = random.randint(1, 6)
+        if self.satiety < 20:
+            self.eat()
+        elif self.house.fridge < 10:
+            self.shop()
+        elif self.house.money < 50:
+            self.work()
+        elif action_dice == 1:
+            self.work()
+        elif action_dice == 2:
+            self.eat()
+        else:
+            self.play()
+
+        if self.satiety <= 0:
+            raise ValueError(f'{self.name} умер от голода!')
+
