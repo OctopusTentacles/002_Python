@@ -20,10 +20,10 @@ class Human:
         Human.__count += 1
 
     def __str__(self):
-        pass
-
-    def get_count(self):
-        pass
+        return f'Имя: {self.name}, возраст: {self.age} '
+    
+    def get_count(self): # геттер
+        return self.__count
 
     def get_age(self):
         pass
@@ -33,5 +33,9 @@ class Human:
 
 
 mike = Human('Mike', 40)
+alice = Human('Alice', 4)
 
 print(mike)
+print(alice)
+
+print(alice.get_count())
