@@ -15,8 +15,11 @@ class Human:
     __count = 0
 
     def __init__(self, name, age):
-        self.__name = name
-        self.__age = age
+        self.__name = ''
+        self.__age = 0
+        self.set_age(age)
+        self.set_name(name)
+
         Human.__count += 1
 
     def __str__(self):
@@ -29,10 +32,13 @@ class Human:
         return f'возраст {self.__name} - {self.__age}'
     
     def set_name(self, name): # сеттер
-        pass
+        if isinstance(name, str) and name.isalpha():
+            self.__name = name
+        else:
+            raise Exception('Ошибка в имени!')
 
     def set_age(self, age): # сеттер
-        if age in range(1, 100):
+        if isinstance(age, (int, float)) and age in range(0, 101):
             self.__age = age
         else:
             raise Exception('Недопустимый возраст!')
@@ -44,7 +50,7 @@ alice = Human('Alice', 4)
 print(mike)
 print(alice)
 
-mike.__name('fuck')
+mike.set_name('fuck')
 mike.set_age(45)
 
 print(mike.get_age())
