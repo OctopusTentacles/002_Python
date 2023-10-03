@@ -28,20 +28,25 @@ class Point:
     def get_y(self):
         return self.__y
     
-    def set_x(self, num):
-        if num is isinstance(int):
-            self.__x = num
-        else:
-            raise Exception('должно быть число')
+    def set_x(self, value):
+        checker_value = self.check_value(value)
+        if checker_value:
+            self.__x = checker_value
         
-    def set_y(self, num):
-        if num is isinstance(int):
-            self.__y = num
-        else:
-            raise Exception('должно быть число')
+    def set_y(self, value):
+        checker_value = self.check_value(value)
+        if checker_value:
+            self.__y = checker_value
+
+    def check_value(self, value):
+        if isinstance(value, str) and value.isdigit():
+            value = float(value)
+        if isinstance(value, (int, float)):
+            return value
+        return None
 
         
-point_1 = Point(5, d)
+point_1 = Point(5, g)
 point_2 = Point(10, 15)
 print(point_1)
 print(point_2)
