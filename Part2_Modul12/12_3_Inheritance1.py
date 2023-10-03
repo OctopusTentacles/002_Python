@@ -19,10 +19,13 @@
 class Ship:
 
     def __init__(self, model):
-        self.model = model
+        self.__model = model
 
     def __str__(self):
-        return f"Ship's model is {self.model}"
+        return f"Ship's model is {self.__model}"
+    
+    def sail(self):
+        print("Ship is swiming!")
 
 
 class Cargo_Ship:
@@ -30,10 +33,10 @@ class Cargo_Ship:
         self.fullness = fullness
 
     def load(self):
-        pass
+        print("Ship is loading")
 
     def unload(self):
-        pass
+        print("Ship is inloading")
 
 
 
