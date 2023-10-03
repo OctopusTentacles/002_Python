@@ -17,10 +17,10 @@
 class Point:
     def __init__(self, x=0, y=0):
         self.__x = x
-        self.__y = 0
+        self.__y = y
 
     def __str__(self):
-        return self.__x, self.__y
+        return 'x = {}, y = {}'.format(self.__x, self.__y)
     
     def get_x(self):
         return self.__x
@@ -41,4 +41,7 @@ class Point:
             raise Exception('должно быть число')
 
         
-    
+point_1 = Point(5, d)
+point_2 = Point(10, 15)
+print(point_1)
+print(point_2)
