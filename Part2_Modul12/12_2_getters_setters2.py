@@ -15,20 +15,20 @@ class Human:
     __count = 0
 
     def __init__(self, name, age):
-        self.name = name
-        self.age = age
+        self.__name = name
+        self.__age = age
         Human.__count += 1
 
     def __str__(self):
-        return f'Имя: {self.name}, возраст: {self.age} '
+        return f'Имя: {self.__name}, возраст: {self.__age} '
     
     def get_count(self): # геттер
         return self.__count
 
     def get_age(self):
-        pass
+        return f'возраст {self.__name} - {self.__age}'
 
-    def set_age(self, age):
+    def set_age(self, age): # сеттер
         pass
 
 
@@ -38,4 +38,7 @@ alice = Human('Alice', 4)
 print(mike)
 print(alice)
 
+print(mike.get_age())
 print(alice.get_count())
+# ====================================================================
+print(Human._Human__count)
