@@ -9,3 +9,29 @@
 
 # При тестировании класса измените приватный атрибут (например, возраст) 
 # двумя способами: сеттером и «крайне не рекомендуемым», который был показан в уроке.
+
+
+class Human:
+    __count = 0
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        Human.__count += 1
+
+    def __str__(self):
+        pass
+
+    def get_count(self):
+        pass
+
+    def get_age(self):
+        pass
+
+    def set_age(self, age):
+        pass
+
+
+mike = Human('Mike', 40)
+
+print(mike)
