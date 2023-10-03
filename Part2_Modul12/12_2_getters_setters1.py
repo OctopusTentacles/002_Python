@@ -4,8 +4,6 @@
 # имеет координаты x и y; при создании новой точки могут передаваться 
 # пользовательские значения координат, по умолчанию x = 0, y = 0. 
 
- 
-
 # Реализуйте класс, который будет представлять эту точку, 
 # и напишите следующие методы:
 
@@ -18,8 +16,29 @@
 
 class Point:
     def __init__(self, x=0, y=0):
-        self.x = x
-        self.y = 0
+        self.__x = x
+        self.__y = 0
 
     def __str__(self):
-        return(self.x, self.y)
+        return self.__x, self.__y
+    
+    def get_x(self):
+        return self.__x
+    
+    def get_y(self):
+        return self.__y
+    
+    def set_x(self, num):
+        if num is isinstance(int):
+            self.__x = num
+        else:
+            raise Exception('должно быть число')
+        
+    def set_y(self, num):
+        if num is isinstance(int):
+            self.__y = num
+        else:
+            raise Exception('должно быть число')
+
+        
+    
