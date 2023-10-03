@@ -25,11 +25,17 @@ class Human:
     def get_count(self): # геттер
         return self.__count
 
-    def get_age(self):
+    def get_age(self): # геттер
         return f'возраст {self.__name} - {self.__age}'
+    
+    def set_name(self, name): # сеттер
+        pass
 
     def set_age(self, age): # сеттер
-        pass
+        if age in range(1, 100):
+            self.__age = age
+        else:
+            raise Exception('Недопустимый возраст!')
 
 
 mike = Human('Mike', 40)
@@ -37,6 +43,9 @@ alice = Human('Alice', 4)
 
 print(mike)
 print(alice)
+
+mike.__name('fuck')
+mike.set_age(45)
 
 print(mike.get_age())
 print(alice.get_count())
