@@ -22,19 +22,33 @@ class Robot:
         self.model = model
 
     def __str__(self):
-        return f"Робот , {self.model}"
+        return f"Робот {self.__class__.__name__}, модель - {self.model}"
     
-    def operate(self):
-        print("Робот что-то делает...")
+    def operate(self, action):
+        self.action = action
+        print("начинает...", action)
 
 
-class VacumeRobot(Robot):
+class VacuumRobot(Robot):
+    def __init__(self, model):
+        super().__init__(model)
+        self.bag = 0
 
+    def operate(self, action=None):
+        super().operate("пылесосить")
+        self.bag += 1
+        print("Состояние мешка:", self.bag)
 
 
 class WarRobot(Robot):
+    pass
 
 
 
 class MarineRobot(Robot):
+    pass
 
+
+vacuum = VacuumRobot("Voo123")
+print(vacuum)
+vacuum.operate()
