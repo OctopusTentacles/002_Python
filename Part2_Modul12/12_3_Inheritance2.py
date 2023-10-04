@@ -18,7 +18,14 @@
 # Напишите программу, которая реализует все необходимые классы роботов.
 
 class Robot:
+    def __init__(self, model):
+        self.model = model
 
+    def __str__(self):
+        return f"Робот , {self.model}"
+    
+    def operate(self):
+        print("Робот что-то делает...")
 
 
 class VacumeRobot(Robot):
@@ -31,4 +38,3 @@ class WarRobot(Robot):
 
 class MarineRobot(Robot):
 
-    
