@@ -28,7 +28,7 @@ class Ship:
         print("Ship is swiming!")
 
 
-class Cargo_Ship:
+class CargoShip(Ship):
     def __init__(self, fullness=0):
         self.fullness = fullness
 
@@ -40,5 +40,7 @@ class Cargo_Ship:
 
 
 
-class Battle_Ship:
-    pass
+class BattleShip(Ship):
+    def __init__(self, model, gun):
+        super().__init__(model)
+        self.gun = gun
