@@ -35,10 +35,16 @@ class CargoShip(Ship):
 
     def load(self):
         print("Ship is loading")
+        self.fullness += 1
+        print("Current fullness is", self.fullness)
 
     def unload(self):
-        print("Ship is inloading")
-
+        print("Ship is unloading")
+        if self.fullness > 0:
+            self.fullness -= 1
+        else:
+            print("Ship already unload")
+        print("Current fullness is", self.fullness)
 
 
 class BattleShip(Ship):
@@ -48,3 +54,12 @@ class BattleShip(Ship):
 
     def attack(self):
         print("Корабль атакует оружием", self.gun)
+
+
+warship = BattleShip('Xcp123', 'Rockets')
+warship.attack()
+
+cargoship = CargoShip("SdsSd")
+cargoship.load()
+
+print(warship)
