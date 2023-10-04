@@ -41,14 +41,32 @@ class VacuumRobot(Robot):
 
 
 class WarRobot(Robot):
-    pass
+    def __init__(self, model, weapon):
+        super().__init__(model)
+        self.weapon = weapon
 
-
+    def operate(self, action=None):
+        super().operate("активацию {} в охранный режим".format(self.weapon))
+        
 
 class MarineRobot(Robot):
-    pass
+    def __init__(self, model, weapon):
+        super().__init__(model)
+        self.weapon = weapon
+        
+    def operate(self, action=None):
+        super().operate("активацию {} в охранный режим под водой".format(self.weapon))    
 
 
+# =======================================================================================
 vacuum = VacuumRobot("Voo123")
 print(vacuum)
 vacuum.operate()
+
+warbot = WarRobot("WarT800", "Система Воздух-Земля")
+print(f"\n{warbot}")
+warbot.operate()
+
+marine = MarineRobot("WarT3000", "ТОрпеды")
+print(f"\n{marine}")
+marine.operate()
