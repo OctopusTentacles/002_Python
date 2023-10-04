@@ -29,8 +29,9 @@ class Ship:
 
 
 class CargoShip(Ship):
-    def __init__(self, fullness=0):
-        self.fullness = fullness
+    def __init__(self, model):
+        super().__init__(model)
+        self.fullness = 0
 
     def load(self):
         print("Ship is loading")
@@ -44,3 +45,6 @@ class BattleShip(Ship):
     def __init__(self, model, gun):
         super().__init__(model)
         self.gun = gun
+
+    def attack(self):
+        print("Корабль атакует оружием", self.gun)
