@@ -49,13 +49,14 @@ class WarRobot(Robot):
         super().operate("активацию {} в охранный режим".format(self.weapon))
         
 
-class MarineRobot(Robot):
-    def __init__(self, model, weapon):
-        super().__init__(model)
-        self.weapon = weapon
+class MarineRobot(WarRobot):
+    def __init__(self, model, weapon, depth):
+        super().__init__(model, weapon)
+        self.depth = depth
         
     def operate(self, action=None):
-        super().operate("активацию {} в охранный режим под водой".format(self.weapon))    
+        super().operate()    
+        print("Глубина действий:", self.depth)
 
 
 # =======================================================================================
@@ -67,6 +68,6 @@ warbot = WarRobot("WarT800", "Система Воздух-Земля")
 print(f"\n{warbot}")
 warbot.operate()
 
-marine = MarineRobot("WarT3000", "ТОрпеды")
+marine = MarineRobot("WarT3000", "ТОрпеды", 30)
 print(f"\n{marine}")
 marine.operate()
