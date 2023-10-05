@@ -10,6 +10,15 @@
 
 
 class Unit:
+    def __init__(self, hitpoint=100):
+        self.hitpoint = hitpoint
+
+    def __str__(self):
+        return f"У {self.__class__.__name__} осталось здоровья {self.hitpoint}"
+
+    def damage(self, damage=0):
+        self.damage = damage
+        self.hitpoint -= self.damage
 
 
 class Soldier(Unit):
