@@ -31,11 +31,11 @@ class CanFly:
         self.hight = hight
         self.speed = speed
 
-    def take_off(self):
-        pass
+    def take_off(self, hight):
+        print(f"взлетаем на высоту {hight}")
 
-    def to_fly(self):
-        pass
+    def to_fly(self, speed):
+        print(f"летим со скоростью {speed}")
 
     def landing(self):
         self.hight = 0
