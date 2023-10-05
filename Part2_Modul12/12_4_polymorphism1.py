@@ -10,20 +10,27 @@
 
 
 class Unit:
-    def __init__(self, hitpoint=100):
-        self.hitpoint = hitpoint
+    def __init__(self, hitpoint):
+        self.__hitpoint = hitpoint
 
     def __str__(self):
-        return f"У {self.__class__.__name__} осталось здоровья {self.hitpoint}"
+        return f"У {self.__class__.__name__} осталось здоровье {self.__hitpoint}"
+
+    def set_hitpoint(self, hitpoint):
+        if isinstance(hitpoint, int):
+            self.__hitpoint = hitpoint
+        else:
+            raise Exception("Ошибка! Надо число!")
+
+    def get_hitpoint(self):
+        return "У {} здоровье {}".format(self.__class__.__name__, self.__hitpoint)
 
     def damage(self, damage=0):
         self.damage = damage
-        self.hitpoint -= self.damage
+        self.__hitpoint -= self.damage
 
-
+        
 class Soldier(Unit):
-    def __init__(self, hitpoint):
-        super().__init__(hitpoint)
 
     def damage(self, damage):
         super().damage(damage)
@@ -34,21 +41,23 @@ class Soldier(Unit):
 
 
 class Citizen(Unit):
-    def __init__(self, hitpoint):
-        super().__init__(hitpoint)
 
     def damage(self, damage):
-        super().damage(damage)
+        
         self.damage = damage * 2
+        super().damage(self.damage)
 
     def __str__(self):
         info = super().__str__()
         return f"получаемый урон {self.damage}\n{info}"
 
 
-
 soldier = Soldier(hitpoint=120)
+print(soldier.get_hitpoint())
 soldier.damage(damage=50)
 print(soldier)
 
-citizen = 
+citizen = Citizen(hitpoint=100)
+print(citizen.get_hitpoint())
+citizen.damage(damage=40)
+print(citizen)
