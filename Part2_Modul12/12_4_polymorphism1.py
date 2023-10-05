@@ -33,11 +33,22 @@ class Soldier(Unit):
         return f"получаемый урон {self.damage}\n{info}"
 
 
-
 class Citizen(Unit):
-    pass
+    def __init__(self, hitpoint):
+        super().__init__(hitpoint)
+
+    def damage(self, damage):
+        super().damage(damage)
+        self.damage = damage * 2
+
+    def __str__(self):
+        info = super().__str__()
+        return f"получаемый урон {self.damage}\n{info}"
+
 
 
 soldier = Soldier(hitpoint=120)
 soldier.damage(damage=50)
 print(soldier)
+
+citizen = 
