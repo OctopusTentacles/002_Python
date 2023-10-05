@@ -22,6 +22,18 @@ class Unit:
 
 
 class Soldier(Unit):
+    def __init__(self, hitpoint):
+        super().__init__(hitpoint)
+
+    def damage(self, damage):
+        self.damage = damage
+
+    def __str__(self):
+        info = super().__str__()
+        return (f"получаемый урон {self.damage}"
+                f"{info}")
+
 
 
 class Citizen(Unit):
+    pass
