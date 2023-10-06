@@ -28,7 +28,7 @@
 
 class CanFly:
     def __init__(self):
-        self.hight = 0
+        self.height = 0
         self.speed = 0
 
     def take_off(self):
@@ -37,24 +37,11 @@ class CanFly:
     def to_fly(self):
         pass
 
-    def landing(self):
-        self.hight = 0
+    def to_land(self):
+        self.height = 0
         self.speed = 0
-        print(self.hight, self.speed)
 
     def __str__(self):
-        return "{}: высота {}, скорость {}".format(
-            self.__class__.__name__, self.hight, self.speed)
-
-
-class Baterfly(CanFly):
-    def __init__(self, hight, speed):
-        super().__init__(hight, speed)
-
-
-class Rocket(CanFly):
-    pass
-
-
-baterfly = Baterfly(1, 0.5)
-baterfly.take_off(1)
+        return "{}: высота - {}, скорость - {}".format(
+            self.__class__.__name__, self.height, self.speed
+        )
