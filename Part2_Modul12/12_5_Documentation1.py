@@ -22,3 +22,12 @@ class Person:
 
 
 class Employee(Person):
+    def __init__(self):
+        super().__init__()
+        self.job = 'Sales Manager'
+
+    def get_job(self):
+        return self.job
+    
+    def employ(self, value):
+        self.job = value
