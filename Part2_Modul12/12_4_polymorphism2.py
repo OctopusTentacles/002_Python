@@ -32,14 +32,15 @@ class CanFly:
         self.speed = 0
 
     def take_off(self):
+        # TODO document why this method is empty
         pass
 
     def to_fly(self):
+        # TODO document why this method is empty
         pass
 
     def to_land(self):
-        self.height = 0
-        self.speed = 0
+        self.__init__()
 
     def __str__(self):
         return "{}: высота - {}, скорость - {}".format(
