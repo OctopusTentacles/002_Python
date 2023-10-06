@@ -55,4 +55,13 @@ class Butterfly(CanFly):
         self.speed = 0.5
 
 
+class Rocket(CanFly):
+    def take_off(self):
+        self.height = 500
+        self.speed = 1000
 
+    def to_land(self):
+        self.explosion()
+
+    def explosion(self):
+        return print("Boooom")
