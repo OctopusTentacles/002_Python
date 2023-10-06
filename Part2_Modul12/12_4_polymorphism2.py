@@ -65,11 +65,12 @@ class Rocket(CanFly):
 
     def to_land(self):
         print("Ракета падает")
-        self.height = 0
-        self.speed = 0
+        # self.height = 0
+        # self.speed = 0
         self.explosion()
 
     def explosion(self):
+        self.__init__()
         return print("Boooom")
 
 
