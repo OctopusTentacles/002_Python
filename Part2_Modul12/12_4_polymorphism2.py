@@ -45,3 +45,14 @@ class CanFly:
         return "{}: высота - {}, скорость - {}".format(
             self.__class__.__name__, self.height, self.speed
         )
+    
+
+class Butterfly(CanFly):
+    def take_off(self):
+        self.height = 1
+
+    def to_fly(self):
+        self.speed = 0.5
+
+
+
