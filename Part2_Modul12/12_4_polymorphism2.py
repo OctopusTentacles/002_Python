@@ -49,6 +49,7 @@ class CanFly:
 
 class Butterfly(CanFly):
     def take_off(self):
+        print("Бабочка полетела")
         self.height = 1
 
     def to_fly(self):
@@ -59,9 +60,28 @@ class Rocket(CanFly):
     def take_off(self):
         self.height = 500
         self.speed = 1000
+        print("Ракета полетела")
 
     def to_land(self):
+        print("Ракета падает")
+        self.height = 0
+        self.speed = 0
         self.explosion()
 
     def explosion(self):
         return print("Boooom")
+
+
+# ========================================================================================
+butterfly = Butterfly()
+rocket = Rocket()
+
+butterfly.take_off()
+print(butterfly)
+butterfly.to_fly()
+print(butterfly)
+
+rocket.take_off()
+print(rocket)
+rocket.to_land()
+print(rocket)
