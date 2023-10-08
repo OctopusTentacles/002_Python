@@ -21,49 +21,54 @@ class Property:
     def __init__(self, worth):
         self.worth = worth
 
-    def tax_calc(self, tax):
-        print(f"Налог на {self.__class__.__name__} = {tax}")
-        if self.worth > tax:
-            self.worth -= tax
-            print(f"Ваш баланс: {self.worth}")
-        else:
-            print(f"Недостаточно средств!")
-
-    # def __str__(self):
-    #     return f"Стоимость {self.__class__.__name__} {self.worth}"
-
+    def tax_calc(self):
+        pass
     
 class Apartment(Property):    
-    def __init__(self, worth):
-        super().__init__(worth)
+    # def __init__(self, worth):
+    #     super().__init__(worth)
 
     def tax_calc(self):
-        super().tax_calc(self.worth / 1000)
+        return self.worth / 1000
 
 
 class Car(Property):
-    def __init__(self, worth):
-        super().__init__(worth)
+    # def __init__(self, worth):
+    #     super().__init__(worth)
 
     def tax_calc(self):
-        super().tax_calc(self.worth / 200)
+        return self.worth / 200
 
 
 class CountryHouse(Property):
-    def __init__(self, worth):
-        super().__init__(worth)
+    # def __init__(self, worth):
+    #     super().__init__(worth)
 
     def tax_calc(self):
-        super().tax_calc(self.worth / 500)
+       return self.worth / 500
 
 
 """MAIN CODE"""
+property = {"Квартира":0, "Машина":0, "Дом":0}
 money = int(input("Сколько у вас денег? "))
+
+# print("Стоимость имущества:")
+# for key, value in property.items():
+#     property[key] = int(input(f"{key}: "))
+
+
+
+
 apartment = Apartment(int(input(f"цена квартиры: ")))
+apartment_tax = apartment.tax_calc()
 car = Car(int(input("цена машины: ")))
+car_tax = car.tax_calc()
 house = CountryHouse(int(input("цена дачи: ")))
+house_tax = house.tax_calc()
 
 # print(apartment)
-apartment.tax_calc()
-car.tax_calc()
-house.tax_calc()
+
+print(f"Налог на квартиру: {apartment_tax}")
+print(f"Налог на машину: {car_tax}")
+print(f"Налог на дом: {house_tax}")
+
