@@ -18,20 +18,22 @@
 
 
 class Property:
-
     def __init__(self, worth):
         self.worth = worth
 
-    def tax_calc(self):
-        pass
+    def tax_calc(self, tax):
+        print(f"Налог - {tax}")
+
+    def __str__(self):
+        return f"Стоимость {self.__class__.__name__} {self.worth}"
 
     
-class Apartment(Property):
+class Apartment(Property):    
     def __init__(self, worth):
         super().__init__(worth)
 
     def tax_calc(self):
-        return self.worth / 1000
+        super().tax_calc(self.worth / 1000)
 
 
 class Car(Property):
@@ -39,7 +41,7 @@ class Car(Property):
         super().__init__(worth)
 
     def tax_calc(self):
-        return self.worth / 200
+        super().tax_calc(self.worth / 200)
 
 
 class CountryHouse(Property):
@@ -47,4 +49,11 @@ class CountryHouse(Property):
         super().__init__(worth)
 
     def tax_calc(self):
-        return self.worth / 500
+
+        return f"Налог - {self.worth / 500}"
+
+
+money = int(input("Сколько у вас денег? "))
+apartment = Apartment(int(input("Сколькь стоит квартира? ")))
+print(apartment)
+apartment.tax_calc()
