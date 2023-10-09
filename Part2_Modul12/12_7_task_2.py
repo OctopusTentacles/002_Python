@@ -48,7 +48,26 @@ class GluttonyError(Exception):
 class DepressionError(Exception):
     pass
 
+def one_day():
+    if random.randint(1, 10) == 5:
+        return False
+    else:
+        return random.randint(1, 7)
 
-
+days = 0
+karma = 0
 current_dir = os.path.dirname(__file__)
-with open(os.path.join(current_dir, "karma.log"), "w", encoding="utf8") as karma_log:
+# with open(os.path.join(current_dir, "karma.log"), "w", encoding="utf8") as karma_log:
+
+while karma < 500:
+        try:
+            today = one_day()
+            days += 1
+            if today:
+                karma += today
+                print(f"День: {days}, карма: {karma}")
+            else:
+                raise Exception("не повезло")
+        except Exception as exc:
+            print(exc, type(exc))
+
