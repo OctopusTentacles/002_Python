@@ -22,6 +22,7 @@ class Property:
         self.worth = worth
 
     def tax_calc(self):
+        # TODO document why this method is empty
         pass
     
 class Apartment(Property):    
@@ -52,23 +53,24 @@ class CountryHouse(Property):
 property = {"Квартира":0, "Машина":0, "Дом":0}
 money = int(input("Сколько у вас денег? "))
 
-# print("Стоимость имущества:")
+print("Стоимость имущества:")
 # for key, value in property.items():
 #     property[key] = int(input(f"{key}: "))
 
-
-
-
-apartment = Apartment(int(input(f"цена квартиры: ")))
+apartment = Apartment(int(input("квартира: ")))
 apartment_tax = apartment.tax_calc()
-car = Car(int(input("цена машины: ")))
-car_tax = car.tax_calc()
-house = CountryHouse(int(input("цена дачи: ")))
-house_tax = house.tax_calc()
-
-# print(apartment)
-
 print(f"Налог на квартиру: {apartment_tax}")
-print(f"Налог на машину: {car_tax}")
-print(f"Налог на дом: {house_tax}")
+money -= apartment_tax
+print(f"Ваш баланс: {money}")
 
+car = Car(int(input("машина: ")))
+car_tax = car.tax_calc()
+print(f"Налог на машину: {car_tax}")
+money -= car_tax
+print(f"Ваш баланс: {money}")
+
+house = CountryHouse(int(input("дача: ")))
+house_tax = house.tax_calc()
+print(f"Налог на дом: {house_tax}")
+money -= house_tax
+print(f"Ваш баланс: {money}")
