@@ -53,6 +53,8 @@ class DepressionError(Exception):
     def __str__(self):
         return "Успокойся"
 
+
+
 def one_day():
     if random.randint(1, 10) == 5:
         return False
@@ -70,11 +72,13 @@ with open(os.path.join(current_dir, "karma.log"), "w", encoding="utf8") as karma
             days += 1
             if today:
                 karma += today
-                print(f"День: {days}, карма + {today}, итого: {karma}")
+                print(f"День {days}: карма + {today}, итого: {karma}")
             else:
                 karma -= 5
-                raise Exception("не повезло")
+                exception = random.choice([KillError(), DrunkError(), CarCrashError(), 
+                                           GluttonyError(), DepressionError()])
+                raise exception
         except Exception as exc:
-            karma_log.write(f"День: {str(days)}, {exc}\n")
-            print(f"День: {days}, {exc}, карма - {5}, итого: {karma}")
+            karma_log.write(f"День {str(days)}: {exc}\n")
+            print(f"День {days}: {exc}, карма - {5}, итого: {karma}")
 
