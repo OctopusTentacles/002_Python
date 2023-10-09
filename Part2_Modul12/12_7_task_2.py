@@ -34,19 +34,24 @@ import random
 
 
 class KillError(Exception):
-    pass
+    def __str__(self):
+        return "Убийство. Очень-очень плохо."
 
 class DrunkError(Exception):
-    pass
+    def __str__(self):
+        return "Ты сегодня напился."
 
 class CarCrashError(Exception):
-    pass
+    def __str__(self):
+        return "Авария, очень плохо"
 
 class GluttonyError(Exception):
-    pass
+    def __str__(self):
+        return "Ты сегодня переел."
 
 class DepressionError(Exception):
-    pass
+    def __str__(self):
+        return "Успокойся"
 
 def one_day():
     if random.randint(1, 10) == 5:
