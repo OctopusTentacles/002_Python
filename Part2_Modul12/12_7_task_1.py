@@ -50,27 +50,42 @@ class CountryHouse(Property):
 
 
 """MAIN CODE"""
-property = {"Квартира":0, "Машина":0, "Дом":0}
+property = {}
 money = int(input("Сколько у вас денег? "))
 
 print("Стоимость имущества:")
-# for key, value in property.items():
-#     property[key] = int(input(f"{key}: "))
+
+# apartment = Apartment(int(input("квартира: ")))
+# apartment_tax = apartment.tax_calc()
+# print(f"Налог на квартиру: {apartment_tax}")
+# money -= apartment_tax
+# print(f"Ваш баланс: {money}")
+
+# car = Car(int(input("машина: ")))
+# car_tax = car.tax_calc()
+# print(f"Налог на машину: {car_tax}")
+# money -= car_tax
+# print(f"Ваш баланс: {money}")
+
+# house = CountryHouse(int(input("дача: ")))
+# house_tax = house.tax_calc()
+# print(f"Налог на дом: {house_tax}")
+# money -= house_tax
+# print(f"Ваш баланс: {money}")
 
 apartment = Apartment(int(input("квартира: ")))
-apartment_tax = apartment.tax_calc()
-print(f"Налог на квартиру: {apartment_tax}")
-money -= apartment_tax
-print(f"Ваш баланс: {money}")
+property[apartment.__class__.__name__] = apartment.tax_calc()
 
 car = Car(int(input("машина: ")))
-car_tax = car.tax_calc()
-print(f"Налог на машину: {car_tax}")
-money -= car_tax
-print(f"Ваш баланс: {money}")
+property[car.__class__.__name__] = car.tax_calc()
 
 house = CountryHouse(int(input("дача: ")))
-house_tax = house.tax_calc()
-print(f"Налог на дом: {house_tax}")
-money -= house_tax
-print(f"Ваш баланс: {money}")
+property[house.__class__.__name__] = house.tax_calc()
+
+for key, value in property.items():
+    print(f"налог на {key}: {value}")
+    if money < value:
+        print(f"Вам не хватает: {value - money}")
+    else:
+        money -= value
+    print(f"Ваш баланс: {money}")
