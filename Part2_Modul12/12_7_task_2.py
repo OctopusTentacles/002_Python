@@ -57,17 +57,19 @@ def one_day():
 days = 0
 karma = 0
 current_dir = os.path.dirname(__file__)
-# with open(os.path.join(current_dir, "karma.log"), "w", encoding="utf8") as karma_log:
+with open(os.path.join(current_dir, "karma.log"), "w", encoding="utf8") as karma_log:
 
-while karma < 500:
+    while karma < 500:
         try:
             today = one_day()
             days += 1
             if today:
                 karma += today
-                print(f"День: {days}, карма: {karma}")
+                print(f"День: {days}, карма + {today}, итого: {karma}")
             else:
+                karma -= 5
                 raise Exception("не повезло")
         except Exception as exc:
-            print(exc, type(exc))
+            karma_log.write(f"День: {str(days)}, {exc}\n")
+            print(f"День: {days}, {exc}, карма - {5}, итого: {karma}")
 
