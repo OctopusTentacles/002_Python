@@ -35,50 +35,80 @@ import random
 
 class KillError(Exception):
     def __str__(self):
-        return "Убийство. Очень-очень плохо."
+        return "Не убивай."
+    
+    def punish(self):
+        return 50
+
 
 class DrunkError(Exception):
     def __str__(self):
-        return "Ты сегодня напился."
+        return "Не напивайся."
+    
+    def punish(self):
+        return 10
+
 
 class CarCrashError(Exception):
     def __str__(self):
-        return "Авария, очень плохо"
+        return "Не вреди ближнему."
+    
+    def punish(self):
+        return 25
+
 
 class GluttonyError(Exception):
     def __str__(self):
-        return "Ты сегодня переел."
+        return "Не переедай."
+    
+    def punish(self):
+        return 10
+
 
 class DepressionError(Exception):
     def __str__(self):
-        return "Успокойся"
+        return "Не прелюбодействуй"
+    
+    def punish(self):
+        return 3
 
 
+class Monk:
+    def __init__(self):
+        self.karma = 0
 
-def one_day():
-    if random.randint(1, 10) == 5:
-        return False
-    else:
-        return random.randint(1, 7)
+    def one_day(self):
+        if random.randint(1, 10) == 5:
+            return False
+        else:
+            return random.randint(1, 7)
 
-days = 0
-karma = 0
-current_dir = os.path.dirname(__file__)
-with open(os.path.join(current_dir, "karma.log"), "w", encoding="utf8") as karma_log:
+    def attempt(self):
+        self.days = 0
+        current_dir = os.path.dirname(__file__)
 
-    while karma < 500:
-        try:
-            today = one_day()
-            days += 1
-            if today:
-                karma += today
-                print(f"День {days}: карма + {today}, итого: {karma}")
-            else:
-                karma -= 5
-                exception = random.choice([KillError(), DrunkError(), CarCrashError(), 
-                                           GluttonyError(), DepressionError()])
-                raise exception
-        except Exception as exc:
-            karma_log.write(f"День {str(days)}: {exc}\n")
-            print(f"День {days}: {exc}, карма - {5}, итого: {karma}")
+        with open(os.path.join(current_dir, "karma.log"), "w", encoding="utf8") as karma_log:
+            while self.karma < 500:
+                try:
+                    today = self.one_day()
+                    self.days += 1
+                    if today:
+                        self.karma += today
+                        print(f"День {self.days}: карма + {today}, итого: {self.karma}")
+                    else:
+                        exception = random.choice([KillError(), DrunkError(), CarCrashError(), 
+                                                GluttonyError(), DepressionError()])
+                        self.karma -= exception.punish()
+                        raise exception
+                except Exception as exc:
+                    karma_log.write(f"День {str(self.days)}: {exc} Карма - {exception.punish()}\n")
+                    print(f"День {self.days}: {exc} Карма - {exception.punish()}, итого: {self.karma}")
+                if self.karma <= -100:
+                    return False
+            return True
 
+monk = Monk()
+if monk.attempt():
+    print("Вы достигли просветления")
+else:
+    print("Гори в аду")
