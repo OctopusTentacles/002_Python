@@ -33,6 +33,9 @@ import os
 import random
 
 
+""" пять исключений созданы для описания совершения проступка
+    метод punish возвращает степень наказания
+"""
 class KillError(Exception):
     def __str__(self):
         return "Не убивай."
@@ -74,16 +77,24 @@ class DepressionError(Exception):
 
 
 class Monk:
+    """ class Monk - персонаж, пытающийся достичь просветления self.karma
+        уровень просветления = 500 - строка 
+        обратный уровень произвольный - строка 
+    """
     def __init__(self):
         self.karma = 0
 
     def one_day(self):
+        """ каждый день персонажу начисляется карма от 1 до 7
+            и с вероятностью 1 к 10 он может согрешить
+        """
         if random.randint(1, 10) == 5:
             return False
         else:
             return random.randint(1, 7)
 
     def attempt(self):
+        """ """
         self.days = 0
         current_dir = os.path.dirname(__file__)
 
@@ -103,10 +114,12 @@ class Monk:
                 except Exception as exc:
                     karma_log.write(f"День {str(self.days)}: {exc} Карма - {exception.punish()}\n")
                     print(f"День {self.days}: {exc} Карма - {exception.punish()}, итого: {self.karma}")
-                if self.karma <= -100:
+                if self.karma <= -55:
                     return False
             return True
 
+
+"""MAIN CODE"""
 monk = Monk()
 if monk.attempt():
     print("Вы достигли просветления")
