@@ -10,25 +10,30 @@
 # за исключением того, что метод get по умолчанию будет возвращать не None, а число 0.
 
 
-
+"""некоторые заметки, чтобы разобраться и понять"""
 # dict = {"key_1": value, number: value}
-# get(key[, default])
-print(dict.__doc__)
+# get(key[, default]), default = None
+# get(key, None) - get(key, 0)
+# print(dict.__doc__)
 
 
 class MyDict(dict):
+    """ дочерний класс MyDict от класса dict
+        все атрибуты и методы наследуются от родителя 
+    """
+    def get(self, key, default=0):
+        """ метод get() переопределен,
+            значение default = None на значение 0
+            при отсутствии ключа вместо None получаем 0
+        """
+        return super().get(key, default)
 
-    def get(self, key):
-        self.key = key
-        if not self.key:
-            return 0
-        return value
-    
-
-my_dict = {"one": 1, "two": 2, "three": 3, "four": 4}
+"""тестирование стандартного class dict"""
+my_dict = {"one": 1, "two": 2, "three": 3}
 print(my_dict.get("two"))
 print(my_dict.get("five"))
 
+"""тестирование нашего class MyDict"""
 my_dict_1 = MyDict(my_dict)
-print(my_dict_1.get("two"))
+print(my_dict_1.get("three"))
 print(my_dict_1.get("five"))
