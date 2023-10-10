@@ -10,4 +10,25 @@
 # за исключением того, что метод get по умолчанию будет возвращать не None, а число 0.
 
 
-class MyDict:
+
+# dict = {"key_1": value, number: value}
+# get(key[, default])
+print(dict.__doc__)
+
+
+class MyDict(dict):
+
+    def get(self, key):
+        self.key = key
+        if not self.key:
+            return 0
+        return value
+    
+
+my_dict = {"one": 1, "two": 2, "three": 3, "four": 4}
+print(my_dict.get("two"))
+print(my_dict.get("five"))
+
+my_dict_1 = MyDict(my_dict)
+print(my_dict_1.get("two"))
+print(my_dict_1.get("five"))
