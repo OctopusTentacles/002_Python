@@ -81,6 +81,20 @@ class Healer(Hero):
     def attack(self, target):
         target.take_damage(self.get_power / 2)
 
+    def take_damage(self, damage):
+        return super().take_damage(damage * 1.2)
+    
+    def heal(self, target):
+        target.set_hp(target.get_hp() + self.magic_power)
+    
+    def make_a_move(self, friends, enemies):
+        for friend in friends:
+            if friend.get_hp < 100:
+                self.heal(friend)
+
+    
+    def __str__(self):
+        return f"'Name: {self.name} | HP: {self.get_hp()}"
         # return super().get(key, default)
 
 
