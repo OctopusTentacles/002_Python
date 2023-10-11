@@ -90,30 +90,22 @@ class Healer(Hero):
     
     def make_a_move(self, friends, enemies):
         print(self.name, end=' ')
-        target_of_potion = friends[0]
-        min_health = target_of_potion.get_hp()
+        target_of_heal = friends[0]
+        min_health = target_of_heal.get_hp()
         for friend in friends:
             if friend.get_hp() < min_health:
-                target_of_potion = friend
-                min_health = target_of_potion.get_hp()
+                target_of_heal = friend
+                min_health = target_of_heal.get_hp()
                 print("Need heal",friend, friend.get_hp())
-        if min_health < 60 :
-            print("Исцеляю", target_of_potion.name)
-            self.heal(target_of_potion)
-
-        
-        for friend in friends:
-            if friend.get_hp() < 100:
-                print("Need heal",friend, friend.get_hp())
-                self.heal(friend)
-            else:
-                min_hp = 150
-                for enemy in enemies:
-                    if enemy.get_hp() < min_hp:
-                        min_hp = enemy.get_hp()
-                
-
-
+        if min_health < 100 :
+            print("Исцеляю", target_of_heal.name)
+            self.heal(target_of_heal)
+        else:
+            if not enemies:
+                return
+            print("Атакую ближнего -", enemies[0].name)
+            self.attack(enemies[0])
+        print('\n')
     
     def __str__(self):
         return f"'Name: {self.name} | HP: {self.get_hp()}"
