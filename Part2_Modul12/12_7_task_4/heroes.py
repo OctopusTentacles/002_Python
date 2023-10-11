@@ -74,6 +74,14 @@ class Healer(Hero):
     # - исцеление - увеличивает здоровье цели на величину равную своей магической силе
     # - выбор действия - получает на вход всех союзников и всех врагов и на основе своей стратегии выполняет ОДНО из действий (атака,
     # исцеление) на выбранную им цель
+    def __init__(self, name):
+        super().__init__(name)
+        self.magic_power = self.get_power * 3
+
+    def attack(self, target):
+        target.take_damage(self.get_power / 2)
+
+        # return super().get(key, default)
 
 
 class Tank(Hero):
