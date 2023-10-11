@@ -129,6 +129,12 @@ class Tank(Hero):
         self.defense = 1
         self.shield = True
 
+    def attack(self, target):
+        target.take_damage(self.get_power() / 2)
+
+    def take_damage(self, damage):
+        self.set_hp(self.get_hp() - damage/self.defense)
+        super().take_damage(damage)
     
     def __str__(self):
         return f"'Name: {self.name} | HP: {self.get_hp()}"
