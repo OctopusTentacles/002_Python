@@ -83,7 +83,8 @@ class Healer(Hero):
         target.take_damage(self.get_power() / 2)
 
     def take_damage(self, damage):
-        return super().take_damage(damage * 1.2)
+        self.set_hp(self.get_hp() - 1.2 * damage)
+        super().take_damage(damage)
     
     def heal(self, target):
         target.set_hp(target.get_hp() + self.magic_power)
