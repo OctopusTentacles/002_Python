@@ -76,10 +76,11 @@ class Healer(Hero):
     # исцеление) на выбранную им цель
     def __init__(self, name):
         super().__init__(name)
-        self.magic_power = self.get_power * 3
+        self.magic_power = self.get_power() * 3
+        print(name, self.magic_power)
 
     def attack(self, target):
-        target.take_damage(self.get_power / 2)
+        target.take_damage(self.get_power() / 2)
 
     def take_damage(self, damage):
         return super().take_damage(damage * 1.2)
@@ -88,9 +89,30 @@ class Healer(Hero):
         target.set_hp(target.get_hp() + self.magic_power)
     
     def make_a_move(self, friends, enemies):
+        print(self.name, end=' ')
+        target_of_potion = friends[0]
+        min_health = target_of_potion.get_hp()
         for friend in friends:
-            if friend.get_hp < 100:
+            if friend.get_hp() < min_health:
+                target_of_potion = friend
+                min_health = target_of_potion.get_hp()
+                print("Need heal",friend, friend.get_hp())
+        if min_health < 60 :
+            print("Исцеляю", target_of_potion.name)
+            self.heal(target_of_potion)
+
+        
+        for friend in friends:
+            if friend.get_hp() < 100:
+                print("Need heal",friend, friend.get_hp())
                 self.heal(friend)
+            else:
+                min_hp = 150
+                for enemy in enemies:
+                    if enemy.get_hp() < min_hp:
+                        min_hp = enemy.get_hp()
+                
+
 
     
     def __str__(self):
@@ -110,6 +132,13 @@ class Tank(Hero):
     # - опустить щит - если щит поднят - опускает щит. Это уменьшает показатель брони в 2 раза, но увеличивает показатель силы в 2 раза.
     # - выбор действия - получает на вход всех союзников и всех врагов и на основе своей стратегии выполняет ОДНО из действий (атака,
     # поднять щит/опустить щит) на выбранную им цель
+    def __init__(self, name):
+        super().__init__(name)
+
+    
+    def __str__(self):
+        return f"'Name: {self.name} | HP: {self.get_hp()}"
+
 
 
 class Attacker(Hero):
@@ -125,4 +154,9 @@ class Attacker(Hero):
     # - ослабление (power_down) - уменьшает коэффициента усиления урона в 2 раза
     # - выбор действия - получает на вход всех союзников и всех врагов и на основе своей стратегии выполняет ОДНО из действий (атака,
     # усиление, ослабление) на выбранную им цель
+    def __init__(self, name):
+        super().__init__(name)
 
+
+    def __str__(self):
+        return f"'Name: {self.name} | HP: {self.get_hp()}"
