@@ -126,6 +126,8 @@ class Tank(Hero):
     # поднять щит/опустить щит) на выбранную им цель
     def __init__(self, name):
         super().__init__(name)
+        self.defense = 1
+        self.shield = True
 
     
     def __str__(self):
