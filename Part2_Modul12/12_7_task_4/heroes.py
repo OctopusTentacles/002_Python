@@ -93,6 +93,7 @@ class Healer(Hero):
         print(self.name, end=' ')
         target_of_heal = friends[0]
         min_health = target_of_heal.get_hp()
+
         for friend in friends:
             if friend.get_hp() < min_health:
                 target_of_heal = friend
@@ -143,15 +144,30 @@ class Tank(Hero):
             print(self.name, "поднимает щит")
             self.defense *= 2
             self.set_power(self.get_power() / 2)
-        else:
+            print(self.name, self.defense, self.get_power)
+    def shield_off(self):
             self.shield = False
             print(self.name, "опускает щит")
             self.defense /= 2
             self.set_power(self.get_power() * 2)
-            
+            print(self.name, self.defense, self.get_power)
+
+    def make_a_move(self, friends, enemies):
+        print(self.name, end=' ')
+        if not enemies:
+            return
+        if self.get_hp() < 70:
+            print("Защищаюсь")
+            self.shield_on()
+        else:
+            self.shield_off()
+            print("Атакую ближнего -", enemies[0].name)
+            self.attack(enemies[0])
+        print('\n')
     
     def __str__(self):
         return f"'Name: {self.name} | HP: {self.get_hp()}"
+    
 
 
 
