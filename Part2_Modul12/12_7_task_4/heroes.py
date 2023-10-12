@@ -50,7 +50,6 @@ class Hero:
     def take_damage(self, damage):
         # Каждый наследник будет получать урон согласно правилам своего класса
         # При этом у всех наследников есть общая логика, которая определяет жив ли объект.
-        print("\t", self.name, "имеет hp:", round(self.get_hp()))
         print("\t", self.name, "Получил удар с силой равной = ", round(damage), ". Осталось здоровья - ", round(self.get_hp()))
         # Дополнительные принты помогут вам внимательнее следить за боем и изменять стратегию, чтобы улучшить выживаемость героев
         if self.get_hp() <= 0:
@@ -84,11 +83,16 @@ class Healer(Hero):
         target.take_damage(self.get_power() / 2)
 
     def take_damage(self, damage):
+        print("\t", self.name, "имеет hp:", round(self.get_hp()))
+
         self.set_hp(self.get_hp() - 1.2 * damage)
         super().take_damage(damage)
     
     def heal(self, target):
-        target.set_hp(target.get_hp() + self.magic_power)
+        heal_power = (target.get_hp() + self.magic_power)
+        target.set_hp(heal_power)
+        print("\t", target.name, "получил лечение =", heal_power, end='')
+        print("осталось здоровья -", target.get_hp())
     
     def make_a_move(self, friends, enemies):
         print(self.name, end=' ')
@@ -101,9 +105,9 @@ class Healer(Hero):
                 min_health = target_of_heal.get_hp()
                 print("Need heal",friend, friend.get_hp())
         if min_health < 100 :
-            
+            print("\tИсцеляю", target_of_heal.name, "hp:", round(target_of_heal.get_hp()))
+
             self.heal(target_of_heal)
-            print("Исцеляю", target_of_heal.name)
         else:
             if not enemies:
                 return
@@ -203,8 +207,19 @@ class Attacker(Hero):
 
     def take_damage(self, damage):
         self.set_hp(self.get_hp() - (damage * (self.power_multiply / 2)))
-
         super().take_damage(damage)
+
+
+    def make_a_move(self, friends, enemies):
+        print(self.name, end=' ')
+        if not enemies:
+            return
+        
+        print("Атакую того, кто стоит ближе -", end=" ")
+        print(enemies[0].name, enemies[0].get_hp())
+        self.attack(enemies[0])
+        print('\n')
+
 
 
     def __str__(self):
