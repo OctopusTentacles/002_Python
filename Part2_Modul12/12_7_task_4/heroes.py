@@ -100,8 +100,9 @@ class Healer(Hero):
                 min_health = target_of_heal.get_hp()
                 print("Need heal",friend, friend.get_hp())
         if min_health < 100 :
-            print("Исцеляю", target_of_heal.name)
+            
             self.heal(target_of_heal)
+            print("Исцеляю", target_of_heal.name)
         else:
             if not enemies:
                 return
@@ -111,7 +112,6 @@ class Healer(Hero):
     
     def __str__(self):
         return f"'Name: {self.name} | HP: {self.get_hp()}"
-        # return super().get(key, default)
 
 
 class Tank(Hero):
@@ -195,6 +195,10 @@ class Attacker(Hero):
     # усиление, ослабление) на выбранную им цель
     def __init__(self, name):
         super().__init__(name)
+        self.power_multiply = 1
+
+    def attack(self, target):
+        target.take_damage(self.get_power() * self.power_multiply)
 
 
     def __str__(self):
