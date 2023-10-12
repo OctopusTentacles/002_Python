@@ -132,25 +132,33 @@ class Tank(Hero):
         self.shield = None
 
     def attack(self, target):
-        target.take_damage(self.get_power())
+        target.take_damage(self.get_power() / 2)
 
     def take_damage(self, damage):
-        self.set_hp(self.get_hp() - damage/self.defense)
+        self.set_hp(self.get_hp() - (damage / self.defense))
         super().take_damage(damage)
 
     def shield_on(self):
-            self.shield = True
-            print(self.name, "поднимает щит", end=' ')
-            self.defense *=  2
-            self.set_power((self.get_power() / 2) / 2)
-            print(f"броня: {self.defense}, атака: {self.get_power()}")
+            if self.shield:
+                print("щит поднят", end=' ')
+                print(f"броня: {self.defense}, атака: {self.get_power()}")
+            else:
+                self.shield = True
+                self.defense *=  2
+                self.set_power(self.get_power() / 2)
+                print("поднимаю щит", end=' ')
+                print(f"броня: {self.defense}, атака: {self.get_power()}")
 
     def shield_off(self):
-            self.shield = False
-            print(self.name, "опускает щит")
-            self.defense /= 2
-            self.set_power((self.get_power() / 2) * 2)
-            print(f"броня: {self.defense}, атака: {self.get_power()}")
+            if  not self.shield:
+                print("щит опущен", end=' ')
+                print(f"броня: {self.defense}, атака: {self.get_power()}")
+            else:
+                self.shield = False
+                self.defense /= 2
+                self.set_power(self.get_power() * 2)
+                print("опускаю щит", end=' ')
+                print(f"броня: {self.defense}, атака: {self.get_power()}")
 
     def make_a_move(self, friends, enemies):
         print(self.name, end=' ')
