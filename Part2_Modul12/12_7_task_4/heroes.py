@@ -129,36 +129,37 @@ class Tank(Hero):
     def __init__(self, name):
         super().__init__(name)
         self.defense = 1
-        self.shield = False
+        self.shield = None
 
     def attack(self, target):
-        target.take_damage(self.get_power() / 2)
+        target.take_damage(self.get_power())
 
     def take_damage(self, damage):
         self.set_hp(self.get_hp() - damage/self.defense)
         super().take_damage(damage)
 
     def shield_on(self):
-        if self.shield == False:
+        
             self.shield = True
-            print(self.name, "поднимает щит")
-            self.defense *= 2
-            self.set_power(self.get_power() / 2)
-            print(self.name, self.defense, self.get_power)
+            print(self.name, "поднимает щит", end=' ')
+            self.defense *=  2
+            self.set_power((self.get_power() / 2 / 2))
+            print("броня", self.defense, "атака", self.get_power())
     def shield_off(self):
             self.shield = False
             print(self.name, "опускает щит")
             self.defense /= 2
-            self.set_power(self.get_power() * 2)
-            print(self.name, self.defense, self.get_power)
+            self.set_power((self.get_power() / 2) * 2)
+            print("броня", self.defense, "атака", self.get_power())
 
     def make_a_move(self, friends, enemies):
         print(self.name, end=' ')
         if not enemies:
             return
         if self.get_hp() < 70:
-            print("Защищаюсь")
             self.shield_on()
+            print("Защищаюсь, моя защита -", self.defense, "hp -", self.get_hp())
+            
         else:
             self.shield_off()
             print("Атакую ближнего -", enemies[0].name)
