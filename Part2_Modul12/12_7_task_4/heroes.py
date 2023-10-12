@@ -139,18 +139,18 @@ class Tank(Hero):
         super().take_damage(damage)
 
     def shield_on(self):
-        
             self.shield = True
             print(self.name, "поднимает щит", end=' ')
             self.defense *=  2
-            self.set_power((self.get_power() / 2 / 2))
-            print("броня", self.defense, "атака", self.get_power())
+            self.set_power((self.get_power() / 2) / 2)
+            print(f"броня: {self.defense}, атака: {self.get_power()}")
+
     def shield_off(self):
             self.shield = False
             print(self.name, "опускает щит")
             self.defense /= 2
             self.set_power((self.get_power() / 2) * 2)
-            print("броня", self.defense, "атака", self.get_power())
+            print(f"броня: {self.defense}, атака: {self.get_power()}")
 
     def make_a_move(self, friends, enemies):
         print(self.name, end=' ')
@@ -158,7 +158,7 @@ class Tank(Hero):
             return
         if self.get_hp() < 70:
             self.shield_on()
-            print("Защищаюсь, моя защита -", self.defense, "hp -", self.get_hp())
+            print(f"Защищаюсь, моя защита: {self.defense}, hp: {self.get_hp()}")
             
         else:
             self.shield_off()
