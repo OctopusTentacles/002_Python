@@ -50,6 +50,7 @@ class Hero:
     def take_damage(self, damage):
         # Каждый наследник будет получать урон согласно правилам своего класса
         # При этом у всех наследников есть общая логика, которая определяет жив ли объект.
+        print("\t", self.name, "имеет hp:", round(self.get_hp()))
         print("\t", self.name, "Получил удар с силой равной = ", round(damage), ". Осталось здоровья - ", round(self.get_hp()))
         # Дополнительные принты помогут вам внимательнее следить за боем и изменять стратегию, чтобы улучшить выживаемость героев
         if self.get_hp() <= 0:
@@ -199,6 +200,11 @@ class Attacker(Hero):
 
     def attack(self, target):
         target.take_damage(self.get_power() * self.power_multiply)
+
+    def take_damage(self, damage):
+        self.set_hp(self.get_hp() - (damage * (self.power_multiply / 2)))
+
+        super().take_damage(damage)
 
 
     def __str__(self):
