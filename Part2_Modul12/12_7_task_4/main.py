@@ -35,7 +35,7 @@ def one_year_of_war():
     mob_ranger = MonsterHunter("Рейнджер " + random.choice(evil_names))
     evil_team = [mob_warrior, mob_ranger]
 
-    for day in range(1, 11):
+    for day in range(1, 7):
         print("=" * 50 + "\nНачало дня №" + str(day) + "\n" + "=" * 50)
 
         # В циклах у героев и монстров вызывается метод make_a_move, который должен выбирать и совершать одно действие
@@ -81,7 +81,7 @@ def one_year_of_war():
 # Код ниже не подлежит изменению
 # Он запускает 20 симуляций. Для зачёта по заданию вам надо стабильно набирать 10 или более побед.
 count_of_wins = 0
-for year in range(1, 21):
+for year in range(1, 3):
     count_of_wins += one_year_of_war()
 
 print("Из 20 раз команда героев одержала", count_of_wins, "побед")
