@@ -204,6 +204,13 @@ class Attacker(Hero):
 
     def attack(self, target):
         target.take_damage(self.get_power() * self.power_multiply)
+        self.power_down()
+
+    def power_up(self):
+        self.power_multiply *= 2
+
+    def power_down(self):
+        self.power_multiply /= 2
 
     def take_damage(self, damage):
         self.set_hp(self.get_hp() - (damage * (self.power_multiply / 2)))
@@ -216,7 +223,7 @@ class Attacker(Hero):
             return
         
         print("Атакую того, кто стоит ближе -", end=" ")
-        print(enemies[0].name, enemies[0].get_hp())
+        print(enemies[0].name, round(enemies[0].get_hp()))
         self.attack(enemies[0])
         print('\n')
 
