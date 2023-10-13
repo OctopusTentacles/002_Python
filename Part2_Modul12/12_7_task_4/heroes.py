@@ -98,7 +98,7 @@ class Healer(Hero):
         print(self.name, end=' | ')
         print("Исцеление:", self.magic_power, "сила:", self.get_power())
         target_of_heal = friends[0]
-        min_health = 120
+        min_health = 140
 
         for friend in friends:
             if friend.get_hp() < min_health:
@@ -113,7 +113,7 @@ class Healer(Hero):
             if not enemies:
                 return
             for enemy in enemies:
-                if enemy.get_hp() > 50:
+                if enemy.get_hp() > 60:
                     print("\tАтакую", enemy.name, "| HP:", enemy.get_hp())
                     self.attack(enemy)
                     break
@@ -240,7 +240,7 @@ class Attacker(Hero):
             print("усиление:", self.power_multiply, "сила:", self.get_power())
             # target = enemies[0]
             for enemie in enemies:
-                if (enemie.__class__.__name__ == "MonsterHunter" and enemie.get_hp() > 50) or enemie.get_hp() > 50:
+                if (enemie.__class__.__name__ == "MonsterHunter" and enemie.get_hp() > 50) or enemie.get_hp() > 70:
                     print("\tАтакую", enemie.name, "| HP:", enemie.get_hp())
                     self.attack(enemie)
                     break
