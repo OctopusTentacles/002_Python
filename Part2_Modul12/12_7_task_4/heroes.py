@@ -89,9 +89,10 @@ class Healer(Hero):
         super().take_damage(damage)
     
     def heal(self, target):
+        print("\t", target.name, "получил лечение =", self.magic_power, end='')
+
         heal_power = (target.get_hp() + self.magic_power)
         target.set_hp(heal_power)
-        print("\t", target.name, "получил лечение =", heal_power, end='')
         print("осталось здоровья -", target.get_hp())
     
     def make_a_move(self, friends, enemies):
@@ -111,7 +112,8 @@ class Healer(Hero):
         else:
             if not enemies:
                 return
-            print("Атакую ближнего -", enemies[0].name)
+            print("Атакую того, кто стоит ближе -", end=" ")
+            print(enemies[0].name, round(enemies[0].get_hp()))
             self.attack(enemies[0])
         print('\n')
     
@@ -175,8 +177,8 @@ class Tank(Hero):
             
         else:
             self.shield_off()
-            print("Атакую ближнего -", enemies[0].name)
-            self.attack(enemies[0])
+        print("Атакую ближнего -", end=" ")
+        print(enemies[0].name, round(enemies[0].get_hp()))
         print('\n')
     
     def __str__(self):
