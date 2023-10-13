@@ -76,8 +76,7 @@ class Healer(Hero):
     # исцеление) на выбранную им цель
     def __init__(self, name):
         super().__init__(name)
-        self.magic_power = self.get_power() * 3
-        print(name, self.magic_power)
+        self.magic_power = self.get_power() * 3 #30
 
     def attack(self, target):
         target.take_damage(self.get_power() / 2)
@@ -89,11 +88,11 @@ class Healer(Hero):
         super().take_damage(damage)
     
     def heal(self, target):
-        print("\t", target.name, "получил лечение =", self.magic_power, end='')
+        print("\t", target.name, "получил лечение =", self.magic_power, end=' | ')
 
         heal_power = (target.get_hp() + self.magic_power)
         target.set_hp(heal_power)
-        print("осталось здоровья -", target.get_hp())
+        print("HP:", target.get_hp())
     
     def make_a_move(self, friends, enemies):
         print(self.name, end=' ')
@@ -106,7 +105,7 @@ class Healer(Hero):
                 min_health = target_of_heal.get_hp()
                 print("Need heal",friend, friend.get_hp())
         if min_health < 100 :
-            print("\tИсцеляю", target_of_heal.name, "hp:", round(target_of_heal.get_hp()))
+            print("\tИсцеляю", target_of_heal.name, "| HP:", round(target_of_heal.get_hp()))
 
             self.heal(target_of_heal)
         else:
@@ -135,11 +134,12 @@ class Tank(Hero):
     # поднять щит/опустить щит) на выбранную им цель
     def __init__(self, name):
         super().__init__(name)
+        self.power = self.get_power() / 2   # наносит половину урона (self.__power)
         self.defense = 1
         self.shield = None
 
     def attack(self, target):
-        target.take_damage(self.get_power() / 2)
+        target.take_damage(self.power)
 
     def take_damage(self, damage):
         self.set_hp(self.get_hp() - (damage / self.defense))
@@ -148,24 +148,24 @@ class Tank(Hero):
     def shield_on(self):
             if self.shield:
                 print("щит поднят", end=' ')
-                print(f"броня: {self.defense}, атака: {self.get_power()}")
+                print(f"броня: {self.defense}, атака: {self.power}")
             else:
                 self.shield = True
                 self.defense *=  2
-                self.set_power(self.get_power() / 2)
-                print("поднимаю щит", end=' ')
-                print(f"броня: {self.defense}, атака: {self.get_power()}")
+                self.power(self.power / 2) # 2.5
+                print("поднимаю щит", end=' | ')
+                print(f"броня: {self.defense}, атака: {self.power}")
 
     def shield_off(self):
-            if  not self.shield:
+            if  self.shield == False:
                 print("щит опущен", end=' ')
-                print(f"броня: {self.defense}, атака: {self.get_power()}")
+                print(f"броня: {self.defense}, атака: {self.power}")
             else:
                 self.shield = False
                 self.defense /= 2
-                self.set_power(self.get_power() * 2)
+                self.power *= 2 # 10
                 print("опускаю щит", end=' ')
-                print(f"броня: {self.defense}, атака: {self.get_power()}")
+                print(f"броня: {self.defense}, атака: {self.power}")
 
     def make_a_move(self, friends, enemies):
         print(self.name, end=' ')
@@ -173,12 +173,12 @@ class Tank(Hero):
             return
         if self.get_hp() < 70:
             self.shield_on()
-            print(f"Защищаюсь, моя защита: {self.defense}, hp: {self.get_hp()}")
+            print(f"\tЗащищаюсь | защита: {self.defense}| HP: {self.get_hp()}")
             
         else:
             self.shield_off()
-        print("Атакую ближнего -", end=" ")
-        print(enemies[0].name, round(enemies[0].get_hp()))
+            print(f"\tАтакую ближнего {enemies[0].name}| HP: {round(enemies[0].get_hp())}")
+            self.attack(enemies[0])
         print('\n')
     
     def __str__(self):
@@ -225,7 +225,7 @@ class Attacker(Hero):
             return
         
         print("Атакую того, кто стоит ближе -", end=" ")
-        print(enemies[0].name, round(enemies[0].get_hp()))
+        print(enemies[0].name, "| HP:", round(enemies[0].get_hp()))
         self.attack(enemies[0])
         print('\n')
 
