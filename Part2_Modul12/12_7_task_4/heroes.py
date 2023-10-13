@@ -116,7 +116,8 @@ class Healer(Hero):
             print(enemies[0].name, round(enemies[0].get_hp()))
             self.attack(enemies[0])
         print('\n')
-    
+        super().make_a_move(friends, enemies)
+
     def __str__(self):
         return f"Name: {self.name} | HP: {self.get_hp()}"
 
@@ -204,7 +205,7 @@ class Attacker(Hero):
     # усиление, ослабление) на выбранную им цель
     def __init__(self, name):
         super().__init__(name)
-        self.power_multiply = 4
+        self.power_multiply = 1
 
     def attack(self, target):
         target.take_damage(self.get_power() * self.power_multiply)
@@ -224,7 +225,7 @@ class Attacker(Hero):
         print(self.name, end=' | ')
         if not enemies:
             return
-        if self.power_multiply < 3:
+        if self.power_multiply < 10:
             print("усиление:", self.power_multiply, "усиливаюсь")
             self.power_up()
             print("\tусиление:", self.power_multiply,)
@@ -233,14 +234,17 @@ class Attacker(Hero):
             print("усиление:", self.power_multiply, "сила:", self.get_power())
             # target = enemies[0]
             for enemie in enemies:
-                if enemie.get_hp() > 40 and (enemie.__class__.__name__ == "MonsterHunter"):
-                    
+                if enemie.get_hp() < 50 and (enemie.__class__.__name__ == "MonsterBerserk"):
                     print("\tАтакую", enemie.name, "| HP:", enemie.get_hp())
-                    # print(target.name, "| HP:", round(target.get_hp()))
+                    self.attack(enemie)
+                    break
+
+                if enemie.get_hp() > 40 and (enemie.__class__.__name__ == "MonsterHunter"):
+                    print("\tАтакую", enemie.name, "| HP:", enemie.get_hp())
                     self.attack(enemie)
                     break
             else:
-                print("\tусиление:", self.power_multiply, "усиливаюсь")
+                print("\tнет подходящей жертвы:", self.power_multiply, "усиливаюсь")
                 self.power_up()
                 print("\tусиление:", self.power_multiply,)
 
