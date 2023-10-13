@@ -76,7 +76,7 @@ class Healer(Hero):
     # исцеление) на выбранную им цель
     def __init__(self, name):
         super().__init__(name)
-        self.magic_power = self.get_power() * 3 #30
+        self.magic_power = self.start_power * 3 #30
 
     def attack(self, target):
         target.take_damage(self.get_power() / 2)
@@ -98,7 +98,7 @@ class Healer(Hero):
         print(self.name, end=' | ')
         print("Исцеление:", self.magic_power, "сила:", self.get_power())
         target_of_heal = friends[0]
-        min_health = 110
+        min_health = 120
 
         for friend in friends:
             if friend.get_hp() < min_health:
@@ -112,9 +112,15 @@ class Healer(Hero):
         else:
             if not enemies:
                 return
-            print("Атакую того, кто стоит ближе -", end=" ")
-            print(enemies[0].name, round(enemies[0].get_hp()))
-            self.attack(enemies[0])
+            for enemy in enemies:
+                if enemy.get_hp() > 50:
+                    print("\tАтакую", enemy.name, "| HP:", enemy.get_hp())
+                    self.attack(enemy)
+                    break
+            # else:
+            #     print("Атакую того, кто стоит ближе -", end=" ")
+            #     print(enemies[0].name, round(enemies[0].get_hp()))
+            #     self.attack(enemies[0])
         print('\n')
         super().make_a_move(friends, enemies)
 
@@ -225,7 +231,7 @@ class Attacker(Hero):
         print(self.name, end=' | ')
         if not enemies:
             return
-        if self.power_multiply < 10:
+        if self.power_multiply < 2:
             print("усиление:", self.power_multiply, "усиливаюсь")
             self.power_up()
             print("\tусиление:", self.power_multiply,)
@@ -234,19 +240,18 @@ class Attacker(Hero):
             print("усиление:", self.power_multiply, "сила:", self.get_power())
             # target = enemies[0]
             for enemie in enemies:
-                if enemie.get_hp() < 50 and (enemie.__class__.__name__ == "MonsterBerserk"):
+                if (enemie.__class__.__name__ == "MonsterHunter" and enemie.get_hp() > 50) or enemie.get_hp() > 50:
                     print("\tАтакую", enemie.name, "| HP:", enemie.get_hp())
                     self.attack(enemie)
                     break
 
-                if enemie.get_hp() > 40 and (enemie.__class__.__name__ == "MonsterHunter"):
-                    print("\tАтакую", enemie.name, "| HP:", enemie.get_hp())
-                    self.attack(enemie)
-                    break
             else:
-                print("\tнет подходящей жертвы:", self.power_multiply, "усиливаюсь")
+                print("усиление:", self.power_multiply, "усиливаюсь")
                 self.power_up()
                 print("\tусиление:", self.power_multiply,)
+
+                # print("\tАтакую", enemie.name, "| HP:", enemie.get_hp())
+                # self.attack(enemie)
 
         print('\n')
         super().make_a_move(friends, enemies)
