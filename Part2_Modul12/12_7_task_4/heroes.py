@@ -117,7 +117,7 @@ class Healer(Hero):
         print('\n')
     
     def __str__(self):
-        return f"'Name: {self.name} | HP: {self.get_hp()}"
+        return f"Name: {self.name} | HP: {self.get_hp()}"
 
 
 class Tank(Hero):
@@ -151,8 +151,8 @@ class Tank(Hero):
                 print(f"броня: {self.defense}, атака: {self.power}")
             else:
                 self.shield = True
-                self.defense *=  2
-                self.power(self.power / 2) # 2.5
+                self.defense = 1 * 2
+                self.power /= 2 # 2.5
                 print("поднимаю щит", end=' | ')
                 print(f"броня: {self.defense}, атака: {self.power}")
 
@@ -162,7 +162,7 @@ class Tank(Hero):
                 print(f"броня: {self.defense}, атака: {self.power}")
             else:
                 self.shield = False
-                self.defense /= 2
+                self.defense = 1 / 2
                 self.power *= 2 # 10
                 print("опускаю щит", end=' ')
                 print(f"броня: {self.defense}, атака: {self.power}")
@@ -182,7 +182,7 @@ class Tank(Hero):
         print('\n')
     
     def __str__(self):
-        return f"'Name: {self.name} | HP: {self.get_hp()}"
+        return f"Name: {self.name} | HP: {self.get_hp()}"
     
 
 
@@ -232,4 +232,4 @@ class Attacker(Hero):
 
 
     def __str__(self):
-        return f"'Name: {self.name} | HP: {self.get_hp()}"
+        return f"Name: {self.name} | HP: {self.get_hp()}"
