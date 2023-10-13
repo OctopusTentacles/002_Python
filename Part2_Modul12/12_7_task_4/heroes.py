@@ -98,7 +98,7 @@ class Healer(Hero):
         print(self.name, end=' | ')
         print("Исцеление:", self.magic_power, "сила:", self.get_power())
         target_of_heal = friends[0]
-        min_health = 100
+        min_health = 110
 
         for friend in friends:
             if friend.get_hp() < min_health:
@@ -107,7 +107,7 @@ class Healer(Hero):
                 # print("Нужна помощь", target_of_heal.name, min_health)
 
         if min_health < 100 :
-            print("\Исцеление", target_of_heal.name, "| HP:", round(target_of_heal.get_hp()))
+            print("\tИсцеление", target_of_heal.name, "| HP:", round(target_of_heal.get_hp()))
             self.heal(target_of_heal)
         else:
             if not enemies:
@@ -172,7 +172,7 @@ class Tank(Hero):
         print(self.name, end=' ')
         if not enemies:
             return
-        if self.get_hp() < 100:
+        if self.get_hp() < 120:
             self.shield_on()
             print(f"\tЗащищаюсь | защита: {self.defense}| HP: {self.get_hp()}")
             
@@ -231,14 +231,19 @@ class Attacker(Hero):
 
         else:
             print("усиление:", self.power_multiply, "сила:", self.get_power())
-            target = enemies[0]
+            # target = enemies[0]
             for enemie in enemies:
-                if enemie.get_hp() > 20:
-                    target = enemie
+                if enemie.get_hp() > 40 and (enemie.__class__.__name__ == "MonsterHunter"):
                     
-            print("\tАтакую", target, end=" ")
-            print(target.name, "| HP:", round(target.get_hp()))
-            self.attack(target)
+                    print("\tАтакую", enemie.name, "| HP:", enemie.get_hp())
+                    # print(target.name, "| HP:", round(target.get_hp()))
+                    self.attack(enemie)
+                    break
+            else:
+                print("\tусиление:", self.power_multiply, "усиливаюсь")
+                self.power_up()
+                print("\tусиление:", self.power_multiply,)
+
         print('\n')
         super().make_a_move(friends, enemies)
 
