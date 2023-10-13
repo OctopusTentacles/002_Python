@@ -96,6 +96,7 @@ class Healer(Hero):
     
     def make_a_move(self, friends, enemies):
         print(self.name, end=' | ')
+        print("Исцеление:", self.magic_power, "сила:", self.get_power())
         target_of_heal = friends[0]
         min_health = 100
 
@@ -103,18 +104,17 @@ class Healer(Hero):
             if friend.get_hp() < min_health:
                 target_of_heal = friend
                 min_health = target_of_heal.get_hp()
-                print("Срочная помощь", target_of_heal.name, min_health)
-                self.heal(target_of_heal)
+                # print("Нужна помощь", target_of_heal.name, min_health)
 
-            elif min_health < 100 :
-                print("\tПеревязка", target_of_heal.name, "| HP:", round(target_of_heal.get_hp()))
-                self.heal(target_of_heal)
-            else:
-                if not enemies:
-                    return
-                print("Атакую того, кто стоит ближе -", end=" ")
-                print(enemies[0].name, round(enemies[0].get_hp()))
-                self.attack(enemies[0])
+        if min_health < 100 :
+            print("\Исцеление", target_of_heal.name, "| HP:", round(target_of_heal.get_hp()))
+            self.heal(target_of_heal)
+        else:
+            if not enemies:
+                return
+            print("Атакую того, кто стоит ближе -", end=" ")
+            print(enemies[0].name, round(enemies[0].get_hp()))
+            self.attack(enemies[0])
         print('\n')
     
     def __str__(self):
@@ -172,7 +172,7 @@ class Tank(Hero):
         print(self.name, end=' ')
         if not enemies:
             return
-        if self.get_hp() < 70:
+        if self.get_hp() < 100:
             self.shield_on()
             print(f"\tЗащищаюсь | защита: {self.defense}| HP: {self.get_hp()}")
             
@@ -181,9 +181,10 @@ class Tank(Hero):
             print(f"\tАтакую ближнего {enemies[0].name}| HP: {round(enemies[0].get_hp())}")
             self.attack(enemies[0])
         print('\n')
+        super().make_a_move(friends, enemies)
     
     def __str__(self):
-        return f"Name: {self.name} | HP: {self.get_hp()}"
+        return f"Name: {self.name} | HP: {round(self.get_hp())}"
     
 
 
@@ -203,7 +204,7 @@ class Attacker(Hero):
     # усиление, ослабление) на выбранную им цель
     def __init__(self, name):
         super().__init__(name)
-        self.power_multiply = 1
+        self.power_multiply = 4
 
     def attack(self, target):
         target.take_damage(self.get_power() * self.power_multiply)
@@ -223,17 +224,24 @@ class Attacker(Hero):
         print(self.name, end=' | ')
         if not enemies:
             return
-        if self.power_multiply < 1:
+        if self.power_multiply < 3:
             print("усиление:", self.power_multiply, "усиливаюсь")
             self.power_up()
             print("\tусиление:", self.power_multiply,)
 
         else:
-            print("усиление:", self.power_multiply,)
-            print("\tАтакую того, кто стоит ближе -", end=" ")
-            print(enemies[0].name, "| HP:", round(enemies[0].get_hp()))
-            self.attack(enemies[0])
+            print("усиление:", self.power_multiply, "сила:", self.get_power())
+            target = enemies[0]
+            for enemie in enemies:
+                if enemie.get_hp() > 20:
+                    target = enemie
+                    
+            print("\tАтакую", target, end=" ")
+            print(target.name, "| HP:", round(target.get_hp()))
+            self.attack(target)
         print('\n')
+        super().make_a_move(friends, enemies)
+
 
     def __str__(self):
         return f"Name: {self.name} | HP: {self.get_hp()}"
