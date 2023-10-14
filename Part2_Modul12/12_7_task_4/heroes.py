@@ -92,9 +92,9 @@ class Healer(Hero):
         print("HP:", round(target.get_hp()))
     
     def make_a_move(self, friends, enemies):
-        """ Целитель - в приоритете восстановление HP, начинает лечить если 
+        """ class Healer(Hero) - в приоритете восстановление HP, начинает лечить если 
             значение меньше 120. Иначе атакует врага.
-            В приоритете Берсек иначе у кого НР больше 0
+            В приоритете Берсерк, иначе у кого НР больше 0
         """
         print(self.name, end=' | ')
         print("Исцеление:", self.magic_power, ", Сила:", round(self.get_power()), ", Удар:", round(self.get_power() / 2))
@@ -134,6 +134,8 @@ class Healer(Hero):
 
 
 class Tank(Hero):
+    """ class Tank(Hero) - стоит под щитом, принимает урон и наносит малый урон.
+    """
     # Танк:
     # Атрибуты:
     # - показатель защиты - изначально равен 1, может увеличиваться и уменьшаться
@@ -170,6 +172,9 @@ class Tank(Hero):
         super().take_damage(damage)
 
     def shield_on(self):
+            """ def shield_on(self) - Танк поднимает щит
+                self.shield - положение щита, изначально False - опущен
+            """
             if self.shield:
                 print("щит поднят", end=' ')
                 print(f"броня: {self.defense}, атака: {round(self.get_power() /2 /2)}")
@@ -181,6 +186,9 @@ class Tank(Hero):
                 print(f"броня: {self.defense}, атака: {round(self.get_power() /2 /2)}")
 
     def shield_off(self):
+            """ def shield_on(self) - Танк поднимает щит
+                self.shield - положение щита, изначально False - опущен
+            """
             if  self.shield == False:
                 print("щит опущен", end=' ')
                 print(f"броня: {self.defense}, атака: {round(self.get_power() /2 )}")
@@ -192,6 +200,9 @@ class Tank(Hero):
                 print(f"броня: {self.defense}, атака: {round(self.get_power() /2 )}")
 
     def make_a_move(self, friends, enemies):
+        """ def make_a_move проверяет положение щита, при HP=60 поднимает щит на себя и практически 
+            не отпускает его. Атакует либо Берсерка либо ближнего врага.
+        """
         print(self.name, end=' ')
         if not enemies:
             return
