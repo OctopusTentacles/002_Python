@@ -146,13 +146,15 @@ class Tank(Hero):
         
 
     def attack(self, target):
-        damage = self.power / 2 # доспехи очень тяжелые - наносит половину урона
-        
+        damage = self.get_power() # доспехи очень тяжелые - наносит половину урона
+        print("\tАтака:", damage, " | ")
         if self.shield:
-            print("сила танка с щитом", damage)
+            damage /= 4
+            print("Атака с щитом", damage)
             target.take_damage(damage)
         else:
-            print("сила танка без щита", damage)
+            damage /= 2
+            print("Атака без щитом", damage)
             target.take_damage(damage)
 
 
@@ -163,44 +165,53 @@ class Tank(Hero):
     def shield_on(self):
             if self.shield:
                 print("щит поднят", end=' ')
-                print(f"броня: {self.defense}, атака: {self.power}")
+                print(f"броня: {self.defense}, атака: {round(self.get_power() /2 /2)}")
             else:
                 self.shield = True
                 self.defense = 1 * 2
-                self.power = round(self.get_power() / 2) # 2.5
+                # self.power = round(self.get_power() / 2) # 2.5
                 print("поднимаю щит", end=' | ')
-                print(f"броня: {self.defense}, атака: {self.power}")
+                print(f"броня: {self.defense}, атака: {round(self.get_power() /2 /2)}")
 
     def shield_off(self):
             if  self.shield == False:
                 print("щит опущен", end=' ')
-                print(f"броня: {self.defense}, атака: {self.power}")
+                print(f"броня: {self.defense}, атака: {round(self.get_power() /2 )}")
             else:
                 self.shield = False
                 self.defense = 1 / 2
-                self.power = round(self.get_power() * 2) # 10
+                # self.power = round(self.get_power() * 2) # 10
                 print("опускаю щит", end=' ')
-                print(f"броня: {self.defense}, атака: {self.power}")
+                print(f"броня: {self.defense}, атака: {round(self.get_power() /2 )}")
 
     def make_a_move(self, friends, enemies):
         print(self.name, end=' ')
         if not enemies:
             return
-        
-        if self.get_hp() < 120:
-            self.shield_on()
-            print(f"\tЗащищаюсь | защита: {self.defense}| HP: {round(self.get_hp())}| Power: {round(self.get_power())}")
-            
-        else:
-            self.shield_off()
-            for enemy in enemies:
-                if enemy.__class__.__name__ == "MonsterBerserk" and enemy.get_hp() != 0:
+        if self.shield == False:
+            print(f"\tЩит снят | защита: {self.defense}| HP: {round(self.get_hp())}| Power: {round(self.get_power())}")
+        if self.shield = True:
+            print(f"\tПод щитом | защита: {self.defense}| HP: {round(self.get_hp())}| Power: {round(self.get_power())}")
+
+
+        for enemy in enemies:
+            if self.get_hp() < 120 and self.shield_off == False:
+                self.shield_on()
+                print(f"\tЗащищаюсь | защита: {self.defense}| HP: {round(self.get_hp())}| Power: {round(self.get_power())}")
+                break
+            elif self.get_hp() > 120 and self.shield_off == True:
+                self.shield_off()
+                print(f"\tЩит снят | защита: {self.defense}| HP: {round(self.get_hp())}| Power: {round(self.get_power())}")
+                break
+            else:
+                if enemy.__class__.__name__ == "MonsterBerserk" and enemy.get_hp() > 0:
                     print("\tАтакую", enemy.name, "| HP:", enemy.get_hp())
                     self.attack(enemy)
                     break
-            else:
-                print(f"\tАтакую ближнего {enemies[0].name}| HP: {round(enemies[0].get_hp())}")
-                self.attack(enemies[0])
+                else:
+                    print(f"\tАтакую ближнего {enemies[0].name}| HP: {round(enemies[0].get_hp())}")
+                    self.attack(enemies[0])
+                    break
 
         print('\n')
         super().make_a_move(friends, enemies)
