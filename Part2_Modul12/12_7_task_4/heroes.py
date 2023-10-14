@@ -92,6 +92,10 @@ class Healer(Hero):
         print("HP:", round(target.get_hp()))
     
     def make_a_move(self, friends, enemies):
+        """ Целитель - в приоритете восстановление HP, начинает лечить если 
+            значение меньше 120. Иначе атакует врага.
+            В приоритете Берсек иначе у кого НР больше 0
+        """
         print(self.name, end=' | ')
         print("Исцеление:", self.magic_power, ", Сила:", round(self.get_power()), ", Удар:", round(self.get_power() / 2))
         target_of_heal = friends[0]
