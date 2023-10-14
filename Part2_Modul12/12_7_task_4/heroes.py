@@ -82,8 +82,6 @@ class Healer(Hero):
         target.take_damage(self.get_power() / 2)
 
     def take_damage(self, damage):
-        print("\t", self.name, "имеет hp:", round(self.get_hp()))
-
         self.set_hp(self.get_hp() - 1.2 * damage)
         super().take_damage(damage)
     
@@ -95,7 +93,7 @@ class Healer(Hero):
     
     def make_a_move(self, friends, enemies):
         print(self.name, end=' | ')
-        print("Исцеление:", self.magic_power, "сила:", round(self.get_power(), 1))
+        print("Исцеление:", self.magic_power, ", Сила:", round(self.get_power()), ", Удар:", self.get_power() / 2)
         target_of_heal = friends[0]
         min_health = 140
 
@@ -142,20 +140,20 @@ class Tank(Hero):
         super().__init__(name)
         # self.power = self.get_power() / 2   # наносит половину урона (self.__power)
         self.defense = 1
-        self.shield = None
+        self.shield = False
         
 
     def attack(self, target):
         damage = self.get_power() # доспехи очень тяжелые - наносит половину урона
-        print("\tАтака:", damage, " | ")
+        print("\tАтака:", damage, end=" | ")
         if self.shield:
             damage /= 4
-            print("Атака с щитом", damage)
-            target.take_damage(damage)
+            print("Атака с щитом", round(damage))
+            target.take_damage(round(damage))
         else:
             damage /= 2
-            print("Атака без щитом", damage)
-            target.take_damage(damage)
+            print("Атака без щита", round(damage))
+            target.take_damage(round(damage))
 
 
     def take_damage(self, damage):
@@ -170,7 +168,7 @@ class Tank(Hero):
                 self.shield = True
                 self.defense = 1 * 2
                 # self.power = round(self.get_power() / 2) # 2.5
-                print("поднимаю щит", end=' | ')
+                print("\tПоднимаю щит", end=' | ')
                 print(f"броня: {self.defense}, атака: {round(self.get_power() /2 /2)}")
 
     def shield_off(self):
@@ -190,16 +188,16 @@ class Tank(Hero):
             return
         if self.shield == False:
             print(f"\tЩит снят | защита: {self.defense}| HP: {round(self.get_hp())}| Power: {round(self.get_power())}")
-        if self.shield = True:
+        if self.shield == True:
             print(f"\tПод щитом | защита: {self.defense}| HP: {round(self.get_hp())}| Power: {round(self.get_power())}")
 
 
         for enemy in enemies:
-            if self.get_hp() < 120 and self.shield_off == False:
+            if self.get_hp() < 60 and self.shield == False:
                 self.shield_on()
                 print(f"\tЗащищаюсь | защита: {self.defense}| HP: {round(self.get_hp())}| Power: {round(self.get_power())}")
                 break
-            elif self.get_hp() > 120 and self.shield_off == True:
+            elif self.get_hp() > 149 and self.shield == True:
                 self.shield_off()
                 print(f"\tЩит снят | защита: {self.defense}| HP: {round(self.get_hp())}| Power: {round(self.get_power())}")
                 break
@@ -244,6 +242,8 @@ class Attacker(Hero):
         self.power_down()
 
     def power_up(self):
+        # if friend:
+
         self.power_multiply *= 2
 
     def power_down(self, target=None):
@@ -270,29 +270,30 @@ class Attacker(Hero):
                 "MonsterBerserk" and enemy.get_hp() < 55 and enemy.get_hp() > 0):
                 self.power_down(enemy)
                 break
-            
+            elif self.power_multiply < 1:
+                print("\tусиливаюсь -", end=" ")
+                self.power_up()
+                print("усиление:", self.power_multiply,)
+                break
+            # elif self.power_multiply > 1:
+            #     print("\tАтакую", enemy.name, "| HP:", round(enemy.get_hp()))
+            #     self.attack(enemy)
+            #     self.power_down()
+            #     break
 
-
-
-        if self.power_multiply < 1:
-            print("\tусиливаюсь |", end=" ")
-            self.power_up()
-            print("усиление:", self.power_multiply,)
-
-        else:
-            for enemy in enemies:
-                if (enemy.__class__.__name__ == "MonsterBerserk" and enemy.get_hp() > 50) or enemy.get_hp() > 70:
+            elif (enemy.__class__.__name__ == "MonsterBerserk" and enemy.get_hp() < 50) or enemy.get_hp() < 30:
                     print("\tАтакую", enemy.name, "| HP:", round(enemy.get_hp()))
                     self.attack(enemy)
                     break
 
             else:
-                print("усиление:", self.power_multiply, "усиливаюсь")
-                self.power_up()
-                print("\tусиление:", self.power_multiply,)
+                print("Атакую того, кто стоит ближе -", end=" ")
+                print(enemies[0].name, round(enemies[0].get_hp()))
+                self.attack(enemy)
+                break
 
-                # print("\tАтакую", enemie.name, "| HP:", enemie.get_hp())
-                # self.attack(enemie)
+                    # print("\tАтакую", enemie.name, "| HP:", enemie.get_hp())
+                    # self.attack(enemie)
 
         print('\n')
         super().make_a_move(friends, enemies)
