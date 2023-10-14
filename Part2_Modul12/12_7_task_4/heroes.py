@@ -146,7 +146,15 @@ class Tank(Hero):
         
 
     def attack(self, target):
-        target.take_damage(self.get_power() / 2)
+        damage = self.power / 2 # доспехи очень тяжелые - наносит половину урона
+        
+        if self.shield:
+            print("сила танка с щитом", damage)
+            target.take_damage(damage)
+        else:
+            print("сила танка без щита", damage)
+            target.take_damage(damage)
+
 
     def take_damage(self, damage):
         self.set_hp(self.get_hp() - (damage / self.defense))
@@ -159,7 +167,7 @@ class Tank(Hero):
             else:
                 self.shield = True
                 self.defense = 1 * 2
-                self.power = self.get_power() / 2 / 2 # 2.5
+                self.power = round(self.get_power() / 2) # 2.5
                 print("поднимаю щит", end=' | ')
                 print(f"броня: {self.defense}, атака: {self.power}")
 
@@ -170,7 +178,7 @@ class Tank(Hero):
             else:
                 self.shield = False
                 self.defense = 1 / 2
-                self.power = self.get_power() / 2 * 2 # 10
+                self.power = round(self.get_power() * 2) # 10
                 print("опускаю щит", end=' ')
                 print(f"броня: {self.defense}, атака: {self.power}")
 
@@ -178,9 +186,10 @@ class Tank(Hero):
         print(self.name, end=' ')
         if not enemies:
             return
+        
         if self.get_hp() < 120:
             self.shield_on()
-            print(f"\tЗащищаюсь | защита: {self.defense}| HP: {self.get_hp()}| Power: {round(self.get_power())}")
+            print(f"\tЗащищаюсь | защита: {self.defense}| HP: {round(self.get_hp())}| Power: {round(self.get_power())}")
             
         else:
             self.shield_off()
@@ -192,6 +201,7 @@ class Tank(Hero):
             else:
                 print(f"\tАтакую ближнего {enemies[0].name}| HP: {round(enemies[0].get_hp())}")
                 self.attack(enemies[0])
+
         print('\n')
         super().make_a_move(friends, enemies)
     
