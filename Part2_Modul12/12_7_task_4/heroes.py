@@ -224,8 +224,14 @@ class Attacker(Hero):
     def power_up(self):
         self.power_multiply *= 2
 
-    def power_down(self):
-        self.power_multiply /= 2
+    def power_down(self, target=None):
+        if target:
+            print(f"\tСнижаю силу атаки {target.name} | текущая атака: {target.get_power()}")
+            target.set_power(target.get_power() * self.power_multiply / 2)
+            print(f"{target.name} | атака: {target.get_power()}")
+        else:    
+            self.power_multiply /= 2
+        
 
     def take_damage(self, damage):
         self.set_hp(self.get_hp() - (damage * (self.power_multiply / 2)))
@@ -233,16 +239,25 @@ class Attacker(Hero):
 
     def make_a_move(self, friends, enemies):
         print(self.name, end=' | ')
+        print("усиление:", self.power_multiply, "сила:", self.get_power())
         if not enemies:
             return
+        
+        for enemy in enemies:
+            if (self.power_multiply < 1 and enemy.__class__.__name__ == 
+                "MonsterHunter" and enemy.get_hp() < 55):
+                self.power_down(enemy)
+                break
+            
+
+
+
         if self.power_multiply < 4:
             print("усиление:", self.power_multiply, "усиливаюсь")
             self.power_up()
             print("\tусиление:", self.power_multiply,)
 
         else:
-            print("усиление:", self.power_multiply, "сила:", self.get_power())
-            # target = enemies[0]
             for enemy in enemies:
                 if (enemy.__class__.__name__ == "MonsterHunter" and enemy.get_hp() > 50) or enemy.get_hp() > 70:
                     print("\tАтакую", enemy.name, "| HP:", enemy.get_hp())
