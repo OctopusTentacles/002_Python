@@ -89,11 +89,11 @@ class Healer(Hero):
         print("\t", target.name, "получил лечение =", self.magic_power, end=' | ')
         target.set_hp(target.get_hp() + self.magic_power)
         # target.set_hp(heal_power)
-        print("HP:", target.get_hp())
+        print("HP:", round(target.get_hp()))
     
     def make_a_move(self, friends, enemies):
         print(self.name, end=' | ')
-        print("Исцеление:", self.magic_power, ", Сила:", round(self.get_power()), ", Удар:", self.get_power() / 2)
+        print("Исцеление:", self.magic_power, ", Сила:", round(self.get_power()), ", Удар:", round(self.get_power() / 2))
         target_of_heal = friends[0]
         min_health = 140
 
@@ -113,10 +113,15 @@ class Healer(Hero):
                     print("\tАтакую", enemy.name, "| HP:", enemy.get_hp())
                     self.attack(enemy)
                     break
-            else:
-                print("Атакую того, кто стоит ближе -", end=" ")
-                print(enemies[0].name, round(enemies[0].get_hp()))
-                self.attack(enemies[0])
+                elif enemy.get_hp() > 0:
+                    print("\tАтакую", enemy.name, "| HP:", enemy.get_hp())
+                    self.attack(enemy)
+                    break
+
+            # else:
+            #     print("Атакую того, кто стоит ближе -", end=" ")
+            #     print(enemies[0].name, round(enemies[0].get_hp()))
+            #     self.attack(enemies[0])
         print('\n')
         super().make_a_move(friends, enemies)
 
@@ -144,14 +149,14 @@ class Tank(Hero):
         
 
     def attack(self, target):
-        damage = self.get_power() # доспехи очень тяжелые - наносит половину урона
+        damage = round(self.get_power()/2) # доспехи очень тяжелые - наносит половину урона
         print("\tАтака:", damage, end=" | ")
         if self.shield:
-            damage /= 4
+            damage /= 2
             print("Атака с щитом", round(damage))
             target.take_damage(round(damage))
         else:
-            damage /= 2
+            # damage /= 2
             print("Атака без щита", round(damage))
             target.take_damage(round(damage))
 
