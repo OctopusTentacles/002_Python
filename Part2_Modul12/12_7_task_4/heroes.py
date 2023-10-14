@@ -241,6 +241,9 @@ class Tank(Hero):
 
 
 class Attacker(Hero):
+    """ class Attacker(Hero) - убийца, усиливает свой урон,
+        но усиление может сыграть против него.
+    """
     # Убийца:
     # Атрибуты:
     # - коэффициент усиления урона (входящего и исходящего)
@@ -262,11 +265,13 @@ class Attacker(Hero):
         self.power_down()
 
     def power_up(self):
-        # if friend:
-
+        """ def power_up - повышает коэффициент урона атаки в 2 раза
+        """
         self.power_multiply *= 2
 
     def power_down(self, target=None):
+        """ def power_down - снижает коэффициент урона после квждой атаки в 2 раза
+        """
         if target:
             print(f"\tСнижаю силу атаки {target.name} | текущая атака: {target.get_power()}")
             target.set_power(target.get_power() * self.power_multiply / 2)
@@ -280,6 +285,10 @@ class Attacker(Hero):
         super().take_damage(damage)
 
     def make_a_move(self, friends, enemies):
+        """ def make_a_move - если коэффициент 1 или больше - атакует:
+            в приоритете Берсерк или цель с низким HP.
+            Если коэффициент меньше 1 - усиливает себя, или понижает урон Берсерка
+        """
         print(self.name, end=' | ')
         print("усиление:", self.power_multiply, "сила:", round(self.get_power(), 1))
         if not enemies:
