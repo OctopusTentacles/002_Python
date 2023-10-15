@@ -70,10 +70,11 @@ class TaskManager():
         print(self.my_task)
 
     def __str__(self):
+        result = ""
         for index in self.my_task:
             for key, value in index.items():
-                print(f"{str(key)} - {str(value)}")
-            
+                result += f"{str(key)} - {str(value)}\n"
+        return result
 
         
 
