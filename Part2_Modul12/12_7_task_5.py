@@ -48,21 +48,42 @@ class MyStack():
         return self.stack[0]
     
     def delete(self):
-        print("Удаляем верхний элемент", end=" ")
-        return self.stack.pop(0)
+        if len(self.stack) == 0:
+            return "Стек пуст"
+        else:
+            print("Удаляем верхний элемент", end=" ")
+            return self.stack.pop(0)
 
     def __str__(self):
         return f"Стек = {str(self.stack)}"
     
+class TaskManager():
+    def __init__(self):
+        self.my_task = MyStack()
+        self.get_task = dict()
+
+    def new_task(self, task, priority):
+        self.get_task[priority] = task
+        self.my_task.put(self.get_task())
+        
+
     
 # my_list = MyStack()
 
-# my_list.put(1)
-# my_list.put(2)
-# my_list.put(3)
+# one = {"сделать уборку", 4}
+# two = {"отдохнуть", 1}
+# three = {"поесть", 2}
+
+# my_list.put(one)
+# my_list.put(two)
+# my_list.put(three)
 # print(my_list)
 
 # print(my_list.get())
+# print(my_list)
+# print(my_list.delete())
+# print(my_list)
+# print(my_list.delete())
 # print(my_list)
 # print(my_list.delete())
 # print(my_list)
