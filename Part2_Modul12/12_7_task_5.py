@@ -35,3 +35,19 @@
 
 # Дополнительно: реализуйте также удаление задач и подумайте, что делать с дубликатами.
 
+
+class MyStack():
+    def __init__(self):
+        self.stack = list()
+    
+    def put(self, item):
+        self.stack.append(item)
+
+    def get(self):
+        return self.stack[0]
+    
+    def delete(self):
+        pass
+
+    def __str__(self):
+        pass
