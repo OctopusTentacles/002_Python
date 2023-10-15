@@ -41,22 +41,28 @@ class MyStack():
         self.stack = list()
     
     def put(self, item):
-        self.stack.append(item)
+        self.stack.insert(0, item)
 
     def get(self):
+        print("Верхний элемент", end=" ")
         return self.stack[0]
     
     def delete(self):
-        self.stack.pop(0)
+        print("Удаляем верхний элемент", end=" ")
+        return self.stack.pop(0)
 
     def __str__(self):
         return f"Стек = {str(self.stack)}"
     
     
-my_list = MyStack()
+# my_list = MyStack()
 
-my_list.put(1)
-my_list.put(2)
-my_list.put(3)
+# my_list.put(1)
+# my_list.put(2)
+# my_list.put(3)
+# print(my_list)
 
-print(my_list)
+# print(my_list.get())
+# print(my_list)
+# print(my_list.delete())
+# print(my_list)

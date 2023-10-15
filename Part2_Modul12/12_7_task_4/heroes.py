@@ -79,7 +79,7 @@ class Healer(Hero):
         self.magic_power = self.start_power * 3 #30
 
     def attack(self, target):
-        target.take_damage(self.get_power() / 2)
+        target.take_damPage(self.get_power() / 2)
 
     def take_damage(self, damage):
         self.set_hp(self.get_hp() - 1.2 * damage)
