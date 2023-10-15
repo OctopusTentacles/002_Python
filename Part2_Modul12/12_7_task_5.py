@@ -47,7 +47,16 @@ class MyStack():
         return self.stack[0]
     
     def delete(self):
-        pass
+        self.stack.pop(0)
 
     def __str__(self):
-        pass
+        return f"Стек = {str(self.stack)}"
+    
+    
+my_list = MyStack()
+
+my_list.put(1)
+my_list.put(2)
+my_list.put(3)
+
+print(my_list)
