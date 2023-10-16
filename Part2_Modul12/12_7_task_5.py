@@ -53,33 +53,28 @@ class MyStack():
         else:
             print("Удаляем верхний элемент", end=" ")
             return self.stack.pop(0)
+        
+    def quick_sort(self, data):
+        if not data:
+            return data
+        main_elem = int(data[0][0])
+        low_main = [elem for _, elem in enumerate(data) if int(elem[0]) < main_elem]
+        equal_main = [elem for _, elem in enumerate(data) if int(elem[0]) == main_elem]
+        high_main = [elem for _, elem in enumerate(data) if int(elem[0] > main_elem)]
+        return low_main.quick_sort(self, low_main) + equal_main + quick_sort(self, high_main)
 
     def __repr__(self):
         """def __repr__ - возвращает более информативное (официальное) 
                           строковое представление объекта
         """
         return str(self.stack)
-    
-    # def __repr__(self) -> str:
-    #     return str(self)
-        # result_all = ""
-        # result_new = ""
-        # for index in self.stack:
-        #     if isinstance(index, list):
-        #         for i in range(index):
-        #             result_new += "{0} - {1}".format(i)
-        #         return str(result_new)
-        #     else:
-        #         result_new += str(index) + " "
-        #     result_all += result_new + "\n"
-        # return result_all
-
-        # return result
-    
+        
 
 class TaskManager():
     def __init__(self):
-        self.my_tasks = MyStack()        
+        self.my_tasks = MyStack()  
+
+      
 
     def new_task(self, task, priority):
         self.get_task = MyStack()
@@ -87,10 +82,20 @@ class TaskManager():
         self.get_task.put(priority)
 
         self.my_tasks.put(self.get_task)
-        print("Получаем стек:", self.my_tasks)
 
+    def sort(self, data):
+        self.my_tasks.quick_sort(data)
+        
+    
+    def __repr__(self) -> str:
+        return str(self.my_tasks)
 
     # def __str__(self):
+    #     result = ""
+    #     for elem in self.my_tasks:
+    #         result += str(elem) + "\n"
+    #     return elem
+
         # [[1, asdd], [1, asasd]]
         # result = ""
         # result_2 = ""
@@ -103,34 +108,11 @@ class TaskManager():
                 # print(f"{str(key)} - {str(value)}\n")
        
 
-        
-
-    
-# my_list = MyStack()
-
-# one = {"сделать уборку", 4}
-# two = {"отдохнуть", 1}
-# three = {"поесть", 2}
-
-# my_list.put(one)
-# my_list.put(two)
-# my_list.put(three)
-# print(my_list)
-
-# print(my_list.get())
-# print(my_list)
-# print(my_list.delete())
-# print(my_list)
-# print(my_list.delete())
-# print(my_list)
-# print(my_list.delete())
-# print(my_list)
-
-
 manager = TaskManager()
 manager.new_task("сделать уборку", 4)
 manager.new_task("помыть посуду", 4)
 manager.new_task("отдохнуть", 1)
 manager.new_task("поесть", 2)
 manager.new_task("сдать ДЗ", 2)
-print(manager)
+print(manager, type(manager))
+
