@@ -36,6 +36,7 @@
 # Дополнительно: реализуйте также удаление задач и подумайте, что делать с дубликатами.
 
 
+# 1 ===========================================================================
 class MyStack():
     def __init__(self):
         self.stack = list()
@@ -89,11 +90,11 @@ manager.new_task("поесть", 2)
 manager.new_task("сдать ДЗ", 2)
 print("\n1. Получаем стек:", manager)
 
-
 # стэк получается, но я не могу придумать как отсортировать 
 # TypeError: 'TaskManager' object is not subscriptable
 #==============================================================================
 
+# 2 ===========================================================================
 class TaskManager():
     def __init__(self):
         self.my_tasks = [] 
@@ -111,6 +112,7 @@ class TaskManager():
                 if item_1[0] == item_2[0]:
                     item_1.append(item_2[1])
                     self.my_tasks.pop(index+1)
+                    
 
         return sorted(self.my_tasks)
     
@@ -128,4 +130,5 @@ print("\n2. Получаем Стэк:", manager, "\n")
 
 print("2. Сортированный Стэк:",manager.sorting())
 
-# 
+# тут отсортировал, но не могу вывести как в примере
+# и без class MyStack
