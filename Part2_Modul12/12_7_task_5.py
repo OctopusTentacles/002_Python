@@ -55,26 +55,32 @@ class MyStack():
             return self.stack.pop(0)
 
     def __str__(self):
-        return f"Стек = {str(self.stack)}"
+        result = ""
+        for index in self.stack:
+            result += f"{str(index)} - "
+        return result
     
 
 class TaskManager():
     def __init__(self):
-        self.my_task = list()
-        
+        self.my_tasks = MyStack()        
 
     def new_task(self, task, priority):
-        self.get_task = dict()
-        self.get_task[priority] = task
-        self.my_task.insert(0, self.get_task)
-        print(self.my_task)
+        self.get_task = MyStack()
+        self.get_task.put(task)
+        self.get_task.put(priority)
+        print(self.get_task)
 
-    def __str__(self):
-        result = ""
-        for index in self.my_task:
-            for key, value in index.items():
-                result += f"{str(key)} - {str(value)}\n"
-        return result
+        self.my_tasks.put(self.get_task)
+        print(self.my_tasks)
+
+
+    # def __str__(self):
+    #     result = ""
+    #     for index in self.my_task:
+    #         for key, value in index.items():
+    #             result += f"{str(key)} - {str(value)}\n"
+    #     return result
 
         
 
