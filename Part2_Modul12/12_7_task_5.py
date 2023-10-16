@@ -73,10 +73,11 @@ class TaskManager():
         self.my_tasks.insert(0, self.get_task)
 
     def sorting(self):
-        for a in self.my_tasks:
-            for b in self.my_tasks[a:]:
-                if a[0] == b[0]:
-                    a.append(b[:-1])
+        for index, item_1 in enumerate(self.my_tasks):
+            for item_2 in self.my_tasks[index+1:]:
+                if item_1[0] == item_2[0]:
+                    item_1.append(item_2[1])
+                    self.my_tasks.pop(index+1)
 
         return sorted(self.my_tasks)
     
@@ -92,7 +93,7 @@ manager.new_task("поесть", 2)
 manager.new_task("сдать ДЗ", 2)
 print("\nПолучаем Стэк:", manager, "\n")
 
-print(manager.sorting())
+print("Сортированный Стэк:",manager.sorting())
 
 # стэк получается, но я не могу придумать как отсортировать 
 # TypeError: 'TaskManager' object is not subscriptable
