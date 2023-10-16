@@ -59,7 +59,40 @@ class MyStack():
                           строковое представление объекта
         """
         return str(self.stack)
+    
+
+class TaskManager():
+    def __init__(self):
+        self.my_tasks = MyStack()        
+
+    def new_task(self, task, priority):
+        self.get_task = MyStack()
+        self.get_task.put(task)
+        self.get_task.put(priority)
+
+        self.my_tasks.put(self.get_task)
+        # print("Получаем стек:", self.my_tasks)
+
+    def sort(self, data):
+        self.my_tasks.quick_sort(data)
+
+
+    def __repr__(self) -> str:
+        return str(self.my_tasks)
         
+
+manager = TaskManager()
+manager.new_task("сделать уборку", 4)
+manager.new_task("помыть посуду", 4)
+manager.new_task("отдохнуть", 1)
+manager.new_task("поесть", 2)
+manager.new_task("сдать ДЗ", 2)
+print("\n1. Получаем стек:", manager)
+
+
+# стэк получается, но я не могу придумать как отсортировать 
+# TypeError: 'TaskManager' object is not subscriptable
+#==============================================================================
 
 class TaskManager():
     def __init__(self):
@@ -91,41 +124,8 @@ manager.new_task("помыть посуду", 4)
 manager.new_task("отдохнуть", 1)
 manager.new_task("поесть", 2)
 manager.new_task("сдать ДЗ", 2)
-print("\nПолучаем Стэк:", manager, "\n")
+print("\n2. Получаем Стэк:", manager, "\n")
 
-print("Сортированный Стэк:",manager.sorting())
+print("2. Сортированный Стэк:",manager.sorting())
 
-# стэк получается, но я не могу придумать как отсортировать 
-# TypeError: 'TaskManager' object is not subscriptable
-#==============================================================================
-
-# class TaskManager():
-#     def __init__(self):
-#         self.my_tasks = []  
-
-#     def new_task(self, task, priority):
-#         self.get_task = []
-#         self.get_task.insert(0, task)
-#         self.get_task.insert(0, priority)
-
-
-#         self.my_tasks.insert(0, self.get_task)
-
-        
-    
-#     def __str__(self):
-#         result = ""
-#         for item in self.my_tasks:
-            
-#                 result += (f"{str(item[0])} - {str(item[1])}\n")
-#         return result
-
-
-# manager = TaskManager()
-# manager.new_task("сделать уборку", 4)
-# manager.new_task("помыть посуду", 4)
-# manager.new_task("отдохнуть", 1)
-# manager.new_task("поесть", 2)
-# manager.new_task("сдать ДЗ", 2)
-# print(manager)
-
+# 
