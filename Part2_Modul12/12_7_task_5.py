@@ -53,7 +53,7 @@ class MyStack():
         else:
             print("Удаляем верхний элемент", end=" ")
             return self.stack.pop(0)
-        
+                
     def __repr__(self):
         """def __repr__ - возвращает более информативное (официальное) 
                           строковое представление объекта
@@ -63,18 +63,18 @@ class MyStack():
 
 class TaskManager():
     def __init__(self):
-        self.my_tasks = MyStack() 
+        self.my_tasks = [] 
 
     def new_task(self, task, priority):
-        self.get_task = MyStack()
-        self.get_task.put(task)
-        self.get_task.put(priority)
+        self.get_task = []
+        self.get_task.insert(0, task)
+        self.get_task.insert(0, priority)
 
-        self.my_tasks.put(self.get_task)
+        self.my_tasks.insert(0, self.get_task)
 
-    def print_info(self):
-        
-        
+    def sorting(self):
+        if
+        return sorted(self.my_tasks)
     
     def __repr__(self) -> str:
         return str(self.my_tasks)
@@ -86,9 +86,9 @@ manager.new_task("помыть посуду", 4)
 manager.new_task("отдохнуть", 1)
 manager.new_task("поесть", 2)
 manager.new_task("сдать ДЗ", 2)
-print(manager, type(manager))
+print("Получаем Стэк:", manager)
 
-
+print(manager.sorting())
 
 # стэк получается, но я не могу придумать как отсортировать 
 # TypeError: 'TaskManager' object is not subscriptable
