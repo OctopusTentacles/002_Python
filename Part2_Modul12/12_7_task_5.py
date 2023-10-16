@@ -73,7 +73,11 @@ class TaskManager():
         self.my_tasks.insert(0, self.get_task)
 
     def sorting(self):
-        if
+        for a in self.my_tasks:
+            for b in self.my_tasks[a:]:
+                if a[0] == b[0]:
+                    a.append(b[:-1])
+
         return sorted(self.my_tasks)
     
     def __repr__(self) -> str:
@@ -86,7 +90,7 @@ manager.new_task("помыть посуду", 4)
 manager.new_task("отдохнуть", 1)
 manager.new_task("поесть", 2)
 manager.new_task("сдать ДЗ", 2)
-print("Получаем Стэк:", manager)
+print("\nПолучаем Стэк:", manager, "\n")
 
 print(manager.sorting())
 
