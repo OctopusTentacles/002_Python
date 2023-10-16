@@ -54,15 +54,25 @@ class MyStack():
             print("Удаляем верхний элемент", end=" ")
             return self.stack.pop(0)
 
-    def __str__(self):
-        result = ""
-        
-        for index in self.stack:
-            if isinstance(index, list):
-                return str(self.stack)
-            else:
-                result += str(index) + " "
-        return result
+    def __repr__(self):
+        """def __repr__ - возвращает более информативное (официальное) 
+                          строковое представление объекта
+        """
+        return str(self.stack)
+    
+    # def __repr__(self) -> str:
+    #     return str(self)
+        # result_all = ""
+        # result_new = ""
+        # for index in self.stack:
+        #     if isinstance(index, list):
+        #         for i in range(index):
+        #             result_new += "{0} - {1}".format(i)
+        #         return str(result_new)
+        #     else:
+        #         result_new += str(index) + " "
+        #     result_all += result_new + "\n"
+        # return result_all
 
         # return result
     
@@ -75,13 +85,12 @@ class TaskManager():
         self.get_task = MyStack()
         self.get_task.put(task)
         self.get_task.put(priority)
-        print(self.get_task)
 
         self.my_tasks.put(self.get_task)
-        # print(self.my_tasks)
+        print("Получаем стек:", self.my_tasks)
 
 
-    def __str__(self):
+    # def __str__(self):
         # [[1, asdd], [1, asasd]]
         # result = ""
         # result_2 = ""
@@ -89,7 +98,7 @@ class TaskManager():
         #     for item in range(index):
         #         result_2 += {0} - {1}.format(item)
         #     result += result_2 + "\n"
-        return print(self.my_tasks)
+        # return print(self.my_tasks)
 
                 # print(f"{str(key)} - {str(value)}\n")
        
