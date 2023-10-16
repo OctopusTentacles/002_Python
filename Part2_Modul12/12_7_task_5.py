@@ -56,9 +56,15 @@ class MyStack():
 
     def __str__(self):
         result = ""
+        
         for index in self.stack:
-            result += f"{str(index)} - "
+            if isinstance(index, list):
+                return str(self.stack)
+            else:
+                result += str(index) + " "
         return result
+
+        # return result
     
 
 class TaskManager():
@@ -72,15 +78,21 @@ class TaskManager():
         print(self.get_task)
 
         self.my_tasks.put(self.get_task)
-        print(self.my_tasks)
+        # print(self.my_tasks)
 
 
-    # def __str__(self):
-    #     result = ""
-    #     for index in self.my_task:
-    #         for key, value in index.items():
-    #             result += f"{str(key)} - {str(value)}\n"
-    #     return result
+    def __str__(self):
+        # [[1, asdd], [1, asasd]]
+        # result = ""
+        # result_2 = ""
+        # for index in self.my_tasks:
+        #     for item in range(index):
+        #         result_2 += {0} - {1}.format(item)
+        #     result += result_2 + "\n"
+        return print(self.my_tasks)
+
+                # print(f"{str(key)} - {str(value)}\n")
+       
 
         
 
