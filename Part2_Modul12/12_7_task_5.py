@@ -151,7 +151,7 @@ class MyStack():
     
     def get(self, task):
         """ def get(self) - Получение и удаление элемента из очереди """
-        return self.stack.pop(task)
+        print(self.stack.pop(task))
         
     def __iter__(self):
         """ def __iter__ - итерация объекта """
@@ -178,17 +178,17 @@ class TaskManager():
     # {priority: [task]}, {priority: [task, task]}, {priority: [task, task, task]}
     
     def new_task(self, task, priority):
-        get_task = MyStack()
+        self.get_task = MyStack()
         if priority not in self.my_tasks.keys():
-            self.my_tasks[priority] = get_task
-            get_task.put(task)
+            self.my_tasks[priority] = self.get_task
+            self.get_task.put(task)
         else:
             for item in self.my_tasks[priority]: # Not iterable(read documentation)
                 if item != task:
-                    get_task.put(item)
-            get_task.put(task)
+                    self.get_task.put(item)
+            self.get_task.put(task)
 
-            self.my_tasks[priority] = get_task
+            self.my_tasks[priority] = self.get_task
     
     def print_info(self):
         result = ""
@@ -204,13 +204,11 @@ class TaskManager():
 
 
     def delete(self, task):
-        for key, value in self.my_tasks.items():
-            for item in value:
-                if task == item:
-                    print("Удаляем задау:", self.my_tasks[key].get(task))
+        for self.get_task in self.my_tasks.keys():
+            for item in self.get_task:
+                if item == task:
+                    self.get_task.get(task)
 
-        else:
-            print("Такой задачи нет!")
         
 
     def __repr__(self) -> str:
