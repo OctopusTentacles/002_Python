@@ -136,3 +136,60 @@ print("2. Сортированный Стэк:",manager.sorting())
 
 # тут отсортировал, вывел как в примере, но без class MyStack
 #==============================================================================
+
+# 3 ===========================================================================
+
+class MyStack():
+    def __init__(self):
+        self.stack = list() 
+    
+    def put(self, item):
+        self.stack.append(item)
+
+    def get(self):
+        print("Верхний элемент", end=" ")
+        return self.stack[0]
+    
+    def delete(self):
+        if len(self.stack) == 0:
+            return "Стек пуст"
+        else:
+            print("Удаляем верхний элемент", end=" ")
+            return self.stack.pop(0)
+                
+    def __repr__(self):
+        """def __repr__ - возвращает более информативное (официальное) 
+                          строковое представление объекта
+        """
+        return str(self.stack)
+    
+
+class TaskManager():
+    def __init__(self):
+        self.my_tasks = dict()
+
+    # {priority: [task]}, {priority: [task, task]}, {priority: [task, task, task]}
+    
+    def new_task(self, task, priority):
+        if priority != self.my_tasks.keys():
+            self.my_tasks[priority] = MyStack()
+            self.my_tasks[priority].put(task)
+        else:
+            self.my_tasks[priority].put(task)
+
+
+
+    def sort(self, data):
+        self.my_tasks.quick_sort(data)
+
+    def __repr__(self) -> str:
+        return str(self.my_tasks)
+        
+
+manager = TaskManager()
+manager.new_task("сделать уборку", 4)
+manager.new_task("помыть посуду", 4)
+manager.new_task("отдохнуть", 1)
+manager.new_task("поесть", 2)
+manager.new_task("сдать ДЗ", 2)
+print("\n3. Получаем стек:", manager)
