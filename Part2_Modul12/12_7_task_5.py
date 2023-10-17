@@ -87,7 +87,8 @@ manager.new_task("помыть посуду", 4)
 manager.new_task("отдохнуть", 1)
 manager.new_task("поесть", 2)
 manager.new_task("сдать ДЗ", 2)
-print("\n1. Получаем стек:", manager)
+print("\nВариант 1:=========================================================")
+print("Получаем стек:", manager)
 
 # стэк получается, но я не могу придумать как отсортировать 
 # TypeError: 'TaskManager' object is not subscriptable
@@ -130,9 +131,10 @@ manager.new_task("помыть посуду", 4)
 manager.new_task("отдохнуть", 1)
 manager.new_task("поесть", 2)
 manager.new_task("сдать ДЗ", 2)
-print("\n2. Получаем Стэк:", manager, "\n")
+print("\nВариант 2:=========================================================")
+print("Получаем Стэк:", manager, "\n")
 
-print("2. Сортированный Стэк:",manager.sorting())
+print("Сортированный Стэк:",manager.sorting())
 
 # тут отсортировал, вывел как в примере, но без class MyStack
 # ладно, еще попытка )))
@@ -161,15 +163,23 @@ class MyStack():
             return self.stack.pop(0)
         
     def __iter__(self):
+        """ def __iter__ - итерация объекта """
         return iter(self.stack)
-                
+    
+    def __getitem__(self, item):
+        """ def __getitem__ - вложенный объект - контейнер """
+        return self.stack[item]
+
+    def __len__(self):
+        """ def __len__ - длина объекта """
+        return len(self.stack)
+
     def __repr__(self):
         """def __repr__ - возвращает более информативное (официальное) 
                           строковое представление объекта
         """
         return str(self.stack)
     
-
 class TaskManager():
     def __init__(self):
         self.my_tasks = dict()
@@ -182,15 +192,24 @@ class TaskManager():
             self.my_tasks[priority] = get_task
             get_task.put(task)
         else:
-            new_stack = MyStack()
             for item in self.my_tasks[priority]: # Not iterable(read documentation)
                 if item != task:
-                    new_stack.put(item)
-            new_stack.put(task)
+                    get_task.put(item)
+            get_task.put(task)
 
-                
-            self.my_tasks[priority] = new_stack
-
+            self.my_tasks[priority] = get_task
+    
+    def print_info(self):
+        result = ""
+        for key, value in sorted(self.my_tasks.items()):
+            result += f"{str(key)} - "
+            for index in range(len(value)): # object has no len()
+                result += f"{value[index]}" # object is not subscriptable
+                if index != len(value) - 1:
+                    result += "; "
+                else:
+                    result += ".\n"
+        print(result)
 
 
     def sort(self, data):
@@ -206,4 +225,8 @@ manager.new_task("помыть посуду", 4)
 manager.new_task("отдохнуть", 1)
 manager.new_task("поесть", 2)
 manager.new_task("сдать ДЗ", 2)
-print("\n3. Получаем не стек:", manager)
+manager.new_task("сделать уборку", 4)
+print("\nВариант 3:=========================================================")
+print("Получаем Стек:", manager)
+
+manager.print_info()
