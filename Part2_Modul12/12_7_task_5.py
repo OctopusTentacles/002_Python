@@ -116,9 +116,9 @@ class TaskManager():
         sorting = sorted(self.my_tasks)
         for index in sorting:
             if len(index) == 3:
-                print("{0} - {1}; {2}".format(index[0], index[1], index[2]))
+                print("{0} - {1}; {2}.".format(index[0], index[1], index[2]))
             elif len(index) == 2:
-                print("{0} - {1}".format(index[0], index[1]))
+                print("{0} - {1}.".format(index[0], index[1]))
         return sorted(sorting)
     
     def __repr__(self) -> str:
@@ -148,14 +148,9 @@ class MyStack():
     
     def put(self, item):
         self.stack.append(item)
-
-    # def get(self):
-        # print("Верхний элемент", end=" ")
-        # return self.stack[0]
     
     def get(self, task):
-        """ def get(self) - Получение и удаление элемента из очереди
-        """
+        """ def get(self) - Получение и удаление элемента из очереди """
         return self.stack.pop(task)
         
     def __iter__(self):
@@ -209,10 +204,13 @@ class TaskManager():
 
 
     def delete(self, task):
-        if task not in self.my_tasks.values():
-            print("Такой задачи нет!")
-        else:
+        for key, value in self.my_tasks.items():
+            for item in value:
+                if task == item:
+                    print("Удаляем задау:", self.my_tasks[key].get(task))
 
+        else:
+            print("Такой задачи нет!")
         
 
     def __repr__(self) -> str:
@@ -230,3 +228,4 @@ print("\nВариант 3:======================================================
 print("Получаем Стек:", manager)
 
 manager.print_info()
+manager.delete("сделать уборку")
