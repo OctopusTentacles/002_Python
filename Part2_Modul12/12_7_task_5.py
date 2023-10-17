@@ -153,14 +153,10 @@ class MyStack():
         # print("Верхний элемент", end=" ")
         # return self.stack[0]
     
-    def get(self):
+    def get(self, task):
         """ def get(self) - Получение и удаление элемента из очереди
         """
-        if len(self.stack) == 0:
-            return "Стек пуст"
-        else:
-            print("Удаляем верхний элемент", end=" ")
-            return self.stack.pop(0)
+        return self.stack.pop(task)
         
     def __iter__(self):
         """ def __iter__ - итерация объекта """
@@ -212,8 +208,12 @@ class TaskManager():
         print(result)
 
 
-    def sort(self, data):
-        self.my_tasks.quick_sort(data)
+    def delete(self, task):
+        if task not in self.my_tasks.values():
+            print("Такой задачи нет!")
+        else:
+
+        
 
     def __repr__(self) -> str:
         return str(self.my_tasks)
