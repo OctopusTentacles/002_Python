@@ -135,6 +135,7 @@ print("\n2. Получаем Стэк:", manager, "\n")
 print("2. Сортированный Стэк:",manager.sorting())
 
 # тут отсортировал, вывел как в примере, но без class MyStack
+# ладно, еще попытка )))
 #==============================================================================
 
 # 3 ===========================================================================
@@ -146,16 +147,21 @@ class MyStack():
     def put(self, item):
         self.stack.append(item)
 
-    def get(self):
-        print("Верхний элемент", end=" ")
-        return self.stack[0]
+    # def get(self):
+        # print("Верхний элемент", end=" ")
+        # return self.stack[0]
     
-    def delete(self):
+    def get(self):
+        """ def get(self) - Получение и удаление элемента из очереди
+        """
         if len(self.stack) == 0:
             return "Стек пуст"
         else:
             print("Удаляем верхний элемент", end=" ")
             return self.stack.pop(0)
+        
+    def __iter__(self):
+        return iter(self.stack)
                 
     def __repr__(self):
         """def __repr__ - возвращает более информативное (официальное) 
@@ -171,11 +177,19 @@ class TaskManager():
     # {priority: [task]}, {priority: [task, task]}, {priority: [task, task, task]}
     
     def new_task(self, task, priority):
-        if priority != self.my_tasks.keys():
-            self.my_tasks[priority] = MyStack()
-            self.my_tasks[priority].put(task)
+        get_task = MyStack()
+        if priority not in self.my_tasks.keys():
+            self.my_tasks[priority] = get_task
+            get_task.put(task)
         else:
-            self.my_tasks[priority].put(task)
+            new_stack = MyStack()
+            for item in self.my_tasks[priority]: # Not iterable(read documentation)
+                if item != task:
+                    new_stack.put(item)
+            new_stack.put(task)
+
+                
+            self.my_tasks[priority] = new_stack
 
 
 
@@ -192,4 +206,4 @@ manager.new_task("помыть посуду", 4)
 manager.new_task("отдохнуть", 1)
 manager.new_task("поесть", 2)
 manager.new_task("сдать ДЗ", 2)
-print("\n3. Получаем стек:", manager)
+print("\n3. Получаем не стек:", manager)
