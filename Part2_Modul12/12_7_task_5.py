@@ -257,25 +257,10 @@ class MyStack():
 
     def __repr__(self):
         """def __repr__ - возвращает более информативное (официальное) 
-                          строковое представление объекта
-        """
+                          строковое представление объекта """
         return str(self.stack)
     
-    # def __str__(self):
-    #     result = ""
-    #     for item_1 in (self.stack):
-    #         for item_2 in item_1:
-    #             result += f"{str(item_2)} - "
-    #             for index, item_3 in enumerate(item_2):
-    #                 result += f"{item_3}"
-    #                 if index != len(item_2) - 1:
-    #                     result += "; "
-    #                 else:
-    #                     result += ".\n"
-    #     return result
 
-
-    
 class TaskManager():
     def __init__(self):
         self.my_tasks = MyStack()
@@ -298,20 +283,24 @@ class TaskManager():
             self.get_priority.put(priority)
             self.my_tasks.put(self.get_priority)
 
+    def sort(self):
+        for i_mn in range(len(self.my_tasks)):
+                for curr in range(i_mn, len(self.my_tasks)):
+                    if self.my_tasks[curr] < self.my_tasks[i_mn]:
+                        self.my_tasks[curr], self.my_tasks[i_mn] = self.my_tasks[i_mn], self.my_tasks[curr]            
+
     def print_info(self):
+        
         result = ""
         for item_1 in (self.my_tasks):
             result += f"{str(item_1[0])} - "
-
             for index in range(len(item_1[1])):
-                    
                     result += f"{item_1[1][index]}"
                     if index != len(item_1[1]) - 1:
                         result += "; "
                     else:
                         result += ".\n"
         print(f"\nСписок дел на сегодня:\n{result}")
-
 
     def __repr__(self) -> str:
         return str(self.my_tasks)
@@ -327,3 +316,4 @@ print("\nВариант 4:======================================================
 print("Получаем стек:", manager)
 
 manager.print_info()
+manager.sort()
