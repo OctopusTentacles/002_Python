@@ -74,8 +74,8 @@ class TaskManager():
         self.my_tasks.put(self.get_task)
         # print("Получаем стек:", self.my_tasks)
 
-    def sort(self, data):
-        self.my_tasks.quick_sort(data)
+    # def sort(self, data):
+    #     self.my_tasks.quick_sort(data)
 
     def __repr__(self) -> str:
         return str(self.my_tasks)
@@ -90,9 +90,8 @@ manager.new_task("сдать ДЗ", 2)
 print("\nВариант 1:=========================================================")
 print("Получаем стек:", manager)
 
-# стэк получается, но я не могу придумать как отсортировать 
-# TypeError: 'TaskManager' object is not subscriptable
 #==============================================================================
+
 
 # 2 ===========================================================================
 class TaskManager():
@@ -136,9 +135,8 @@ print("Получаем Стэк:", manager, "\n")
 
 print("Сортированный Стэк:",manager.sorting())
 
-# тут отсортировал, вывел как в примере, но без class MyStack
-# ладно, еще попытка )))
 #==============================================================================
+
 
 # 3 ===========================================================================
 
@@ -183,7 +181,7 @@ class TaskManager():
             self.my_tasks[priority] = self.get_task
             self.get_task.put(task)
         else:
-            for item in self.my_tasks[priority]: # Not iterable(read documentation)
+            for item in self.my_tasks[priority]: # Not iterable(add __iter__)
                 if item != task:
                     self.get_task.put(item)
             self.get_task.put(task)
@@ -194,8 +192,8 @@ class TaskManager():
         result = ""
         for key, value in sorted(self.my_tasks.items()):
             result += f"{str(key)} - "
-            for index in range(len(value)): # object has no len()
-                result += f"{value[index]}" # object is not subscriptable
+            for index in range(len(value)): # object has no len() (add __len__)
+                result += f"{value[index]}" # object is not subscriptable (add __getitem__)
                 if index != len(value) - 1:
                     result += "; "
                 else:
@@ -222,9 +220,73 @@ manager.new_task("отдохнуть", 1)
 manager.new_task("поесть", 2)
 manager.new_task("сдать ДЗ", 2)
 manager.new_task("сделать уборку", 4)
+manager.new_task("сделать уборку", 1)
+
 print("\nВариант 3:=========================================================")
 print("Получаем Стек:", manager)
 
 manager.print_info()
 manager.delete("сделать уборку")
 manager.print_info()
+
+#==============================================================================
+
+# 4 ===========================================================================
+class MyStack():
+    def __init__(self):
+        self.stack = list() 
+    
+    def put(self, item):
+        self.stack.insert(0, item)
+    
+    def get(self, task):
+        """ def get(self) - Получение и удаление элемента из очереди """
+        print("Удаяем задание:", self.stack.pop(task))
+        
+    def __iter__(self):
+        """ def __iter__ - итерация объекта """
+        return iter(self.stack)
+    
+    def __getitem__(self, item):
+        """ def __getitem__ - вложенный объект - контейнер """
+        return self.stack[item]
+
+    def __len__(self):
+        """ def __len__ - длина объекта """
+        return len(self.stack)
+
+    def __repr__(self):
+        """def __repr__ - возвращает более информативное (официальное) 
+                          строковое представление объекта
+        """
+        return str(self.stack)
+    
+class TaskManager():
+    def __init__(self):
+        self.my_tasks = MyStack()
+
+        # [[priority, task], [priority, task, task], [priority, task, task, task]]
+    
+
+    def new_task(self, task, priority):
+        self.get_task = MyStack()
+        self.get_task.put(task)
+        self.get_task.put(priority)
+
+        self.my_tasks.put(self.get_task)
+
+    # def sort(self, data):
+    #     self.my_tasks.quick_sort(data)
+
+    def __repr__(self) -> str:
+        return str(self.my_tasks)
+        
+
+manager = TaskManager()
+manager.new_task("сделать уборку", 4)
+manager.new_task("помыть посуду", 4)
+manager.new_task("отдохнуть", 1)
+manager.new_task("поесть", 2)
+manager.new_task("сдать ДЗ", 2)
+print("\nВариант 4:=========================================================")
+print("Получаем стек:", manager)
