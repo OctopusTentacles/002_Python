@@ -236,8 +236,8 @@ class MyStack():
     def __init__(self):
         self.stack = list() 
     
-    def put(self, index, item):
-        self.stack.insert(index, item)
+    def put(self, item):
+        self.stack.insert(0, item)
     
     def get(self, task):
         """ def get(self) - Получение и удаление элемента из очереди """
@@ -261,26 +261,57 @@ class MyStack():
         """
         return str(self.stack)
     
+    # def __str__(self):
+    #     result = ""
+    #     for item_1 in (self.stack):
+    #         for item_2 in item_1:
+    #             result += f"{str(item_2)} - "
+    #             for index, item_3 in enumerate(item_2):
+    #                 result += f"{item_3}"
+    #                 if index != len(item_2) - 1:
+    #                     result += "; "
+    #                 else:
+    #                     result += ".\n"
+    #     return result
+
+
+    
 class TaskManager():
     def __init__(self):
         self.my_tasks = MyStack()
 
         # [[priority, task], [priority, task, task], [priority, task, task, task]]
-    
+        # [[priority, [task]], [priority, [task, task, task]]] # new idea
+
 
     def new_task(self, task, priority):
         self.get_task = MyStack()
+        self.get_priority = MyStack()   # new idea
+
         for list in self.my_tasks:
             if list[0] == priority:
-                list.put(1, task)
+                list[1].put(task)
                 break
         else:
-            self.get_task.put(0, priority)
-            self.get_task.put(1, task)
-            self.my_tasks.put(0, self.get_task)
+            self.get_task.put(task)
+            self.get_priority.put(self.get_task)
+            self.get_priority.put(priority)
+            self.my_tasks.put(self.get_priority)
 
-    # def sort(self, data):
-    #     self.my_tasks.quick_sort(data)
+    def print_info(self):
+        result = ""
+        for item_1 in (self.my_tasks):
+            result += f"{str(item_1[0])} - "
+
+            for index in range(len(item_1[1])):
+                    
+                    result += f"{item_1[1][index]}"
+                    if index != len(item_1[1]) - 1:
+                        result += "; "
+                    else:
+                        result += ".\n"
+        print(f"\nСписок дел на сегодня:\n{result}")
+
 
     def __repr__(self) -> str:
         return str(self.my_tasks)
@@ -294,3 +325,5 @@ manager.new_task("поесть", 2)
 manager.new_task("сдать ДЗ", 2)
 print("\nВариант 4:=========================================================")
 print("Получаем стек:", manager)
+
+manager.print_info()
