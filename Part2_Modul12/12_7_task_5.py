@@ -236,8 +236,8 @@ class MyStack():
     def __init__(self):
         self.stack = list() 
     
-    def put(self, item):
-        self.stack.insert(0, item)
+    def put(self, index, item):
+        self.stack.insert(index, item)
     
     def get(self, task):
         """ def get(self) - Получение и удаление элемента из очереди """
@@ -270,10 +270,14 @@ class TaskManager():
 
     def new_task(self, task, priority):
         self.get_task = MyStack()
-        self.get_task.put(task)
-        self.get_task.put(priority)
-
-        self.my_tasks.put(self.get_task)
+        for list in self.my_tasks:
+            if list[0] == priority:
+                list.put(1, task)
+                break
+        else:
+            self.get_task.put(0, priority)
+            self.get_task.put(1, task)
+            self.my_tasks.put(0, self.get_task)
 
     # def sort(self, data):
     #     self.my_tasks.quick_sort(data)
