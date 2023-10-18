@@ -284,14 +284,16 @@ class TaskManager():
             self.my_tasks.put(self.get_priority)
 
     def sort(self):
-        for i_mn in range(len(self.get_priority)):
-                for curr in range(i_mn, len(self.get_priority)):
-                    if self.get_priority[curr] < self.get_priority[i_mn]:
-                        self.get_priority[curr], self.get_priority[i_mn] = self.get_priority[i_mn], self.get_priority[curr]            
-                        self.my_tasks.put(self.get_priority)
+        for index, item in enumerate(self.my_tasks):
+            if index != len(self.my_tasks):
+                for index, curr in enumerate(self.my_tasks):
+                    if item[0] > curr[0]:
+                        item, curr = curr, item            
+                        # self.my_tasks.put(self.get_priority[i_mn])
+                        # self.my_tasks.put(self.get_priority[curr])
+        print(self.my_tasks)
 
     def print_info(self):
-        
         result = ""
         for item_1 in (self.my_tasks):
             result += f"{str(item_1[0])} - "
@@ -318,4 +320,3 @@ print("Получаем стек:", manager)
 
 manager.print_info()
 manager.sort()
-manager.print_info()
