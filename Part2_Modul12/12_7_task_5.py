@@ -151,7 +151,7 @@ class MyStack():
     
     def get(self, task):
         """ def get(self) - Получение и удаление элемента из очереди """
-        print(self.stack.pop(task))
+        print("Удаяем задание:", self.stack.pop(task))
         
     def __iter__(self):
         """ def __iter__ - итерация объекта """
@@ -204,10 +204,10 @@ class TaskManager():
 
 
     def delete(self, task):
-        for self.get_task in self.my_tasks.keys():
-            for item in self.get_task:
+        for value in self.my_tasks.values():
+            for index, item in enumerate(value):
                 if item == task:
-                    self.get_task.get(task)
+                    value.get(index)
 
         
 
@@ -227,3 +227,4 @@ print("Получаем Стек:", manager)
 
 manager.print_info()
 manager.delete("сделать уборку")
+manager.print_info()
