@@ -279,8 +279,15 @@ class TaskManager():
 
         for list in self.my_tasks:
             if list[0] == priority:
-                list[1].put(task)
-                break
+                # нужно проверить задание одного приоритета
+                for tasks in list[1]:
+                    if task == tasks:
+                        print(f"Задание '{task}' уже добавлено!")
+                        break
+                else: 
+                    list[1].put(task)
+                    break
+            break
         else:
             self.get_task.put(task)
             self.get_priority.put(self.get_task)
@@ -317,9 +324,12 @@ manager.new_task("помыть посуду", 4)
 manager.new_task("отдохнуть", 1)
 manager.new_task("поесть", 2)
 manager.new_task("сдать ДЗ", 2)
+manager.new_task("погулять", 1)
+manager.new_task("поработать", 3)
+manager.new_task("сделать уборку", 4) # дубликат с одним приоритетом
+
 print("\nВариант 4:=========================================================")
 print("Получаем стек:", manager)
 
-manager.print_info()
 manager.sort()
 manager.print_info()
