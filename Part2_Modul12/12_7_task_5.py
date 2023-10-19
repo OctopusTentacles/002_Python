@@ -284,14 +284,20 @@ class TaskManager():
             self.my_tasks.put(self.get_priority)
 
     def sort(self):
-        for index, item in enumerate(self.my_tasks):
-            if index != len(self.my_tasks):
-                for index, curr in enumerate(self.my_tasks):
-                    if item[0] > curr[0]:
-                        item, curr = curr, item            
-                        # self.my_tasks.put(self.get_priority[i_mn])
-                        # self.my_tasks.put(self.get_priority[curr])
-        print(self.my_tasks)
+        for i_min in range(len(self.my_tasks)):
+            for curr in range(i_min, len(self.my_tasks)):
+                if self.my_tasks[curr][0] < self.my_tasks[i_min][0]:
+                    self.my_tasks[i_min], self.my_tasks[curr] =\
+                    self.my_tasks[curr], self.my_tasks[i_min]
+                    print(self.my_tasks)
+        # for index, curr in enumerate(self.my_tasks):
+        #     if index + 1 != len(self.my_tasks):
+        #         for index, next in enumerate(self.my_tasks):
+        #             if item[0] > curr[0]:
+        #                 item, curr = curr, item            
+        #                 # self.my_tasks.put(self.get_priority[i_mn])
+        #                 # self.my_tasks.put(self.get_priority[curr])
+        # print(self.my_tasks)
 
     def print_info(self):
         result = ""
