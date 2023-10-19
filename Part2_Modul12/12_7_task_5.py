@@ -234,13 +234,16 @@ manager.print_info()
 # 4 ===========================================================================
 class MyStack():
     def __init__(self):
+        """ class MyStack - методы для создания списков, добавления и удаления элементов"""
         self.stack = list() 
     
     def put(self, item):
+        """ def put(self, item) - добавление элемента в список на первую позицию,
+            таким образом последний добавленный будет первым - LIFO """
         self.stack.insert(0, item)
     
     def get(self, task):
-        """ def get(self) - Получение и удаление элемента из очереди """
+        """ def get(self) - Получение и удаление элемента из списка """
         print("Удаяем задание:", self.stack.pop(task))
         
     def __iter__(self):
@@ -252,7 +255,7 @@ class MyStack():
         return self.stack[item]
     
     def __setitem__(self, key, value):
-        """ def __setitem__ запись значения value по ключу key"""
+        """ def __setitem__ - запись значения value по ключу key"""
         self.stack[key] = value
 
     def __len__(self):
@@ -261,7 +264,7 @@ class MyStack():
 
     def __repr__(self):
         """def __repr__ - возвращает более информативное (официальное) 
-                          строковое представление объекта """
+            строковое представление объекта (для наглядности и тестирования)"""
         return str(self.stack)
     
 
@@ -282,12 +285,12 @@ class TaskManager():
                 # нужно проверить задание одного приоритета
                 for tasks in list[1]:
                     if task == tasks:
-                        print(f"Задание '{task}' уже добавлено!")
+                        print(f"Задание '{task}' уже добавлено! Приоритет '{priority}'")
                         break
                 else: 
                     list[1].put(task)
                     break
-            break
+                break
         else:
             self.get_task.put(task)
             self.get_priority.put(self.get_task)
@@ -316,8 +319,9 @@ class TaskManager():
 
     def __repr__(self) -> str:
         return str(self.my_tasks)
-        
 
+
+print("\nВариант 4:=========================================================")
 manager = TaskManager()
 manager.new_task("сделать уборку", 4)
 manager.new_task("помыть посуду", 4)
@@ -326,10 +330,19 @@ manager.new_task("поесть", 2)
 manager.new_task("сдать ДЗ", 2)
 manager.new_task("погулять", 1)
 manager.new_task("поработать", 3)
-manager.new_task("сделать уборку", 4) # дубликат с одним приоритетом
+# дубликат с одним приоритетом не включается в стек, выдается примечание
+manager.new_task("сделать уборку", 4) 
 
-print("\nВариант 4:=========================================================")
 print("Получаем стек:", manager)
 
 manager.sort()
 manager.print_info()
+# дубликат с одним приоритетом не включается в стек, выдается примечание
+manager.new_task("погулять", 1) 
+
+# TODO : дубликат с другим приоритетом
+manager.new_task("погулять", 2)
+manager.print_info()
+
+
+# TODO : удаление задач
