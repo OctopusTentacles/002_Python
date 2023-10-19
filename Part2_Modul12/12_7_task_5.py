@@ -275,22 +275,49 @@ class TaskManager():
         # [[priority, task], [priority, task, task], [priority, task, task, task]]
         # [[priority, [task]], [priority, [task, task, task]]] # new idea
 
-
     def new_task(self, task, priority):
         self.get_task = MyStack()
         self.get_priority = MyStack()   # new idea
 
-        for list in self.my_tasks:
-            if list[0] == priority:
-                # нужно проверить задание одного приоритета
-                for tasks in list[1]:
-                    if task == tasks:
+        flag = False
+
+        # есть ли такое задание с таким же приоритетом?
+        for tasks in self.my_tasks:
+            if tasks[0] == priority:
+                flag = True
+                cur_priority = tasks
+                for tasks_2 in cur_priority[1]:
+                    if task == tasks_2:
                         print(f"Задание '{task}' уже добавлено! Приоритет '{priority}'")
                         break
-                else: 
-                    list[1].put(task)
+
+        # есть ли такое задание с другим приоритетом?
+        for list in self.my_tasks:
+            for item in list[1]:
+                if task == item:
+                    print(f"Задание '{task}' уже добавлено! Приоритет '{list[0]}'")
+                    choice = input("Добавить еще раз? Y/N...")
+                    if choice.title() == "N":
+                        break
+                    else:
+                        # есть такой приоритет и задание, с другим приоритетом
+                        # добавляем такое же задание в существующий приоритет
+                        if flag:
+                            self.my_tasks[priority].put(task)
+                            break
+                        # нет приоритета, есть задание, с другим приоритетом
+                        # добавляем такое же задание с новым приоритетом
+                        else:
+                            self.get_task.put(task)
+                            self.get_priority.put(self.get_task)
+                            self.get_priority.put(priority)
+                            self.my_tasks.put(self.get_priority)
+                            break
+            else:
+                if flag:
+                    cur_priority[1].put(task)
                     break
-                break
+        # новый приоритет и новое задание
         else:
             self.get_task.put(task)
             self.get_priority.put(self.get_task)
