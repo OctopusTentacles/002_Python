@@ -250,6 +250,10 @@ class MyStack():
     def __getitem__(self, item):
         """ def __getitem__ - вложенный объект - контейнер """
         return self.stack[item]
+    
+    def __setitem__(self, key, value):
+        """ def __setitem__ запись значения value по ключу key"""
+        self.stack[key] = value
 
     def __len__(self):
         """ def __len__ - длина объекта """
@@ -287,17 +291,9 @@ class TaskManager():
         for i_min in range(len(self.my_tasks)):
             for curr in range(i_min, len(self.my_tasks)):
                 if self.my_tasks[curr][0] < self.my_tasks[i_min][0]:
-                    self.my_tasks[i_min], self.my_tasks[curr] =\
-                    self.my_tasks[curr], self.my_tasks[i_min]
-                    print(self.my_tasks)
-        # for index, curr in enumerate(self.my_tasks):
-        #     if index + 1 != len(self.my_tasks):
-        #         for index, next in enumerate(self.my_tasks):
-        #             if item[0] > curr[0]:
-        #                 item, curr = curr, item            
-        #                 # self.my_tasks.put(self.get_priority[i_mn])
-        #                 # self.my_tasks.put(self.get_priority[curr])
-        # print(self.my_tasks)
+                    self.my_tasks[i_min], self.my_tasks[curr] = \
+                        self.my_tasks[curr], self.my_tasks[i_min]
+                    # objects do not support item assignment (add __setitem__)
 
     def print_info(self):
         result = ""
@@ -326,3 +322,4 @@ print("Получаем стек:", manager)
 
 manager.print_info()
 manager.sort()
+manager.print_info()
