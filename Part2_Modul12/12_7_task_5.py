@@ -279,11 +279,8 @@ class TaskManager():
         self.get_task = MyStack()
         self.get_priority = MyStack()   # new idea
 
-        # flag = False
-        # flag_exit = False
-        # есть ли такое задание с таким же приоритетом?
         if self.check_task(task, priority):
-            print("Добавляем новое задание...")
+            print("Ну и правильно, зачем делать одно дело два раза...")
         else:
             for list in self.my_tasks:
                 if list[0] == priority:
@@ -299,15 +296,12 @@ class TaskManager():
         for item in self.my_tasks:
             if task in item[1]:
                 print(f"Задание '{task}' уже добавлено! Приоритет '{item[0]}'")
-                choice = input(f"Добавить еще раз в приоритет {priority}? Y/N...")
+                choice = input(f"Добавить еще раз в приоритет '{priority}'? Y/N...")
                 if choice.title() == "N":
                     return True
                 else:
-                    print(f"Добавляется еще одно задание {task}, в приоритет {priority}")
+                    print(f"Добавляется еще одно задание '{task}', в приоритет '{priority}'")
                     return False
-
-
-
 
     def sort(self):
         for i_min in range(len(self.my_tasks)):
@@ -342,19 +336,20 @@ manager.new_task("поесть", 2)
 manager.new_task("сдать ДЗ", 2)
 manager.new_task("погулять", 1)
 manager.new_task("поработать", 3)
-# дубликат с одним приоритетом не включается в стек, выдается примечание
+# дубликат с одинаковым приоритетом, можно выбрать добавлять или нет
 manager.new_task("сделать уборку", 4) 
 
+# для наглядности и отладки, можно закомментировать
 print("Получаем стек:", manager)
-
 manager.sort()
 manager.print_info()
-# дубликат с одним приоритетом не включается в стек, выдается примечание
-manager.new_task("погулять", 1) 
 
-# дубликат с другим приоритетом
-manager.new_task("погулять", 2)
+# дубликат с одинаковым приоритетом, можно выбрать добавлять или нет
+manager.new_task("погулять", 1) 
 manager.print_info()
 
+# дубликат с другим приоритетом, можно выбрать добавлять или нет
+manager.new_task("погулять", 2)
+manager.print_info()
 
 # TODO : удаление задач
