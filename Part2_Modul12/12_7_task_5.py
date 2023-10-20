@@ -295,12 +295,16 @@ class TaskManager():
         # есть ли такое задание с другим приоритетом?
         if not flag_exit:
             for list in self.my_tasks:
+                if not flag_exit:
+                #     break
                 for item in list[1]:
                     if task == item:
                         print(f"Задание '{task}' уже добавлено! Приоритет '{list[0]}'")
-                        choice = input("Добавить еще раз? Y/N...")
+                        choice = input(f"Добавить еще раз в приоритет {priority}? Y/N...")
                         if choice.title() == "N":
+                            flag_exit = True
                             break
+                
                         else:
                             # есть такой приоритет и задание, с другим приоритетом
                             # добавляем такое же задание в существующий приоритет
@@ -319,7 +323,7 @@ class TaskManager():
                     if flag:
                         cur_priority[1].put(task)
                         break
-            # новый приоритет и новое задание
+                # новый приоритет и новое задание
             else:
                 self.get_task.put(task)
                 self.get_priority.put(self.get_task)
