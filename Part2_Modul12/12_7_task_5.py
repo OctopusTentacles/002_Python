@@ -302,6 +302,13 @@ class TaskManager():
                 else:
                     print(f"Добавляется еще одно задание '{task}', в приоритет '{priority}'")
                     return False
+                
+    def delete_task(self, task, priority):
+        for item in self.my_tasks:
+            if priority == item[0] and task in item[1]:
+                deleted_item = item[1].get(task)
+                print(f"Задание '{deleted_item}' удалено из приоритета '{priority}'")
+
 
     def sort(self):
         for i_min in range(len(self.my_tasks)):
@@ -352,4 +359,7 @@ manager.print_info()
 manager.new_task("погулять", 2)
 manager.print_info()
 
-# TODO : удаление задач
+# удаление задач 
+manager.delete_task("поработать", 3)
+manager.print_info()
+
