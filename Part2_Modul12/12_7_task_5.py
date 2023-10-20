@@ -279,56 +279,34 @@ class TaskManager():
         self.get_task = MyStack()
         self.get_priority = MyStack()   # new idea
 
-        flag = False
-        flag_exit = False
+        # flag = False
+        # flag_exit = False
         # есть ли такое задание с таким же приоритетом?
-        for tasks in self.my_tasks:
-            if tasks[0] == priority:
-                flag = True
-                cur_priority = tasks
-                for tasks_2 in cur_priority[1]:
-                    if task == tasks_2:
-                        print(f"Задание '{task}' уже добавлено! Приоритет '{priority}'")
-                        flag_exit = True
-                        break
-
-        # есть ли такое задание с другим приоритетом?
-        if not flag_exit:
+        if self.check_task(task, priority):
+            print("Добавляем новое задание...")
+        else:
             for list in self.my_tasks:
-                if not flag_exit:
-                #     break
-                for item in list[1]:
-                    if task == item:
-                        print(f"Задание '{task}' уже добавлено! Приоритет '{list[0]}'")
-                        choice = input(f"Добавить еще раз в приоритет {priority}? Y/N...")
-                        if choice.title() == "N":
-                            flag_exit = True
-                            break
-                
-                        else:
-                            # есть такой приоритет и задание, с другим приоритетом
-                            # добавляем такое же задание в существующий приоритет
-                            if flag:
-                                self.my_tasks[priority].put(task)
-                                break
-                            # нет приоритета, есть задание, с другим приоритетом
-                            # добавляем такое же задание с новым приоритетом
-                            else:
-                                self.get_task.put(task)
-                                self.get_priority.put(self.get_task)
-                                self.get_priority.put(priority)
-                                self.my_tasks.put(self.get_priority)
-                                break
-                else:
-                    if flag:
-                        cur_priority[1].put(task)
-                        break
-                # новый приоритет и новое задание
+                if list[0] == priority:
+                    list[1].put(task)
+                    break
             else:
                 self.get_task.put(task)
                 self.get_priority.put(self.get_task)
                 self.get_priority.put(priority)
                 self.my_tasks.put(self.get_priority)
+
+    def check_task(self, task, priority):
+        for item in self.my_tasks:
+            if task in item[1]:
+                print(f"Задание '{task}' уже добавлено! Приоритет '{item[0]}'")
+                choice = input(f"Добавить еще раз в приоритет {priority}? Y/N...")
+                if choice.title() == "N":
+                    return True
+                else:
+                    print(f"Добавляется еще одно задание {task}, в приоритет {priority}")
+                    return False
+
+
 
 
     def sort(self):
@@ -374,7 +352,7 @@ manager.print_info()
 # дубликат с одним приоритетом не включается в стек, выдается примечание
 manager.new_task("погулять", 1) 
 
-# TODO : дубликат с другим приоритетом
+# дубликат с другим приоритетом
 manager.new_task("погулять", 2)
 manager.print_info()
 
