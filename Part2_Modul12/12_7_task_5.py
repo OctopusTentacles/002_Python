@@ -244,7 +244,8 @@ class MyStack():
     
     def get(self, task):
         """ def get(self) - Получение и удаление элемента из списка """
-        print("Удаляем задание:", self.stack.pop(task))
+        self.stack.pop(task)
+        print("Удаление..........")
         
     def __iter__(self):
         """ def __iter__ - итерация объекта """
@@ -304,13 +305,17 @@ class TaskManager():
                     return False
                 
     def delete_task(self, task, priority):
-        for item in self.my_tasks:
+        for i_x, item in enumerate(self.my_tasks):
             if priority == item[0]:
                 for index, value in enumerate(item[1]):
                     if task == value:
                         item[1].get(index)
                         print(f"Задание '{task}' удалено из приоритета '{priority}'")
-
+                        if len(item[1]) == 0:
+                            self.my_tasks.get(i_x)
+                            print(f"Приоритет '{priority}' удален так как он пуст")
+                        else:
+                            break
 
     def sort(self):
         for i_min in range(len(self.my_tasks)):
@@ -365,3 +370,5 @@ manager.print_info()
 manager.delete_task("поработать", 3)
 manager.print_info()
 
+manager.delete_task("сделать уборку", 4)
+manager.print_info()
