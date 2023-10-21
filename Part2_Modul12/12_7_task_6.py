@@ -23,31 +23,46 @@
 # чтобы объекты этих классов можно было использовать.
 
 
+import math
 from abc import ABC, abstractmethod
 
 
 class Shape(ABC):
     @abstractmethod
     def area(self):
-        pass
+        print("Square of", end=' ')
 
 
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+        
+    def area(self):
+        area = math.pi * self.radius ** 2
+        super().area()
+        print(__class__.__name__, area)
+        return str(area)
+
+class Rectangle(Shape):
+    pass
 
 
+class Triangle(Shape):
+    pass
 
 
 # Примеры работы с классом:
 # Создание экземпляров классов
-# circle = Circle(5)
+circle = Circle(5)
 # rectangle = Rectangle(4, 6)
 # triangle = Triangle(3, 8)
 
 # # Вычисление площади фигур
-# circle_area = circle.area()
+circle_area = circle.area()
 # rectangle_area = rectangle.area()
 # triangle_area = triangle.area()
 
 # # Вывод результатов
-# print("Площадь круга:", circle_area)
+print("Площадь круга:", circle_area)
 # print("Площадь прямоугольника:", rectangle_area)
 # print("Площадь треугольника:", triangle_area)
