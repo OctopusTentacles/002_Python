@@ -30,7 +30,7 @@ from abc import ABC, abstractmethod
 class Shape(ABC):
     @abstractmethod
     def area(self):
-        print("Square of", end=' ')
+        pass
 
 
 class Circle(Shape):
@@ -38,13 +38,16 @@ class Circle(Shape):
         self.radius = radius
         
     def area(self):
-        area = math.pi * self.radius ** 2
-        super().area()
-        print(__class__.__name__, area)
-        return str(area)
+        return round(math.pi * self.radius ** 2)
 
 class Rectangle(Shape):
-    pass
+    def __init__(self, side_a, side_b):
+        self.side_a = side_a
+        self.side_b = side_b
+
+    def area(self):
+        return round(self.side_a * self.side_b)
+
 
 
 class Triangle(Shape):
@@ -54,15 +57,15 @@ class Triangle(Shape):
 # Примеры работы с классом:
 # Создание экземпляров классов
 circle = Circle(5)
-# rectangle = Rectangle(4, 6)
+rectangle = Rectangle(4, 6)
 # triangle = Triangle(3, 8)
 
 # # Вычисление площади фигур
 circle_area = circle.area()
-# rectangle_area = rectangle.area()
+rectangle_area = rectangle.area()
 # triangle_area = triangle.area()
 
 # # Вывод результатов
 print("Площадь круга:", circle_area)
-# print("Площадь прямоугольника:", rectangle_area)
+print("Площадь прямоугольника:", rectangle_area)
 # print("Площадь треугольника:", triangle_area)
