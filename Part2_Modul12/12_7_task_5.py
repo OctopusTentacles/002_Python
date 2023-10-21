@@ -272,11 +272,15 @@ class MyStack():
 class TaskManager():
     def __init__(self):
         self.my_tasks = MyStack()
-
+        """ class TaskManager - менеджер задач, формируется на основе стеков LIFO,
+            self.my_tasks - основной список менеджера """
         # [[priority, task], [priority, task, task], [priority, task, task, task]]
         # [[priority, [task]], [priority, [task, task, task]]] # new idea
 
     def new_task(self, task, priority):
+        """ def new_task - добавляет новую задачу в соответствующий приоритет.
+            task - задача.
+            priority - приоритет задачи."""
         self.get_task = MyStack()
         self.get_priority = MyStack()   # new idea
 
@@ -294,6 +298,7 @@ class TaskManager():
                 self.my_tasks.put(self.get_priority)
 
     def check_task(self, task, priority):
+        """ def check_task - проверяет есть ли добавляемая задача в менеджере."""
         for item in self.my_tasks:
             if task in item[1]:
                 print(f"Задание '{task}' уже добавлено! Приоритет '{item[0]}'")
@@ -305,6 +310,7 @@ class TaskManager():
                     return False
                 
     def delete_task(self, task, priority):
+        """ def delete_task - удаляет задачу из менеджера"""
         for i_x, item in enumerate(self.my_tasks):
             if priority == item[0]:
                 for index, value in enumerate(item[1]):
@@ -318,6 +324,7 @@ class TaskManager():
                             break
 
     def sort(self):
+        """ def sort - сортирует список задач по приоритету."""
         for i_min in range(len(self.my_tasks)):
             for curr in range(i_min, len(self.my_tasks)):
                 if self.my_tasks[curr][0] < self.my_tasks[i_min][0]:
@@ -326,6 +333,7 @@ class TaskManager():
                     # objects do not support item assignment (add __setitem__)
 
     def print_info(self):
+        """ def print_info - вывод отсортированного списка задач."""
         result = ""
         for item_1 in (self.my_tasks):
             result += f"{str(item_1[0])} - "
