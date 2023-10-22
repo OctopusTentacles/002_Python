@@ -10,6 +10,11 @@ import random
 amt = int(input("Введите количество чисел: "))
 
 my_list = [random.randint(0, 10) for _ in range(amt)]
+buffer_iter = iter(my_list)
 
 while True:
-    
+    try:
+        print(next(buffer_iter))
+    except StopIteration:
+        print("конец итерации")
+        break
