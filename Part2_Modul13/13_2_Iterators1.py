@@ -5,3 +5,11 @@
 # Не забудьте про исключение «конца итерации».
 
 
+import random
+
+amt = int(input("Введите количество чисел: "))
+
+my_list = [random.randint(0, 10) for _ in range(amt)]
+
+while True:
+    
