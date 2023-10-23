@@ -12,3 +12,17 @@
 
 
 class Primes:
+
+    def __init__(self, max_num):
+        self.max_num = max_num
+
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        
+
+
+prime_nums = Primes(50)
+for i_elem in prime_nums:
+    print(i_elem, end=' ')
