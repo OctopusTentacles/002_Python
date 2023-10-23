@@ -31,16 +31,19 @@ class Iterator:
 
     def __init__(self, count):
         self.count = count
-        self.first_elem
-        self.next_elem
+        self.first_elem = 0
+        self.next_elem = 0
 
 
     def __iter__(self):
         return self
     
     def __next__(self):
-
-
-
+        self.first_elem = round(random.random(), 2)
+        self.new_elem = round(random.random() + self.first_elem, 2)
+        return self.new_elem
 
 amount = int(input("Кол-во элементов: "))
+counter = Iterator(amount)
+for elem in counter:
+    print(elem)
