@@ -42,7 +42,7 @@ class Iterator:
         self.start += 1
         if self.start > self.end:
             raise StopIteration
-        self.last = round(random.random(), 2)
+        self.last += round(random.random(), 2)
         return self.last
 
 amount = int(input("Кол-во элементов: "))
