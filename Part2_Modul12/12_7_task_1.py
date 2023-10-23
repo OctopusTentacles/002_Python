@@ -26,30 +26,29 @@ class Property:
         self.worth = worth
 
     def tax_calc(self):
-        # TODO document why this method is empty
         """метод расчёта налога переопределяется в каждом из производных классов
         """
         pass
     
 class Apartment(Property):    
-    # def __init__(self, worth):
-    #     super().__init__(worth)
+    def __init__(self, worth):
+        super().__init__(worth)
 
     def tax_calc(self):
         return self.worth / 1000
 
 
 class Car(Property):
-    # def __init__(self, worth):
-    #     super().__init__(worth)
+    def __init__(self, worth):
+        super().__init__(worth)
 
     def tax_calc(self):
         return self.worth / 200
 
 
 class CountryHouse(Property):
-    # def __init__(self, worth):
-    #     super().__init__(worth)
+    def __init__(self, worth):
+        super().__init__(worth)
 
     def tax_calc(self):
        return self.worth / 500
