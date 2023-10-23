@@ -6,10 +6,18 @@
 # То есть при вызове такого кода в основной программе
 
 # my_iter = СountIterator()
-
 # for i_elem in my_iter:
-
 #     print(i_elem)
 
 # значения будут выдаваться бесконечно.
 
+import random
+
+class CountIterator:
+    count = 0
+
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        
