@@ -7,3 +7,14 @@
 
 import random
 
+lenght = int(input("Введите длину списка: "))
+my_list = [random.randint(0, 20) for _ in range(lenght)]
+
+buffer = iter(my_list)
+
+while True:
+    try:
+        print(next(buffer))
+    except StopIteration:
+        print("Конец итерации!")
+        break
