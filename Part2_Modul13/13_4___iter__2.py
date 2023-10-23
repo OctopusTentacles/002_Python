@@ -30,20 +30,23 @@ import random
 class Iterator:
 
     def __init__(self, count):
-        self.count = count
-        self.first_elem = 0
-        self.next_elem = 0
+        self.end = count
+        self.last = 0
+        self.start = 0
 
 
     def __iter__(self):
         return self
     
     def __next__(self):
-        self.first_elem = round(random.random(), 2)
-        self.new_elem = round(random.random() + self.first_elem, 2)
-        return self.new_elem
+        self.start += 1
+        if self.start > self.end:
+            raise StopIteration
+        self.last = round(random.random(), 2)
+        return self.last
 
 amount = int(input("Кол-во элементов: "))
 counter = Iterator(amount)
+print("Элементы итератора:")
 for elem in counter:
     print(elem)
