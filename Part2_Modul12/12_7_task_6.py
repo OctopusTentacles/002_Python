@@ -38,28 +38,28 @@ class Shape(ABC):
 
 
 class Circle(Shape):
-    # def __init__(self, radius):
-    #     self.radius = radius
+    def __init__(self, radius):
+        self.radius = radius
         
     def area(self):
-        return round(math.pi * self.side_a ** 2)
+        return round(math.pi * self.radius ** 2)
 
 class Rectangle(Shape):
-    # def __init__(self, side_a, side_b):
-    #     self.side_a = side_a
-    #     self.side_b = side_b
+    def __init__(self, side_a, side_b):
+        self.side_a = side_a
+        self.side_b = side_b
 
     def area(self):
         return round(self.side_a * self.side_b)
 
 
 class Triangle(Shape):
-    # def __init__(self, side, height):
-    #     self.side = side
-    #     self.height = height
+    def __init__(self, side, height):
+        self.side = side
+        self.height = height
 
     def area(self):
-        return round((self.side_a * self.side_b) / 2)
+        return round((self.side * self.height) / 2)
 
 
 # Примеры работы с классом:
