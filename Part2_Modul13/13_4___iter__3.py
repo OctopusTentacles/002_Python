@@ -14,22 +14,23 @@
 class Primes:
 
     def __init__(self, max_num):
-        self.prime_list = list()
+        self.list_num = list()
         self.max_num = max_num
-        
+        self.num = 1
 
     def __iter__(self):
-        self.num = 1
         return self
     
     def __next__(self):
         while self.num < self.max_num:
             self.num += 1
-            if self.num % 2 == 0:
-                continue
+            for number in self.list_num:
+                if self.num % number == 0:
+                    break
             else:
-                break
-
+                self.list_num.append(self.num)
+                return self.num
+        raise StopIteration
 
 prime_nums = Primes(50)
 for i_elem in prime_nums:
