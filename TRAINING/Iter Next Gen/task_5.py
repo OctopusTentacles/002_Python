@@ -12,3 +12,22 @@ def fibonacci(n):
 f = fibonacci(5)
 for i in f:
     print(i, end=" ")
+print()
+
+
+def fibonacci():
+    """Generates an infinite sequence of Fibonacci numbers on demand"""
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a + b
+
+
+f = fibonacci()
+
+count = 0
+for i in f:
+    print(i, end=" ")
+    count += 1
+    if count > 10:
+        break
