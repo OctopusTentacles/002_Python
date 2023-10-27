@@ -10,3 +10,10 @@ def running_average():
         total += term
         counter += 1
         average = total / counter
+
+
+ra = running_average()      # initialize the coroutine
+next(ra)                    # we have to start the coroutine
+for value in [7, 13, 17, 231, 12, 8, 3]:
+    out_str = "sent: {val:3d}, new average: {avg:6.2f}"
+    print(out_str.format(val=value, avg=ra.send(value)))
