@@ -10,3 +10,6 @@ def permutations(items):
 
 for i in permutations(["r", "e", "d"]):
     print("".join(i))
+
+for i in permutations(list("game")):
+    print("".join(i), end=", ")
