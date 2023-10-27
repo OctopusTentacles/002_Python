@@ -6,10 +6,12 @@ def song_generator(song_list):
     new_song = None
 
     while True:
-        if new_song != True:
+        if new_song != None:
             if new_song not in song_list:
                 song_list.append(new_song)
-
+            new_song = yield new_song
+        else:
+            new_song = yield choice(song_list)
 
 
 songs = ["Her Şeyi Yak - Sezen Aksu", 
@@ -24,3 +26,10 @@ songs = ["Her Şeyi Yak - Sezen Aksu",
          "Δέκα λεπτά - Αθηνά Ανδρεάδη"]
 
 radio_program = song_generator(songs)
+print(next(radio_program))
+
+for i in range(3):
+    print(next(radio_program))
+
+radio_program.send("Distorted Angels - Archive")
+# print(songs)
