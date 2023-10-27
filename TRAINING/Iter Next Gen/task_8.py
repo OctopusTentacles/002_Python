@@ -15,3 +15,10 @@ for i in g1:
 # ====================================
 
 def gen2():
+    yield from "Python"
+    yield from range(5)
+
+g2 = gen2()
+print("\ng2: ", end="")
+for i in g2:
+    print(i, end=" ")
