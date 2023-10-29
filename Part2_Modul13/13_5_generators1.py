@@ -6,3 +6,11 @@
 # Дополнительно: преобразуйте (или напишите с нуля) итератор 
 # простых чисел в функцию-генератор.
 
+
+def fibonacci(numbers):
+    cur_num = 0
+    next_num = 1
+    for _ in numbers:
+        yield cur_num
+        cur_num = next_num
+        next_num = cur_num + next_num
