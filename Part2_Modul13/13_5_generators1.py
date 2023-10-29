@@ -43,11 +43,26 @@ print("=" * 90, end="")
 
 
 def endless(count=0):
+    """ Infinite generator """
     while True:
         yield count
         count += 1
 
-my_gen = endless()
-for i_elem in my_gen:
-    print(i_elem)
- 
+# преобразуйте итератор простых чисел в функцию-генератор:
+def simpleGen():
+    """ Simple numbers generator """
+    list_num = []
+    my_gen = endless()
+    for i_elem in my_gen:
+        for number in list_num:
+            if i_elem % number == 0:
+                break
+        else:
+            list_num.append(i_elem)
+            yield i_elem
+
+
+
+prime_nums = simpleGen(50)
+for i_elem in prime_nums:
+    print(i_elem, end=' ')
