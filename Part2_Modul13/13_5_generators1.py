@@ -37,3 +37,17 @@ print((i ** 3 for i in range(10)))
 cubes_gen = (i ** 3 for i in range(10))
 for cube in cubes_gen:
     print(cube, end=" ")
+print()
+print("=" * 90, end="")
+# =============================================================================
+
+
+def endless(count=0):
+    yield count
+    count += 1
+
+
+my_gen = endless()
+for i_elem in my_gen:
+    print(i_elem)
+ 
