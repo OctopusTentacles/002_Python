@@ -8,7 +8,7 @@
 
 
 def fibonacci(numbers):
-    """fibonacci sequence"""
+    """ fibonacci sequence """
     cur_num = 0
     next_num = 1
     for _ in range(numbers):
@@ -17,7 +17,16 @@ def fibonacci(numbers):
         if cur_num > 10 ** 6:
             return
 
+def square(numbers):
+    """ Fibonacci sequence squared """
+    for num in numbers:
+        yield num ** 2
 
-fib_seq = fibonacci(100)
+fib_seq = fibonacci(10)
 for seq in fib_seq:
     print(seq, end=" ")
+
+print()
+
+# генератор от генератора
+print(sum(square(fibonacci(10))))
