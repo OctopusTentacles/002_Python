@@ -43,9 +43,9 @@ print("=" * 90, end="")
 
 
 def endless(count=0):
-    yield count
-    count += 1
-
+    while True:
+        yield count
+        count += 1
 
 my_gen = endless()
 for i_elem in my_gen:
