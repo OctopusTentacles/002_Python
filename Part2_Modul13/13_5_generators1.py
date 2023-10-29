@@ -30,3 +30,10 @@ print()
 
 # генератор от генератора
 print(sum(square(fibonacci(10))))
+
+# генераторные выражения
+print((i ** 3 for i in range(10)))
+
+cubes_gen = (i ** 3 for i in range(10))
+for cube in cubes_gen:
+    print(cube, end=" ")
