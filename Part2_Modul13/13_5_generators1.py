@@ -40,9 +40,9 @@ for cube in cubes_gen:
 print()
 print("=" * 90, end="")
 # =============================================================================
+print()
 
-
-def endless(count=0):
+def endless(count=2):
     """ Infinite generator """
     while True:
         yield count
@@ -62,7 +62,7 @@ def simpleGen():
             yield i_elem
 
 
-
-prime_nums = simpleGen(50)
+# 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47
+prime_nums = simpleGen()
 for i_elem in prime_nums:
     print(i_elem, end=' ')
