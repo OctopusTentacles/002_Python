@@ -8,38 +8,52 @@
 # чисел в файле. Для считывания файла реализуйте специальный генератор.
 
 
-def numbers_from_text(text):
-    return [int(number) for number in text.rstrip().split()]
+# def numbers_from_text(text):
+#     return [int(number) for number in text.rstrip().split()]
 
 
-def file_parser(path_to_file):
-    with open(path_to_file) as file:
-        for line in file:
-            clear_line_sum = sum(numbers_from_text(line))
-            # https://docs-python.ru/tutorial/vstroennye-funktsii-interpretatora-python/funktsija-map/
-            yield clear_line_sum
+# def file_parser(path_to_file):
+#     with open(path_to_file) as file:
+#         for line in file:
+#             clear_line_sum = sum(numbers_from_text(line))
+#             # https://docs-python.ru/tutorial/vstroennye-funktsii-interpretatora-python/funktsija-map/
+#             yield clear_line_sum
 
 
-all_sum = 0
-for number in file_parser("numbers.txt"):
-    all_sum += number
+# all_sum = 0
+# for number in file_parser("numbers.txt"):
+#     all_sum += number
 
-print("Вариант №1", all_sum)
-
-
-# Ещё один вариант решения с функцией map()
-def file_parser(path_to_file):
-    with open(path_to_file) as file:
-        for line in file:
-            clear_line_sum = sum(map(int, line.rstrip().split()))
-            # https://docs-python.ru/tutorial/vstroennye-funktsii-interpretatora-python/funktsija-map/
-            yield clear_line_sum
+# print("Вариант №1", all_sum)
 
 
-all_sum = 0
-for number in file_parser("numbers.txt"):
-    all_sum += number
+# # Ещё один вариант решения с функцией map()
+# def file_parser(path_to_file):
+#     with open(path_to_file) as file:
+#         for line in file:
+#             clear_line_sum = sum(map(int, line.rstrip().split()))
+#             # https://docs-python.ru/tutorial/vstroennye-funktsii-interpretatora-python/funktsija-map/
+#             yield clear_line_sum
 
-print("Вариант №2", all_sum)
+
+# all_sum = 0
+# for number in file_parser("numbers.txt"):
+#     all_sum += number
+
+# print("Вариант №2", all_sum)
+
+import os
+
+def big_file(file_dir, file_name):
+    with open(os.path.join(file_dir, file_name)) as file:
 
 
+# ====================================================================
+# текущая директория
+current_dir = os.path.dirname(__file__)
+
+total_sum = 0
+for number in big_file(current_dir, "13_5_numbers2.txt"):
+    total_sum += number
+
+print("Сумма в файле:", total_sum)
