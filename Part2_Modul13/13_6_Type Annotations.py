@@ -44,3 +44,17 @@ def to_dict(self) -> Dict[str, Union[str, int, List[dict]]]:
         "age": self.__age,
         "friends": [i_person.to_dict() for i_person in self.__friends]
     }
+
+
+from typing import Optional
+# Optional[...] - это сокращение конструкции Union[..., None]. 
+# То есть, например, вместо Union[None, Any] стоит писать Optional[Any].
+class Point:
+    def __init__(self, value: Optional[Any], another: Optional['Point']) -> None:
+        pass
+# Здесь мы обратим внимание на две вещи. 
+# Во-первых, вместо value: Any мы использовали value: Optional[Any], 
+# то есть value может содержать None, либо что-то другое
+# Во-вторых, в записи Optional[‘Point’] объект класса взят в одинарные кавычки. 
+# Если их убрать, то PyCharm пожалуется на то, что Point ещё не объявлен, 
+# а мы его уже используем. Иногда такая запись также имеет место быть.
