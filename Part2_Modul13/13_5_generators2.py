@@ -46,6 +46,10 @@ import os
 
 def big_file(file_dir, file_name):
     with open(os.path.join(file_dir, file_name)) as file:
+        for line in file:
+            line_sum = sum(map(int, line.rstrip().split()))
+            yield line_sum
+
 
 
 # ====================================================================
@@ -57,3 +61,13 @@ for number in big_file(current_dir, "13_5_numbers2.txt"):
     total_sum += number
 
 print("Сумма в файле:", total_sum)
+
+
+
+# Подсчет количества символов в каждом элементе кортежа:
+# x = map(len, ('apple', 'banana', 'cherry'))
+# print(list(x))
+
+# Создание словаря из двух списков.
+# x = map(lambda *args: args, [1, 2], [3, 4])
+# print(dict(x))
