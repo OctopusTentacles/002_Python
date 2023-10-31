@@ -3,7 +3,6 @@
 
 from collections.abc import Iterable
 from typing import List, Dict, Tuple
-from typing import Any
 
 
 class Person:
@@ -31,5 +30,17 @@ def fibonacci(number: int) -> Iterable[int]:
         a, b = b, a + b
 
 
+from typing import Any
+
 def any_type(elem: Any) -> None:
     print(elem)
+
+
+from typing import Union
+
+def to_dict(self) -> Dict[str, Union[str, int, List[dict]]]:
+    return {
+        "name": self.__name,
+        "age": self.__age,
+        "friends": [i_person.to_dict() for i_person in self.__friends]
+    }
