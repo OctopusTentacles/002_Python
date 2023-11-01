@@ -9,6 +9,9 @@
 # Если функция/метод ничего не возвращает, то используется None.
 
 
+from collections.abc import Iterable
+
+
 class Iterator:
     """ class Iterator - генерирует последовательность из квадратов чисел от 1 до stop.
     """
@@ -30,11 +33,11 @@ class Iterator:
         return sq_num
     
 
-def generator_sq(number: int) -> int:
-    sq_num = 1
-    while sq_num <= number:
-        yield sq_num ** 2
-        sq_num += 1
+def generator_sq(number: int) -> Iterable[int]:
+    """ def generator_sq - генерирует последовательность из квадратов чисел от 1 до number
+    """
+    for num in range(1, number + 1):
+        yield num ** 2
 
     
 
@@ -51,4 +54,6 @@ for num in square_2:
     print(num, end=" ")
 
 print("\n\n3. exp generator:")
-print((num ** 2 for num in range(number)))
+gen_exp = (num ** 2 for num in range(1, number + 1))
+for num in gen_exp:
+    print(num, end=" ")
