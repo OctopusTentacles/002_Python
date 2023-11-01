@@ -8,3 +8,15 @@
 # рекурсивную функцию os.walk() — os — Miscellaneous operating system interfaces — 
 # Python 3.11.0 documentation.
 
+
+import os
+
+def gen_files_path(folder_name):
+    for dirpath, dirnames, filenames in os.walk('..'):
+        for dirname in dirnames:
+            print("Каталог", os.path.join(dirpath, dirname))
+
+
+
+catalog = gen_files_path(input("Имя каталога: "))
+# print(os.listdir(".."))
