@@ -49,3 +49,6 @@ print("\n\n2. def generator:")
 square_2 = generator_sq(number)
 for num in square_2:
     print(num, end=" ")
+
+print("\n\n3. exp generator:")
+print((num ** 2 for num in range(number)))
