@@ -12,11 +12,12 @@
 import os
 
 def gen_files_path(folder_name):
-    for dirpath, dirnames, filenames in os.walk('..'):
+    for dirpath, dirnames, filenames in os.walk('/'):
         for dirname in dirnames:
             print("Каталог", os.path.join(dirpath, dirname))
 
 
 
 catalog = gen_files_path(input("Имя каталога: "))
-# print(os.listdir(".."))
+# print(os.path.abspath('/'))
+# print(os.listdir('/'))
