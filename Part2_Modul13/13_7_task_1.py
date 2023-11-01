@@ -23,9 +23,11 @@ class Iterator:
         self.num = 1
 
     def __iter__(self):
+        """ def __iter__ - итерация объекта """
         return self
     
     def __next__(self) -> int:
+        """ def __next__ - создает следующее число в квадрате """
         if self.num > self.stop:
             raise StopIteration
         sq_num = self.num ** 2
@@ -40,7 +42,6 @@ def generator_sq(number: int) -> Iterable[int]:
         yield num ** 2
 
     
-
 number = int(input("Введите число: "))
 
 print("\n1. class Iterator:")
