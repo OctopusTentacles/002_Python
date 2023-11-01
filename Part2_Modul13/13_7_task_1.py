@@ -30,10 +30,22 @@ class Iterator:
         return sq_num
     
 
+def generator_sq(number: int) -> int:
+    sq_num = 1
+    while sq_num <= number:
+        yield sq_num ** 2
+        sq_num += 1
+
+    
 
 number = int(input("Введите число: "))
 
 print("\n1. class Iterator:")
-sq_num = Iterator(number)
-for num in sq_num:
+square_1 = Iterator(number)
+for num in square_1:
+    print(num, end=" ")
+
+print("\n\n2. def generator:")
+square_2 = generator_sq(number)
+for num in square_2:
     print(num, end=" ")
