@@ -10,21 +10,30 @@
 
 
 class Iterator:
-
+    """ class Iterator - генерирует последовательность из квадратов чисел от 1 до stop.
+    """
     def __init__(self, stop: int) -> None:
+        """ self.stop - число последней итерации. 
+            self.num - число, возводимое в квадрат.
+        """
         self.stop = stop
-        self.start = 1
+        self.num = 1
 
     def __iter__(self):
         return self
     
-    def __next__(self):
+    def __next__(self) -> int:
+        if self.num > self.stop:
+            raise StopIteration
+        sq_num = self.num ** 2
+        self.num += 1
+        return sq_num
     
-
 
 
 number = int(input("Введите число: "))
 
+print("\n1. class Iterator:")
 sq_num = Iterator(number)
 for num in sq_num:
-    print(num)
+    print(num, end=" ")
