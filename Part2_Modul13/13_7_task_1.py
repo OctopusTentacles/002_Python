@@ -9,6 +9,22 @@
 # Если функция/метод ничего не возвращает, то используется None.
 
 
+class Iterator:
+
+    def __init__(self, stop: int) -> None:
+        self.stop = stop
+        self.start = 1
+
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+    
 
 
-number = int(input(""))
+
+number = int(input("Введите число: "))
+
+sq_num = Iterator(number)
+for num in sq_num:
+    print(num)
