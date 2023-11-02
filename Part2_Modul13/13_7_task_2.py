@@ -12,24 +12,23 @@
 import os
 
 def gen_files_path(folder_name):
-    for dirpath, dirnames, filenames in os.walk('/'):
+    for dirpath, dirnames, filenames in os.walk('/Users/artem'):
 
-
-        if folder_name in dirnames:
-                    yield "Каталог", os.path.join(dirpath, folder_name)
+        for dirname in dirnames:
+            if folder_name in dirname:
+                    yield "Каталог", os.path.join(dirpath, dirname)
             
                     for filename in filenames:
-                        print("\tФайл:", os.path.join(dirpath, folder_name, filename))
+                        print("\tФайл:", os.path.join(dirpath, dirname, filename))
+
 
             
-            
-        # Загрузки
-
-
-
+# /Users/artem/Downloads
+# /Users/artem/Downloads/Musik
 # print(os.listdir('/'))
+# print(os.path.abspath('/'))
+
 
 catalog = gen_files_path(input("Имя каталога: "))
 for dir in catalog:
     print(dir)
-# print(os.path.abspath('/'))
