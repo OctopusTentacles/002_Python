@@ -13,15 +13,17 @@ import os
 
 def gen_files_path(folder_name):
     for dirpath, dirnames, filenames in os.walk('/'):
-        for dirname in dirnames:
-            for filename in filenames:
-                print("Файл:", os.path.join(dirpath, filename))
 
-            # print("Каталог", os.path.join(dirpath, dirname))
-            if dirname == folder_name:
-                yield "Каталог", os.path.join(dirpath, dirname)
+
+        if folder_name in dirnames:
+                    yield "Каталог", os.path.join(dirpath, folder_name)
             
-        # break
+                    for filename in filenames:
+                        print("\tФайл:", os.path.join(dirpath, folder_name, filename))
+
+            
+            
+        # Загрузки
 
 
 
