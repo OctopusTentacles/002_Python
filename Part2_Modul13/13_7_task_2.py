@@ -11,12 +11,14 @@
 
 import os
 
-def gen_files_path(folder_name):
+def gen_files_path(folder_name: str) -> str:
+    """ gen_files_path - находит указанный пользователем каталог 
+        и генерирует пути всех встреченных файлов
+    """
     for dirpath, dirnames, filenames in os.walk('/'):
 
         for filename in filenames:
             yield ("\t\tФайл: ", os.path.join(dirpath, filename))
-
 
         for dirname in dirnames:
             if folder_name == dirname:
