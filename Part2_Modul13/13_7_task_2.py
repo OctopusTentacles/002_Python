@@ -21,6 +21,7 @@ def gen_files_path(folder_name):
         for dirname in dirnames:
             if folder_name == dirname:
                 yield "\nКаталог: ", os.path.join(dirpath, dirname)
+                return
             
 
 
