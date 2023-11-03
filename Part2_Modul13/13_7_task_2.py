@@ -22,14 +22,6 @@ def gen_files_path(folder_name):
             if folder_name == dirname:
                 yield "\nКаталог: ", os.path.join(dirpath, dirname)
                 return
-            
-
-
-            
-# /Users/artem/Documents/PROGRAMMING
-# /Users/artem/Downloads/Musik
-# print(os.listdir('/'))
-# print(os.path.abspath('/'))
 
 
 catalog = gen_files_path(input("Имя каталога: "))
