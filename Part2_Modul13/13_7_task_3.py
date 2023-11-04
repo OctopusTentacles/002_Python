@@ -13,9 +13,9 @@ def py_files(folder_name: str, ending='.py') -> str:
         в директории и вычисляет количество строк в каждом файле, игнорируя 
         пустые строки и строки комментариев.
 
-        folder_name - каталог, в котором лежат файлы
+        folder_name - каталог, в котором лежат файлы.
 
-        ending - расширение файлов
+        ending - расширение файлов.
     """
     
     for dirpath, dirnames, filenames in os.walk('/'):
@@ -31,10 +31,11 @@ def py_files(folder_name: str, ending='.py') -> str:
                         amt_lines = 0
                         with open(os.path.join(my_dir, py_file), 'r', encoding='utf8') as file:
                             for line in file:
-                                list_line = (line.lstrip()).split(" ")
-                                if list_line == [""]:
+                                clear_line = line.lstrip()
+                                if not clear_line:
                                     continue
-                                elif list_line[0] == "#":
+                                elif clear_line.startswith("#") or clear_line.startswith('"') or\
+                                    clear_line.startswith('"'):
                                     continue
                                 else:
                                     amt_lines += 1
@@ -45,6 +46,3 @@ def py_files(folder_name: str, ending='.py') -> str:
 catalog = py_files(input("Имя каталога: "))
 for py_file in catalog:
     print(*py_file)
-
-# /Users/artem/Documents/PROGRAMMING/SkillBox/002_Python/Part2_Modul10/10_6_task_3  2   44, 37
-# /Users/artem/Documents/PROGRAMMING/SkillBox/002_Python/Part2_Modul12/12_7_task_4  4   0, 209, 52, 86
