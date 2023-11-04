@@ -8,7 +8,15 @@
 import os
 
 
-def py_files(folder_name, ending='.py'):
+def py_files(folder_name: str, ending='.py') -> str:
+    """ def py_files - функцию-генератор, которая берёт все питоновские файлы 
+        в директории и вычисляет количество строк в каждом файле, игнорируя 
+        пустые строки и строки комментариев.
+
+        folder_name - каталог, в котором лежат файлы
+
+        ending - расширение файлов
+    """
     
     for dirpath, dirnames, filenames in os.walk('/'):
         for dirname in dirnames:
@@ -34,11 +42,9 @@ def py_files(folder_name, ending='.py'):
                 return
 
 
-
 catalog = py_files(input("Имя каталога: "))
 for py_file in catalog:
     print(*py_file)
-
 
 # /Users/artem/Documents/PROGRAMMING/SkillBox/002_Python/Part2_Modul10/10_6_task_3  2   44, 37
 # /Users/artem/Documents/PROGRAMMING/SkillBox/002_Python/Part2_Modul12/12_7_task_4  4   0, 209, 52, 86
