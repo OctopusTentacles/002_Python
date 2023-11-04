@@ -18,20 +18,19 @@ def py_files(folder_name, ending='.py'):
 
                 for py_file in os.listdir(my_dir):
                     if py_file.endswith(ending):
-                        yield "\tфайл: ", py_file
+                        yield "\n\tфайл: ", py_file
 
                         amt_lines = 0
                         with open(os.path.join(my_dir, py_file), 'r', encoding='utf8') as file:
                             for line in file:
                                 list_line = (line.rstrip()).split(" ")
-                                if line == "\n":
+                                if list_line == [""]:
                                     continue
                                 elif list_line[0] == "#":
                                     continue
                                 else:
                                     amt_lines += 1
-                            yield "\t\tстрок кода: ", amt_lines
-
+                            yield "\tстрок кода: ", amt_lines
                 return
 
 
@@ -42,4 +41,4 @@ for py_file in catalog:
 
 
 # /Users/artem/Documents/PROGRAMMING/SkillBox/002_Python/Part2_Modul10/10_6_task_3  2   44, 37
-# /Users/artem/Documents/PROGRAMMING/SkillBox/002_Python/Part2_Modul12/12_7_task_4  4
+# /Users/artem/Documents/PROGRAMMING/SkillBox/002_Python/Part2_Modul12/12_7_task_4  4   0, 209, 52, 86
