@@ -9,6 +9,7 @@ import os
 
 
 def py_files(folder_name, ending='.py'):
+    
     for dirpath, dirnames, filenames in os.walk('/'):
         for dirname in dirnames:
             if folder_name == dirname:
@@ -18,6 +19,13 @@ def py_files(folder_name, ending='.py'):
                 for py_file in os.listdir(my_dir):
                     if py_file.endswith(ending):
                         yield "\tфайл: ", py_file
+
+                        amt_lines = 0
+                        with open(os.path.join(my_dir, py_file), 'r', encoding='utf8') as file:
+                            for line in file:
+                                amt_lines += 1
+                            yield "\t\tстрок кода: ", amt_lines
+
                 return
 
 
