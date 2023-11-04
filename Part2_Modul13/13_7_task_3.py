@@ -23,7 +23,7 @@ def py_files(folder_name, ending='.py'):
                         amt_lines = 0
                         with open(os.path.join(my_dir, py_file), 'r', encoding='utf8') as file:
                             for line in file:
-                                list_line = (line.rstrip()).split(" ")
+                                list_line = (line.lstrip()).split(" ")
                                 if list_line == [""]:
                                     continue
                                 elif list_line[0] == "#":
