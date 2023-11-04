@@ -23,7 +23,13 @@ def py_files(folder_name, ending='.py'):
                         amt_lines = 0
                         with open(os.path.join(my_dir, py_file), 'r', encoding='utf8') as file:
                             for line in file:
-                                amt_lines += 1
+                                list_line = (line.rstrip()).split(" ")
+                                if line == "\n":
+                                    continue
+                                elif list_line[0] == "#":
+                                    continue
+                                else:
+                                    amt_lines += 1
                             yield "\t\tстрок кода: ", amt_lines
 
                 return
@@ -35,5 +41,5 @@ for py_file in catalog:
     print(*py_file)
 
 
-# /Users/artem/Documents/PROGRAMMING/SkillBox/002_Python/Part2_Modul10/10_6_task_3  2
+# /Users/artem/Documents/PROGRAMMING/SkillBox/002_Python/Part2_Modul10/10_6_task_3  2   44, 37
 # /Users/artem/Documents/PROGRAMMING/SkillBox/002_Python/Part2_Modul12/12_7_task_4  4
