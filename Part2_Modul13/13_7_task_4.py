@@ -35,3 +35,23 @@
 # Получение третьего элемента: 30
 # Удаление второго элемента.
 # Новый список: [10 30]
+
+
+class Node:
+    def __init__(self, item=None):
+        self.item = item
+        self.next_item = None
+
+class LinkedList:
+    def __init__(self) -> None:
+        self.head = None
+
+    def get():
+        pass
+
+    def append():
+        pass
+
+
+
+my_list = LinkedList()
