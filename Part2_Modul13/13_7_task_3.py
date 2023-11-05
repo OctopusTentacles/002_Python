@@ -17,8 +17,6 @@ def py_files(folder_name: str, ending='.py') -> str:
 
         ending - расширение файлов.
     """
-    # try:
-
     for dirpath, dirnames, filenames in os.walk('/'):
             for dirname in dirnames:
                 if folder_name == dirname:
@@ -41,11 +39,7 @@ def py_files(folder_name: str, ending='.py') -> str:
                                     else:
                                         amt_lines += 1
                                 yield "\tстрок кода: ", amt_lines
-                    
-                        else: raise StopIteration("файлы не найдены")
-                else: raise StopIteration("каталог не найден!")
-    # except StopIteration:
-                return
+                    return
 
 
 catalog = py_files(input("Имя каталога: "))
