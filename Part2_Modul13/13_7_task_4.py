@@ -38,12 +38,12 @@
 
 
 class Node:
-    def __init__(self, item=None):
-        self.item = item
-        self.next_item = None
+    def __init__(self, value, next_item):
+        self.value = value
+        self.next_item = next_item
 
 class LinkedList:
-    def __init__(self) -> None:
+    def __init__(self):
         self.head = None
 
     def get():
