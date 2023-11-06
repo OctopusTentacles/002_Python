@@ -39,11 +39,11 @@
 
 class Node:
     """ class Node - создает новый узел, содержащий значение (value) 
-                    и ссылку на следующий узел (next_value)
+                    и ссылку на следующий узел (next_node)
     """
-    def __init__(self, value, next_value):
+    def __init__(self, value, next_node=None):
         self.value = value
-        self.next_value = next_value
+        self.next_node = next_node
 
 class LinkedList:
     """ class LinkedList - связный список. 
@@ -53,17 +53,34 @@ class LinkedList:
 
         def append - принимает параметр value (значение). 
                     Создает новый узел, помещает туда значение 
-                    и вставляет узел в начало списка.
+                    и вставляет узел в позицию index.
     """
     def __init__(self):
         self.head = None
+
+    def __iter__(self):
+        while self.head is not None:
+            yield self.head.value
+            self.head = self.head.next_node
+
+    def __str__(self):
+        return f"[{' '.join(str(i) for i in self)}]"
 
     def get():
         pass
 
     def append(self, value):
-        self.head = Node(value, self.head)
-
+        if self.head is None:
+            self.head = Node(value)
+        else:
+            node = self.head
+            while node.next_node:
+                node = node.next_node
+            node.next_node = Node(value)
 
 
 my_list = LinkedList()
+my_list.append(10)
+my_list.append(20)
+my_list.append(30)
+print('Текущий список:', my_list)
