@@ -79,13 +79,12 @@ class LinkedList:
     def get(self, index):
         count = 0
         node = self.head
-
         while count < index:
-
             node = node.next_node
             count += 1
         return node.value
 
+    def remove(self, index):
 
 
 
@@ -95,3 +94,6 @@ my_list.append(20)
 my_list.append(30)
 print('Текущий список:', my_list)
 print('Получение третьего элемента:', my_list.get(2))
+print('Удаление второго элемента.')
+my_list.remove(1)
+print('Новый список:', my_list)
