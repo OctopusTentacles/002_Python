@@ -38,19 +38,31 @@
 
 
 class Node:
-    def __init__(self, value, next_item):
+    """ class Node - создает новый узел, содержащий значение (value) 
+                    и ссылку на следующий узел (next_value)
+    """
+    def __init__(self, value, next_value):
         self.value = value
-        self.next_item = next_item
+        self.next_value = next_value
 
 class LinkedList:
+    """ class LinkedList - связный список. 
+
+        def __init__ -  при создании нового списка в поле head хранится
+                        значение null, что означает, что список пустой.
+
+        def append - принимает параметр value (значение). 
+                    Создает новый узел, помещает туда значение 
+                    и вставляет узел в начало списка.
+    """
     def __init__(self):
         self.head = None
 
     def get():
         pass
 
-    def append():
-        pass
+    def append(self, value):
+        self.head = Node(value, self.head)
 
 
 
