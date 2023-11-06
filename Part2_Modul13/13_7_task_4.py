@@ -66,8 +66,11 @@ class LinkedList:
     def __str__(self):
         return f"[{' '.join(str(i) for i in self)}]"
 
-    def get():
-        pass
+    def get(self, index):
+        node = self.head
+        for _ in range(index):
+            node = node.next_node
+        return node.value
 
     def append(self, value):
         if self.head is None:
@@ -84,3 +87,4 @@ my_list.append(10)
 my_list.append(20)
 my_list.append(30)
 print('Текущий список:', my_list)
+print('Получение третьего элемента:', my_list.get(2))
