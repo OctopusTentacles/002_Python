@@ -53,7 +53,7 @@ class LinkedList:
 
         def append - принимает параметр value (значение). 
                     Создает новый узел, помещает туда значение 
-                    и вставляет узел в позицию index.
+                    и вставляет в конец списка.
     """
     def __init__(self):
         self.head = None
@@ -85,7 +85,18 @@ class LinkedList:
         return node.value
 
     def remove(self, index):
+        if index == 0:
+            self.head = self.head.next_node
 
+        count = 0
+        node = self.head
+        while count < index:
+            self.head = next_node
+            count += 1
+
+        next_node = node.next_node
+
+        del node
 
 
 my_list = LinkedList()
