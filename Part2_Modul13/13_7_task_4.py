@@ -55,12 +55,16 @@ class LinkedList:
                     Создает новый узел, помещает туда значение 
                     и вставляет в конец списка.
 
-        def get - 
+        def get -   получает номер индекса index и возвращает значение узла 
+                    соответствующего индекса.
+
+        def remove - получает номер индекса index и удаляет соответствующий
+                    индексу узел.
     """
     def __init__(self):
         self.head = None
 
-    def __str__(self):
+    def __str__(self) -> str:
         list_link = []
         node = self.head
         while node.next_node:
@@ -69,7 +73,7 @@ class LinkedList:
         list_link.append(node.value)
         return str(list_link)
             
-    def append(self, value):
+    def append(self, value) -> None:
         if self.head is None:
             self.head = Node(value)
         else:
@@ -78,7 +82,7 @@ class LinkedList:
                 node = node.next_node
             node.next_node = Node(value)
     
-    def get(self, index):
+    def get(self, index: int) -> any:
         count = 0
         node = self.head
         while count < index:
@@ -86,7 +90,7 @@ class LinkedList:
             count += 1
         return node.value
 
-    def remove(self, index):
+    def remove(self, index: int) -> None:
         if index == 0:
             self.head = self.head.next_node
         else:
