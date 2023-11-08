@@ -37,10 +37,6 @@ output_file_path = ...
 # Не забудьте проверить наличие файлов перед тем как начать работу с ними
 # https://docs-python.ru/standart-library/modul-os-path-python/funktsija-exists-modulja-os-path/
 
-# with open(output_file_path, 'w') as output:
-#     for error_line in error_log_generator(input_file_path):
-#         output.write(error_line)
-# print("Файл успешно обработан.")
 
 
 import os
@@ -74,6 +70,14 @@ def check_exist(work_path):
     except FileExistsError as exc:
         print("Директории не существует! Измените имя файла!")
 
+def error_log_generator(work_dir):
+    with open(work_dir, "r", encoding='utf8') as logs_file:
+        for line in logs_file.readlines():
+            if "ERROR"  in line:
+                yield line
+
+
+
 
 # MAIN-----------------------------------------------------------------------------------
 # директория скрипта:
@@ -91,3 +95,9 @@ if input_file_path:
 output_file_path = check_exist(os.path.join(dir_name, "output.txt"))
 if output_file_path:
     print("Путь к файлу output:\n\t", output_file_path)
+
+# читаем файл work_logs.txt и записываем ошибки в output.txt:
+with open(output_file_path, 'w') as output:
+    for error_line in error_log_generator(input_file_path):
+        output.write(error_line)
+print("Файл успешно обработан.")
