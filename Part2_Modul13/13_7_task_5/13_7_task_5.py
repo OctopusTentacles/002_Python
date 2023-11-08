@@ -43,12 +43,21 @@ import os
 
 
 def find_dir(cur_path: os.path, dir_name: str) -> os.path:
+    """ def find_dir - получает директорию скрипта и имя папки с рабочими файлами,
+                    возвращает директорию папки с рабочими файлами. Скрипт должен 
+                    лежать выше директории с рабочими файлами.
+        cur_path - директория скрипта.
+        dir_name - директория с рабочими файлами.
+    """
     for dirpath, dirnames, _ in os.walk(cur_path):
         for dirname in dirnames:
             if dirname == dir_name:
                 return os.path.join(dirpath, dirname)
 
 def check_exist(work_path: os.path) -> os.path:
+    """ def check_exist - проверяет существование файла в директории.
+        work_path - директория рабочего файла.
+    """
     try:
         if os.path.exists(work_path):
             print("\nФайл найден!", end=" ")
@@ -70,6 +79,10 @@ def check_exist(work_path: os.path) -> os.path:
         print("Директории не существует! Создайте файл!")
 
 def error_log_generator(work_dir: os.path) -> str:
+    """ def error_log_generator - читает строки рабочего файла и если в строке есть
+                                слово "ERROR" - возвращает эту строку.
+        work_dir - директория рабочего файла.
+    """
     with open(work_dir, "r", encoding='utf8') as logs_file:
         for line in logs_file:
             if "ERROR"  in line:
@@ -98,3 +111,4 @@ if output_file_path:
         for error_line in error_log_generator(input_file_path):
             output.write(error_line)
     print("\nФайл успешно обработан!")
+
