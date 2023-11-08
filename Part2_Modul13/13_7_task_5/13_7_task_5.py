@@ -37,10 +37,37 @@ output_file_path = ...
 # Не забудьте проверить наличие файлов перед тем как начать работу с ними
 # https://docs-python.ru/standart-library/modul-os-path-python/funktsija-exists-modulja-os-path/
 
-with open(output_file_path, 'w') as output:
-    for error_line in error_log_generator(input_file_path):
-        output.write(error_line)
-print("Файл успешно обработан.")
+# with open(output_file_path, 'w') as output:
+#     for error_line in error_log_generator(input_file_path):
+#         output.write(error_line)
+# print("Файл успешно обработан.")
 
 
 import os
+
+
+def find_file(cur_path, dir_name):
+    for dirpath, dirnames, filenames in os.walk(cur_path):
+        for dirname in dirnames:
+            if dirname == dir_name:
+                return os.path.join(dirpath, dirname)
+
+def check_exist(cur_path):
+    try:
+        if os.path.exists(cur_path):
+            print("путь найден")
+            return cur_path
+        else: raise Exception
+    except Exception as exc:
+        print("Директории не существует", type(exc))
+
+
+# директория скрипта
+cur_dir = os.path.dirname(__file__)
+# директория рабочих файлов
+dir_name = find_file(cur_dir, "data")
+
+input_file_path = check_exist(os.path.join(dir_name, "work_logs.txt"))
+
+
+print("файл лежит тут:", input_file_path)
