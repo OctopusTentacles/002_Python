@@ -42,13 +42,13 @@ output_file_path = ...
 import os
 
 
-def find_dir(cur_path, dir_name):
-    for dirpath, dirnames, filenames in os.walk(cur_path):
+def find_dir(cur_path: os.path, dir_name: str) -> os.path:
+    for dirpath, dirnames, _ in os.walk(cur_path):
         for dirname in dirnames:
             if dirname == dir_name:
                 return os.path.join(dirpath, dirname)
 
-def check_exist(work_path):
+def check_exist(work_path: os.path) -> os.path:
     try:
         if os.path.exists(work_path):
             print("\nФайл найден!", end=" ")
@@ -64,19 +64,16 @@ def check_exist(work_path):
                     return work_path
             else:
                 raise FileExistsError
-
         else: 
             raise FileExistsError
     except FileExistsError as exc:
-        print("Директории не существует! Измените имя файла!")
+        print("Директории не существует! Создайте файл!")
 
-def error_log_generator(work_dir):
+def error_log_generator(work_dir: os.path) -> str:
     with open(work_dir, "r", encoding='utf8') as logs_file:
-        for line in logs_file.readlines():
+        for line in logs_file:
             if "ERROR"  in line:
                 yield line
-
-
 
 
 # MAIN-----------------------------------------------------------------------------------
@@ -97,7 +94,7 @@ if output_file_path:
     print("Путь к файлу output:\n\t", output_file_path)
 
 # читаем файл work_logs.txt и записываем ошибки в output.txt:
-with open(output_file_path, 'w') as output:
-    for error_line in error_log_generator(input_file_path):
-        output.write(error_line)
-print("Файл успешно обработан.")
+    with open(output_file_path, 'w') as output:
+        for error_line in error_log_generator(input_file_path):
+            output.write(error_line)
+    print("\nФайл успешно обработан!")
