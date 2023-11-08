@@ -55,46 +55,39 @@ def find_dir(cur_path, dir_name):
 def check_exist(work_path):
     try:
         if os.path.exists(work_path):
-            print("файл найден")
+            print("\nФайл найден!", end=" ")
             return work_path
         
-        elif print("файл не найден"):
-            choise = input("Хотите создать", work_path, "\n 'Y'/'N':")
+        elif not os.path.exists(work_path):
+            print(f"\nФайл не найден! "
+                  f"Хотите создать: {work_path}")
+            choise = input("Y / N: ")
             if choise.title() == "Y":
                 with open(work_path, 'w', encoding='utf8'):
+                    print("\nФайл создан!", end=" ")
                     return work_path
-            elif choise.title() == "N":
-                
-
-
+            else:
+                raise FileExistsError
 
         else: 
             raise FileExistsError
     except FileExistsError as exc:
-        print("Директории не существует", type(exc))
+        print("Директории не существует! Измените имя файла!")
 
 
-
+# MAIN-----------------------------------------------------------------------------------
 # директория скрипта:
 cur_dir = os.path.dirname(__file__)
-print(cur_dir)
 
 # директория рабочих файлов:
 dir_name = find_dir(cur_dir, "data")
-print(dir_name)
 
 # проверка файла (work_logs.txt) на существование:
 input_file_path = check_exist(os.path.join(dir_name, "work_logs.txt"))
-print("Путь к файлу work_logs:\n\t", input_file_path)
+if input_file_path:
+    print("Путь к файлу work_logs:\n\t", input_file_path)
 
 # проверка или создание файла (output.txt) на существование:
 output_file_path = check_exist(os.path.join(dir_name, "output.txt"))
-
-
-
-
 if output_file_path:
-    print("Путь к файлу output:\n\t:", output_file_path)
-else:
-    with open(os.path.join(dir_name, "output.txt", 'w', encoding='utf8')):
-        print("output.txt cjplfy")
+    print("Путь к файлу output:\n\t", output_file_path)
