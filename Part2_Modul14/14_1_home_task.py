@@ -43,6 +43,22 @@ class LinkedList:
         cur_index = 0
         if self.length == 0 or self.length <= index:
             raise IndexError
+        
+        if cur_node is not None:
+            if index == 0:
+                self.head = cur_node.next
+                self.length -= 1
+                return
+        
+        while cur_node is not None:
+            if cur_index == index:
+                break
+            prev = cur_node
+            cur_node - cur_node.next
+            cur_index += 1
+
+        prev.next = cur_node.next
+        self.length -= 1
 
 
 
@@ -50,3 +66,8 @@ my_list = LinkedList()
 my_list.append(10)
 my_list.append(20)
 my_list.append(30)
+print('Текущий список:', my_list)
+print('Получение третьего элемента:', my_list.get(2))
+print('Удаление второго элемента.')
+my_list.remove(1)
+print('Новый список:', my_list)
