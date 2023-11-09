@@ -13,3 +13,9 @@
 def func_1(x):
     return x + 10
 
+def func_2(y, num):
+    y = func_1(num)
+    return y * y
+
+
+print(func_2(func_1, 9))
