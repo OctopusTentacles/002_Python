@@ -25,6 +25,15 @@ class LinkedList:
         self.head: Optional[Node] = None
         self.length = 0
 
+    def __str__(self) -> str:
+        if self.head is not None:
+            current = self.head
+            values = [str(current.value)]
+            while current.next is not None:
+                current = current.next
+                values.append(str(current.value))
+            return "[{values}]".format(values=" ".join(values))
+        return 'LinkesList []'
 
     def append(self, elem: Any) -> None:
         new_node = Node(elem)
@@ -54,7 +63,7 @@ class LinkedList:
             if cur_index == index:
                 break
             prev = cur_node
-            cur_node - cur_node.next
+            cur_node = cur_node.next
             cur_index += 1
 
         prev.next = cur_node.next
@@ -67,7 +76,6 @@ my_list.append(10)
 my_list.append(20)
 my_list.append(30)
 print('Текущий список:', my_list)
-print('Получение третьего элемента:', my_list.get(2))
 print('Удаление второго элемента.')
 my_list.remove(1)
 print('Новый список:', my_list)
