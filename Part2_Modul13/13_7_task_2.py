@@ -15,9 +15,10 @@ def gen_files_path(folder_name: str) -> str:
     """ gen_files_path - находит указанный пользователем каталог 
         и генерирует пути всех встреченных файлов
     """
-    for dirpath, dirnames, filenames in os.walk(folder_name):
+    start_path = os.path.abspath(folder_name)
+    for dirpath, dirnames, filenames in os.walk(start_path):
         for filename in filenames:
-            yield ("\t\tФайл: ", os.path.join(dirpath, filename))
+            yield "\tФайл: ", os.path.join(dirpath, filename)
 
         # for dirname in dirnames:
         #     if folder_name == dirname:
@@ -27,4 +28,4 @@ def gen_files_path(folder_name: str) -> str:
 
 catalog = gen_files_path(input("Имя каталога: "))
 for dir in catalog:
-    print(dir)
+    print(*dir)
