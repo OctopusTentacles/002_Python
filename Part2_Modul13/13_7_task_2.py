@@ -11,9 +11,10 @@
 
 import os
 
+
 def gen_files_path(folder_name: str) -> str:
     """ gen_files_path - находит указанный пользователем каталог 
-        и генерирует пути всех встреченных файлов
+        и генерирует пути файлов в нем.
     """
     # print(os.path.abspath(folder_name))
     for dirpath, dirnames, filenames in os.walk("/"):
