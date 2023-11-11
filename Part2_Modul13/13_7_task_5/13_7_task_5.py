@@ -94,4 +94,3 @@ with open(output_file_path, 'w') as output:
     for error_line in error_log_generator(input_file_path):
         output.write(error_line)
     print("\nФайл успешно обработан!")
-
