@@ -45,6 +45,3 @@ def py_files(folder_name: str, ending='.py') -> str:
 catalog = py_files(input("Имя каталога: "))
 for py_file in catalog:
     print(*py_file)
-
-
-# 12_7_task_4

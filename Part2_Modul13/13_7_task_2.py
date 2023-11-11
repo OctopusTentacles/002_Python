@@ -27,9 +27,3 @@ catalog = gen_files_path(input("Имя каталога: "))
 
 for dir in catalog:
     print(*dir)
-
-
-
-# /Users/artem/Documents/PROGRAMMING/SkillBox/002_Python/Part2_Modul12/12_7_task_4
-# 
-# /Users/artem/Documents/PROGRAMMING/SkillBox/004_Python_Basic/Module26

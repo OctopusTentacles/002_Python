@@ -42,41 +42,28 @@ output_file_path = ...
 import os
 
 
-def find_dir(cur_path: os.path, dir_name: str) -> os.path:
-    """ def find_dir - получает директорию скрипта и имя папки с рабочими файлами,
-                    возвращает директорию папки с рабочими файлами. Скрипт должен 
-                    лежать выше директории с рабочими файлами.
-        cur_path - директория скрипта.
-        dir_name - директория с рабочими файлами.
-    """
-    for dirpath, dirnames, _ in os.walk(cur_path):
-        for dirname in dirnames:
-            if dirname == dir_name:
-                return os.path.join(dirpath, dirname)
+# def find_dir(cur_path: os.path, dir_name: str) -> os.path:
+#     """ def find_dir - получает директорию скрипта и имя папки с рабочими файлами,
+#                     возвращает директорию папки с рабочими файлами. Скрипт должен 
+#                     лежать выше директории с рабочими файлами.
+#         cur_path - директория скрипта.
+#         dir_name - директория с рабочими файлами.
+#     """
+#     for dirpath, dirnames, _ in os.walk(cur_path):
+#         for dirname in dirnames:
+#             if dirname == dir_name:
+#                 return os.path.join(dirpath, dirname)
 
 def check_exist(work_path: os.path) -> os.path:
     """ def check_exist - проверяет существование файла в директории.
         work_path - директория рабочего файла.
     """
-    try:
-        if os.path.exists(work_path):
-            print("\nФайл найден!", end=" ")
-            return work_path
+    if os.path.exists(work_path):
+        return work_path
         
-        elif not os.path.exists(work_path):
-            print(f"\nФайл не найден! "
-                  f"Хотите создать: {work_path}")
-            choise = input("Y / N: ")
-            if choise.title() == "Y":
-                with open(work_path, 'w', encoding='utf8'):
-                    print("\nФайл создан!", end=" ")
-                    return work_path
-            else:
-                raise FileExistsError
-        else: 
-            raise FileExistsError
-    except FileExistsError as exc:
-        print("Директории не существует! Создайте файл!")
+    elif not os.path.exists(work_path):
+        with open(work_path, 'w', encoding='utf8'):
+            return work_path
 
 def error_log_generator(work_dir: os.path) -> str:
     """ def error_log_generator - читает строки рабочего файла и если в строке есть
@@ -94,21 +81,17 @@ def error_log_generator(work_dir: os.path) -> str:
 cur_dir = os.path.dirname(__file__)
 
 # директория рабочих файлов:
-dir_name = find_dir(cur_dir, "data")
+dir_name = os.path.join(cur_dir, "data")
 
 # проверка файла (work_logs.txt) на существование:
 input_file_path = check_exist(os.path.join(dir_name, "work_logs.txt"))
-if input_file_path:
-    print("Путь к файлу work_logs:\n\t", input_file_path)
 
 # проверка или создание файла (output.txt) на существование:
 output_file_path = check_exist(os.path.join(dir_name, "output.txt"))
-if output_file_path:
-    print("Путь к файлу output:\n\t", output_file_path)
 
 # читаем файл work_logs.txt и записываем ошибки в output.txt:
-    with open(output_file_path, 'w') as output:
-        for error_line in error_log_generator(input_file_path):
-            output.write(error_line)
+with open(output_file_path, 'w') as output:
+    for error_line in error_log_generator(input_file_path):
+        output.write(error_line)
     print("\nФайл успешно обработан!")
 
