@@ -27,3 +27,17 @@ print(timer(hard_func))
 
 # =======================================================================================
 
+def timer(func: Callable, *args, **kwargs) -> Any:
+    """ Функция-таймер - выводит время работы функции и возвращает ее результат"""
+    start = time.time()
+    result = func(*args, **kwargs)
+    stop = time.time()
+    run_time = round(stop - start, 3)
+    print("Функция работала {} сек.".format(run_time))
+    return result
+
+def hard_func():
+    pass
+
+
+print
