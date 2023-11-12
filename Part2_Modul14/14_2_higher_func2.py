@@ -13,8 +13,14 @@
 import time
 from typing import Callable, Any
 
-def timer():
+def timer(func: Callable) -> Any:
+    start = time.time()
+    func()
+    stop = time.time()
+    return stop - start
+
+def hard_func():
     pass
 
-def func():
-    pass
+
+print(timer(hard_func))
