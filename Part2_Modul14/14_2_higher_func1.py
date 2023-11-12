@@ -13,9 +13,8 @@
 def func_1(x):
     return x + 10
 
-def func_2(y, num):
-    y = func_1(num)
-    return y * y
+def func_2(func, num):
+    return func(num) * func(num)
 
 
 print(func_2(func_1, 9))
