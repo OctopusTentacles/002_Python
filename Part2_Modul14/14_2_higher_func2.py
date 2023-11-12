@@ -17,10 +17,13 @@ def timer(func: Callable) -> Any:
     start = time.time()
     func()
     stop = time.time()
-    return stop - start
+    return round(stop - start, 2)
 
 def hard_func():
-    pass
+    return [x ** 2 ** x for x in range(22)]
 
 
 print(timer(hard_func))
+
+# =======================================================================================
+
