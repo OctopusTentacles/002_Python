@@ -36,8 +36,11 @@ def timer(func: Callable, *args, **kwargs) -> Any:
     print("Функция работала {} сек.".format(run_time))
     return result
 
-def hard_func():
-    pass
+def hard_func(number: int) -> int:
+    result = 0
+    for _ in range(number + 1):
+        result += sum([num ** 3 for num in range(10000)])
+    return result
 
 
-print
+print(timer(hard_func, 200))
