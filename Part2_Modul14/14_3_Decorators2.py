@@ -12,10 +12,18 @@ import time
 from typing import Callable, Any
 
 
-def timer():
-    pass
+def timer(func: Callable) -> Any:
 
+    def wrapped_func(*args, **kwargs):
+        start = time.time()
+        value = func(*args, **kwargs)
+        stop = time.time()
+        print(round(stop - start, 2))
+        return value
+    return wrapped_func
+
+@timer
 def hard_func():
-    pass
+    return [x ** 2 ** x for x in range(22)]
 
 hard_func()
