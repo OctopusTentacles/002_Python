@@ -13,13 +13,14 @@ from typing import Callable, Any
 
 
 def timer(func: Callable) -> Any:
+    """ Декоратор timer - выводит время работы функции и возвращает ее результат"""
 
     def wrapped_func(*args, **kwargs):
-        start = time.time()
-        value = func(*args, **kwargs)
-        stop = time.time()
-        print(round(stop - start, 2))
-        return value
+        start_at = time.time()
+        result = func(*args, **kwargs)
+        stop_at = time.time()
+        print(round(stop_at - start_at, 2))
+        return result
     return wrapped_func
 
 @timer
