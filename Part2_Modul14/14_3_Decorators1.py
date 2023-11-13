@@ -12,6 +12,17 @@
 # Привет, Tom!
 # Привет, Tom!
 
+# Шаблон 
+# def decorator(func):
+#   def wrapped_func(*args, **kwargs):
+        # код вызова функции
+#       value = func(*args, **kwargs)
+        # код после вызова функции
+#       return value
+#   return wrapped_func
+
+# @decorator
+
 
 def greeting(name):
     print('Привет, {name}!'.format(name=name))
