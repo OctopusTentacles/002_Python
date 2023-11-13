@@ -24,5 +24,14 @@
 # @decorator
 
 
-def greeting(name):
+def do_twice(func):
+    def wrapped_func(*args, **kwargs):
+        func(*args, **kwargs)
+
+
+@do_twice
+def greeting(name: str) -> None:
     print('Привет, {name}!'.format(name=name))
+
+
+greeting('Tom')
