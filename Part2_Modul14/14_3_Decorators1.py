@@ -24,7 +24,12 @@
 # @decorator
 
 
-def do_twice(func):
+from typing import Callable, Any
+
+
+def do_twice(func: Callable) -> Callable:
+    """ Декоратор do_twice - дважды вызывает декорируемую функцию"""
+    
     def wrapped_func(*args, **kwargs):
         func(*args, **kwargs)
         return func(*args, **kwargs)
