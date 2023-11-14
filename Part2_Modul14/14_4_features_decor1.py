@@ -15,18 +15,20 @@
 from typing import Callable, Any
 
 
-def ingredients(func: Callable) -> Any:
-    
-    def wrapped_func(*args, **kwargs):
+def ingredients(func: Callable) -> Callable:
+    """ Дукоратор ингридиенты - выводит вторую и предпоследнюю линии,
+        а также вызывает функцию.
+    """
+    def wrapped_func(*args, **kwargs) -> Any:
         print("###помидоры###")
         func(*args, **kwargs)
         print("~~~~салат~~~~")
     return wrapped_func
 
 
-def bread(func: Callable) -> Any:
-    
-    def wrapped_func(*args, **kwargs):
+def bread(func: Callable) -> Callable:
+    """ Декоратор хлеб, выводит первую и последнюю линии"""
+    def wrapped_func(*args, **kwargs) -> Any:
         print("</----------\>")
         func(*args, **kwargs)
         print("<\__________/>")
