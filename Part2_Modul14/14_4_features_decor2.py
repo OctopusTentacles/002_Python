@@ -13,8 +13,8 @@ plugins: Dict[str, Callable] = dict()
 
 def register(func: Callable) -> Callable:
     """ Декоратор регистрирует функцию как плагин """
-    
 
+    plugins[func.__name__] = func
     return func
 
 @register
@@ -28,3 +28,4 @@ def goodbye(name: str) -> str:
 
 print(plugins)
 print(hello("Li"))
+print(goodbye("Hua"))
