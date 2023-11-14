@@ -15,10 +15,20 @@
 from typing import Callable, Any
 
 
-def ingreedients(func: Callable) -> Any:
-    pass
+def ingredients(func: Callable) -> Any:
+    
+    def wrapped_func(*args, **kwargs):
+        print("#помидоры#")
+        func(*args, **kwargs)
+        print("~салат~")
+    return wrapped_func
 
 def bread(func: Callable) -> Any:
+    pass
 
 
-def sandwich():
+def sandwich(filling):
+    print(filling)
+
+
+sandwich("--ветчина--")
