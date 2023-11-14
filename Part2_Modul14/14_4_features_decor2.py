@@ -6,18 +6,14 @@
 # Реализуйте специальный декоратор, который будет «регистрировать» нужные 
 # функции как плагины и заносить их в соответствующий словарь. 
 
-from typing import Callable, Any
+from typing import Callable, Any, Dict
 
 
-plugins = dict()
+plugins: Dict[str, Callable] = dict()
 
 def register(func: Callable) -> Callable:
   """ Декоратор регистрирует функцию как плагин """
-  def wrapped_func(*args, **kwargs):
-      value = func(*args, **kwargs)
-      return value
-  return wrapped_func
-
+    
 
 @register
 def hello(name: str) -> str:
