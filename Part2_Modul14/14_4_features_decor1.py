@@ -18,17 +18,25 @@ from typing import Callable, Any
 def ingredients(func: Callable) -> Any:
     
     def wrapped_func(*args, **kwargs):
-        print("#помидоры#")
+        print("###помидоры###")
         func(*args, **kwargs)
-        print("~салат~")
+        print("~~~~салат~~~~")
     return wrapped_func
 
+
 def bread(func: Callable) -> Any:
-    pass
+    
+    def wrapped_func(*args, **kwargs):
+        print("</----------\>")
+        func(*args, **kwargs)
+        print("<\__________/>")
+    return wrapped_func
 
 
+@bread
+@ingredients
 def sandwich(filling):
     print(filling)
 
 
-sandwich("--ветчина--")
+sandwich("---ветчина---")
