@@ -11,3 +11,14 @@
 # --ветчина--
 # ~салат~
 # <\______/>
+
+from typing import Callable, Any
+
+
+def ingreedients(func: Callable) -> Any:
+    pass
+
+def bread(func: Callable) -> Any:
+
+
+def sandwich():
