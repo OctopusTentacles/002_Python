@@ -12,16 +12,19 @@ from typing import Callable, Any, Dict
 plugins: Dict[str, Callable] = dict()
 
 def register(func: Callable) -> Callable:
-  """ Декоратор регистрирует функцию как плагин """
+    """ Декоратор регистрирует функцию как плагин """
     
+
+    return func
 
 @register
 def hello(name: str) -> str:
-   print("Hello {name}!".format(name=name))
+   return ("Hello {name}!".format(name=name))
 
 @register
 def goodbye(name: str) -> str:
-   print("Goodbye {name}!".format(name=name))
+   return ("Goodbye {name}!".format(name=name))
 
 
 print(plugins)
+print(hello("Li"))
