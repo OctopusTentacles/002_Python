@@ -11,15 +11,21 @@ from typing import Callable, Any
 
 plugins = dict()
 
-def to_plugins(func):
+def register(func: Callable) -> Callable:
+  """ Декоратор регистрирует функцию как плагин """
   def wrapped_func(*args, **kwargs):
       value = func(*args, **kwargs)
       return value
   return wrapped_func
 
 
-@to_plugins
+@register
 def hello(name: str) -> str:
    print("Hello {name}!".format(name=name))
+
+@register
+def goodbye(name: str) -> str:
+   print("Goodbye {name}!".format(name=name))
+
 
 print(plugins)
