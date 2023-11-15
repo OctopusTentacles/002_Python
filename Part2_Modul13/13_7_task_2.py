@@ -42,7 +42,8 @@ import os
 #             return True
 
 
-# current_folder = os.path.basename(os.path.abspath('./'))
+# current_folder = os.path.abspath(os.sep)
+# print(current_folder)
 
 # for file_path in gen_files_path(current_folder):
 #     print(file_path)
@@ -53,11 +54,11 @@ import os
 def gen_files_path(folder_name: str, path=os.path.abspath(os.sep)):
     for root, dirs, files in os.walk(path):
         if folder_name in root:
-            
-
+            for file in files:
+                yield "\tФайл: ", os.path.join(root, file)
 
 
 catalog = input("Имя каталога: ")
 for file_path in gen_files_path(catalog):
-    print(file_path)
+    print(*file_path)
 
