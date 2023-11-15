@@ -12,18 +12,52 @@
 import os
 
 
-def gen_files_path(folder_name: str) -> str:
-    """ gen_files_path - находит указанный пользователем каталог 
-        и генерирует пути файлов в нем.
-    """
-    # print(os.path.abspath(folder_name))
-    for dirpath, dirnames, filenames in os.walk("/"):
-        if folder_name in dirpath:
-                for filename in filenames:
-                    yield "\tФайл: ", os.path.join(dirpath, filename)
+# def gen_files_path(folder_name: str) -> str:
+#     """ gen_files_path - находит указанный пользователем каталог 
+#         и генерирует пути файлов в нем.
+#     """
+#     # print(os.path.abspath(folder_name))
+#     for dirpath, dirnames, filenames in os.walk("/"):
+#         if folder_name in dirpath:
+#                 for filename in filenames:
+#                     yield "\tФайл: ", os.path.join(dirpath, filename)
 
 
-catalog = gen_files_path(input("Имя каталога: "))
+# catalog = gen_files_path(input("Имя каталога: "))
 
-for dir in catalog:
-    print(*dir)
+# for dir in catalog:
+#     print(*dir)
+
+
+# def root_path() -> str:
+#     return os.path.abspath(os.sep)
+
+# def gen_files_path(folder: str, path=os.path.abspath(os.sep)):
+#     for root, dirs, files in os.walk(path):
+#         print(root, dirs, files)
+#         for file in files:
+#             yield os.path.join(root, file)
+#         if folder in dirs:
+#             print(f'Искомая директория {folder} найдена {os.path.join(root, folder)}')
+#             return True
+
+
+# current_folder = os.path.basename(os.path.abspath('./'))
+
+# for file_path in gen_files_path(current_folder):
+#     print(file_path)
+
+# 12_7_task_4
+
+
+def gen_files_path(folder_name: str, path=os.path.abspath(os.sep)):
+    for root, dirs, files in os.walk(path):
+        if folder_name in root:
+            
+
+
+
+catalog = input("Имя каталога: ")
+for file_path in gen_files_path(catalog):
+    print(file_path)
+
