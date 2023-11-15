@@ -1,12 +1,14 @@
 # Модуль functools. Декоратор functools.wraps()
 
 import time
+import functools
 from typing import Callable, Any
 
 
 def timer(func: Callable) -> Any:
     """ Декоратор timer - выводит время работы функции и возвращает ее результат"""
 
+    @functools.wraps(func)
     def wrapped_func(*args, **kwargs):
         start_at = time.time()
         result = func(*args, **kwargs)
