@@ -26,7 +26,7 @@ from typing import Callable
 
 
 def how_are_you(func: Callable) -> Callable:
-    """ надоедливый декоратор"""
+    """ надоедливый декоратор """
 
     @functools.wraps(func)
     def wrapped_func(*args, **kwargs):
@@ -35,19 +35,19 @@ def how_are_you(func: Callable) -> Callable:
         func(*args, **kwargs)
     return wrapped_func
 
+
 @how_are_you
 def test_1():
-    """ функция вывода информации"""
+    """ функция вывода информации """
     print('<Тут что-то происходит...>')
 
 @how_are_you
 def test_2():
-    """ функция вывода информации"""
+    """ функция вывода информации """
     print('Василий, ты уволен!')
 
 
-print(test_1.__name__, test_1.__doc__)
-print(test_2.__name__, test_2.__doc__)
-
+# print(test_1.__name__, test_1.__doc__)
+# print(test_2.__name__, test_2.__doc__)
 test_1()
 test_2()
