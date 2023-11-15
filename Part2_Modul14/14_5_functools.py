@@ -17,6 +17,11 @@ def timer(func: Callable) -> Any:
 
 @timer
 def hard_func():
+    """ Тяжелая функция, занимет много времени на выполнение"""
     return [x ** 2 ** x for x in range(22)]
 
+print(hard_func.__doc__)
+print(hard_func.__name__)
+
 hard_func()
+
