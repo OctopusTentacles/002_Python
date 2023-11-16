@@ -24,15 +24,19 @@ def logging(func: Callable) -> Callable:
 
     @functools.wraps(func)
     def wrapped_func(*args, **kwargs) -> Any:
-        print(func.__name__, func.__doc__)
-        func(*args, **kwargs)
+        print(f"Func: {func.__name__} | Doc: {func.__doc__}")
+        # func(*args, **kwargs)
 
     return wrapped_func
     
 
-def ():
-    pass
+@logging
+def greeting():
+    """ Выводит приветствие на экран. """
+    print("Привет, пользователь!")
 
-def ():
-    pass
+# def ():
+#     pass
 
+
+greeting()
