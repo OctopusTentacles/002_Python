@@ -20,8 +20,12 @@ from typing import Callable, Any
 cur_dir = os.path.dirname(__file__)
 
 
-def decorator(func):
-    def wrapped_func(*args, **kwargs):
+def logging(func: Callable) -> Callable:
+
+    @functools.wraps(func)
+    def wrapped_func(*args, **kwargs) -> Any:
+        print(func.__name__, func.__doc__)
+        func(*args, **kwargs)
 
     return wrapped_func
     
@@ -32,5 +36,3 @@ def ():
 def ():
     pass
 
-def ():
-    pass
