@@ -11,3 +11,26 @@
 # Дополнительно: запишите дату и время возникновения ошибки, используя модуль datetime.
 
 # Во всех декораторах используется functools.wraps.
+
+import os
+import datetime
+import functools
+from typing import Callable, Any
+
+cur_dir = os.path.dirname(__file__)
+
+
+def decorator(func):
+    def wrapped_func(*args, **kwargs):
+
+    return wrapped_func
+    
+
+def ():
+    pass
+
+def ():
+    pass
+
+def ():
+    pass
