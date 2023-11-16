@@ -14,10 +14,18 @@ import time
 from typing import Callable
 
 
-def in_process(func: Callable) -> Callable:
-    pass
+def delay(func: Callable) -> Callable:
+    """ def in_process - декоратор для задержки выполнения функции
+    """
+    def wrapped_func():
+        time.sleep(3)
+        return func()
+    return wrapped_func
 
 
 
 def check_data():
-    pass
+    print("Данные обновлены!")
+
+
+check_data()
