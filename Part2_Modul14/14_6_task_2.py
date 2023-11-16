@@ -11,20 +11,23 @@
 
 
 import time
-from typing import Callable
+import functools
+from typing import Callable, Any
 
 
 def delay(func: Callable) -> Callable:
     """ def in_process - декоратор для задержки выполнения функции
     """
-    def wrapped_func():
-        time.sleep(3)
-        return func()
+    @functools.wraps(func)
+    def wrapped_func() -> Any:
+        time.sleep(5)
+        func()
     return wrapped_func
 
 
-
+@delay
 def check_data():
+    """ def check_data - вывод статуса"""
     print("Данные обновлены!")
 
 
