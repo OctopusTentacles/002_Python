@@ -12,9 +12,9 @@
 
 
 import os, random
-import datetime
 import functools
 from typing import Callable, Any
+from datetime import datetime
 
 cur_dir = os.path.dirname(__file__)
 
@@ -30,7 +30,9 @@ def logging(func: Callable) -> Callable:
             print(exc)
             with open(os.path.join(cur_dir, "function_errors.log"), 
                       "a", encoding="utf-8") as log:
-                log.write(f"Func: {func.__name__}\t | Error: {exc}\n")
+                time_log = datetime.now()
+                time_log = time_log.strftime("%d.%m.%Y %H:%M:%S")
+                log.write(f"{time_log} | Func: {func.__name__}\t | Error: {exc}\n")
 
     return wrapped_func
     
