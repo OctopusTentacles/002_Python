@@ -23,16 +23,22 @@ def logging(func: Callable) -> Callable:
 
     @functools.wraps(func)
     def wrapped_func(*args, **kwargs) -> Any:
-        print(f"Func: {func.__name__} | Doc: {func.__doc__}")
-        func(*args, **kwargs)
+        try:
+            print(f"Func: {func.__name__} | Doc: {func.__doc__}")
+            func(*args, **kwargs)
+        except Exception as exc:
+            print(exc)
+            with open(os.path.join(cur_dir, "function_errors.log"), 
+                      "a", encoding="utf-8") as log:
+                log.write(f"Func: {func.__name__} | Error: {type(exc)}\n")
 
     return wrapped_func
     
 
 @logging
 def greeting():
-    """ Выводит приветствие на экран. """
-    print("Привет, пользователь!")
+    """ Возвращает приветственное сообщение. """
+    return ("Привет, пользователь!")
 
 @logging
 def division():
