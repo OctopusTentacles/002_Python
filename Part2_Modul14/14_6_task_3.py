@@ -30,7 +30,7 @@ def logging(func: Callable) -> Callable:
             print(exc)
             with open(os.path.join(cur_dir, "function_errors.log"), 
                       "a", encoding="utf-8") as log:
-                log.write(f"Func: {func.__name__} | Error: {type(exc)}\n")
+                log.write(f"Func: {func.__name__}\t | Error: {exc}\n")
 
     return wrapped_func
     
@@ -38,16 +38,25 @@ def logging(func: Callable) -> Callable:
 @logging
 def greeting():
     """ Возвращает приветственное сообщение. """
-    return ("Привет, пользователь!")
+    return "Привет, пользователь!"
 
 @logging
 def division():
     """ Выполняет деление произвольных чисел. """
     num1 = random.randint(1, 3)
-    num2 = random.randint(0, 3)
+    num2 = random.randint(0, 1)
     return num1 / num2
 
+@logging
+def my_list():
+    """ Создает список и возвращает определенный элемент из списка. """
+    my_list = [i for i in range(random.randint(0, 4))]
+    return my_list[3]
 
+
+# =======================================================================================
 greeting()
-for _ in range(5):
+for _ in range(3):
     division()
+for _ in range(3):
+    my_list()
