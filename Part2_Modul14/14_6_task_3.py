@@ -24,15 +24,15 @@ def logging(func: Callable) -> Callable:
     @functools.wraps(func)
     def wrapped_func(*args, **kwargs) -> Any:
         try:
-            print(f"Func: {func.__name__} | Doc: {func.__doc__}")
+            print(f"Func: {func.__name__}\t | Doc: {func.__doc__}")
             func(*args, **kwargs)
         except Exception as exc:
-            print(exc)
+            # print(exc)
             with open(os.path.join(cur_dir, "function_errors.log"), 
                       "a", encoding="utf-8") as log:
                 time_log = datetime.now()
                 time_log = time_log.strftime("%d.%m.%Y %H:%M:%S")
-                log.write(f"{time_log} | Func: {func.__name__}\t | Error: {exc}\n")
+                log.write(f"{time_log}  Func: {func.__name__}\t | Error: {exc}\n")
 
     return wrapped_func
     
