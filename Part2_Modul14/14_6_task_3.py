@@ -10,9 +10,8 @@
 
 # Дополнительно: запишите дату и время возникновения ошибки, используя модуль datetime.
 
-# Во всех декораторах используется functools.wraps.
 
-import os
+import os, random
 import datetime
 import functools
 from typing import Callable, Any
@@ -25,7 +24,7 @@ def logging(func: Callable) -> Callable:
     @functools.wraps(func)
     def wrapped_func(*args, **kwargs) -> Any:
         print(f"Func: {func.__name__} | Doc: {func.__doc__}")
-        # func(*args, **kwargs)
+        func(*args, **kwargs)
 
     return wrapped_func
     
@@ -35,8 +34,14 @@ def greeting():
     """ Выводит приветствие на экран. """
     print("Привет, пользователь!")
 
-# def ():
-#     pass
+@logging
+def division():
+    """ Выполняет деление произвольных чисел. """
+    num1 = random.randint(1, 3)
+    num2 = random.randint(0, 3)
+    return num1 / num2
 
 
 greeting()
+for _ in range(5):
+    division()
