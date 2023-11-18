@@ -16,10 +16,16 @@ import functools
 from typing import Callable, Any
 from datetime import datetime
 
+
 cur_dir = os.path.dirname(__file__)
 
 
 def logging(func: Callable) -> Callable:
+    """ Декоратор - отвечает за логирование функций, выводит название функции и
+        ее документацию. Если возникает ошибка - в файл function_errors.log 
+        записываются названия функции и ошибки.
+        Также на каждую ошибку записывается дата и время возникновения ошибки.
+    """
 
     @functools.wraps(func)
     def wrapped_func(*args, **kwargs) -> Any:
