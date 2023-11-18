@@ -9,22 +9,27 @@
 
 
 import random
-import functools
 from typing import Callable, Any
 
 
-def counter(self, func: Callable) -> Callable:
-    """ """
-
-    self.count = 0
+def counter(func: Callable) -> Callable:
+    """ Декоратор, считающий и выводящий количество вызовов
+        декорируемой функции.
+    """
     def wrapper(*args, **kwargs) -> Any:
-        func(*args, **kwargs)
-        self.count += 1
-        print(count)
+        wrapper.count += 1
+        res = func(*args, **kwargs)
+        print("Функция {} была вызвана {} раз.".format(
+            func.__name__, wrapper.count
+        ))
+        return res
+    wrapper.count = 0
     return wrapper
 
 
-def creat_list():
-    """ Создает список и возвращает определенный элемент из списка. """
-    my_list = [i for i in range(random.randint(0, 4))]
-    return my_list
+@counter
+def some_func(): ...
+
+
+for _ in range(random.randint(1, 13)):
+    some_func()
