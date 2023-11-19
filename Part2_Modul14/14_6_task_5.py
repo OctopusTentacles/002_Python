@@ -26,28 +26,33 @@
 
 
 import functools
-from typing import Callable, Any
+from typing import Callable
 
 caching = dict()
 
 def decor_cache(func: Callable) -> Callable:
-    """ """
-    def wrapper(*args, **kwargs):
+    """ Декоратор, который кэширует результаты вызова функции и, при повторном 
+        вызове с теми же аргументами, возвращает сохранённый результат.
+    """
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs) -> int:
         if args in caching.keys():
             return caching[args]
-        
         else:
             result = func(*args, **kwargs)
             caching[args] = result
             return result
-
-
     return wrapper
 
-def fibonacci(number):
+
+@decor_cache
+def fibonacci(number: int) -> int:
+    """ Рекурсивная функция вычисления чисел Фибоначчи. """
     if number <= 1:
         return number
     return fibonacci(number - 1) + fibonacci(number - 2)
+
+
 
 # Вычисление числа Фибоначчи с использованием кеширования
 print(fibonacci(10))  # Результат будет кеширован
