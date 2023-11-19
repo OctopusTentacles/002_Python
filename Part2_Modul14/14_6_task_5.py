@@ -25,8 +25,24 @@
 # каждой декорируемой функции.
 
 
+import functools
+from typing import Callable, Any
+
+caching = dict()
+
+def decor_cache(func: Callable) -> Callable:
+    """ """
+    def wrapper(*args, **kwargs):
+        if args in caching.keys():
+            return caching[args]
+        
+        else:
+            result = func(*args, **kwargs)
+            caching[args] = result
+            return result
 
 
+    return wrapper
 
 def fibonacci(number):
     if number <= 1:
