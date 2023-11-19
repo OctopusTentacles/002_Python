@@ -28,12 +28,13 @@
 import functools
 from typing import Callable
 
-caching = dict()
 
 def decor_cache(func: Callable) -> Callable:
     """ Декоратор, который кэширует результаты вызова функции и, при повторном 
         вызове с теми же аргументами, возвращает сохранённый результат.
     """
+    caching = dict()
+    
     @functools.wraps(func)
     def wrapper(*args, **kwargs) -> int:
         if args in caching.keys():
@@ -43,6 +44,7 @@ def decor_cache(func: Callable) -> Callable:
             caching[args] = result
             return result
     return wrapper
+
 
 
 @decor_cache
