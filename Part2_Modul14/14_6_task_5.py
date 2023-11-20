@@ -37,17 +37,13 @@ def decor_cache(func: Callable) -> Callable:
 
     @functools.wraps(func)
     def wrapper(*args, **kwargs) -> int:
-        cache = {}
         if args in caching.keys():
             return caching[args]
         else:
             result = func(*args, **kwargs)
-            if result == args:
-                cache[args] = result
-                caching[args] = cache
-        
-        
-            return result    
+            caching[args] = result
+        return result  
+          
     return wrapper
 
 
