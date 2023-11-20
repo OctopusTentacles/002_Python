@@ -34,15 +34,20 @@ def decor_cache(func: Callable) -> Callable:
         вызове с теми же аргументами, возвращает сохранённый результат.
     """
     caching = dict()
-    
+
     @functools.wraps(func)
     def wrapper(*args, **kwargs) -> int:
+        cache = {}
         if args in caching.keys():
             return caching[args]
         else:
             result = func(*args, **kwargs)
-            caching[args] = result
-            return result
+            if result == args:
+                cache[args] = result
+                caching[args] = cache
+        
+        
+            return result    
     return wrapper
 
 
