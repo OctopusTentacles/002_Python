@@ -16,10 +16,19 @@
 
 
 class Robot:
-    def __init__(self) -> None:
-        pass
+    def __init__(self, model):
+        self.model = model
+
+    def __str__(self):
+        return f"Я - Робот {self.__class__.__name__}, модель - {self.model}"
+    
+    def operate(self, action):
+        self.action = action
+        print(action)
 
 
 class CanFly:
-    def __init__(self) -> None:
+    def __init__(self, hight, speed) -> None:
+        self.hight = hight
+        self.speed = speed
         pass
