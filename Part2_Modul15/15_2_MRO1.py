@@ -59,3 +59,16 @@ class WarDrone(Robot, CanFly):
     def operate(self, action=None):
         super().operate("активация {} в охранный режим для охраны с воздуха".format(
             self.weapon))
+
+# =======================================================================================
+scoute_drone = ScouteDrone("AIR-0007")
+print(scoute_drone)
+scoute_drone.take_off()
+scoute_drone.operate()
+scoute_drone.land()
+
+wardrone = WarDrone("AIR-T-900", "Missle")
+print(wardrone)
+wardrone.take_off()
+wardrone.operate()
+wardrone.land()
