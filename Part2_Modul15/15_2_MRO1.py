@@ -55,33 +55,26 @@ class CanFly:
         )
 
 
-class ScouteDrone(Robot, CanFly):
+class ScouteDrone(CanFly, Robot):
     def __init__(self, model):
-        super().__init__(model)
+        super().__init__(model=model)
 
-    def operate(self, action=None):
-        super().operate("Веду разведку с воздуха")
-        super().to_fly()
+    def operate(self):
+        super().operate()
+        print('Робот ведет разведку с воздуха')
 
 
-class WarDrone(Robot, CanFly):
+class WarDrone(CanFly, Robot):
     def __init__(self, model, weapon):
-        super().__init__(model)
+        super().__init__(model=model)
         self.weapon = weapon
 
-    def operate(self, action=None):
-        super().operate("активация {} в охранный режим для охраны с воздуха".format(
-            self.weapon))
+    def operate(self):
+        super().operate()
+        print(f'Робот защищает объект при помощи {self.weapon}')
 
 # =======================================================================================
-scoute_drone = ScouteDrone("AIR-0007")
-print(scoute_drone)
-scoute_drone.take_off()
-scoute_drone.operate()
-scoute_drone.land()
-
-wardrone = WarDrone("AIR-T-900", "Missle")
-print(wardrone)
-wardrone.take_off()
-wardrone.operate()
-wardrone.land()
+print()
+ScouteDrone("AIR-0007").operate()
+print()
+WarDrone("AIR-T-900", "Missle").operate()
