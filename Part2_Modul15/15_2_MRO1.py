@@ -40,3 +40,12 @@ class CanFly:
 
     def land(self):
         print("Robot landing")
+
+
+class ScouteDrone(Robot, CanFly):
+    def __init__(self, model):
+        super().__init__(model)
+
+    def operate(self, action=None):
+        super().operate("Веду разведку с воздуха")
+        super().to_fly()
