@@ -49,3 +49,13 @@ class ScouteDrone(Robot, CanFly):
     def operate(self, action=None):
         super().operate("Веду разведку с воздуха")
         super().to_fly()
+
+
+class WarDrone(Robot, CanFly):
+    def __init__(self, model, weapon):
+        super().__init__(model)
+        self.weapon = weapon
+
+    def operate(self, action=None):
+        super().operate("активация {} в охранный режим для охраны с воздуха".format(
+            self.weapon))
