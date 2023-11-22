@@ -16,30 +16,43 @@
 
 
 class Robot:
-    def __init__(self, model):
+    def __init__(self, model, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.model = model
 
     def __str__(self):
-        return f"Я - Робот {self.__class__.__name__}, модель - {self.model}"
+        res = super().__str__()
+        return res + "{self.__class__.__name__} модель - {self.model}"
     
-    def operate(self, action):
-        self.action = action
-        print(action)
+    def operate(self):
+        print('Я - Робот!')
 
 
 class CanFly:
-    def __init__(self, hight, speed) -> None:
-        self.hight = hight
-        self.speed = speed
+    def __init__(self, *args, **kwargs) -> None:
+        self.altitude = 0  # метров
+        self.velocity = 0  # км/ч
     
     def take_off(self):
-        print("Robot take off")
+        self.altitude = 100
+        self.velocity = 300
 
     def to_fly(self):
-        print("Robot flying")
+        self.altitude = 5000
 
     def land(self):
-        print("Robot landing")
+        self.altitude = 0
+        self.velocity = 0
+
+    def operate(self):
+        super().operate()
+        print('летим')
+
+    def __str__(self):
+        res = super().__str__()
+        return res + ' {} высота {} скорость {}'.format(
+            self.__class__.__name__, self.altitude, self.velocity,
+        )
 
 
 class ScouteDrone(Robot, CanFly):
