@@ -31,4 +31,12 @@ class CanFly:
     def __init__(self, hight, speed) -> None:
         self.hight = hight
         self.speed = speed
-        pass
+    
+    def take_off(self):
+        print("Robot take off")
+
+    def to_fly(self):
+        print("Robot flying")
+
+    def land(self):
+        print("Robot landing")
