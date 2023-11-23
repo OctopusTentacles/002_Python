@@ -43,3 +43,9 @@ class ResizeMixin:
 class Rectangle(Figure, ResizeMixin):
     """ Прямоугольник - родительский класс: Figure"""
     pass
+
+
+class Squre(Figure, ResizeMixin):
+    """ Квадрат - родительский класс: Figure"""
+    def __init__(self, x: int, y: int, size: int) -> None:
+        super().__init__(x, y, size, size)
