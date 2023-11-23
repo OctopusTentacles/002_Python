@@ -11,7 +11,7 @@
 # Также добавьте класс-примесь, в котором реализован функционал проигрывания музыки. 
 # «Замешайте» этот класс в «Амфибию»
 
-from abc import ABC
+from abc import ABC, abstractmethod
 
 class Transport(ABC):
     """ 
@@ -21,3 +21,50 @@ class Transport(ABC):
         super().__init__(*args, **kwargs)
         self.color = color
         self.speed = speed
+
+    @abstractmethod
+    def earth_moving(self):
+        pass
+
+    @abstractmethod
+    def water_moving(self):
+        pass
+
+
+    @abstractmethod
+    def beep(self):
+        pass
+
+
+class MusicMixin:
+    def play_music(self):
+        print("Playing music!")
+
+
+class Cars(Transport):
+    def __init__(self, color, speed) -> None:
+        super().__init__(color=color, speed=speed)
+
+    def earth_moving(self):
+        super().earth_moving(self)
+        print("Машина едет по земле!")
+
+class Boats(Transport):
+    def __init__(self, color, speed) -> None:
+        super().__init__(color=color, speed=speed)
+
+    def water_moving(self):
+        super().water_moving(self)
+        print("Лодка плывет по воде!")
+
+class Amphibians(Transport, MusicMixin):
+    def __init__(self, color, speed) -> None:
+        super().__init__(color=color, speed=speed)
+
+    def earth_moving(self):
+        super().earth_moving(self)
+        print("Амфибия едет по земле!")
+
+    def water_moving(self):
+        super().water_moving(self)
+        print("Амфибия плывет по воде!")
