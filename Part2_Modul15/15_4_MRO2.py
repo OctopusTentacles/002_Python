@@ -9,9 +9,9 @@
 
 from abc import ABC, abstractmethod
 
-class Figure:
+class Figure(ABC):
     """
-        Абстрактный класс Фигура
+        Абстрактный базовый класс Фигура
         Args и Attrs:
             x(int): координата X
             y(int): координата Y
@@ -23,11 +23,23 @@ class Figure:
         self.y = y
         self.lenght = lenght
         self.width = width
-        
+
+    @abstractmethod    
     def move(self, x: int, y: int) -> None:
         self.x = x
         self.y = y
 
+    # def resize(self, lenght: int, width: int) -> None:
+    #     self.lenght = lenght
+    #     self.width = width
+
+
+class ResizeMixin:
     def resize(self, lenght: int, width: int) -> None:
         self.lenght = lenght
         self.width = width
+
+
+class Rectangle(Figure, ResizeMixin):
+    """ Прямоугольник - родительский класс: Figure"""
+    pass
