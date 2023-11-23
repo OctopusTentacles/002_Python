@@ -31,9 +31,9 @@ class Transport(ABC):
         pass
 
 
-    @abstractmethod
-    def beep(self):
-        pass
+    # @abstractmethod
+    # def beep(self):
+    #     pass
 
 
 class MusicMixin:
@@ -46,7 +46,6 @@ class Cars(Transport):
         super().__init__(color=color, speed=speed)
 
     def earth_moving(self):
-        super().earth_moving(self)
         print("Машина едет по земле!")
 
 class Boats(Transport):
@@ -54,17 +53,13 @@ class Boats(Transport):
         super().__init__(color=color, speed=speed)
 
     def water_moving(self):
-        super().water_moving(self)
         print("Лодка плывет по воде!")
 
-class Amphibians(Transport, MusicMixin):
-    def __init__(self, color, speed) -> None:
-        super().__init__(color=color, speed=speed)
+class Amphibians(Cars, Boats, MusicMixin):
+    pass
 
-    def earth_moving(self):
-        super().earth_moving(self)
-        print("Амфибия едет по земле!")
 
-    def water_moving(self):
-        super().water_moving(self)
-        print("Амфибия плывет по воде!")
+amphibian = Amphibians("red", 130)
+amphibian.earth_moving()
+amphibian.water_moving()
+amphibian.play_music()
