@@ -10,3 +10,14 @@
 
 # Также добавьте класс-примесь, в котором реализован функционал проигрывания музыки. 
 # «Замешайте» этот класс в «Амфибию»
+
+from abc import ABC
+
+class Transport(ABC):
+    """ 
+        Абстрактный базовый класс Парк Транспорта.
+    """
+    def __init__(self, color, speed, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self.color = color
+        self.speed = speed
