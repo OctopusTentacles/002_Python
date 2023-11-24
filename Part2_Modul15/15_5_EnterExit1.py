@@ -21,8 +21,9 @@ class File:
         return self.file
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        return True
+        self.file.close()
+        return True # для исключения любых ошибок
 
 
-with File(‘example.txt’, ‘w’) as file:
-    file.write(‘Всем привет!’)
+with File("example.txt", "w") as file:
+    file.write("Всем привет!")
