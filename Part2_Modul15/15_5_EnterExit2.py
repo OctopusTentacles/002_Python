@@ -51,7 +51,7 @@ class Example:
             print("Тип ошибки:", exc_type)
             print("Значение ошибки:", exc_val)
             print("'След' ошибки:", exc_tb)
-        # else:
+        return True
             
 
 
