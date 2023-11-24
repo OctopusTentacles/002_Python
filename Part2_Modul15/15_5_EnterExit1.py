@@ -11,14 +11,17 @@
 
 class File:
 
-    def __init__(self) -> None:
-        pass
+    def __init__(self, file_name, mode) -> None:
+        self.file = None
+        self.file_name = file_name
+        self.mode = mode
         
     def __enter__(self):
-        pass
+        self.file = open(self.file_name, self.mode, encoding="utf8")
+        return self.file
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        pass
+        return True
 
 
 with File(‘example.txt’, ‘w’) as file:
