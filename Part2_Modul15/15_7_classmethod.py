@@ -1,6 +1,8 @@
 # 15.7 Методы класса: декоратор classmethod
 
 class Pet:
+    TOTAL_SOUNDS = 0
+
     def __init__(self) -> None:
         self.__legs = 4
         self.__tail = True
@@ -14,15 +16,22 @@ class Pet:
     
 
 class Cat(Pet):
-    # @staticmethod
-    @classmethod
-    def sound(cls) -> None:
+    @staticmethod
+    def sound() -> None:
         print("Мяу")
 
 
 class Dog(Pet):
-    def sound(self) -> None:
+    @classmethod
+    def sound(cls) -> None:
+        cls.TOTAL_SOUNDS += 1
+        print(cls.TOTAL_SOUNDS)
         print("Гав")
 
 
 Cat.sound()
+Dog.sound()
+
+dog = Dog()
+Dog.sound()
+Dog.sound()
