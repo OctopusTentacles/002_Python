@@ -72,3 +72,13 @@ class Boats(Transport):
 
 class Amphibians(Cars, Boats, MusicMixin):
     pass
+
+
+
+amphibian = Amphibians("red", 130)
+amphibian.earth_moving()
+amphibian.water_moving()
+amphibian.play_music()
+print(amphibian.color)
+amphibian.color = "white"
+print(amphibian.color)
