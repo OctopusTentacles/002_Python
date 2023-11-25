@@ -92,3 +92,60 @@ edges = graph.es
 # Визуализация графа
 layout = graph.layout("circle")
 ig.plot(graph, layout=layout, vertex_color='lightblue', edge_color='gray')
+# =======================================================================================
+
+# Хеш-таблицы
+
+# Хеш-таблица — структура данных, предназначенная для эффективного хранения и поиска 
+# пар «ключ — значение». Она использует хеш-функцию для преобразования ключа в индекс, 
+# по которому происходит доступ к значению.
+
+# Кеширование
+# Хеш-таблицы могут использоваться для кеширования результатов вычислений или запросов, 
+# ускоряя повторные доступы к данным.
+# Поиск и индексация
+# Хеш-таблицы обеспечивают быстрый доступ к данным по ключу — это полезно, например, 
+# при поиске, индексации или установлении соответствий между объектами.
+
+class HashTable:
+    def __init__(self):
+        self.size = 10 # Размер хеш-таблицы
+        self.table = [None] * self.size # Инициализация массива с None
+
+    def _hash_function(self, key):
+        return hash(key) % self.size # Хеш-функция, преобразующая ключ в индекс
+
+    def insert(self, key, value):
+        index = self._hash_function(key)
+        self.table[index] = value # Вставка значения по соответствующему индексу
+
+    def get(self, key):
+        index = self._hash_function(key)
+        return self.table[index] # Получение значения по ключу
+
+    def remove(self, key):
+        index = self._hash_function(key)
+        self.table[index] = None # Удаление значения по ключу
+
+# Модуль hashlib для вычисления хеш-значения строки с использованием SHA-256:
+
+import hashlib
+data = "Hello, World!"
+hash_object = hashlib.sha256(data.encode())
+hex_digest = hash_object.hexdigest()
+print(hex_digest) # Выводит хеш-значение SHA-256
+
+# Библиотека mmh3 (MurmurHash) для вычисления хеш-значения строки:
+
+import mmh3
+data = "Hello, World!"
+hash_value = mmh3.hash(data)
+print(hash_value)  # Выводит хеш-значение MurmurHash
+
+# Библиотека pyhash для вычисления CRC32 хеш-значения строки:
+
+import pyhash
+data = "Hello, World!"
+crc32_hasher = pyhash.crc32()
+hash_value = crc32_hasher(data)
+print(hash_value)  # Выводит хеш-значение CRC32
