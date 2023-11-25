@@ -10,3 +10,19 @@
 # Лодки. Ездят только по воде.
 # Амфибии. Могут перемещаться и по земле, и по воде.
 
+
+from abc import ABC, abstractmethod
+
+
+class Transport(ABC):
+    """ 
+        Абстрактный базовый класс Парк Транспорта.
+    """
+    def __init__(self, color, speed, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self._color = color
+        self.speed = speed
+
+    @property
+    def color(self):
+        return self._color
