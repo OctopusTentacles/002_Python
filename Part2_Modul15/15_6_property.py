@@ -21,8 +21,54 @@ class Transport(ABC):
     def __init__(self, color, speed, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
         self._color = color
-        self.speed = speed
+        self._speed = speed
 
     @property
     def color(self):
         return self._color
+    
+    @color.setter
+    def color(self, color):
+        self._color = color
+
+    @property
+    def speed(self):
+        return self._speed
+
+    @speed.setter
+    def speed(self, speed):
+        self._speed = speed
+
+    @abstractmethod
+    def earth_moving(self):
+        pass
+
+    @abstractmethod
+    def water_moving(self):
+        pass
+
+    def signal(self):
+        print("Сигнал")
+
+
+class MusicMixin:
+    def play_music(self):
+        print("Playing music!")
+
+
+class Cars(Transport):
+    def __init__(self, color, speed) -> None:
+        super().__init__(color=color, speed=speed)
+
+    def earth_moving(self):
+        print("Машина едет по земле!")
+
+class Boats(Transport):
+    def __init__(self, color, speed) -> None:
+        super().__init__(color=color, speed=speed)
+
+    def water_moving(self):
+        print("Лодка плывет по воде!")
+
+class Amphibians(Cars, Boats, MusicMixin):
+    pass
