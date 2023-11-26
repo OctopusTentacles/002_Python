@@ -30,10 +30,13 @@ class MyMath:
     def circle_len(radius):
         # self.radius = radius
         return 2 * math.pi * radius
+    
+    def circle_sq(radius):
+        return math.pi * radius ** 2
 
     pass
 
 res_1 = MyMath.circle_len(radius=5)
-# res_2 = MyMath.circle_sq(radius=6)
+res_2 = MyMath.circle_sq(radius=6)
 print(res_1)
-# print(res_2)
+print(res_2)
