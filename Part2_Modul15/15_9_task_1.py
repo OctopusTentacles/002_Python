@@ -7,15 +7,18 @@
 
 
 class File:
-    def __init__(self) -> None:
-        pass
+    def __init__(self, file_name:str, mode:str = "w") -> None:
+        self.file_name = file_name
+        self.mode = mode
+        self.file = None
 
     def __enter__(self):
+        self.file = open(self.file_name, self.mode, encoding="utf8")
         pass
 
-    def __exit__(self):
+    def __exit__(self, exc_type, exc_value, traceback):
         pass
 
 
 with File("example.txt", "r") as file:
-    file.read()
+    file.write()
