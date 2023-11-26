@@ -19,24 +19,41 @@
 
 import math
 
+
 class MyMath:
-    """
-    """
-    def __init__(self, side_a, side_b, radius) -> None:
-        self.side_a = side_a
-        self.side_b = side_b
-        self.radius = radius
 
-    def circle_len(radius):
-        # self.radius = radius
+    @classmethod
+    def circle_len(cls, radius: float) -> float:
+        """ 
+            Вычисляет длину окружности.
+        """
         return 2 * math.pi * radius
+
+    @classmethod
+    def circle_sq(cls, radius: float) -> float:
+        """
+            Вычисляет площадь окружности.
+        """
+        return math.pi * radius**2
+
+    @classmethod
+    def cube_volume(cls, side_length: float) -> float:
+        """
+            Вычисляет объем куба.
+        """
+        return side_length**3
+
+    @classmethod
+    def sphere_surface_area(cls, radius: float) -> float:
+        """
+            Вычисляет площадь поверхности сферы.
+        """
+        return 4 * math.pi * radius**2
     
-    def circle_sq(radius):
-        return math.pi * radius ** 2
 
-    pass
-
+# Пример использования:
 res_1 = MyMath.circle_len(radius=5)
 res_2 = MyMath.circle_sq(radius=6)
 print(res_1)
 print(res_2)
+
