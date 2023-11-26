@@ -17,7 +17,8 @@ class File:
         self.file = None
 
     def __enter__(self):
-        """ метод для входа в блок контекст-менеджера
+        """ метод для входа в блок контекст-менеджера.
+            :cur_dir: каталог для работы с файлами.
         """
         cur_dir = os.path.join(os.path.dirname(__file__), self.file_name)
 
