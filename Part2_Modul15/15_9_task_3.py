@@ -17,16 +17,22 @@
 # True
 # False
 
+import datetime
+
 
 class Date:
 
 
-    def is_date_valid():
+    def __init__(data_str) -> None:
+        pass
+
+    def is_date_valid(data_str):
         pass
 
 
-    def from_string():
-        pass
+    def from_string(data_str):
+        my_date = datetime.datetime.strptime(data_str, "%d-%m-%Y")
+        return f"День: {my_date.day}    Месяц: {my_date.month}    Год: {my_date.year}"
 
 
     pass
