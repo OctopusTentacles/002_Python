@@ -27,7 +27,10 @@ class Date:
         pass
 
     def is_date_valid(data_str):
-        pass
+        my_date = datetime.datetime.strptime(data_str, "%d-%m-%Y")
+        if my_date:
+            return True
+        return False
 
 
     def from_string(data_str):
