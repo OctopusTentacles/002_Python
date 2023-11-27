@@ -18,27 +18,44 @@
 # False
 
 
-import datetime
+# import datetime
 
+
+# class Date:
+#     def __init__(data_str) -> None:
+#         pass
+
+#     def is_date_valid(data_str):
+#         try:
+#             my_date = datetime.datetime.strptime(data_str, "%d-%m-%Y")
+#             if my_date:
+#                 return True
+#             raise Exception
+#         except Exception:
+#             return False
+
+#     def from_string(data_str):
+#         my_date = datetime.datetime.strptime(data_str, "%d-%m-%Y")
+#         return f"День: {my_date.day}    Месяц: {my_date.month}    Год: {my_date.year}"
 
 class Date:
 
+    def __init__(self, day, month, year) -> None:
+        self.day = day
+        self.month = month
+        self.year = year
 
-    def __init__(data_str) -> None:
+    @classmethod
+    def is_date_valid(cls, data_str):
+        pass
+    
+    @classmethod
+    def from_string(cls, data_str):
         pass
 
-    def is_date_valid(data_str):
-        try:
-            my_date = datetime.datetime.strptime(data_str, "%d-%m-%Y")
-            if my_date:
-                return True
-            raise Exception
-        except Exception:
-            return False
-
-    def from_string(data_str):
-        my_date = datetime.datetime.strptime(data_str, "%d-%m-%Y")
-        return f"День: {my_date.day}    Месяц: {my_date.month}    Год: {my_date.year}"
+    @classmethod
+    def validate_date(date_str):
+        pass
 
 
 date = Date.from_string('10-12-2077')
