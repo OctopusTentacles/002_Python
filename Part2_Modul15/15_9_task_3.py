@@ -41,14 +41,27 @@
 
 
 class Date:
-
-    def __init__(self, day, month, year) -> None:
+    """
+    Класс для работы с датами.
+    """
+    def __init__(self, day: int, month: int, year: int) -> None:
+        """
+        Инициализирует объект класса Date.
+        :param day: День месяца (1-31).
+        :param month: Месяц (1-12).
+        :param year: Год.
+        """
         self.day = day
         self.month = month
         self.year = year
 
     @classmethod
-    def is_date_valid(cls, data_str):
+    def is_date_valid(cls, data_str: str) -> bool:
+        """
+            Проверяет корректность строки даты.
+            :param date_str: Строка даты в формате 'dd-mm-yyyy'.
+            :return: True, если дата корректна, False в противном случае.
+        """
         try:
             day, month, year = map(int, data_str.split("-"))
 
@@ -61,6 +74,11 @@ class Date:
         
     @classmethod
     def from_string(cls, data_str):
+        """
+            Создает объект класса Date из строки даты.
+            :param date_str: Строка даты в формате 'dd-mm-yyyy'.
+            :return: Строковое представление даты с разделением на день, месяц и год.
+        """
         if cls.is_date_valid(data_str):
             day, month, year = map(int, data_str.split("-"))
             return f"День: {day}    Месяц: {month}    Год: {year}"
@@ -70,3 +88,4 @@ date = Date.from_string('10-12-2077')
 print(date)
 print(Date.is_date_valid('10-12-2077'))
 print(Date.is_date_valid('40-12-2077'))
+print(Date.__doc__)
