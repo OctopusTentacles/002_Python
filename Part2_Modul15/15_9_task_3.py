@@ -17,6 +17,7 @@
 # True
 # False
 
+
 import datetime
 
 
@@ -27,19 +28,17 @@ class Date:
         pass
 
     def is_date_valid(data_str):
-        my_date = datetime.datetime.strptime(data_str, "%d-%m-%Y")
-        if my_date:
-            return True
-        return False
-
+        try:
+            my_date = datetime.datetime.strptime(data_str, "%d-%m-%Y")
+            if my_date:
+                return True
+            raise Exception
+        except Exception:
+            return False
 
     def from_string(data_str):
         my_date = datetime.datetime.strptime(data_str, "%d-%m-%Y")
         return f"День: {my_date.day}    Месяц: {my_date.month}    Год: {my_date.year}"
-
-
-    pass
-
 
 
 date = Date.from_string('10-12-2077')
