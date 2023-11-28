@@ -20,17 +20,20 @@
 # так как давно добавленный элемент может быть популярен, и его удаление не поможет 
 # ускорить новые запросы.
 
+from collections import OrderedDict
+
 
 class LRUCache:
 
     def __init__(self, capacity: int) -> None:
         self.capacity = capacity
-        self.__cache = dict()
+        self.__cache = OrderedDict()
 
 
     @property
     def cache(self): 
-        """Возвращает самый старый элемент
+        """
+            Возвращает самый старый элемент
         """
         if len(self.__cache) > 0:
             return next(iter(self.__cache.items()))
@@ -58,7 +61,10 @@ class LRUCache:
             :return: Значение элемента по ключу.
         """
         # самый старый 1, потом 3, самый новый 2
+        # перенести self.__cache[key] в конец словаря...OrderedDict
         value = self.__cache[key]
+        self.__cache.move_to_end(key)
+
         return value
 
 
