@@ -25,30 +25,31 @@ class LRUCache:
 
     def __init__(self, capacity) -> None:
         self.capacity = capacity
-        self.cache = dict()
+        self.__cache = dict()
 
 
     @property
     def cache(self): 
         """Возвращает самый старый элемент
         """
-        if len(self.cache) > 0:
-            key = next(iter(self.cache))
-            return self.cache[key]
+        if len(self.__cache) > 0:
+            return next(iter(self.__cache.items()))
         # else: return None
 
     @cache.setter
-    def cache(self, new_elem): 
+    def cache(self, new_elem: tuple): 
         """этот метод должен добавлять новый элемент
         """
         key, value = new_elem
-        self.cache[key] = value
+        self.__cache[key] = value
 
-
+    def get(self, key: str):
+        value = self.__cache[key]
+        return value
 
 
     def print_cache(self):
-        for key, value in self.cache.items():
+        for key, value in self.__cache.items():
             print(f"{key} : {value}")
 
 
