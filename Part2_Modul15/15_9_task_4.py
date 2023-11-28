@@ -23,7 +23,7 @@
 
 class LRUCache:
 
-    def __init__(self, capacity) -> None:
+    def __init__(self, capacity: int) -> None:
         self.capacity = capacity
         self.__cache = dict()
 
@@ -37,22 +37,40 @@ class LRUCache:
         # else: return None
 
     @cache.setter
-    def cache(self, new_elem: tuple): 
-        """этот метод должен добавлять новый элемент
+    def cache(self, new_elem: tuple) -> None: 
+        """ Добавляет новый элемент в кэш.
+            :param new_elem: Кортеж (ключ, значение) нового элемента.
         """
+
         key, value = new_elem
+        # удалить самый старый элемент, если превышен лимит:
+        if len(self.__cache) >= self.capacity:
+            old_elem = next(iter(self.__cache))
+            del self.__cache[old_elem]
+        # добавить новый элемент в кэш:
         self.__cache[key] = value
 
-    def get(self, key: str):
+    def get(self, key: str) -> str:
+        """
+            Возвращает значение по ключу и обновляет порядок элементов в кэше.
+
+            :param key: Ключ элемента.
+            :return: Значение элемента по ключу.
+        """
+        # самый старый 1, потом 3, самый новый 2
         value = self.__cache[key]
         return value
 
 
     def print_cache(self):
+        """ Выводит текущий кэш в консоль."""
+
+        print("LRU Cache:")
         for key, value in self.__cache.items():
             print(f"{key} : {value}")
 
 
+# MAIN==============================================================================
 # Создаём экземпляр класса LRU Cache с capacity = 3
 cache = LRUCache(3)
 # Добавляем элементы в кэш
