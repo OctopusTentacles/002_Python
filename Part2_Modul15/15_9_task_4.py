@@ -21,7 +21,7 @@
 # ускорить новые запросы.
 
 
-class LRUCache():
+class LRUCache:
 
     def __init__(self, capacity) -> None:
         self.capacity = capacity
@@ -30,21 +30,25 @@ class LRUCache():
 
     @property
     def cache(self): 
-        """этот метод должен возвращать самый старый элемент
+        """Возвращает самый старый элемент
         """
-        return self.cache[0]
+        if len(self.cache) > 0:
+            key = next(iter(self.cache))
+            return self.cache[key]
+        # else: return None
 
     @cache.setter
     def cache(self, new_elem): 
         """этот метод должен добавлять новый элемент
         """
-        self.cache[self.capacity] = new_elem
+        key, value = new_elem
+        self.cache[key] = value
 
 
 
 
     def print_cache(self):
-        for key, value in self.cache.items:
+        for key, value in self.cache.items():
             print(f"{key} : {value}")
 
 
