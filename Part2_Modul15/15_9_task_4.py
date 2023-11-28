@@ -21,12 +21,44 @@
 # ускорить новые запросы.
 
 
-class LRU_Cache():
-    pass
+class LRUCache():
+
+    def __init__(self, capacity) -> None:
+        self.capacity = capacity
+        self.cache = dict()
 
 
     @property
-    def cache(self): # этот метод должен возвращать самый старый элемент
-        
+    def cache(self): 
+        """этот метод должен возвращать самый старый элемент
+        """
+        return self.cache[0]
+
     @cache.setter
-    def cache(self, new_elem): # этот метод должен добавлять новый элемент
+    def cache(self, new_elem): 
+        """этот метод должен добавлять новый элемент
+        """
+        self.cache[self.capacity] = new_elem
+
+
+
+
+    def print_cache(self):
+        for key, value in self.cache.items:
+            print(f"{key} : {value}")
+
+
+# Создаём экземпляр класса LRU Cache с capacity = 3
+cache = LRUCache(3)
+# Добавляем элементы в кэш
+cache.cache = ("key1", "value1")
+cache.cache = ("key2", "value2")
+cache.cache = ("key3", "value3")
+# # Выводим текущий кэш
+cache.print_cache() # key1 : value1, key2 : value2, key3 : value3
+# Получаем значение по ключу
+print(cache.get("key2")) # value2
+# Добавляем новый элемент, превышающий лимит capacity
+cache.cache = ("key4", "value4")
+# Выводим обновлённый кэш
+cache.print_cache() # key2 : value2, key3 : value3, key4 : value4
