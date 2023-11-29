@@ -65,3 +65,17 @@ with timer() as t2:
 with timer() as t3:
     print("Третья часть")
     val_3 = 300 * 300 ** 1000000
+
+# =============================================================================
+
+import time
+from contextlib import contextmanager
+
+@contextmanager
+def timer():
+    start = time.time()
+    try:
+        yield
+    finally:
+        end = time.time()
+        print(end - start)
