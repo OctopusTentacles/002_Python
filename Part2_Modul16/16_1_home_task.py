@@ -10,7 +10,17 @@ class Date:
     """
     Класс для проверки и преобразования даты.
     """
+    def __init__(self, day: int, month: int, year: int) -> None:
+        self.day = day
+        self.month = month
+        self.year = year
 
+    def __str__(self) -> str:
+        return "День: {}\tМесяц: {}\tГод: {}".format(
+            self.day, self.month, self.year
+        )
+    
+    
 
 
 # MAIN CODE:==========================================================================
