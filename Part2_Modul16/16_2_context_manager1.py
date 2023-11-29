@@ -22,3 +22,33 @@ def next_num(num: int) -> Iterator[int]:
 with next_num(-1) as next:
     print("Следующее число = {}".format(next))
     print(10 / next)
+
+# =============================================================================
+
+import time
+
+class Timer:
+    def __init__(self) -> None:
+        print("Время работы кода")
+        self.start = None
+
+    def __enter__(self) -> 'Timer':
+        self.start = time.time()
+        return self
+    
+    def __exit__(self, exc_type, exc_value, exc_tb):
+        print(time.time() - self.start)
+        return True
+    
+
+with Timer() as t1:
+    print("Первая часть")
+    val_1 = 100 * 100 ** 100000
+
+with Timer() as t2:
+    print("Вторая часть")
+    val_2 = 200 * 200 ** 100000
+
+with Timer() as t3:
+    print("Третья часть")
+    val_3 = 300 * 300 ** 100000
