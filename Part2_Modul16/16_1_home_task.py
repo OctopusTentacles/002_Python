@@ -24,6 +24,11 @@ class Date:
     def is_date_valid(cls, date: str) -> bool:
         day, month, year = map(int, date.split("-"))
         return 0 < day < 32 and 0 < month < 13 and 0 < year < 10000
+    
+    @classmethod
+    def from_string(cls, date: str) -> 'Date':
+        day, month, year = map(int, date.split("-"))
+        return cls(day, month, year)
 
 # MAIN CODE:==========================================================================
 date = Date.from_string('10-12-2077')
