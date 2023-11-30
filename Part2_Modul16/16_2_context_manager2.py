@@ -12,9 +12,13 @@ import os
 from contextlib import contextmanager
 
 @contextmanager
-def in_dir():
-
-
+def in_dir(path):
+    cur_dir = os.getcwd()
+    os.chdir(path)
+    try:
+        yield
+    finally:
+        os.chdir(cur_dir)
 
 
 with in_dir('C:\\'):
