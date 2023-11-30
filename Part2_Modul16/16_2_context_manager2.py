@@ -14,9 +14,12 @@ from contextlib import contextmanager
 @contextmanager
 def in_dir(path):
     cur_dir = os.getcwd()
-    os.chdir(path)
+    
     try:
+        os.chdir(path)
         yield
+    except FileNotFoundError:
+        print(f"Directory {path} not found.")
     finally:
         os.chdir(cur_dir)
 
