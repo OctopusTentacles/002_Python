@@ -13,6 +13,9 @@ from typing import Callable, Any, Optional
 
 
 def control_delay(_func: Optional[Callable]=None, *, seconds: int = 1) -> Callable:
+    # _func - маркер отвечающий вызван декоратор с аргументами или без них
+    # все аргументы декоратора должны передоваться как именованные
+    # для этого используется - *
     def delay(func: Callable) -> Callable:
         """ def in_process - декоратор для задержки выполнения функции
         """
