@@ -9,22 +9,27 @@
 
 import time
 import functools
-from typing import Callable, Any
+from typing import Callable, Any, Optional
 
 
-def control_delay(_func=None, *, seconds: int = 1):
+def control_delay(_func: Optional[Callable]=None, *, seconds: int = 1) -> Callable:
     def delay(func: Callable) -> Callable:
         """ def in_process - декоратор для задержки выполнения функции
         """
         @functools.wraps(func)
-        def wrapped_func() -> Any:
+        def wrapped_func(*args, **kwargs) -> Any:
             time.sleep(seconds)
-            return func()
+            return func(*args, **kwargs)
         return wrapped_func
+    
+    if _func is None:
+        return delay
+    else:
+        return delay(_func)
 
 
 
-@control_delay()
+@control_delay(seconds=10)
 def check_data():
     """ def check_data - вывод статуса"""
     print("Данные обновлены!")
