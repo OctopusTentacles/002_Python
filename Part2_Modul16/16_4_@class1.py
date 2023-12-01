@@ -4,8 +4,10 @@
 # создаётся в основном коде.
 
 
+import time
 import functools
 from datetime import datetime
+from typing import Callable
 
 
 def createtime(cls):
@@ -17,7 +19,19 @@ def createtime(cls):
         return instance
     return wrapper
 
+def timer(func: Callable) -> Callable:
+    """ Декоратор время работы функции или метода """
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        end = time.time()
+        print("Время работы функции:", end - start)
+        return result
+    return wrapper
 
+
+@createtime
 class Functions:
     def __init__(self, max_num: int) -> None:
         self.max_num = max_num
@@ -38,5 +52,10 @@ class Functions:
 
 
 my_funcs_1 = Functions(max_num=1000)
-my_funcs_2 = Functions(max_num=2000)
-my_funcs_3 = Functions(max_num=3000)
+# time.sleep(2)
+# my_funcs_2 = Functions(max_num=2000)
+# time.sleep(2)
+# my_funcs_3 = Functions(max_num=3000)
+
+my_funcs_1.squares_sum()
+my_funcs_1.cubes_sum(number=2000)
