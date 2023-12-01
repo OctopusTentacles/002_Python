@@ -30,8 +30,18 @@ def timer(func: Callable) -> Callable:
         return result
     return wrapper
 
+def for_all_methods(decorator: Callable) -> Callable:
+    """ Декоратор класса. Получает другой декоратор и 
+        применяет его ко всем методам класса
+    """
+    @function.wraps(decorator)
+    def decorate(cls):
+        for i_method_name in dir(cls):
+            
+    return decorate
 
 @createtime
+@for_all_methods(timer)
 class Functions:
     def __init__(self, max_num: int) -> None:
         self.max_num = max_num
