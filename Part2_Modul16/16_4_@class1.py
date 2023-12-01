@@ -4,6 +4,20 @@
 # создаётся в основном коде.
 
 
+import functools
+from datetime import datetime
+
+
+def createtime(cls):
+    """ Декоратор класса, выводит время создания инстанса класса """
+    @functools.wraps(cls)
+    def wrapper(*args, **kwargs):
+        instance = cls(*args, **kwargs)
+        print("Время создания инстанса класса:", datetime.utcnow())
+        return instance
+    return wrapper
+
+
 class Functions:
     def __init__(self, max_num: int) -> None:
         self.max_num = max_num
