@@ -34,10 +34,14 @@ def for_all_methods(decorator: Callable) -> Callable:
     """ Декоратор класса. Получает другой декоратор и 
         применяет его ко всем методам класса
     """
-    @function.wraps(decorator)
+    @functools.wraps(decorator)
     def decorate(cls):
         for i_method_name in dir(cls):
-            
+            if i_method_name.startswith('__') is False:
+                cur_method = getattr(cls, i_method_name)
+                decorated_method = decorator(cur_method)
+                setattr(cls, i_method_name, decorated_method)
+        return cls
     return decorate
 
 @createtime
