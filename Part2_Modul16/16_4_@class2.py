@@ -21,37 +21,34 @@ import datetime
 def logging(func, class_name):
     def wrapper(*args, **kwargs):
         print(func(*args, **kwargs))
-
-        print(f"Класс: {class_name} Функция: {func.__name__} \
-              произошёл в:", datetime.datetime.now())
-        
+        print(f"Класс: {class_name} Функция: {func.__name__}"
+              f"запуск в: {datetime.datetime.now()}")
         
     return wrapper
 
 def decorator(cls):
-        for i_def in dir(cls):
-            if i_def.startswith('__') is False:
-                cur_meth = getattr(cls, i_def)
-                if hasattr(cur_meth, '__call__'):
+    for i_def in dir(cls):
+        if i_def.startswith('__') is False:
+            cur_meth = getattr(cls, i_def)
+            if hasattr(cur_meth, '__call__'):
                     
-                    decorated = logging(cur_meth, cls.__name__)
-                    setattr(cls, i_def, decorated)
-            
-        return cls
+                decorated = logging(cur_meth, cls.__name__)
+                setattr(cls, i_def, decorated)
+    return cls
 
 @decorator
 class MyClass:
     # @logging
-    def method_1(self) -> None:
-        return ("a")
+    def method_1(self) -> str:
+        return "a"
 
     # @logging
-    def method_2(self) -> None:
-        return ("b")
+    def method_2(self) -> str:
+        return "b"
 
     # @logging
-    def method_3(self) -> None:
-        return ("c")
+    def method_3(self) -> str:
+        return "c"
 
 MyClass().method_1()
 MyClass().method_2()
