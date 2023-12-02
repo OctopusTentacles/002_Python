@@ -16,14 +16,23 @@
 # либо вывод всей этой информации в отдельный файл вместе с датой и временем.
 
 
-def logging(cls):
+import datetime
+
+def logging(func):
     def wrapper(*args, **kwargs):
-        instance = cls(*args, **kwargs)
-
-
-
-        return instance
+        print("Запуск функции произошёл в:", datetime.datetime.now())
+        return func(*args, **kwargs)
     return wrapper
+
+def decorator(cls):
+        for i_method in dir(cls):
+            if i_method.startswith('__') is False:
+                cur_meth = getattr(cls, i_method)
+                if hasattr(cur_meth, '__call__'):
+                     decorated = logging(cur_meth)
+                     setattr(cls, i_method, decorated)
+            
+        return cls
 
 
 class MyClass:
