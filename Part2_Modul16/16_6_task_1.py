@@ -10,16 +10,24 @@
 # Удаляем сайт
 # PermissionError: у пользователя недостаточно прав, чтобы выполнить функцию add_comment
 
+import functools
+
 
 def check_permission(user: str):
     def permission(func):
+        
+        @functools.wraps(func)
         def wrapper(*args, **kwargs):
-            if user in user_permissions:
-                func(*args, **kwargs)
-            else:
-                print(f"PermissionError: у пользователя {user} недостаточно прав, "
-                      f"чтобы выполнить функцию {func.__name__}")
-            return
+            try:
+                if user in user_permissions:
+                    func(*args, **kwargs)
+                    
+                else:
+                    raise PermissionError
+            except PermissionError as exc:
+                print(f"{exc.__class__.__name__}: у пользователя {user} недостаточно "
+                      f"прав, чтобы выполнить функцию {func.__name__}")
+                return
         return wrapper
     return permission
 
