@@ -12,6 +12,17 @@
 
 
 
+def check_permission(user: str):
+    def permission(func):
+        def wrapper(*args, **kwargs):
+            if user in user_permissions:
+                func(*args, **kwargs)
+            else:
+                raise PermissionError as exc:
+                ("у пользователя недостаточно прав, чтобы выполнить функцию")
+            return
+        return wrapper
+    return permission
 
 user_permissions = ['admin']
 
