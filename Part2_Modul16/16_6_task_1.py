@@ -14,15 +14,11 @@
 def check_permission(user: str):
     def permission(func):
         def wrapper(*args, **kwargs):
-            try:
-                if user in user_permissions:
-                    func(*args, **kwargs)
-                else:
-                    raise PermissionError
-            except PermissionError as exc:
-                print("{}: у пользователя {} недостаточно прав, чтобы выполнить функцию {}".format(
-                    exc, user, func.__name__
-                ))                        
+            if user in user_permissions:
+                func(*args, **kwargs)
+            else:
+                print(f"PermissionError: у пользователя {user} недостаточно прав, "
+                      f"чтобы выполнить функцию {func.__name__}")
             return
         return wrapper
     return permission
