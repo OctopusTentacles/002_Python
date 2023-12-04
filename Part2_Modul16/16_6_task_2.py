@@ -16,6 +16,12 @@ import functools
 from typing import Callable, Any, Optional
 
 
+def callback():
+    def wrapper(func):
+        def wrapped():
+            return func()
+        return wrapped
+    return wrapper
 
 @callback('//')
 def example():
