@@ -14,7 +14,7 @@
 
 
 import functools
-from typing import Callable, Any, Optional
+from typing import Callable, Any
 
 
 def callback(route: str):
@@ -29,8 +29,10 @@ def callback(route: str):
 
         @functools.wraps(func)
         def wrapped(*args, **kwargs) -> Any:
-            """ Обертка для оригинальной функции func """
-            return func()
+            """ Обертка для оригинальной функции func 
+                вызов и возврат
+            """
+            return func(*args, **kwargs)
         return wrapped
     return wrapper
 
@@ -39,8 +41,8 @@ app = {}
 
 # к пути '//' привязываем функцию example при помощи декоратора
 @callback('//')
-def example():
-    """ Пример """
+def example() -> str:
+    """ Функция обратного вызова """
     print('Пример функции, которая возвращает ответ сервера')
     return 'OK'
 
