@@ -19,6 +19,22 @@
 # внимательно пересмотрите видео 29.4, если сталкиваетесь с трудностями в этой задаче.
 
 
+import functools
+
+def log_methods(cls):
+
+    @functools.wraps(cls)
+    def wrapper(cls):
+        for i_def in dir(cls):
+            if i_def.startswith('__') is False:
+                cur_def = getattr(cls, i_def)
+                print("Запускается", cls.__name__, cur_def.__name__)
+                cur_def()
+        return cls
+    return wrapper
+
+
+
 
 
 @log_methods("b d Y — H:M:S")
