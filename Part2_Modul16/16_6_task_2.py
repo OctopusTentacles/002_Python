@@ -12,23 +12,41 @@
 # Подсказка: функция callback, в зависимости от условия, может быть вызвана 
 # следующим действием или просто так.
 
+
 import functools
 from typing import Callable, Any, Optional
 
 
-def callback():
-    def wrapper(func):
-        def wrapped():
+def callback(route: str):
+    """ Декоратор принимает аргумент rout, на который будет
+        ссылаться функция обратного вызова
+    """
+    def wrapper(func: Callable) -> Callable :
+        """ Принимает функцию обратного вызова 
+            Регистрирует функцию для route в словаре
+        """
+        app[route] = func
+
+        @functools.wraps(func)
+        def wrapped(*args, **kwargs) -> Any:
+            """ Обертка для оригинальной функции func """
             return func()
         return wrapped
     return wrapper
 
+# словарь для хранения путей и фнкций обратного вызова
+app = {}
+
+# к пути '//' привязываем функцию example при помощи декоратора
 @callback('//')
 def example():
+    """ Пример """
     print('Пример функции, которая возвращает ответ сервера')
     return 'OK'
 
+
 # Основной код:
+# получаем функцию из словаря для пути '//'
 route = app.get('//')
 if route:
     response = route()
