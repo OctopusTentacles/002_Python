@@ -18,9 +18,31 @@
 # Совет: 
 # внимательно пересмотрите видео 29.4, если сталкиваетесь с трудностями в этой задаче.
 
-
+import time
 import functools
+from typing import Callable, Any, Optional
 
+
+
+def timer(_func: Optional[Callable]=None, *, date) -> Callable:
+    """ """
+    def decorator_time(func: Callable) -> Callable:
+        """ """
+        @functools.wraps(func)
+        def wrapped_func(*args, **kwargs) -> Any:
+            start = time.time()
+            result = func(*args, **kwargs)
+            stop = time.time()
+            print("время работы =", start - stop)
+            return result
+        return wrapped_func
+    if _func is None:
+        return decorator_time
+    else:
+        decorator_time(_func)
+
+
+@timer("date")
 def log_methods(cls):
 
     @functools.wraps(cls)
