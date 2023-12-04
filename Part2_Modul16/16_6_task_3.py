@@ -24,36 +24,35 @@ from typing import Callable, Any, Optional
 
 
 
-def timer(_func: Optional[Callable]=None, *, date) -> Callable:
+def timer(cls, cur_method, form_date) -> Callable:
     """ """
-    def decorator_time(func: Callable) -> Callable:
-        """ """
-        @functools.wraps(func)
-        def wrapped_func(*args, **kwargs) -> Any:
-            start = time.time()
-            result = func(*args, **kwargs)
-            stop = time.time()
-            print("время работы =", start - stop)
-            return result
-        return wrapped_func
-    if _func is None:
-        return decorator_time
-    else:
-        decorator_time(_func)
-
-
-@timer("date")
-def log_methods(cls):
-
     @functools.wraps(cls)
-    def wrapper(cls):
-        for i_def in dir(cls):
-            if i_def.startswith('__') is False:
-                cur_def = getattr(cls, i_def)
-                print("Запускается", cls.__name__, cur_def.__name__)
-                cur_def()
+    def wrapped_func(*args, **kwargs) -> Any:
+        start = time.time()
+        result = cur_method(*args, **kwargs)
+        stop = time.time()
+        print("время работы =", start - stop)
+        return result
+    return wrapped_func
+
+
+
+
+
+def log_methods(form_date):
+    """ """
+    @functools.wraps(form_date)
+    def decorate(cls):
+        for i_method in dir(cls):
+            if i_method.startswith('__') is False:
+                cur_method = getattr(cls, i_method)
+                decorated_method = timer(cls, cur_method, form_date)
+                setattr(cls, i_method, decorated_method)
+
+                print("Запускается", cls.__name__, cur_method.__name__)
+                # cur_def()
         return cls
-    return wrapper
+    return decorate
 
 
 
