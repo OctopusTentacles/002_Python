@@ -19,19 +19,27 @@
 # внимательно пересмотрите видео 29.4, если сталкиваетесь с трудностями в этой задаче.
 
 import time
+import datetime
 import functools
 from typing import Callable, Any, Optional
 
 
 
-def timer(cls, cur_method, form_date) -> Callable:
+def logger(cls, cur_method, form_date) -> Callable:
     """ """
     @functools.wraps(cls)
     def wrapped_func(*args, **kwargs) -> Any:
+
+        print("Запускается '{}.{}'. Дата и время заппуска: {}".format(
+            cls.__name__, cur_method.__name__, form_date))
+        
         start = time.time()
         result = cur_method(*args, **kwargs)
         stop = time.time()
-        print("время работы =", start - stop)
+
+        print("Завершение '{}.{}', время работы = {} s.".format(
+            cls.__name__, cur_method.__name__, round(stop - start, 3)
+        ))
         return result
     return wrapped_func
 
@@ -46,10 +54,10 @@ def log_methods(form_date):
         for i_method in dir(cls):
             if i_method.startswith('__') is False:
                 cur_method = getattr(cls, i_method)
-                decorated_method = timer(cls, cur_method, form_date)
+                decorated_method = logger(cls, cur_method, form_date)
                 setattr(cls, i_method, decorated_method)
 
-                print("Запускается", cls.__name__, cur_method.__name__)
+                
                 # cur_def()
         return cls
     return decorate
