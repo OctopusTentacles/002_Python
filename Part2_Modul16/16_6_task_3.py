@@ -29,7 +29,7 @@ def logger(cls, cur_method, form_date) -> Callable:
     """ """
     @functools.wraps(cls)
     def wrapped_func(*args, **kwargs) -> Any:
-        # преобразование шаблона даты
+        # преобразование полученного шаблона даты в формат даты
         new_form_date = ''
         for i in form_date:
             if i.isalpha():
@@ -38,18 +38,23 @@ def logger(cls, cur_method, form_date) -> Callable:
                 new_form_date = ''.join(new_form_date + i)
 
         current_date_time = datetime.now()
-        print(current_date_time)
-        format_date_time = current_date_time.strftime((form_date))
+        format_date_time = current_date_time.strftime((new_form_date))
 
-        print("Запускается '{}.{}'. Дата и время заппуска: {}".format(
-            cls.__name__, cur_method.__name__, format_date_time))
+        print("Запускается '{cls}.{method}'. Дата и время заппуска: {date}".format(
+            cls=cls.__name__, 
+            method=cur_method.__name__, 
+            date=format_date_time
+        ))
         
         start = time.time()
+        print("Тут метод", end=' ')
         result = cur_method(*args, **kwargs)
         stop = time.time()
 
-        print("Завершение '{}.{}', время работы = {} s.".format(
-            cls.__name__, cur_method.__name__, round(stop - start, 3)
+        print("Завершение '{cls}.{method}', время работы = {working_time} s.".format(
+            cls=cls.__name__, 
+            method=cur_method.__name__, 
+            working_time=round(stop - start, 3)
         ))
         return result
     return wrapped_func
