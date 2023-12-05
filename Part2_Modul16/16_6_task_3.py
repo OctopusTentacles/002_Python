@@ -24,12 +24,15 @@ from datetime import datetime
 from typing import Callable, Any, Optional
 
 
-
-def logger(cls, cur_method, form_date) -> Callable:
-    """ """
+def logger(cls: type, cur_method: Callable, form_date: str) -> Callable:
+    """ Декоратор для логирования методов класса.
+        :param cls: класс, содержащий метод;
+        :param cur_method: логируемый метод;
+        :param form_date: шаблон даты для логирования
+    """
     @functools.wraps(cls)
     def wrapped_func(*args, **kwargs) -> Any:
-        # преобразование полученного шаблона даты в формат даты
+        # преобразование полученного шаблона даты в формат даты:
         new_form_date = ''
         for i in form_date:
             if i.isalpha():
@@ -39,18 +42,17 @@ def logger(cls, cur_method, form_date) -> Callable:
 
         current_date_time = datetime.now()
         format_date_time = current_date_time.strftime((new_form_date))
-
+        # лог запуска:
         print("Запускается '{cls}.{method}'. Дата и время заппуска: {date}".format(
             cls=cls.__name__, 
             method=cur_method.__name__, 
             date=format_date_time
         ))
-        
+        # запуск функции и время ее выполнения:
         start = time.time()
-        print("Тут метод", end=' ')
         result = cur_method(*args, **kwargs)
         stop = time.time()
-
+        # лог завершения:
         print("Завершение '{cls}.{method}', время работы = {working_time} s.".format(
             cls=cls.__name__, 
             method=cur_method.__name__, 
@@ -60,11 +62,11 @@ def logger(cls, cur_method, form_date) -> Callable:
     return wrapped_func
 
 
-
-
-
-def log_methods(form_date):
-    """ """
+def log_methods(form_date: str) -> Callable:
+    """ Декоратор класса. Выбирает из класса методы для логирования.
+        Передает класс, метод и формат даты в декоратор логирования.
+        :param form_date: формат даты.
+    """
     @functools.wraps(form_date)
     def decorate(cls):
         for i_method in dir(cls):
@@ -72,14 +74,8 @@ def log_methods(form_date):
                 cur_method = getattr(cls, i_method)
                 decorated_method = logger(cls, cur_method, form_date)
                 setattr(cls, i_method, decorated_method)
-
-                
-                # cur_def()
         return cls
     return decorate
-
-
-
 
 
 @log_methods("b d Y — H:M:S")
