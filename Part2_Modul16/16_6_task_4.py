@@ -13,23 +13,29 @@ from typing import Callable, Optional
 
 
 def decorator_with_args_for_any_decorator(decorator: Callable):
-    @functools.wraps(decorator)
-    def wrapper(*args, **kwargs):
+    """
+    """
+    def decorator_maker(*args, **kwargs):
+        """
+        """
+        @functools.wraps(decorator)
+        def wrapper(func):
 
-        print("Переданные арги и кварги в декоратор:", *args, **kwargs)
+        # print("Переданные арги и кварги в декоратор:", args, kwargs)
 
-        return decorator
-    return wrapper
+            return decorator(func, *args, **kwargs)
+        return wrapper
+    return decorator_maker
 
 
 @decorator_with_args_for_any_decorator
-def decorated_decorator(func: Callable):
+def decorated_decorator(func: Callable, *args, **kwargs):
     @functools.wraps(func)
-    def wrapper(*args, **kwargs):
+    def wrapper(*args1, **kwargs1):
 
-        
+        print("Переданные арги и кварги в декоратор:", args, kwargs)
 
-        return func(*args, **kwargs)
+        return func(*args1, **kwargs1)
     return wrapper
 
 
