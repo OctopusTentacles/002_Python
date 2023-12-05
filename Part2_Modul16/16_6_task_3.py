@@ -19,8 +19,8 @@
 # внимательно пересмотрите видео 29.4, если сталкиваетесь с трудностями в этой задаче.
 
 import time
-import datetime
 import functools
+from datetime import datetime
 from typing import Callable, Any, Optional
 
 
@@ -29,9 +29,20 @@ def logger(cls, cur_method, form_date) -> Callable:
     """ """
     @functools.wraps(cls)
     def wrapped_func(*args, **kwargs) -> Any:
+        # преобразование шаблона даты
+        new_form_date = ''
+        for i in form_date:
+            if i.isalpha():
+                new_form_date = ''.join(new_form_date + '%' + i)
+            else:
+                new_form_date = ''.join(new_form_date + i)
+
+        current_date_time = datetime.now()
+        print(current_date_time)
+        format_date_time = current_date_time.strftime((form_date))
 
         print("Запускается '{}.{}'. Дата и время заппуска: {}".format(
-            cls.__name__, cur_method.__name__, form_date))
+            cls.__name__, cur_method.__name__, format_date_time))
         
         start = time.time()
         result = cur_method(*args, **kwargs)
