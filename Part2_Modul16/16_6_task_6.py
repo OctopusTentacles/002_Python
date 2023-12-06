@@ -27,15 +27,26 @@
 
 
 import time
+import functools
+from typing import Any, Callable
+
+
+class LoggerDecorator:
+    def __init__(self, func: Callable) -> None:
+        functools.update_wrapper(self, func)
+        self.func = func
+
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        start_time = time.time()
+        result = self.func(*args, **kwargs)
+        end_time = time.time()
+
+        print("Аргументы:", args, kwargs)
+        print("Результат:", result)
+        print("Время выполнения: {} секунд".format(end_time - start_time))
 
 
 
-
-
-start_time = time.time() # Записываем время до вычислений
-# ...вычисления...
-end_time = time.time() # Затем записываем время после вычислений
-execution_time = end_time - start_time # Их разница будет временем выполнения кода вычислений
 
 
 
