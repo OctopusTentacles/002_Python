@@ -15,19 +15,25 @@
 # 1986890616688
 # True
 
+from typing import Type
 
 
-
-def singleton(cls):
+def singleton(cls: Type) -> Type:
+    """ Singleton-декоратор проверяет, был ли уже создан экземпляр класса.
+        :param cls: экземпляр класса.
+        :isinstance: словарь для хранения экземпляров
+    """
     isinstance = dict()
 
     def wrapper(*args, **kwargs):
+        """ Проверка словаря на экземпляры, если экземпляр не существует -
+            сохраняет его в словаре и возвращает, иначе берет берет
+            экземпляр из словаря вместо создания еще одного.
+        """
         if cls not in isinstance:
             isinstance[cls] = cls(*args, **kwargs)
         return isinstance[cls]
     return wrapper
-
-
 
 
 @singleton
