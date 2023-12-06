@@ -9,33 +9,32 @@
 
 
 import functools
-from typing import Callable, Optional
+from typing import Callable, Any
 
 
-def decorator_with_args_for_any_decorator(decorator: Callable):
+def decorator_with_args_for_any_decorator(decorator: Callable) -> Callable:
+    """ Декоратор для передачи аргументов.
+        :param decorator: декоратор, которому надо передать аргументы.
     """
-    """
-    def decorator_maker(*args, **kwargs):
-        """
+    def any_decorator(*args, **kwargs) -> Callable:
+        """ Декоратор - получает предварительные аргументы.
         """
         @functools.wraps(decorator)
-        def wrapper(func):
-
-        # print("Переданные арги и кварги в декоратор:", args, kwargs)
+        def wrapper(func: Callable) -> Any:
 
             return decorator(func, *args, **kwargs)
         return wrapper
-    return decorator_maker
+    return any_decorator
 
 
 @decorator_with_args_for_any_decorator
-def decorated_decorator(func: Callable, *args, **kwargs):
+def decorated_decorator(func: Callable, *args, **kwargs) -> Callable:
     @functools.wraps(func)
-    def wrapper(*args1, **kwargs1):
+    def wrapper(*f_args, **f_kwargs) -> Any:
 
         print("Переданные арги и кварги в декоратор:", args, kwargs)
 
-        return func(*args1, **kwargs1)
+        return func(*f_args, **f_kwargs)
     return wrapper
 
 
