@@ -32,12 +32,26 @@ from typing import Any, Callable
 
 
 class LoggerDecorator:
+    """
+        Декоратор для логирования времени выполнения функции, 
+        ее аргументов и результата.
+    """
     def __init__(self, func: Callable) -> None:
+        """
+            Инициализация объекта декоратора.
+            func (Callable): Функция, которую нужно декорировать.
+        """
         functools.update_wrapper(self, func)
         self.func = func
 
     def __call__(self, *args: Any, **kwargs: Any) -> Any:
-
+        """
+            Вызов функции с логированием времени выполнения, аргументов и результата.
+                *args: Позиционные аргументы функции.
+                **kwargs: Именованные аргументы функции.
+            Returns:
+                Any: Результат выполнения функции.
+        """
         start_time = time.time()
         result = self.func(*args, **kwargs)
         end_time = time.time()
