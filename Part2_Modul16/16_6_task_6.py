@@ -37,18 +37,16 @@ class LoggerDecorator:
         self.func = func
 
     def __call__(self, *args: Any, **kwargs: Any) -> Any:
+
         start_time = time.time()
         result = self.func(*args, **kwargs)
         end_time = time.time()
 
-        print("Аргументы:", args, kwargs)
+        print("Вызов функции {}".format(self.func.__name__))
+        print("Аргументы: {}, {}".format(args, kwargs))
         print("Результат:", result)
         print("Время выполнения: {} секунд".format(end_time - start_time))
-
-
-
-
-
+        return
 
 
 @LoggerDecorator
@@ -60,7 +58,8 @@ def complex_algorithm(arg1, arg2):
             with open('test.txt', 'w', encoding='utf8') as file:
                 file.write(str(i + j))
                 result += i + j
-    # Можете попробовать вынести создание файла из циклов и проверить, сколько времени алгоритм будет работать в этом случае
+    # Можете попробовать вынести создание файла из циклов и проверить, 
+    # сколько времени алгоритм будет работать в этом случае
     return result
 
 # Пример вызова функции с применением декоратора
