@@ -13,10 +13,17 @@
 # пространстве имён в Python.
 
 
+def counter(func):
+
+    def wrapper(*args, **kwargs):
 
 
 
+@counter
+def example():
+    print("Hello!")
 
+count = 0
 
 
 
