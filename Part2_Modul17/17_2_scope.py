@@ -13,18 +13,29 @@
 # пространстве имён в Python.
 
 
-def counter(func):
+global_count = {}
+
+def decorator_counter(func):
+    local_count = {}
 
     def wrapper(*args, **kwargs):
+        
+        global_count[func.__name__] = global_count.get(func.__name__, 0) + 1
+        local_count[func.__name__] = local_count.get(func.__name__, 0) + 1
+        
+        print(global_count, local_count)
+        return func(*args, **kwargs)
+    return wrapper
 
 
 
-@counter
-def example():
+
+@decorator_counter
+def example_1():
     print("Hello!")
 
-count = 0
 
+example_1()
 
 
 
