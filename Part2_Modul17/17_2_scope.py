@@ -19,12 +19,17 @@ def decorator_counter(func):
     local_count = {}
 
     def wrapper(*args, **kwargs):
-        
+        global global_count
+        nonlocal local_count
+
         global_count[func.__name__] = global_count.get(func.__name__, 0) + 1
         local_count[func.__name__] = local_count.get(func.__name__, 0) + 1
         
-        print(global_count, local_count)
+        print("Global", global_count)
+        print("Local", local_count)
         return func(*args, **kwargs)
+    # ссылка на локальный словарь:
+    wrapper.check_count = local_count
     return wrapper
 
 
@@ -32,10 +37,21 @@ def decorator_counter(func):
 
 @decorator_counter
 def example_1():
-    print("Hello!")
+    print("Hello__1!")
+
+@decorator_counter
+def example_2():
+    print("Hello__2!")
 
 
 example_1()
+example_1()
+example_2()
+example_2()
+example_2()
+example_1()
+
+
 
 
 
