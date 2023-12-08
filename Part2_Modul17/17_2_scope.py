@@ -19,9 +19,14 @@ def decorator_counter(func):
     local_count = {}
 
     def wrapper(*args, **kwargs):
+        # global - позволяет функции обращаться к объекту в глобальной 
+        #           области видимости и менять его.
+        # nonlocal - Имена, определенные после nonlocal, ссылаются на 
+        #               переменные в ближайшей объемлющей области.
         global global_count
         nonlocal local_count
-
+        # Пространства имён — словарь, в котором ключами являются имена объектов, 
+        # а значениями — сами объекты.
         global_count[func.__name__] = global_count.get(func.__name__, 0) + 1
         local_count[func.__name__] = local_count.get(func.__name__, 0) + 1
         
@@ -31,8 +36,6 @@ def decorator_counter(func):
     # ссылка на локальный словарь:
     wrapper.check_count = local_count
     return wrapper
-
-
 
 
 @decorator_counter
@@ -51,7 +54,10 @@ example_2()
 example_2()
 example_1()
 
-
+print("*" * 80)
+# Вы можете перечислить объекты во встроенном пространстве с помощью 
+# следующей команды:
+print(dir(__builtins__))
 
 
 
