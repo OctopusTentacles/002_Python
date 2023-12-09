@@ -40,6 +40,13 @@ print('минимальное',min_grades)
 print('максимальное',max_grades)
 
 
+# Решение через map, который будет изучен в следующем модуле
+print(list(map(lambda x: x['score'], grades)))  # для наглядности
+print(max(map(lambda x: x['score'], grades)))
+print(min(map(lambda x: x['score'], grades)))
+
+
+
 
 # ============================================
 print('*'*60)
