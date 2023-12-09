@@ -7,9 +7,11 @@
 # соревнований в виде словарей:
 
 
-from typing import List
+from typing import List, Dict, Union
 
-
+# Union - переменная может принимать значения нескольких различных типов
+# Тут: список состоит из словарей, у словаря ключ - str, а значения
+# могут быть и str и int.
 grades: List[Dict[str, Union[str, int]]] = [
 {'name': 'Kenneth', 'score': 3}, 
 {'name': 'Bebe', 'score': 41}, {'name': 'Joyce', 'score': 24}, 
@@ -31,11 +33,16 @@ grades: List[Dict[str, Union[str, int]]] = [
 # очков из этого списка. Используйте только встроенные функции и лямбда-функции, 
 # то есть реализуйте решение «в две строки».
 
+min_grades = min(grades, key=lambda elem: elem['score'])
+max_grades = max(grades, key=lambda elem: elem['score'])
 
+print('минимальное',min_grades)
+print('максимальное',max_grades)
 
 
 
 # ============================================
+print('*'*60)
 # def string_to_int(elem: str) -> int:
 #     return int(elem[4:])
 
