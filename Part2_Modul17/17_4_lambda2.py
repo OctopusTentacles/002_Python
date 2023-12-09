@@ -40,5 +40,12 @@ person_3 = Person('Ben', 99)
 person_list = [person_1, person_2, person_3]
 print(person_list)
 
-# sorted_person = sorted(person_list, key=lambda elem: elem(Person()))
-# print(sorted_person)
+sorted_person = sorted(person_list, key=lambda elem: elem.age)
+print(sorted_person)
+sorted_person = sorted(person_list, key=lambda elem: -elem.age)
+print(sorted_person)
+
+person_list.sort(key=lambda elem: elem.age)
+print(person_list)
+person_list.sort(key=lambda elem: -elem.age)
+print(person_list)
