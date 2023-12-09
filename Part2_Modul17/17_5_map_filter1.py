@@ -12,7 +12,7 @@ from typing import List
 
 
 num = input("Введите числа: ")
-list_num = [sym for sym in num.split(' ')]
+list_num: List[int] = sorted(list(map(int, num.split(' '))))
 print(list_num)
 
 
