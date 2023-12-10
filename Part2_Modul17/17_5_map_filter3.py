@@ -26,10 +26,10 @@
 # 10
 
 # Используя функцию reduce, реализуйте код, который считает, 
-# сколько раз слово was встречается в списке:
+# сколько раз слово was встречается в списке: 6
 
 
-from typing import List
+from typing import List, Any
 from functools import reduce
 
 sentences: List[str] = [
@@ -38,8 +38,22 @@ sentences: List[str] = [
     "and her father was a Catholic", "because his mother was a Catholic", "or had been"
     ]
 
-def was(elem_1: str, elem_2: str) -> int:
+def was(elem_1: Any, elem_2: str) -> int:
+    # первый вход elem_1 -> str, дальше он всегда будет None
+    # поэтому проверим первый элемент:
+    if isinstance(elem_1, str):
+        # и посчитаем в нем 'was'.
+        # теперь в первом елементе вместо None будет количество 'was'
+        elem_1: int = elem_1.count('was')
+    
     print(elem_1, elem_2)
 
+    # возвращаемый элемент будет передаваться на следующем входе в elem_1
+    return elem_1
 
+
+# reduce - через фукцию уменьшает последовательность к единственному значению
+#           2 элемента становятся одним, + к одному третий и т.д.
+#           если никак не обрабатывать то со второго входа первый элемент всегда None
+#           и в конце будет None
 print(reduce(was, sentences))
