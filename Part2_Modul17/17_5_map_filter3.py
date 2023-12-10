@@ -43,11 +43,10 @@ def was(elem_1: Any, elem_2: str) -> int:
     # поэтому проверим первый элемент:
     if isinstance(elem_1, str):
         # и посчитаем в нем 'was'.
-        # теперь в первом елементе вместо None будет количество 'was'
         elem_1: int = elem_1.count('was')
-    
-    print(elem_1, elem_2)
-
+        # теперь в первом елементе вместо None будет количество 'was'
+    elem_1 += elem_2.count('was')
+    # print(elem_1, elem_2)
     # возвращаемый элемент будет передаваться на следующем входе в elem_1
     return elem_1
 
