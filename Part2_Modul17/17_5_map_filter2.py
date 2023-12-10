@@ -11,10 +11,12 @@
 from typing import List
 
 
-this_str = input("Введите строку:")
+this_str = input("Введите строку: ")
+# если элемент в строке (lambda elem -> for elem in str) является
+# например буквой, то фильтруем его (вносим в список).
+# нужно исключить -> внести только маленькие буквы
 
-list_str = [sym for sym in this_str]
-
-list_str = list(filter(lambda elem: elem.isdigit, list_str))
+list_str = list(filter(lambda elem: elem.isalpha() and
+                        not elem.isupper(), this_str))
 
 print(list_str)
