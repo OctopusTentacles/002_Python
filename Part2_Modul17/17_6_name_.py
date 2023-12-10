@@ -4,4 +4,6 @@
 import test_module
 
 
-test_module.func()
+if __name__ == "__main__":
+    print("Инициализирую исполняемый файл")
+    test_module.func()
