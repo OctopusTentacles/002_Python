@@ -32,8 +32,14 @@
 from typing import List
 from functools import reduce
 
-sentences = [
+sentences: List[str] = [
     "Nory was a Catholic", "because her mother was a Catholic", 
     "and Nory’s mother was a Catholic", "because her father was a Catholic", 
     "and her father was a Catholic", "because his mother was a Catholic", "or had been"
     ]
+
+def was(elem_1: str, elem_2: str) -> int:
+    print(elem_1, elem_2)
+
+
+print(reduce(was, sentences))
