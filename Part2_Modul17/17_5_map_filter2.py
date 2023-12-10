@@ -10,3 +10,11 @@
 
 from typing import List
 
+
+this_str = input("Введите строку:")
+
+list_str = [sym for sym in this_str]
+
+list_str = list(filter(lambda elem: elem.isdigit, list_str))
+
+print(list_str)
