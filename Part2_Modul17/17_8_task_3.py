@@ -10,7 +10,7 @@
 
 
 from collections import Counter
-# Counter - коллекция, ключ - элемент, значение - кол-во элемента.
+# Counter - коллекция -> ключ - элемент, значение - кол-во элемента.
 # т.е. считает колличество каждого элемента и хранит в виде словаря.
 # Палиндром - все элементы должны встречаться четное кол-во раз,
 # и один элемент может быть нечетным - центр.
@@ -23,14 +23,14 @@ def can_be_poly(message: str) -> bool:
     """
     # кол-во каждого элемента:
     char_count = Counter(message)
-    print(char_count)
+    # print(char_count)
 
     # кол-во нечетных элементов(нечетные значения в char_count)
     # odd_count = sum(1 for value in char_count.values() if value % 2 != 0 )
     odd_count = sum(map(lambda value: value % 2 != 0, char_count.values()))
-    print(odd_count)
+    # print(odd_count)
 
-    # если кол-во нечетных символов больше одного, False
+    # если кол-во нечетных символов меньше или равно одному, True:
     return odd_count <= 1
 
 
