@@ -24,7 +24,14 @@ def can_be_poly(message: str) -> bool:
     # кол-во каждого элемента:
     char_count = Counter(message)
     print(char_count)
-    # кол-во нечетных элементов
+
+    # кол-во нечетных элементов(нечетные значения в char_count)
+    # odd_count = sum(1 for value in char_count.values() if value % 2 != 0 )
+    odd_count = sum(map(lambda value: value % 2 != 0, char_count.values()))
+    print(odd_count)
+
+    # если кол-во нечетных символов больше одного, False
+    return odd_count <= 1
 
 
 # Пример кода:
