@@ -14,12 +14,18 @@
 # (например строка «аа» будет содержать 0 уникальных букв).
 
 
+from collections import Counter
 
 def count_unique_characters(letter: str) -> int:
     """
     """
-    letter.lower()
-    print(letter.lower())
+    low_letter = Counter(letter.lower())
+    print(low_letter)
+    uniq_char = sum(filter(lambda sym: sym == 1, low_letter.values()))
+    # uniq_char = list(filter(lambda sym: letter.lower().count(sym) == 1, letter.lower()))
+    print(uniq_char)
+
+    return (uniq_char)
 
 
 message = "Today is a beautiful day! The sun is shining and the birds are singing."
