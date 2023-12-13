@@ -8,9 +8,7 @@ from collections import Counter
 
 
 def can_be_poly(message: str) -> bool:
-
-    return list(filter(lambda x: x % 2, Counter(message).values()))
-
+    return len(list(filter(lambda x: x % 2, Counter(message).values()))) < 2
 
 
 # Пример кода:
