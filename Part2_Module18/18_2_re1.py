@@ -28,3 +28,15 @@
 # ЗАМЕНАodchuck could chuck ЗАМЕНАod?
 
 
+import re # regular expressions (регулярные выражения)
+
+
+text = "How much wood would a woodchuck chuck if a woodchuck could chuck wood?"
+
+result = re.match(r'wo', text)
+
+print("Поиск шаблона в начале строки:", result)
+
+
+print("Начальная позиция:", text.start())
+print("Конечная позиция:", text.end())
