@@ -33,10 +33,14 @@ import re # regular expressions (регулярные выражения)
 
 text = "How much wood would a woodchuck chuck if a woodchuck could chuck wood?"
 
-result = re.match(r'wo', text)
-
+result = re.match(r'wo', text) # поиск в начале строки
 print("Поиск шаблона в начале строки:", result)
 
+result = re.search(r'wo', text) # поиск в строке по шаблону
+print("Поиск первого найденного совпадения по шаблону:\n", result)
+print("Содержимое найденной подстроки:", result.group(0))
+print("Начальная позиция:", result.start())
+print("Конечная позиция:", result.end())
 
-print("Начальная позиция:", text.start())
-print("Конечная позиция:", text.end())
+result = re.findall(r'wo', text) # все совпадения по шаблону
+print("Список всех упоминаний шаблона:", result)
