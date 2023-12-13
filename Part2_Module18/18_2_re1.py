@@ -44,3 +44,6 @@ print("Конечная позиция:", result.end())
 
 result = re.findall(r'wo', text) # все совпадения по шаблону
 print("Список всех упоминаний шаблона:", result)
+
+result = re.sub(r"wo", "ЗАМЕНА", text) # замена всех найденных шаблонов
+print("Текст после замены:", result)
