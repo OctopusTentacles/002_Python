@@ -15,7 +15,14 @@
 # может быть, ссылка уже хранится в другом ключе.
 
 
-import requests
+import requests     # pip install requests
+
 
 my_req = requests.get("https://www.google.com/")
 print(my_req)
+# Response [200] - запрос произведен успешно, результат получен [статус]
+print(my_req.text)
+
+# JSON (JavaScript Object Notation) - текстовый формат обмена данными.
+    # набор пар ключ-значение (словарь, хэш-таблица)
+    # либо упорядоченный набор значений (список)
