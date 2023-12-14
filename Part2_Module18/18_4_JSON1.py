@@ -16,13 +16,24 @@
 
 
 import requests     # pip install requests
+import json
 
 
-my_req = requests.get("https://www.google.com/")
-print(my_req)
+# my_req = requests.get("https://www.google.com/")
+# print(my_req)
 # Response [200] - запрос произведен успешно, результат получен [статус]
-print(my_req.text)
+# print(my_req.text)
 
 # JSON (JavaScript Object Notation) - текстовый формат обмена данными.
     # набор пар ключ-значение (словарь, хэш-таблица)
     # либо упорядоченный набор значений (список)
+
+my_req = requests.get('https://swapi.dev/api/people/3/')
+print(my_req.text)
+
+data = json.loads(my_req.text)  # десериализация JSON
+print(data)
+
+data["name"] = 'R10-D10'
+print(data['name'])
+
