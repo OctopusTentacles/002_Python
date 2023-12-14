@@ -17,9 +17,9 @@ import re
 
 text = "Amit 34-3456 12-05-2007, XYZ 56-4532 11-11-2011, ABC 67-8945 12-01-2009"
 
-date_patern = r'[\d{2}\-\d{2}\-\d{4}]'
+date_patern = r'\d{2}-\d{2}-\d{4}'
 
-date_search = re.search(date_patern, text)
+date_search = re.findall(date_patern, text)
 print(date_search)
 
 
