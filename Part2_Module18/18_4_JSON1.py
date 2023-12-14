@@ -28,7 +28,7 @@ import json
     # набор пар ключ-значение (словарь, хэш-таблица)
     # либо упорядоченный набор значений (список)
 
-my_req = requests.get('https://swapi.dev/api/people/3/')
+my_req = requests.get('https://swapi.dev/api/people/3/')    # parsing
 print(my_req.text)
 
 data = json.loads(my_req.text)  # десериализация JSON
@@ -37,3 +37,10 @@ print(data)
 data["name"] = 'R10-D10'
 print(data['name'])
 
+with open('my_test.json', 'w') as file:
+    json.dump(data, file, indent=4)   # сериализация JSON
+
+with open('my_test.json', 'r') as file:
+    data = json.load(file)
+
+print(data)
