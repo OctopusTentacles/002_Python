@@ -20,9 +20,11 @@ import re
 
 data_base = 'А578ВЕ777 ОР233787 К901МН666 СТ46599 СНИ2929П777 666АМР666'
 
+privat_num = re.findall(r"" ,data_base)
+taxi_number = re.findall(r"" ,data_base)
 
-
-
+print('Список номеров частных автомобилей:', privat_num)
+print('Список номеров такси:', taxi_number)
 
 # Результат:
 # Список номеров частных автомобилей: ['А578ВЕ777', 'К901МН666']
