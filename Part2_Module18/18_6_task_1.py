@@ -27,9 +27,11 @@ text = """  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
             fringilla vel, aliquet nec, vulputate 
         """
 
-patern = re.findall(r"\b[A-Za-z]{4}\W", text)
-print(patern)
-
+# начало слова - \b; диапазон всех букв - [A-Za-z]; 
+# кол-во букв - {4}; конец слова - \b. 
+patern = r"\b[A-Za-z]{4}\b"
+result = re.findall(patern, text)
+print(result)
 
 
 # Результат:
