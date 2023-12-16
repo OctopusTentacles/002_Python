@@ -1,0 +1,11 @@
+{
+    "name": "Millennium Falcon",
+    "max_atmosphering_speed": "1050",
+    "starship_class": "Light freighter",
+    "pilots": [
+        "https://swapi.dev/api/people/13/",
+        "https://swapi.dev/api/people/14/",
+        "https://swapi.dev/api/people/25/",
+        "https://swapi.dev/api/people/31/"
+    ]
+}
