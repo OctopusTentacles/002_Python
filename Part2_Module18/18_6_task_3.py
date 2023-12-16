@@ -30,25 +30,48 @@ cur_dir = os.path.dirname(__file__)
 my_url = "https://swapi.dev/api/starships/"
 search_name = "Millennium Falcon"
 
+ship_info = ["name", "max_atmosphering_speed", "starship_class", "pilots"]
+pilot_info = ["name", "height", "mass", "homeworld", "homeworld"]
 
-def api_info(url, info, name):
+dict_info = {}
 
-    my_request = requests.get(url)
-    # print(my_request)
-    # results - список словарей всех кораблей:
-    if my_request.status_code == 200:
+my_request = requests.get(my_url)
+if my_request.status_code == 200:
+    json_data = json.loads(my_request.text)
 
-        json_data = json.loads(my_request.text)
-        # print(json_ships)
-        for result in json_data['results']:
-            if result["name"] == name:
-                dict_info = {}
-                for key_1 in info:
-                    # if key_1 == "pilots":
-                    #     for key_2 in pilot_info:
-                    #         dict_info[key_1][key_2] = result[key_1](key_2)
-                    dict_info[key_1] = result[key_1]
-                print(dict_info)
+    for result in json_data["results"]:
+        if result == search_name:
+            
+
+
+    # with open(os.path.join(cur_dir, "info.json"), "w") as file:
+    #     json_falcon = json.dump(ship_info, file, indent=4)
+
+    # with open(os.path.join(cur_dir, "info.json"), "r") as file:
+    #     print(json.load(file))
+
+
+
+# def api_info(url, info, name=None):
+
+#     my_request = requests.get(url)
+#     # print(my_request)
+#     # results - список словарей всех кораблей:
+#     if my_request.status_code == 200:
+
+#         json_data = json.loads(my_request.text)
+#         # print(json_ships)
+#         for key_1 in info:
+
+#         for result in json_data['results']:
+#             if result["name"] == name:
+#                 dict_info = {}
+#                 for key_1 in info:
+#                     if isinstance(result[key_1], list):
+#                         for key_2 in result[key_1]:
+#                             return api_info(key_2, pilot_info)
+#                     dict_info[key_1] = result[key_1]
+#                 print(dict_info)
 
 
             # ship_info = {'name': result["name"], 
@@ -67,7 +90,7 @@ def api_info(url, info, name):
 
 
 
-ship_info = ["name", "max_atmosphering_speed", "starship_class", "pilots"]
-pilot_info = ["name", "height", "mass", "homeworld", "homeworld"]
+# ship_info = ["name", "max_atmosphering_speed", "starship_class", "pilots"]
+# pilot_info = ["name", "height", "mass", "homeworld", "homeworld"]
 
-starship = api_info(my_url, ship_info, search_name)
+# starship = api_info(my_url, ship_info, search_name)
