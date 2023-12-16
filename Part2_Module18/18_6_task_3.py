@@ -42,19 +42,25 @@ def api_info(url, name):
                     "название": result["name"], 
                     "максимальная скорость": result["max_atmosphering_speed"],
                     "класс": result["starship_class"],
-                    "список пилотов": []                    
+                    "список пилотов": [
+                        result["pilots"].get("name")
+                    ]                    
                 }
+                print(starship_info)
+
                 for url_pilot in result["pilots"]:
                     request_pilot = requests.get(url_pilot)
                     if request_pilot.status_code ==200:
                         pilot_data = json.loads(request_pilot.text)
                         pilot_info = {
-                            "имя": 
-                            "рост":
-                            "вес":
-                            "родная планета":
-                            "ссылка на информацию о родной планете":
+                            "имя": pilot_data["name"],
+                            "рост": pilot_data["height"],
+                            "вес": pilot_data["mass"],
+                            "родная планета": pilot_data["homeworld"],
+                            "ссылка на информацию о родной планете": pilot_data["homeworld"]
                         }
+
+                        print(pilot_info)
 
 
 
