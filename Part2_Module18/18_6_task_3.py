@@ -27,18 +27,33 @@ import requests
 
 cur_dir = os.path.dirname(__file__)
 
+url = "https://swapi.dev/api/starships/"
+search_name = "Millennium Falcon"
 
-my_request = requests.get("https://swapi.dev/api/starships/")
+my_request = requests.get(url)
 # print(my_request)
 # results - список словарей всех кораблей:
 if my_request.status_code == 200:
 
     json_ships = json.loads(my_request.text)
     # print(json_ships)
-    all_starship = []
     for result in json_ships['results']:
-        if result["name"] == "Millennium Falcon":
-            url_ship = result["url"]
+        if result["name"] == search_name:
 
-    my_request = requests.get(url_ship).json()
-    print(my_request)
+            ship_info = {'name': result["name"], 
+                         "max_atmosphering_speed": result["max_atmosphering_speed"],
+                         "starship_class": result["starship_class"],
+                         "pilots": result["pilots"]
+                         }
+            print(ship_info)
+
+            # falcon_ship = requests.get(result["url"])
+            # json_dict = json.loads(falcon_ship.text)
+            # ship_info = json_dict.get("name", )
+
+            # with open(os.path.join(cur_dir, "falcon.json"), "w") as file:
+            #     json_falcon = json.dump(json_dict, file, indent=4)
+
+            
+            # print(json_falcon)
+
