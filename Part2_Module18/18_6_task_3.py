@@ -42,37 +42,28 @@ def api_info(url, name):
                     "название": result["name"], 
                     "максимальная скорость": result["max_atmosphering_speed"],
                     "класс": result["starship_class"],
-                    "список пилотов": [
-                        result["pilots"].get("name")
-                    ]                    
+                    "список пилотов": []                    
                 }
-                print(starship_info)
 
                 for url_pilot in result["pilots"]:
                     request_pilot = requests.get(url_pilot)
-                    if request_pilot.status_code ==200:
+                    if request_pilot.status_code == 200:
                         pilot_data = json.loads(request_pilot.text)
                         pilot_info = {
                             "имя": pilot_data["name"],
                             "рост": pilot_data["height"],
                             "вес": pilot_data["mass"],
-                            "родная планета": pilot_data["homeworld"],
+                            "родная планета": "",
                             "ссылка на информацию о родной планете": pilot_data["homeworld"]
                         }
-
-                        print(pilot_info)
-
-
-
-
-
-
-
-            # with open(os.path.join(cur_dir, "info.json"), "w") as file:
-            #     json_falcon = json.dump(ship_info, file, indent=4)
-
-            # with open(os.path.join(cur_dir, "info.json"), "r") as file:
-            #     print(json.load(file))
+                    request_planet = requests.get(pilot_data["homeworld"])
+                    if request_planet.status_code == 200:
+                        planet_data = json.loads(request_planet.text)
+                        pilot_info["родная планета"] = planet_data["name"]
+                        starship_info["список пилотов"].append(pilot_info)
+        print(starship_info)
+        # return starship_info
+    
 
 
 
@@ -80,3 +71,13 @@ my_url = "https://swapi.dev/api/starships/"
 search_name = "Millennium Falcon"
 
 starship = api_info(my_url, search_name)
+if starship:
+    # print(json.dumps(starship, indent=4))
+
+
+
+    with open(os.path.join(cur_dir, "info.json"), "w") as file:
+        json_falcon = json.dump(starship, file, indent=4)
+
+# with open(os.path.join(cur_dir, "info.json"), "r") as file:
+#     print(json.load(file))

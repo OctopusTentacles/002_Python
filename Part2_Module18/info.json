@@ -1,11 +1,35 @@
 {
-    "name": "Millennium Falcon",
-    "max_atmosphering_speed": "1050",
-    "starship_class": "Light freighter",
-    "pilots": [
-        "https://swapi.dev/api/people/13/",
-        "https://swapi.dev/api/people/14/",
-        "https://swapi.dev/api/people/25/",
-        "https://swapi.dev/api/people/31/"
+    "\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435": "Millennium Falcon",
+    "\u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u0430\u044f \u0441\u043a\u043e\u0440\u043e\u0441\u0442\u044c": "1050",
+    "\u043a\u043b\u0430\u0441\u0441": "Light freighter",
+    "\u0441\u043f\u0438\u0441\u043e\u043a \u043f\u0438\u043b\u043e\u0442\u043e\u0432": [
+        {
+            "\u0438\u043c\u044f": "Chewbacca",
+            "\u0440\u043e\u0441\u0442": "228",
+            "\u0432\u0435\u0441": "112",
+            "\u0440\u043e\u0434\u043d\u0430\u044f \u043f\u043b\u0430\u043d\u0435\u0442\u0430": "Kashyyyk",
+            "\u0441\u0441\u044b\u043b\u043a\u0430 \u043d\u0430 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e \u043e \u0440\u043e\u0434\u043d\u043e\u0439 \u043f\u043b\u0430\u043d\u0435\u0442\u0435": "https://swapi.dev/api/planets/14/"
+        },
+        {
+            "\u0438\u043c\u044f": "Han Solo",
+            "\u0440\u043e\u0441\u0442": "180",
+            "\u0432\u0435\u0441": "80",
+            "\u0440\u043e\u0434\u043d\u0430\u044f \u043f\u043b\u0430\u043d\u0435\u0442\u0430": "Corellia",
+            "\u0441\u0441\u044b\u043b\u043a\u0430 \u043d\u0430 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e \u043e \u0440\u043e\u0434\u043d\u043e\u0439 \u043f\u043b\u0430\u043d\u0435\u0442\u0435": "https://swapi.dev/api/planets/22/"
+        },
+        {
+            "\u0438\u043c\u044f": "Lando Calrissian",
+            "\u0440\u043e\u0441\u0442": "177",
+            "\u0432\u0435\u0441": "79",
+            "\u0440\u043e\u0434\u043d\u0430\u044f \u043f\u043b\u0430\u043d\u0435\u0442\u0430": "Socorro",
+            "\u0441\u0441\u044b\u043b\u043a\u0430 \u043d\u0430 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e \u043e \u0440\u043e\u0434\u043d\u043e\u0439 \u043f\u043b\u0430\u043d\u0435\u0442\u0435": "https://swapi.dev/api/planets/30/"
+        },
+        {
+            "\u0438\u043c\u044f": "Nien Nunb",
+            "\u0440\u043e\u0441\u0442": "160",
+            "\u0432\u0435\u0441": "68",
+            "\u0440\u043e\u0434\u043d\u0430\u044f \u043f\u043b\u0430\u043d\u0435\u0442\u0430": "Sullust",
+            "\u0441\u0441\u044b\u043b\u043a\u0430 \u043d\u0430 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e \u043e \u0440\u043e\u0434\u043d\u043e\u0439 \u043f\u043b\u0430\u043d\u0435\u0442\u0435": "https://swapi.dev/api/planets/33/"
+        }
     ]
 }
