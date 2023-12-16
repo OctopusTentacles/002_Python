@@ -25,12 +25,11 @@ import json
 import requests
 
 
-# https://swapi.dev/api/
-
-
 cur_dir = os.path.dirname(__file__)
-print(cur_dir)
 
 
-my_request = requests.get("https://swapi.dev/api/")
-print(my_request.text)
+my_request = requests.get("https://swapi.dev/api/starships/")
+# print(my_request)
+if my_request.status_code == 200:
+    data = json.loads(my_request.text)
+    print(data['name'])
