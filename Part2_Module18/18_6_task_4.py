@@ -21,6 +21,14 @@ numbers_list = ['9999999999', '999999-999', '99999x9999', '8888888888']
 patern = r"[8,9]\d{9}"
 
 
+for index, value in enumerate(numbers_list):
+
+    if re.search(patern, value):
+        print(f"{index+1} номер: все в порядке")
+    else:
+        print(f"{index+1} номер: не подходит")
+
+# result = filter(map(lambda x: x = re.findall(patern, numbers_list), numbers_list))
 
 
 # Результат:
