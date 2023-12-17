@@ -18,7 +18,7 @@ import re
 
 
 numbers_list = ['9999999999', '999999-999', '99999x9999', '8888888888']
-patern = r"[8,9]\d{9}"
+patern = r"^[89]\d{9}$"
 
 
 for index, value in enumerate(numbers_list):
