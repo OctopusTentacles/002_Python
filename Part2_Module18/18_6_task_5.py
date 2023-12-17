@@ -18,11 +18,14 @@
 
 import re
 import os
+import requests
 
 
 # <h3>Latest News</h3>
 cur_dir = os.path.dirname(__file__)
 
+
+def search_text()
 
 # В данном случае запрос request.get заменен на загрзку сайта из файла html
 with open(os.path.join(cur_dir, 'examples.html'), 'r') as f:
@@ -34,3 +37,11 @@ with open(os.path.join(cur_dir, 'examples.html'), 'r') as f:
 pattern = r"<h3.*?>(.*?)</h3>"
 result = re.findall(pattern, text)
 print(result)
+
+
+response = requests.get("https://www.google.kz")
+if response.status_code == 200:
+    data = response.text
+
+
+    print(data)
