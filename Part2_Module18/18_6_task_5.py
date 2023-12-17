@@ -25,23 +25,27 @@ import requests
 cur_dir = os.path.dirname(__file__)
 
 
-def search_text()
+def search_h3(url):
+    """ Поиск подзаголовков сайта <h3> .
+        .*? - любой символ от 0 и более раз.
+        (.*?) захват текста между тегами.
+    """
+    pattern = r"<h3.*?>(.*?)</h3>"
+    result = re.findall(pattern, url)
+
+    return result
+
 
 # В данном случае запрос request.get заменен на загрзку сайта из файла html
 with open(os.path.join(cur_dir, 'examples.html'), 'r') as f:
     text = f.read()
 # По итогу вы так же получаете код сайта в виде одной строки
 
-# .*? - любой символ от 0 и более раз
-# (.*?) захват текста между тегами.
-pattern = r"<h3.*?>(.*?)</h3>"
-result = re.findall(pattern, text)
-print(result)
+print(search_h3(text))
 
-
-response = requests.get("https://www.google.kz")
+site = "https://sky.pro/media/kak-optimizirovat-kod-na-python-dlya-povysheniya-proizvoditelnosti/"
+response = requests.get(site)
 if response.status_code == 200:
     data = response.text
 
-
-    print(data)
+print(search_h3(data))
