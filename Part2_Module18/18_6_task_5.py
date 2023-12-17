@@ -17,8 +17,20 @@
 
 
 import re
+import os
+
+
+# <h3>Latest News</h3>
+cur_dir = os.path.dirname(__file__)
+
 
 # В данном случае запрос request.get заменен на загрзку сайта из файла html
-with open('examples.html', 'r') as f:
+with open(os.path.join(cur_dir, 'examples.html'), 'r') as f:
     text = f.read()
 # По итогу вы так же получаете код сайта в виде одной строки
+
+# .*? - любой символ от 0 и более раз
+# (.*?) захват текста между тегами.
+pattern = r"<h3.*?>(.*?)</h3>"
+result = re.findall(pattern, text)
+print(result)
