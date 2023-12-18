@@ -27,6 +27,24 @@ import requests
 cur_dir = os.path.dirname(__file__)
 diff_list = ["services", "staff", "datetime"]
 
+
+def compare_dict(data_list, dict_1, dict_2):
+    result_dict = {}
+    for key in data_list:
+        if not key in dict_1:
+            for key_1 in dict_1:
+                if isinstance(dict_1[key_1], dict):
+                    result = compare_dict(data_list, dict_1[key_1], dict_2[key_1])
+                    return result
+        else:
+            if dict_1[key] != dict_2[key]:
+                result_dict[key] = dict_2[key]
+        return result_dict
+    return result_dict
+
+
+
+
 # загрузить данные json:
 def from_json(json_file):
     with open(os.path.join(cur_dir, json_file), "r", encoding="utf-8") as file:
@@ -34,15 +52,17 @@ def from_json(json_file):
 
 old_file = from_json("json_old.json")
 new_file = from_json("json_new.json")
-# print(old_file)
+
+compare_dict(diff_list, old_file, new_file)
 
 
 # должно: ключ из diff_list - значение из new_file[ключ] т.е:
 # result = {key: new_file[key]}
 # сравнить old и new попробуем через zip:
-for key in diff_list:
-    if dict(zip(old_file[key] != new_file[key])):
-        result = {key: new_file[key]}
+# for key in diff_list:
+#     if dict(zip(old_file[key] != new_file[key])):
+#         result = {key: new_file[key]}
+# нет, есть вложенные словари...
 
 
 # print(result)
