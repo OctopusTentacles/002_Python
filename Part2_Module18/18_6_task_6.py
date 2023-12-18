@@ -20,16 +20,16 @@
 
 
 import os
-import re
 import json
-import requests
+
 
 cur_dir = os.path.dirname(__file__)
 diff_list = ["services", "staff", "datetime"]
 
 
 def compare_dict(data_list, dict_1, dict_2, result_dict=None):
-    """
+    """ Функция сравнения значений в словарях.
+        Возвращает словарь с измененными значениями.
     """
     if result_dict is None:
         result_dict = {}
@@ -43,25 +43,29 @@ def compare_dict(data_list, dict_1, dict_2, result_dict=None):
 
     return result_dict
 
-
-# загрузить данные json:
 def from_json(json_file):
+    """ Получение данных из JSON-файла. """
     with open(os.path.join(cur_dir, json_file), "r", encoding="utf-8") as file:
         return(json.load(file))
     
 def to_json(sourse):
+    """ Запись данных в JSON-файл. """
     with open(os.path.join(cur_dir, "result.json"), "w") as file:
         json.dump(sourse, file, indent=4, ensure_ascii=False)
 
+
 # MAIN===================================================================================
+# загрузить данные json:
 old_file = from_json("json_old.json")
 new_file = from_json("json_new.json")
 
+# сравнить словари:
 result = compare_dict(diff_list, old_file, new_file)
 
-# записать словарь в JSON-файл с названием result.json.
+# записать словарь в JSON-файл с названием result.json:
 to_json(result)
 
+# а также вывод в консоль:
 print(result)
 
 # Результат:
