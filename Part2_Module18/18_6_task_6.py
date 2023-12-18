@@ -28,30 +28,21 @@ cur_dir = os.path.dirname(__file__)
 diff_list = ["services", "staff", "datetime"]
 
 
-def compare_dict(data_list, dict_1, dict_2):
-    result_dict = {}
-    for key in data_list:
-        if key in dict_1 and dict_1[key] != dict_2[key]:
-            result_dict[key] = dict_2[key]
-        else: 
-            for key_1 in dict_1:
-                if isinstance(dict_1[key_1], dict):
-                    compare_key = compare_dict(data_list, dict_1[key_1], dict_2[key_1])
-                    if compare_key:
-                        return compare_dict
-                
+def compare_dict(data_list, dict_1, dict_2, result_dict=None):
+    if result_dict is None:
+        result_dict = {}
+
+    for key_1 in dict_1:
+        if not key_1 in data_list and isinstance(dict_1[key_1], dict):
+            compare_dict(data_list, dict_1[key_1], dict_2[key_1], result_dict)
+
+        elif key_1 in data_list and dict_1[key_1] != dict_2[key_1]:
+            result_dict[key_1] = dict_2[key_1]   
+
     return result_dict
 
-    #     if not key in dict_1:
-    #         for key_1 in dict_1:
-    #             if isinstance(dict_1[key_1], dict):
-    #                 compare_result = compare_dict(data_list, dict_1[key_1], dict_2[key_1])
-    #                 return 
-    #     else:
-    #         if dict_1[key] != dict_2[key]:
-    #             result_dict[key] = dict_2[key]
-    #     return result_dict
-    # return result_dict
+
+
 
 
 # загрузить данные json:
@@ -62,7 +53,7 @@ def from_json(json_file):
 old_file = from_json("json_old.json")
 new_file = from_json("json_new.json")
 
-compare_dict(diff_list, old_file, new_file)
+print(compare_dict(diff_list, old_file, new_file))
 
 
 # должно: ключ из diff_list - значение из new_file[ключ] т.е:
