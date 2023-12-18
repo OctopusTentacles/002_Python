@@ -29,6 +29,8 @@ diff_list = ["services", "staff", "datetime"]
 
 
 def compare_dict(data_list, dict_1, dict_2, result_dict=None):
+    """
+    """
     if result_dict is None:
         result_dict = {}
 
@@ -42,30 +44,25 @@ def compare_dict(data_list, dict_1, dict_2, result_dict=None):
     return result_dict
 
 
-
-
-
 # загрузить данные json:
 def from_json(json_file):
     with open(os.path.join(cur_dir, json_file), "r", encoding="utf-8") as file:
         return(json.load(file))
+    
+def to_json(sourse):
+    with open(os.path.join(cur_dir, "result.json"), "w") as file:
+        json.dump(sourse, file, indent=4, ensure_ascii=False)
 
+# MAIN===================================================================================
 old_file = from_json("json_old.json")
 new_file = from_json("json_new.json")
 
-print(compare_dict(diff_list, old_file, new_file))
+result = compare_dict(diff_list, old_file, new_file)
 
+# записать словарь в JSON-файл с названием result.json.
+to_json(result)
 
-# должно: ключ из diff_list - значение из new_file[ключ] т.е:
-# result = {key: new_file[key]}
-# сравнить old и new попробуем через zip:
-# for key in diff_list:
-#     if dict(zip(old_file[key] != new_file[key])):
-#         result = {key: new_file[key]}
-# нет, есть вложенные словари...
-
-
-# print(result)
+print(result)
 
 # Результат:
 # {'services': [{'id': 22222225, 
