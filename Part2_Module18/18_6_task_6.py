@@ -34,8 +34,16 @@ def from_json(json_file):
 
 old_file = from_json("json_old.json")
 new_file = from_json("json_new.json")
+# print(old_file)
 
-print(new_file)
+
+# должно: ключ из diff_list - значение из new_file[ключ] т.е:
+# result = {key: new_file[key]}
+# сравнить old и new попробуем через zip:
+for key in diff_list:
+    if dict(zip(old_file[key] != new_file[key])):
+        result = {key: new_file[key]}
+
 
 # print(result)
 
