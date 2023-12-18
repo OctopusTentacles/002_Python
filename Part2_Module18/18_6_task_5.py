@@ -47,5 +47,10 @@ site = "https://sky.pro/media/kak-optimizirovat-kod-na-python-dlya-povysheniya-p
 response = requests.get(site)
 if response.status_code == 200:
     data = response.text
+print(search_h3(data))
 
+site = "http://www.columbia.edu/~fdc/sample.html"
+response = requests.get(site)
+if response.status_code == 200:
+    data = response.text
 print(search_h3(data))
