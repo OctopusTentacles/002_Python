@@ -19,7 +19,6 @@
 # Список параметров для отслеживания (можно сформировать инпутом или ввести вручную):
 
 
-
 import os
 import re
 import json
@@ -28,10 +27,17 @@ import requests
 cur_dir = os.path.dirname(__file__)
 diff_list = ["services", "staff", "datetime"]
 
+# загрузить данные json:
+def from_json(json_file):
+    with open(os.path.join(cur_dir, json_file), "r", encoding="utf-8") as file:
+        return(json.load(file))
 
+old_file = from_json("json_old.json")
+new_file = from_json("json_new.json")
 
+print(new_file)
 
-print(result)
+# print(result)
 
 # Результат:
 # {'services': [{'id': 22222225, 
