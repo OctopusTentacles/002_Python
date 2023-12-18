@@ -31,18 +31,27 @@ diff_list = ["services", "staff", "datetime"]
 def compare_dict(data_list, dict_1, dict_2):
     result_dict = {}
     for key in data_list:
-        if not key in dict_1:
+        if key in dict_1 and dict_1[key] != dict_2[key]:
+            result_dict[key] = dict_2[key]
+        else: 
             for key_1 in dict_1:
                 if isinstance(dict_1[key_1], dict):
-                    result = compare_dict(data_list, dict_1[key_1], dict_2[key_1])
-                    return result
-        else:
-            if dict_1[key] != dict_2[key]:
-                result_dict[key] = dict_2[key]
-        return result_dict
+                    compare_key = compare_dict(data_list, dict_1[key_1], dict_2[key_1])
+                    if compare_key:
+                        return compare_dict
+                
     return result_dict
 
-
+    #     if not key in dict_1:
+    #         for key_1 in dict_1:
+    #             if isinstance(dict_1[key_1], dict):
+    #                 compare_result = compare_dict(data_list, dict_1[key_1], dict_2[key_1])
+    #                 return 
+    #     else:
+    #         if dict_1[key] != dict_2[key]:
+    #             result_dict[key] = dict_2[key]
+    #     return result_dict
+    # return result_dict
 
 
 # загрузить данные json:
