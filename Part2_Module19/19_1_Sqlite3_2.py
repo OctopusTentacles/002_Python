@@ -5,3 +5,13 @@
 # Для начала импортируем модуль sqlite3:
 
 import sqlite3
+
+# Чтобы подключиться к БД, используем метод connect:
+conn = sqlite3.connect('database.db')
+...
+conn.close()
+
+# Лучше предпочесть контекстный менеджер для корректного завершения работы 
+# в случае возникновения ошибок.
+with sqlite3.connect('database.db') as conn:
+    ...
