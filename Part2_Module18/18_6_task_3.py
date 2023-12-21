@@ -27,7 +27,7 @@ from typing import Dict, Any
 
 # чтобы созданный файл был в одно каталоге:
 cur_dir = os.path.dirname(__file__)
-
+cache_dict = dict()
 
 def api_info(url: str, name: str) -> Dict[str, Any]:
     """ функция для поиска информации по ресурсу API.
@@ -53,18 +53,25 @@ def api_info(url: str, name: str) -> Dict[str, Any]:
 
                 # список пилотов содержит ссылки:
                 for url_pilot in result["pilots"]:
-                    request_pilot = requests.get(url_pilot)
-                    if request_pilot.status_code == 200:
-                        # десериализация JSON:
-                        pilot_data = json.loads(request_pilot.text)
-                        # словарь на каждого пилота:
-                        pilot_info = {
-                            "имя": pilot_data["name"],
-                            "рост": pilot_data["height"],
-                            "вес": pilot_data["mass"],
-                            "родная планета": "",
-                            "ссылка на информацию о родной планете": pilot_data["homeworld"]
-                        }
+
+                    if url_pilot not in cache_dict:
+                        request_pilot = requests.get(url_pilot)
+                        if request_pilot.status_code == 200:
+                            
+                            # десериализация JSON:
+                            pilot_data = json.loads(request_pilot.text)
+                            cache_dict[url_pilot] = pilot_data
+                    else:
+                        pilot_data = cache_dict[url_pilot]
+                    # словарь на каждого пилота:
+                    pilot_info = {
+                        "имя": pilot_data["name"],
+                        "рост": pilot_data["height"],
+                        "вес": pilot_data["mass"],
+                        "родная планета": "",
+                        "ссылка на информацию о родной планете": pilot_data["homeworld"]
+                    }
+
                     # родная планета - ссылка, а нам нужно имя -> str:
                     request_planet = requests.get(pilot_data["homeworld"])
                     if request_planet.status_code == 200:
