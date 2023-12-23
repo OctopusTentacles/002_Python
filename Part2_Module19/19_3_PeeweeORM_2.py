@@ -73,4 +73,62 @@ def create_models():
     db.create_tables(BaseModel.__subclasses__())
 # BaseModel.__subclassess__() вернёт список наследников класса BaseModel.
     
-# 
+# =======================================================================================
+# Главный файл
+# Регистрировать пользователя мы будем по первому сообщению:
+
+@bot.message_handler(commands=["start"])
+def handle_start(message: Message) -> None:
+    user_id = message.from_user.id
+    username = message.from_user.username
+    first_name = message.from_user.first_name
+    last_name = message.from_user.last_name
+
+
+    try:
+        User.create(
+            user_id=user_id,
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+        )
+        bot.reply_to(message, "Добро пожаловать в менеджер задач!")
+    except IntegrityError:
+        bot.reply_to(message, f"Рад вас снова видеть, {first_name}!")
+
+
+# Для более удобной работы нам понадобятся состояния:
+class UserState(StatesGroup):
+    new_task_title = State()
+    new_task_due_date = State()
+    tasks_make_done = State()
+
+# Создадим обработчик команды /newtask:
+@bot.message_handler(state="*", commands=["newtask"])
+def handle_new_task(message: Message) -> None:
+    user_id = message.from_user.id
+    if User.get_or_none(User.user_id == user_id) is None:
+        bot.reply_to(message, "Вы не зарегистрированы. Напишите /start")
+        return
+
+
+    bot.send_message(user_id, "Введите название задачи")
+    bot.set_state(message.from_user.id, UserState.new_task_title)
+    with bot.retrieve_data(message.from_user.id) as data:
+        data["new_task"] = {"user_id": user_id}
+
+# User.get_or_none вернёт нам модель пользователя либо None. Так мы проверяем, 
+        # зарегистрирован пользователь или нет.
+# В хранилище мы создаём словарь new_task и вносим туда ID пользователя. 
+        # Далее предлагаем пользователю ввести название задачи.
+
+# Обработчик названия задачи выглядит так:
+
+@bot.message_handler(state=UserState.new_task_title)
+def process_task_title(message: Message) -> None:
+    with bot.retrieve_data(message.from_user.id) as data:
+        data["new_task"]["title"] = message.text
+    bot.send_message(message.from_user.id, "Введите дату (ДД.ММ.ГГГГ):")
+    bot.set_state(message.from_user.id, UserState.new_task_due_date)
+
+# Вносим название задачи в хранилище и переходим к вводу даты:
