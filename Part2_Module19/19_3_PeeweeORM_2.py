@@ -132,3 +132,34 @@ def process_task_title(message: Message) -> None:
     bot.set_state(message.from_user.id, UserState.new_task_due_date)
 
 # Вносим название задачи в хранилище и переходим к вводу даты:
+@bot.message_handler(state=UserState.new_task_due_date)
+def process_task_due_date(message: Message) -> None:
+    due_date_string = message.text
+    try:
+        due_date = datetime.datetime.strptime(due_date_string, DATE_FORMAT)
+    except ValueError:
+        bot.send_message(message.from_user.id, "Введите дату (ДД.ММ.ГГГГ):")
+        return
+
+    with bot.retrieve_data(message.from_user.id) as data:
+        data["new_task"]["due_date"] = due_date
+
+    new_task = Task(**data["new_task"])
+    new_task.save()
+    bot.send_message(message.from_user.id, f"Задача добавлена:\n{new_task}")
+    bot.delete_state(message.from_user.id)
+
+# Метод strptime конвертирует ввод пользователя в объект даты по заданному формату. 
+    # Если возникнет ошибка конвертации (неверный формат), мы напишем пользователю 
+    # сообщение о повторном вводе.
+# У нас готовы все данные для создания задачи (user_id, title, due_date), 
+    # поэтому мы можем её создать. Мы использовали конструкцию распаковки словаря:
+# Task(**data["new_task"])
+# Она эквивалентна следующей записи:
+Task(
+    user_id=data["new_task"]["user_id"], 
+    title=data["new_task"]["title"],
+    due_date=data["new_task"]["due_date"]
+)
+
+# Перейдём к разработке команды /tasks:
