@@ -43,5 +43,29 @@ class Cat:
 # Pony ORM,
 # Tortoise ORM,
 # SQLObject.
+
+# =======================================================================================  
+# Peewee
     
+# pip install peewee==3.15.4
+    
+# В качестве базы данных выберем SQLite. Создадим нашу первую модель:
+from peewee import SqliteDatabase, Model, CharField, IntegerField
+# подключаемся к базе данных my_database.db
+db = SqliteDatabase("my_database.db")
+
+# создаём модель User
+class User(Model):
+    # имя пользователя, CharField -- строка
+     name = CharField()
+    # возраст пользователя, IntegerField -- целое число
+     age = IntegerField()
+    
+    # во внутреннем классе Meta указываем нашу базу данных
+    class Meta:
+         database = db
+
+# создаём таблицу users в базе данных
+db.create_tables([User])
+
 # 
