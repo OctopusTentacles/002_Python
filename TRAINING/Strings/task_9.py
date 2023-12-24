@@ -21,9 +21,9 @@ def is_palindrome(text: str) -> bool:
     char_count = Counter(new_text)
 
     # считаем кол-во нечетных - их должно быть не больше 1
-    odd_count = sum(map())
+    odd_count = sum(map(lambda value: value % 2 !=0, char_count.values()))
 
-
+    # если нечетных не больше 1 - True:
     return odd_count <= 1
 
 
