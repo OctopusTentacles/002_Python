@@ -7,13 +7,24 @@
 
 
 import re
+from collections import Counter
 
 
 def is_palindrome(text: str) -> bool:
+    
+    # Большие буквы преобразуем в маленькие:
     low_text = text.lower()
+    # убираем пробелы и все спецсимволы:
     new_text = re.sub(r"[^aA-zZ]", "", low_text)
-    print(new_text)
-    pass
+
+    # считаем кол-во каждого элемента:
+    char_count = Counter(new_text)
+
+    # считаем кол-во нечетных - их должно быть не больше 1
+    odd_count = sum(map())
+
+
+    return odd_count <= 1
 
 
 
