@@ -6,12 +6,17 @@
 # Примеры:
 
 
-def is_palindrome(text: str) -> bool:
+import re
 
+
+def is_palindrome(text: str) -> bool:
+    low_text = text.lower()
+    new_text = re.sub(r"[^aA-zZ]", "", low_text)
+    print(new_text)
     pass
 
 
 
 print(is_palindrome("radar"))  # True
-print(is_palindrome("A man a plan a canal Panama"))  # True
+print(is_palindrome("A man, a plan a canal Panama!"))  # True
 print(is_palindrome("hello"))  # False
