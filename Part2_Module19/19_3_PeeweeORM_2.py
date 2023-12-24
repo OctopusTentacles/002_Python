@@ -200,4 +200,58 @@ def handle_tasks(message: Message) -> None:
     # порядке, поэтому с помощью reversed разворачиваем наш список.
 # С помощью map(str, ...) мы преобразуем задачи в строковый вид для вывода на экран.
 
-# 
+# Перейдём к изменению статуса:
+@bot.message_handler(state=UserState.tasks_make_done)
+def process_task_done(message: Message) -> None:
+    task_id = int(message.text)
+    task = Task.get_or_none(Task.task_id == task_id)
+    if task is None:
+        bot.send_message(message.from_user.id, "Задачи с таким ID не существует.")
+        return
+    if task.user_id != message.from_user.id:
+        bot.send_message(
+            message.from_user.id, "Вы не являетесь владельцем данной задачи."
+        )
+        return
+    task.is_done = not task.is_done
+    task.save()
+    bot.send_message(message.from_user.id, task)
+
+# Здесь есть два важных момента:
+# Задачи с таким ID может не оказаться.
+# Проверяем это с помощью get_or_none.
+# Это может быть не ваша задача.Не забывайте, что ботом могут пользоваться 
+    # несколько людей, поэтому нельзя позволять одному пользователю как-то 
+    # менять данные другого. Сделаем проверку — совпадает ли ID пользователя 
+    # с ID создателя задачи.
+
+# Реализация /today аналогична /tasks, только мы фильтруем задачи по текущей дате.
+@bot.message_handler(state="*", commands=["today"])
+def handle_today(message: Message) -> None:
+    user_id = message.from_user.id
+    user = User.get_or_none(User.user_id == user_id)
+    if user is None:
+        bot.reply_to(message, "Вы не зарегистрированы. Напишите /start")
+        return
+
+    tasks: List[Task] = user.tasks.where(Task.due_date == datetime.date.today())
+
+    result = []
+    result.extend(map(str, tasks))
+
+    if not result:
+        bot.send_message(message.from_user.id, "У вас ещё нет задач")
+        return
+
+    result.append("\nВведите номер задачи, чтобы изменить её статус.")
+    bot.send_message(message.from_user.id, "\n".join(result))
+    bot.set_state(message.from_user.id, UserState.tasks_make_done)
+
+# Здесь всё то же самое, поменяются только эти две строки:
+tasks: List[Task] = user.tasks.where(Task.due_date == datetime.date.today())
+result.extend(map(str, tasks))
+
+# С помощью where мы фильтруем дату назначения задачи, сравнивая с текущим днём.
+# Кстати, обратите внимание на state="*". Этот код добавлен для того, чтобы можно 
+# было исполнить команду, например, во время ввода названия задачи. 
+# Таким образом, бот сочтёт /today не за название задачи, а за команду.
