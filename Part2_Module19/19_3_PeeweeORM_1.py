@@ -57,9 +57,9 @@ db = SqliteDatabase("my_database.db")
 # создаём модель User
 class User(Model):
     # имя пользователя, CharField -- строка
-     name = CharField()
+    name = CharField()
     # возраст пользователя, IntegerField -- целое число
-     age = IntegerField()
+    age = IntegerField()
     
     # во внутреннем классе Meta указываем нашу базу данных
     class Meta:
