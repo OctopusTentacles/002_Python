@@ -5,5 +5,4 @@
 
 import telebot
 
-# username - w0w0wbot
 bot = telebot.TeleBot("TOKEN")
