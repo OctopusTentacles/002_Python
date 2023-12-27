@@ -9,9 +9,10 @@ from config import USERNAME, BOT_TOKEN, API_KEY
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
-@bot.message_handler(content_types=["text"])
-def start_message(message):
-    bot.send_message(message.chat.id, message.text)
+@bot.message_handler(commands=["hello-world"])
+def greet_message(message):
+    username = message.from_user.first_name
+    bot.send_message(message.chat.id, f"Привет, {username}!")
 
 
 
