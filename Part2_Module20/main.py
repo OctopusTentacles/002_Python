@@ -14,10 +14,11 @@ def greet_message(message):
     username = message.from_user.first_name
     bot.send_message(message.chat.id, f"Hello-{username}!")
 
-@bot.message_handler(func=lambda message: message.text.lower() == "привет")
+@bot.message_handler(content_types=["text"])
 def hello(message):
     username = message.from_user.first_name
-    bot.send_message(message.chat.id, f"Привет, {username}!")
+    if message.text.lower().startswith("привет"):
+        bot.send_message(message.chat.id, f"Привет, {username}!")
 
 
 # MAIN==================================================
