@@ -12,8 +12,12 @@ bot = telebot.TeleBot(BOT_TOKEN)
 @bot.message_handler(commands=["hello-world"])
 def greet_message(message):
     username = message.from_user.first_name
-    bot.send_message(message.chat.id, f"Привет, {username}!")
+    bot.send_message(message.chat.id, f"Hello-{username}!")
 
+@bot.message_handler(func=lambda message: message.text.lower() == "привет")
+def hello(message):
+    username = message.from_user.first_name
+    bot.send_message(message.chat.id, f"Привет, {username}!")
 
 
 # MAIN==================================================
