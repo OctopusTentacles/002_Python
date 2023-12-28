@@ -2,6 +2,7 @@
 # «Привет» (необходимо сообщить проверяющему куратору имя вашего бота для
 # тестирования).
 
+import json
 import telebot
 import requests
 from config import USERNAME, BOT_TOKEN, API_KEY
@@ -11,7 +12,7 @@ bot = telebot.TeleBot(BOT_TOKEN)
 
 @bot.message_handler(commands=["get_data"])
 def get_data(message):
-    api_url = "https://"
+    api_url = "https://api.kinopoisk.dev"
     params = {"api_key": API_KEY, "chat_id": message.chat.id}
     # try:
         # Отправка GET-запроса к API:
