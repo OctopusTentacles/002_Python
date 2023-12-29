@@ -6,6 +6,7 @@
 import telebot
 import requests
 from config import USERNAME, BOT_TOKEN, API_KEY
+from new import new_films
 
 
 bot = telebot.TeleBot(BOT_TOKEN)
