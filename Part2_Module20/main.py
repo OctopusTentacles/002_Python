@@ -2,6 +2,7 @@
 # «Привет» (необходимо сообщить проверяющему куратору имя вашего бота для
 # тестирования).
 
+
 import telebot
 import requests
 from config import USERNAME, BOT_TOKEN, API_KEY
@@ -16,48 +17,37 @@ def random_film(message):
     headers = {"accept": "application/json",
                 "X-API-KEY": API_KEY
             }
-    try:
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()
+    while True:
+        try:
+            response = requests.get(url, headers=headers)
+            response.raise_for_status()
 
-        if response.status_code == 200:
-            data = response.json()
+            if response.status_code == 200:
+                data = response.json()
+                
+                # Извлечь нужные данные из объекта `data`:
+                title = data.get("name")
+                rating = data.get("rating", {})
+                kp_rate = rating.get("kp", "N/A")
+                year = data.get("year")
+                print(f"Фильм: {title}\n" 
+                    f"Рейтинг КП: {kp_rate}\n"
+                    f"год: {year}\n")
+                
+                if title and kp_rate > 7:
+                    bot.send_message(message.chat.id,   f"Фильм: {title}\n" 
+                                                        f"Рейтинг КП: {kp_rate}\n"
+                                                        f"год: {year}\n")
+                    break
+            else:
+                bot.send_message(message.chat_id, f'''Ошибка при получении данных. 
+                                Код ответа: {response.status_code}''')
+                break
+
+        except requests.exceptions.RequestException as exc:
+            bot.send_message(message.chat.id, f'''Произошла ошибка при получении 
+                            случайного фильма: {exc}''')
             
-            # Извлечь нужные данные из объекта `data`:
-            title = data.get("name")
-            rating = data.get("rating", {})
-            kp_rate = rating.get("kp", "N/A")
-            year = data.get("year")
-            print(f"Фильм: {title}\n" 
-                f"Рейтинг КП: {kp_rate}\n"
-                f"год: {year}\n")
-
-            bot.send_message(message.chat.id, f"Фильм: {title}\n" 
-                f"Рейтинг КП: {kp_rate}\n"
-                f"год: {year}\n")
-        else:
-            bot.send_message(message.chat_id, f'''Ошибка при получении данных. 
-                             Код ответа: {response.status_code}''')
-    except requests.exceptions.RequestException as exc:
-        bot.send_message(message.chat.id, f'''Произошла ошибка при получении 
-                         случайного фильма: {exc}''')
-          
-
-
-
-
-
-
-# @bot.message_handler(commands=["get_data"])
-# def get_data(message):
-#     api_url = "https://api.kinopoisk.dev"
-#     params = {"api_key": API_KEY, "chat_id": message.chat.id}
-#     # try:
-#         # Отправка GET-запроса к API:
-#     response = requests.get(api_url)
-#     if response.status_code == 200:
-#             data = response.json()
-#             bot.send_message(message.chat.id, f"Получены данные: {data}")
 
 # @bot.message_handler(commands=["hello-world"])
 # def greet_message(message):
