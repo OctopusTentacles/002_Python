@@ -6,10 +6,15 @@
 import telebot
 import requests
 from config import USERNAME, BOT_TOKEN, API_KEY
-from new import new_films
+from new import get_new_movies
 
 
 bot = telebot.TeleBot(BOT_TOKEN)
+
+
+@bot.message_handler(commands=["new"])
+def main_new_movies(message):
+    get_new_movies(message)
 
 
 @bot.message_handler(commands=["random"])

@@ -3,14 +3,14 @@
 
 import telebot
 import requests
-from config import API_KEY
+from config import USERNAME, BOT_TOKEN, API_KEY
 
 
-bot = telebot.TeleBot(API_KEY)
+bot = telebot.TeleBot(BOT_TOKEN)
 
 
 bot.message_handler(commands=["new"])
-def new_films(message):
+def get_new_movies(message):
 
     url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=3&year=2023-2024"
     headers = {"accept": "application/json", "X-API-KEY": API_KEY}
@@ -28,3 +28,6 @@ def new_films(message):
             message_text += f"Фильм: {title}\n"
 
         bot.send_message(message.chat.id, message_text)
+
+if __name__ == "__main__":
+    bot.infinity_polling()
