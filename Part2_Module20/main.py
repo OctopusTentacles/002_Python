@@ -9,7 +9,6 @@ from config import USERNAME, BOT_TOKEN, API_KEY
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
-print(API_KEY)
 
 @bot.message_handler(commands=["random"])
 def random_film(message):
@@ -17,27 +16,35 @@ def random_film(message):
     headers = {"accept": "application/json",
                 "X-API-KEY": API_KEY
             }
+    try:
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
 
-    response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            data = response.json()
+            
+            # Извлечь нужные данные из объекта `data`:
+            title = data.get("name")
+            rating = data.get("rating", {})
+            kp_rate = rating.get("kp", "N/A")
+            year = data.get("year")
+            print(f"Фильм: {title}\n" 
+                f"Рейтинг КП: {kp_rate}\n"
+                f"год: {year}\n")
 
-    if response.status_code == 200:
-        data = response.json()
-        print(response.text)
-        # Извлечь нужные данные из объекта `data`:
-        title = data.get("name")
-        rating = data.get("rating", {})
-        kp_rate = rating.get("kp", "N/A")
-        year = data.get("year")
-        print(f"Фильм: {title}\n" 
-            f"Рейтинг КП: {kp_rate}\n"
-            f"год: {year}\n")
-
-        bot.send_message(message.chat.id, f"Фильм: {title}\n" 
-            f"Рейтинг КП: {kp_rate}\n"
-            f"год: {year}\n")
-    else:
-        print("Ошибка соединения")
+            bot.send_message(message.chat.id, f"Фильм: {title}\n" 
+                f"Рейтинг КП: {kp_rate}\n"
+                f"год: {year}\n")
+        else:
+            bot.send_message(message.chat_id, f'''Ошибка при получении данных. 
+                             Код ответа: {response.status_code}''')
+    except requests.exceptions.RequestException as exc:
+        bot.send_message(message.chat.id, f'''Произошла ошибка при получении 
+                         случайного фильма: {exc}''')
           
+
+
+
 
 
 
