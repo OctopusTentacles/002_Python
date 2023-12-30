@@ -21,16 +21,18 @@ def get_new_movies(message):
         data = response.json()
         movies = data.get("docs")
 
+        count = 0
         message_text = "Список 10 новых фильмов в этом году:\n"
 
         for movie in movies:
             title = movie.get("name")
-
-            if title not in cached_movie:
+            
+            if title not in cached_movie and count < 11:
                 cached_movie.add(title)
+                count += 1
                 message_text += f"Фильм: {title}\n"
 
-        bot.send_message(message.chat.id, message_text[:10])
+        bot.send_message(message.chat.id, message_text)
 
 if __name__ == "__main__":
     bot.infinity_polling()
