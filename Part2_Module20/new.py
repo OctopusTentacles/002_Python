@@ -12,7 +12,8 @@ bot = telebot.TeleBot(BOT_TOKEN)
 bot.message_handler(commands=["new"])
 def get_new_movies(message):
 
-    url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=3&year=2023-2024"
+    url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=10&year=2023-2024"
+    # url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=10&year=&premiere.world=01.06.2023-28.12.2023"
     headers = {"accept": "application/json", "X-API-KEY": API_KEY}
 
     response = requests.get(url, headers=headers)
