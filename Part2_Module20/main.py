@@ -14,7 +14,7 @@ bot = telebot.TeleBot(BOT_TOKEN)
 
 # приветствие:
 welcome_message = set()
-@bot.message_handler(func=lambda message: True)
+@bot.message_handler(commands=["start"])
 def welcome(message):
     chat_id = message.chat.id
     username = message.from_user.first_name
@@ -25,7 +25,7 @@ def welcome(message):
                                 f"/new\n"
                                 f"/random")
         welcome_message.add(chat_id)
-        return
+
 
 @bot.message_handler(commands=["new"])
 def main_new_movies(message):
