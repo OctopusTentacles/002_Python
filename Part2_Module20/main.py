@@ -13,6 +13,12 @@ from rand import get_random_film
 bot = telebot.TeleBot(BOT_TOKEN)
 
 
+@bot.message_handler(commands=["start"])
+def welcome(message):
+    username = message.from_user.first_name
+    bot.send_message(message.chat.id, f"Привет, {username}!")
+
+
 @bot.message_handler(commands=["new"])
 def main_new_movies(message):
     get_new_movies(message)
