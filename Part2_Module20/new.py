@@ -7,13 +7,12 @@ from config import USERNAME, BOT_TOKEN, API_KEY
 
 
 bot = telebot.TeleBot(BOT_TOKEN)
-
+cached_movie = set()
 
 bot.message_handler(commands=["new"])
 def get_new_movies(message):
 
-    url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=10&year=2023-2024"
-    # url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=10&year=&premiere.world=01.06.2023-28.12.2023"
+    url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&notNullFields=&type=movie&premiere.world=01.01.2023-28.12.2023"
     headers = {"accept": "application/json", "X-API-KEY": API_KEY}
 
     response = requests.get(url, headers=headers)
@@ -22,13 +21,16 @@ def get_new_movies(message):
         data = response.json()
         movies = data.get("docs")
 
-        message_text = "Список 10 самых новых фильмов:\n"
+        message_text = "Список 10 новых фильмов в этом году:\n"
 
         for movie in movies:
             title = movie.get("name")
-            message_text += f"Фильм: {title}\n"
 
-        bot.send_message(message.chat.id, message_text)
+            if title not in cached_movie:
+                cached_movie.add(title)
+                message_text += f"Фильм: {title}\n"
+
+        bot.send_message(message.chat.id, message_text[:10])
 
 if __name__ == "__main__":
     bot.infinity_polling()
