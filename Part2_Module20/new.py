@@ -6,6 +6,7 @@ bot = telebot.TeleBot(BOT_TOKEN)
 cached_movie = set()
 
 def get_new_movies(chat_id, url):
+    print("запуск get movies")
     headers = {"accept": "application/json", "X-API-KEY": API_KEY}
     response = requests.get(url, headers=headers)
 
