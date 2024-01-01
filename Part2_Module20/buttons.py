@@ -28,14 +28,14 @@ def user_choise(message):
     chat_id = message.chat.id
     user_choice = message.text.lower()
 
-    if user_choice == "Фильмы":
-        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=10&type=movie&year=2023"
+    if user_choice == "фильмы":
+        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=5&type=movie&year=2023"
 
-    if user_choice == "Сериалы":
-        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=10&type=tv-series&year=2023"
+    if user_choice == "сериалы":
+        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=5&type=tv-series&year=2023"
 
-    if user_choice == "Мультфильмы":
-        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=10&type=cartoon&year=2023"
+    if user_choice == "мультфильмы":
+        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=5&type=cartoon&year=2023"
 
     return url
 
