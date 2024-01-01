@@ -12,11 +12,31 @@ cached_movie = set()
 def ask_user(message):
 
     chat_id = message.chat.id
+
+    # кнопки выбора:
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(types.KeyboardButton("Фильмы"))
     keyboard.add(types.KeyboardButton("Сериалы"))
     keyboard.add(types.KeyboardButton("Мультфильмы"))
 
-    
+    # запрос у пользователя:
+    bot.send_message(chat_id, "Выбири тип", reply_markup=keyboard)
+    bot.register_next_step_handler(message, user_choise)
+
+
+def user_choise(message):
+    chat_id = message.chat.id
+    user_choice = message.text.lower()
+
+    if user_choice == "Фильмы":
+        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=10&type=movie&year=2023"
+
+    if user_choice == "Сериалы":
+        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=10&type=tv-series&year=2023"
+
+    if user_choice == "Мультфильмы":
+        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=10&type=cartoon&year=2023"
+
+
 
 
