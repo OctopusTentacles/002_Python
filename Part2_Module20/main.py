@@ -36,19 +36,6 @@ def main_new_movies(message):
 def main_random_film(message):
     get_random_film(message)
 
-            
-
-# @bot.message_handler(commands=["hello-world"])
-# def greet_message(message):
-#     username = message.from_user.first_name
-#     bot.send_message(message.chat.id, f"Hello-{username}!")
-
-# @bot.message_handler(content_types=["text"])
-# def hello(message):
-#     username = message.from_user.first_name
-#     if message.text.lower().startswith("привет"):
-#         bot.send_message(message.chat.id, f"Привет, {username}!")
-
 
 # MAIN==================================================
 if __name__ == "__main__":
