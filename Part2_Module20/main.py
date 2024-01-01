@@ -6,7 +6,7 @@
 import telebot
 import requests
 from config import USERNAME, BOT_TOKEN, API_KEY
-from new import get_new_movies
+from buttons import ask_user
 from rand import get_random_film
 
 
@@ -29,7 +29,7 @@ def welcome(message):
 
 @bot.message_handler(commands=["new"])
 def main_new_movies(message):
-    get_new_movies(message)
+    ask_user(message)
 
 
 @bot.message_handler(commands=["random"])
