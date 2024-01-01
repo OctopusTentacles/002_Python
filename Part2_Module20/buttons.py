@@ -37,6 +37,7 @@ def user_choise(message):
     if user_choice == "Мультфильмы":
         url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=10&type=cartoon&year=2023"
 
+    return url
 
 
 

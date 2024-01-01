@@ -4,7 +4,7 @@ import telebot
 import requests
 from config import USERNAME, BOT_TOKEN, API_KEY
 
-import low
+import buttons
 
 
 bot = telebot.TeleBot(BOT_TOKEN)
@@ -20,7 +20,7 @@ def get_new_movies(message):
     # url = "https://api.kinopoisk.dev/v1.4/movie"
     # url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&notNullFields=&type=movie&premiere.world=01.01.2023-28.12.2023"
     
-    url = low.ask_user(message)
+    url = buttons.ask_user(message)
     headers = {"accept": "application/json", "X-API-KEY": API_KEY}
 
     response = requests.get(url, headers=headers)
