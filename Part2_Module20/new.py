@@ -22,26 +22,30 @@ def get_new_movies(message):
     # url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=5&type=cartoon&year=2023"
 
     url = buttons.ask_user(message)
-    headers = {"accept": "application/json", "X-API-KEY": API_KEY}
+    if url is not None:
+        headers = {"accept": "application/json", "X-API-KEY": API_KEY}
+        response = requests.get(url, headers=headers)
 
-    response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            data = response.json()
+            movies = data.get("docs")
 
-    if response.status_code == 200:
-        data = response.json()
-        movies = data.get("docs")
+            count = 0
+            message_text = "Список 5 новых фильмов в этом году:\n"
 
-        count = 0
-        message_text = "Список 5 новых фильмов в этом году:\n"
+            for movie in movies:
+                title = movie.get("name")
+                
+                if title not in cached_movie and count < 5:
+                    cached_movie.add(title)
+                    count += 1
+                    message_text += f"Фильм: {title}\n"
 
-        for movie in movies:
-            title = movie.get("name")
-            
-            if title not in cached_movie and count < 11:
-                cached_movie.add(title)
-                count += 1
-                message_text += f"Фильм: {title}\n"
+            bot.send_message(message.chat.id, message_text)
+        else:
+            print(f"Ошибка при получении данных. Код ответа: {response.status_code}")
 
-        bot.send_message(message.chat.id, message_text)
+
 
 if __name__ == "__main__":
     bot.infinity_polling()
