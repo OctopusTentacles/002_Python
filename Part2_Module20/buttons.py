@@ -14,15 +14,26 @@ def ask_user(message):
     # кнопки выбора:
     print("выбираю кнопку")
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.add(types.KeyboardButton("Фильмы"))
+    keyboard.add(types.KeyboardButton(text = "Фильмы"))
     keyboard.add(types.KeyboardButton("Сериалы"))
     keyboard.add(types.KeyboardButton("Мультфильмы"))
 
     # запрос у пользователя нажать кнопку:
-    user_type = bot.send_message(chat_id, "Выбири тип", reply_markup=keyboard)
-    bot.register_next_step_handler(user_type, user_choice)
+    bot.send_message(chat_id, "Выбири тип", reply_markup=keyboard)
+    # bot.register_next_step_handler(msg, user_choice)
 
     print("запуск функции с парам", message.text)
+
+
+# @bot.message_handler(content_types=["KeyboardButton"])
+# def user_movie(message):
+#         print(message.text)
+#         url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=5&type=movie&year=2023"
+#         print("https://api.kinopoisk.dev/v1.4/movie?page=1&limit=5&type=movie&year=2023")
+#         return url
+
+
+
 
 def user_choice(message):
     print("запуск функции с парам", message.text())
