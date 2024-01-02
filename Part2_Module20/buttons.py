@@ -3,27 +3,43 @@ from telebot import types
 from config import BOT_TOKEN
 from new import get_new_movies
 
+
 bot = telebot.TeleBot(BOT_TOKEN)
-cached_movie = set()
+user_states = {}
+
 
 @bot.message_handler(commands=["new"])
 def ask_user(message):
 
-    chat_id = message.chat.id
+    user_id = message.from_user.id
+    user_states[user_id] = {'command': 'new'}
 
     # кнопки выбора:
     print("выбираю кнопку")
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.add(types.KeyboardButton(text = "Фильмы"))
+    keyboard.add(types.KeyboardButton("Фильмы"))
     keyboard.add(types.KeyboardButton("Сериалы"))
     keyboard.add(types.KeyboardButton("Мультфильмы"))
 
     # запрос у пользователя нажать кнопку:
-    bot.send_message(chat_id, "Выбири тип", reply_markup=keyboard)
-    # bot.register_next_step_handler(msg, user_choice)
-
+    bot.send_message(user_id, "Выбири тип", reply_markup=keyboard)
+    # bot.register_next_step_handler(message, user_choice)
     print("запуск функции с парам", message.text)
 
+
+    # скрываем клавиатуру после выбора пользователя
+    # hide_markup = types.ReplyKeyboardRemove()
+    # bot.send_message(chat_id, reply_markup=hide_markup)
+
+
+
+
+# @bot.message_handler(func=lambda message: True)
+# def all_message(message):
+#     if message.text.lower() in ["фильмы", "сериалы", "мультфильмы"]:
+#         user_choice(message)
+#     else:
+#         bot.send_message(message.chat.id, "Неизвестная команда. Пожалуйста, используйте кнопки.")
 
 # @bot.message_handler(content_types=["KeyboardButton"])
 # def user_movie(message):
@@ -34,11 +50,11 @@ def ask_user(message):
 
 
 
-
+@bot.message_handler(func=lambda message: message.text.lower() in ["фильмы", "сериалы", "мультфильмы"])
 def user_choice(message):
-    print("запуск функции с парам", message.text())
-    chat_id = message.chat.id
-    user_type = message.text.lower()
+    print("запуск функции с парам", message.text)
+    user_id = message.from_user.id
+    user_type = message.text.lower()    
     print("функцию get_new_movies в параметре ")
 
 
