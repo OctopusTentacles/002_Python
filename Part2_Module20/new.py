@@ -15,7 +15,7 @@ def get_new_movies(chat_id, url):
         movies = data.get("docs")
 
         count = 0
-        message_text = "Список 5 новых фильмов в этом году:\n"
+        message_text = "\n"
 
         for movie in movies:
             title = movie.get("name")
