@@ -6,6 +6,7 @@ from config import BOT_TOKEN, API_KEY
 bot = telebot.TeleBot(BOT_TOKEN)
 cached_movie = set()
 
+
 def get_new_url(chat_id, category):
 
     url = None

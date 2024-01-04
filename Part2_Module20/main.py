@@ -1,7 +1,7 @@
 import telebot
 from config import BOT_TOKEN
 from buttons import get_main_keyboard, get_new_keyboard
-from new import get_new_movies
+from new import get_new_url
 
 
 bot = telebot.TeleBot(BOT_TOKEN)
@@ -14,28 +14,18 @@ def welcome(message):
     bot.send_message(message.chat.id, f"Привет, {username}!\n"
                      f"Выбери одну из команд:", reply_markup=keyboard)
 
+
 @bot.callback_query_handler(func=lambda call: True)
 def main_menu(call):
-    url = None
 
+    category = None
     if call.data == "новинки":
         ask_user_buttons(call)
-    
-    elif call.data == "фильм":
-        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&type=movie&year=2023"
-        bot.send_message(call.message.chat.id, "5 новых фильмов:")
+    elif call.data in ["фильм", "сериал", "мульт"]:
+        category = call.data
 
-    elif call.data == "сериал":
-        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&type=tv-series&year=2023"
-        bot.send_message(call.message.chat.id, "5 новых сериалов:")
-
-    elif call.data == "мульт":
-        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&type=cartoon&year=2023"
-        bot.send_message(call.message.chat.id, "5 новых мультфильмов:")
-
-    if url is not None:
-        get_new_movies(call.message.chat.id, url)
-        ask_user_buttons(call)
+    if category is not None:
+        get_new_url(call.message.chat.id, category)
 
 
 def ask_user_buttons(call):
