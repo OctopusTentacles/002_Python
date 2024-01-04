@@ -2,11 +2,32 @@ import telebot
 import requests
 from config import BOT_TOKEN, API_KEY
 
+
 bot = telebot.TeleBot(BOT_TOKEN)
 cached_movie = set()
 
+def get_new_url(chat_id, category):
+
+    url = None
+
+    if category == "фильм":
+        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&type=movie&year=2023"
+        bot.send_message(chat_id, "5 новых фильмов:")
+
+    elif category == "сериал":
+        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&type=tv-series&year=2023"
+        bot.send_message(chat_id, "5 новых сериалов:")
+
+    elif category == "мульт":
+        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&type=cartoon&year=2023"
+        bot.send_message(chat_id, "5 новых мультфильмов:")
+
+    if url is not None:
+        get_new_movies(chat_id, url)
+
+
+
 def get_new_movies(chat_id, url):
-    print("запуск get movies")
     headers = {"accept": "application/json", "X-API-KEY": API_KEY}
     response = requests.get(url, headers=headers)
 
@@ -28,6 +49,7 @@ def get_new_movies(chat_id, url):
         bot.send_message(chat_id, message_text)
     else:
         print(f"Ошибка при получении данных. Код ответа: {response.status_code}")
+
 
 if __name__ == "__main__":
     bot.infinity_polling()
