@@ -23,7 +23,7 @@ def get_new_movies(chat_id, url):
             if title not in cached_movie and count < 5:
                 cached_movie.add(title)
                 count += 1
-                message_text += f"Фильм: {title}\n"
+                message_text += f"{count}: {title}\n"
 
         bot.send_message(chat_id, message_text)
     else:

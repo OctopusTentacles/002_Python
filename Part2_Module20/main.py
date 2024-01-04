@@ -16,18 +16,27 @@ def welcome(message):
 
 @bot.callback_query_handler(func=lambda call: True)
 def main_menu(call):
+    url = None
+
     if call.data == "новинки":
         ask_user_buttons(call)
+    
     elif call.data == "фильм":
-        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=5&type=movie&year=2023"
+        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&type=movie&year=2023"
         bot.send_message(call.message.chat.id, "5 новых фильмов:")
+
     elif call.data == "сериал":
-        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=5&type=tv-series&year=2023"
+        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&type=tv-series&year=2023"
         bot.send_message(call.message.chat.id, "5 новых сериалов:")
+
     elif call.data == "мульт":
-        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=5&type=cartoon&year=2023"
+        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&type=cartoon&year=2023"
         bot.send_message(call.message.chat.id, "5 новых мультфильмов:")
-    get_new_movies(call.message.chat.id, url)
+
+    if url is not None:
+        get_new_movies(call.message.chat.id, url)
+        ask_user_buttons(call)
+
 
 def ask_user_buttons(call):
     keyboard = get_new_keyboard()
