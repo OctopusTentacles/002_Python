@@ -19,9 +19,11 @@ def welcome(message):
 def main_menu(call):
 
     category = None
+
     if call.data == "новинки":
         ask_user_buttons(call)
-    elif call.data in ["фильм", "сериал", "мульт"]:
+
+    elif call.data in ["фильм", "сериал", "мульт", "main"]:
         category = call.data
 
     if category is not None:

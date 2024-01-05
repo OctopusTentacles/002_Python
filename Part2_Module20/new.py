@@ -1,6 +1,6 @@
 import telebot
 import requests
-from buttons import get_new_keyboard
+from buttons import get_new_keyboard, get_main_keyboard
 from config import BOT_TOKEN, API_KEY
 
 
@@ -15,7 +15,6 @@ def get_new_url(chat_id, category):
     if category == "фильм":
         url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&type=movie&year=2023"
         bot.send_message(chat_id, "5 новых фильмов:")
-        get_new_keyboard()
 
     elif category == "сериал":
         url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&type=tv-series&year=2023"
@@ -24,6 +23,10 @@ def get_new_url(chat_id, category):
     elif category == "мульт":
         url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&type=cartoon&year=2023"
         bot.send_message(chat_id, "5 новых мультфильмов:")
+
+    elif category == "main":
+        keyboard = get_main_keyboard()
+        bot.send_message(chat_id, "ГЛАВНОЕ МЕНЮ", reply_markup=keyboard)
 
     if url is not None:
         get_new_movies(chat_id, url)
