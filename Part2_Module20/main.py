@@ -1,8 +1,9 @@
 import telebot
-from config import BOT_TOKEN
-from buttons import get_main_keyboard, get_new_keyboard
-from new import get_new_url
 
+from buttons import get_main_keyboard
+from buttons import get_new_keyboard
+from config import BOT_TOKEN
+from new import get_new_url
 
 bot = telebot.TeleBot(BOT_TOKEN)
 

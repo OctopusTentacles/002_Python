@@ -1,8 +1,10 @@
-import telebot
 import requests
-from buttons import get_new_keyboard, get_main_keyboard
-from config import BOT_TOKEN, API_KEY
+import telebot
 
+from buttons import get_main_keyboard
+from buttons import get_new_keyboard
+from config import API_KEY
+from config import BOT_TOKEN
 
 bot = telebot.TeleBot(BOT_TOKEN)
 cached_movie = set()

@@ -1,8 +1,10 @@
 
-import telebot
 import requests
-from config import USERNAME, BOT_TOKEN, API_KEY
+import telebot
 
+from config import API_KEY
+from config import BOT_TOKEN
+from config import USERNAME
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
