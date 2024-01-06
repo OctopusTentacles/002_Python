@@ -9,6 +9,7 @@ from config import BOT_TOKEN
 from new import get_new_url
 from models import UserRequest
 from logger import logger
+from history import show_history
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
@@ -40,6 +41,9 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
 
     if call.data == 'новинки':
         ask_user_buttons(call)
+
+    elif call.data == 'history':
+        show_history(call)
 
     elif call.data in ['фильм', 'сериал', 'мульт', 'main']:  # noqa: WPS510
         category = call.data
