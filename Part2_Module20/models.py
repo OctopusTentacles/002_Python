@@ -1,11 +1,15 @@
 """"""
 
+import os
 from peewee import Model, SqliteDatabase, CharField, DateTimeField
 from datetime import datetime
 
 
-# Инициализация базы данных (SQLite)
-db = SqliteDatabase('user_history.db')
+# Получение текущего каталога, где находится скрипт:
+cur_dir = os.path.dirname(__file__)
+
+# Инициализация базы данных (SQLite) в каталоге скрипта:
+db = SqliteDatabase(os.path.join(cur_dir, 'user_history.db'))
 
 
 class UserRequest(Model):

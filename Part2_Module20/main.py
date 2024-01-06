@@ -8,6 +8,7 @@ from buttons import get_new_keyboard
 from config import BOT_TOKEN
 from new import get_new_url
 from models import UserRequest
+from logger import logger
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
