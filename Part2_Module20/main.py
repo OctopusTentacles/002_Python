@@ -7,6 +7,7 @@ from buttons import get_main_keyboard
 from buttons import get_new_keyboard
 from config import BOT_TOKEN
 from new import get_new_url
+from models import UserRequest
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
@@ -24,6 +25,8 @@ def welcome(message: telebot.types.Message) -> None:
                      f'Привет, {username}!\nВыбери одну из команд:',
                      reply_markup=keyboard
                      )
+    # Сохранение запроса пользователя в базу данных
+    UserRequest.create(user_id=str(message.from_user.id), category='start')
 
 @bot.callback_query_handler(func=lambda call: True)
 def main_menu(call: telebot.types.CallbackQuery) -> None:
@@ -42,6 +45,10 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
 
     if category is not None:
         get_new_url(call.message.chat.id, category)
+
+    # Сохранение запроса пользователя в базу данных
+    UserRequest.create(user_id=str(call.message.from_user.id), category='start')
+
 
 
 def ask_user_buttons(call: telebot.types.CallbackQuery) -> None:
