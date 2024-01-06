@@ -28,3 +28,4 @@ class UserRequest(Model):
 # Инициализация таблицы в базе данных
 db.connect()
 db.create_tables([UserRequest])
+db.close()
