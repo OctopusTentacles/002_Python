@@ -43,7 +43,7 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
         ask_user_buttons(call)
 
     elif call.data == 'history':
-        show_history(call)
+        show_history(bot,call)
 
     elif call.data in ['фильм', 'сериал', 'мульт', 'main']:  # noqa: WPS510
         category = call.data
