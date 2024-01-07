@@ -19,7 +19,7 @@ def show_history(bot: TeleBot, call: CallbackQuery) -> None:
     history_entries = get_user_history(user_id)
 
     if history_entries:
-        history_text = '\n'.join(histoty_entries)
+        history_text = '\n'.join(history_entries)
         bot.send_message(call.message.chat.id,
                          f'История запросов пользователя:\n{history_text}'
                          )
@@ -46,7 +46,9 @@ def get_user_history(user_id: str) -> List[str]:
             .limit(10)
         )
         history_text = [
-            f'{entry.timestamp.strftime("%Y-%m-%d %H:%M:%S")} - {entry.category}'
+            f'{entry.timestamp.strftime("%Y-%m-%d %H:%M:%S")} - '
+            f'{entry.user_id} - '
+            f'{entry.category}'
             for entry in history_entries
         ]
 

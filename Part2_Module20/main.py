@@ -40,9 +40,15 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
     category = None
 
     if call.data == 'новинки':
+        category = 'новинки'
+        # Сохранение запроса пользователя в базу данных
+        UserRequest.create(user_id=str(call.message.from_user.id), category=category)
         ask_user_buttons(call)
 
     elif call.data == 'history':
+        category = 'history'
+        # Сохранение запроса пользователя в базу данных
+        UserRequest.create(user_id=str(call.message.from_user.id), category=category)
         show_history(bot,call)
 
     elif call.data in ['фильм', 'сериал', 'мульт', 'main']:  # noqa: WPS510
