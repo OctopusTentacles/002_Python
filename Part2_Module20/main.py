@@ -52,7 +52,7 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
         get_new_url(call.message.chat.id, category)
 
     # Сохранение запроса пользователя в базу данных
-    UserRequest.create(user_id=str(call.message.from_user.id), category='start')
+    UserRequest.create(user_id=str(call.message.from_user.id), category=category)
 
 
 

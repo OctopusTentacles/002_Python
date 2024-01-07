@@ -16,9 +16,9 @@ def show_history(bot: TeleBot, call: CallbackQuery) -> None:
     # для последующего использования, например, при сохранении в
     # базу данных или других операциях, где ожидается строковый формат.
     user_id = str(call.message.from_user.id)
-    histoty_entries = get_user_history(user_id)
+    history_entries = get_user_history(user_id)
 
-    if histoty_entries:
+    if history_entries:
         history_text = '\n'.join(histoty_entries)
         bot.send_message(call.message.chat.id,
                          f'История запросов пользователя:\n{history_text}'
@@ -55,5 +55,3 @@ def get_user_history(user_id: str) -> List[str]:
     except Exception as exc:
         print(f'Ошибка получения истории пользователя: {exc}')
         return []
-
-
