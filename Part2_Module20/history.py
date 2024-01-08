@@ -44,9 +44,9 @@ def get_user_history(user_name: str, user_id: str) -> List[str]:
             .limit(10)
         )
         history_text = [
-            f'{entry.timestamp.strftime("%Y-%m-%d %H:%M:%S")} | '
-            f'user: {entry.user_name} | '
-            f'id: {entry.user_id} | '
+            f'{entry.timestamp.strftime("%Y-%m-%d %H:%M:%S")}\t| '
+            f'user: {entry.user_name}\t| '
+            f'id: {entry.user_id}\t| '
             f'{entry.category}'
             for entry in history_entries
         ]
