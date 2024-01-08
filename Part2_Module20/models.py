@@ -17,10 +17,12 @@ class UserRequest(Model):
     Модель для запросов пользователя.
 
     Attributes:
+        user_name (CharField): Имя пользователя.
         user_id (CharField): Идентификатор пользователя.
         category (CharField): Категория запроса.
         timestamp (DateTimeField): Временная метка запроса - текущее время.
     """
+    user_name = CharField()
     user_id = CharField()
     category = CharField()
     timestamp = DateTimeField(default=datetime.now)

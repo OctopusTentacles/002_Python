@@ -4,20 +4,17 @@ from telebot.types import CallbackQuery
 from telebot import TeleBot
 
 
-def show_history(bot: TeleBot, call: CallbackQuery) -> None:
+def show_history(bot: TeleBot, call: CallbackQuery, 
+                 user_name: str, user_id: str) -> None:
     """Выводит краткую историю запросов пользователя.
 
     Args:
         bot (TeleBot): Экземпляр бота.
         call (CallbackQuery): Callback-запрос от пользователя.
+        username (str): Имя пользователя.
     """
-
-    # получаем уникальный идентификатор пользователя в str
-    # для последующего использования, например, при сохранении в
-    # базу данных или других операциях, где ожидается строковый формат.
-    user_id = str(call.message.from_user.id)
-    history_entries = get_user_history(user_id)
-
+    history_entries = get_user_history(user_name, user_id)
+    
     if history_entries:
         history_text = '\n'.join(history_entries)
         bot.send_message(call.message.chat.id,
@@ -28,7 +25,7 @@ def show_history(bot: TeleBot, call: CallbackQuery) -> None:
                          f'История запросов пользователя пуста.'
                          )
 
-def get_user_history(user_id: str) -> List[str]:
+def get_user_history(user_name: str, user_id: str) -> List[str]:
     """Получаем историю запросов пользователя.
 
     Args:
@@ -41,13 +38,15 @@ def get_user_history(user_id: str) -> List[str]:
         history_entries = (
             UserRequest
             .select()
+            .where(UserRequest.user_name == user_name)
             .where(UserRequest.user_id == user_id)
             .order_by(UserRequest.timestamp.desc())
             .limit(10)
         )
         history_text = [
-            f'{entry.timestamp.strftime("%Y-%m-%d %H:%M:%S")} - '
-            f'{entry.user_id} - '
+            f'{entry.timestamp.strftime("%Y-%m-%d %H:%M:%S")} | '
+            f'user: {entry.user_name} | '
+            f'id: {entry.user_id} | '
             f'{entry.category}'
             for entry in history_entries
         ]
