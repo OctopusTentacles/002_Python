@@ -26,7 +26,6 @@ def welcome(message: telebot.types.Message) -> None:
         username = message.from_user.first_name
         # Сохранение имени пользователя для использования в истории:
         usernames_dict[user_id] = username
-        print('Проверка имени и ID',username, user_id)
 
         # Сохранение запроса пользователя в базу данных:
         UserRequest.create(

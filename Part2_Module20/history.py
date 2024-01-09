@@ -2,6 +2,7 @@ from typing import List
 from models import UserRequest
 from telebot.types import CallbackQuery
 from telebot import TeleBot
+from logger import logger
 
 
 def show_history(bot: TeleBot, call: CallbackQuery, 
@@ -50,9 +51,13 @@ def get_user_history(user_name: str, user_id: str) -> List[str]:
             f'{entry.category}'
             for entry in history_entries
         ]
-
+        logger.info(
+            f'История запросов пользователя {user_name}: {history_text}'
+        )
 
         return history_text
     except Exception as exc:
-        print(f'Ошибка получения истории пользователя: {exc}')
+        logger.error(
+            f'Ошибка получения истории пользователя: {exc}', exc_info=True
+        )
         return []
