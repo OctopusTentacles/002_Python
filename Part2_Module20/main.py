@@ -7,6 +7,7 @@ from buttons import get_main_keyboard
 from buttons import get_new_keyboard
 from config import BOT_TOKEN
 from new import get_new_url
+from high import get_top_url
 from models import UserRequest
 from logger import logger
 from history import show_history
@@ -81,6 +82,7 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
             user_id=str(user_id),
             category=category
         )
+
         logger.info(f'Обработан callback-запрос от '
                     f'пользователя {username} с ID {user_id}.'
         )
