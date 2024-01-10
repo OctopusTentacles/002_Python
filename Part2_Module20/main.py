@@ -58,10 +58,13 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
         category = None
         user_id = call.from_user.id
         username = usernames_dict.get(user_id)
-        print('Проверка имени и ID',username, user_id)
 
         if call.data == 'новинки':
             category = 'новинки'
+            ask_user_buttons(call)
+
+        elif call.data == 'топ':
+            category = 'топ'
             ask_user_buttons(call)
 
         elif call.data == 'history':
