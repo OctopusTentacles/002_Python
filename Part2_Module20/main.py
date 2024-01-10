@@ -56,7 +56,6 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
         call (telebot.types.CallbackQuery): Callback-запрос от пользователя.
     """
     try:
-        category = None
         user_id = call.from_user.id
         username = usernames_dict.get(user_id)
 
@@ -64,17 +63,26 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
             category = 'новинки'
             ask_user_buttons(call)
 
-        elif call.data == 'топ':
+            if call.data in ['фильм', 'сериал', 'мульт', 'main']:  # noqa: WPS510
+                category = call.data
+                get_new_url(call.message.chat.id, category)
+
+
+        if call.data == 'топ':
             category = 'топ'
             ask_user_buttons(call)
 
-        elif call.data == 'history':
+            if call.data in ['фильм', 'сериал', 'мульт', 'main']:  # noqa: WPS510
+                category = call.data
+                get_top_url(call.message.chat.id, category)
+
+
+        if call.data == 'history':
             category = 'history'
             show_history(bot, call, username, user_id)
 
-        elif call.data in ['фильм', 'сериал', 'мульт', 'main']:  # noqa: WPS510
-            category = call.data
-            get_new_url(call.message.chat.id, category)
+
+
 
         # Сохранение запроса пользователя в базу данных:
         UserRequest.create(
@@ -110,6 +118,7 @@ def ask_user_buttons(call: telebot.types.CallbackQuery) -> None:
         logger.error(f'Ошибка в функции ask_user_buttons: '
                      f'{exc}', exc_info=True
         )
+
 
 if __name__ == '__main__':
     bot.infinity_polling()

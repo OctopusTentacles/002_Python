@@ -57,3 +57,26 @@
 2024-01-10 23:12:37.760 | INFO     | __main__:main_menu:86 - Обработан callback-запрос от пользователя Artem с ID 961741922.
 2024-01-10 23:12:40.209 | INFO     | history:get_user_history:62 - История запросов пользователя Artem: ['2024-01-10 23:12:37\t| user: Artem\t| id: 961741922\t| main', '2024-01-10 23:12:32\t| user: Artem\t| id: 961741922\t| фильм', '2024-01-10 23:12:29\t| user: Artem\t| id: 961741922\t| новинки', '2024-01-10 23:12:26\t| user: Artem\t| id: 961741922\t| start', '2024-01-10 23:06:24\t| user: Artem\t| id: 961741922\t| мульт', '2024-01-10 23:06:20\t| user: Artem\t| id: 961741922\t| сериал', '2024-01-10 23:05:51\t| user: Artem\t| id: 961741922\t| фильм', '2024-01-10 23:05:50\t| user: Artem\t| id: 961741922\t| новинки', '2024-01-10 23:05:48\t| user: Artem\t| id: 961741922\t| start', '2024-01-10 22:42:38\t| user: Artem\t| id: 961741922\t| новинки']
 2024-01-10 23:12:40.411 | INFO     | __main__:main_menu:86 - Обработан callback-запрос от пользователя Artem с ID 961741922.
+2024-01-11 01:35:31.106 | INFO     | __main__:welcome:43 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-11 01:35:33.527 | INFO     | __main__:ask_user_buttons:106 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-11 01:35:33.532 | INFO     | __main__:main_menu:86 - Обработан callback-запрос от пользователя Artem с ID 961741922.
+2024-01-11 01:35:35.753 | ERROR    | __main__:main_menu:90 - Ошибка в обработчике callback-запроса: NOT NULL constraint failed: userrequest.category
+2024-01-11 01:41:45.367 | INFO     | __main__:welcome:43 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-11 01:41:47.491 | INFO     | __main__:ask_user_buttons:111 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-11 01:41:47.495 | INFO     | __main__:main_menu:91 - Обработан callback-запрос от пользователя Artem с ID 961741922.
+2024-01-11 01:41:50.971 | ERROR    | __main__:main_menu:95 - Ошибка в обработчике callback-запроса: NOT NULL constraint failed: userrequest.category
+2024-01-11 01:47:46.878 | INFO     | __main__:welcome:43 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-11 01:47:59.330 | INFO     | __main__:ask_user_buttons:110 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-11 01:47:59.334 | INFO     | __main__:main_menu:90 - Обработан callback-запрос от пользователя Artem с ID 961741922.
+2024-01-11 01:48:30.090 | ERROR    | __main__:main_menu:94 - Ошибка в обработчике callback-запроса: cannot access local variable 'category' where it is not associated with a value
+2024-01-11 01:58:39.887 | INFO     | __main__:welcome:43 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-11 01:58:43.104 | INFO     | __main__:ask_user_buttons:114 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-11 01:58:43.110 | INFO     | __main__:main_menu:94 - Обработан callback-запрос от пользователя Artem с ID 961741922.
+2024-01-11 01:58:50.410 | INFO     | __main__:main_menu:94 - Обработан callback-запрос от пользователя Artem с ID 961741922.
+2024-01-11 02:00:01.207 | INFO     | __main__:main_menu:94 - Обработан callback-запрос от пользователя Artem с ID 961741922.
+2024-01-11 02:00:05.278 | INFO     | history:get_user_history:62 - История запросов пользователя Artem: ['2024-01-11 02:00:01\t| user: Artem\t| id: 961741922\t| main', '2024-01-11 01:58:50\t| user: Artem\t| id: 961741922\t| фильм', '2024-01-11 01:58:43\t| user: Artem\t| id: 961741922\t| новинки', '2024-01-11 01:58:39\t| user: Artem\t| id: 961741922\t| start', '2024-01-11 01:47:59\t| user: Artem\t| id: 961741922\t| новинки', '2024-01-11 01:47:46\t| user: Artem\t| id: 961741922\t| start', '2024-01-11 01:41:47\t| user: Artem\t| id: 961741922\t| новинки', '2024-01-11 01:41:44\t| user: Artem\t| id: 961741922\t| start', '2024-01-11 01:35:33\t| user: Artem\t| id: 961741922\t| новинки', '2024-01-11 01:35:30\t| user: Artem\t| id: 961741922\t| start']
+2024-01-11 02:00:05.558 | INFO     | __main__:main_menu:94 - Обработан callback-запрос от пользователя Artem с ID 961741922.
+2024-01-11 02:04:58.859 | INFO     | __main__:welcome:43 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-11 02:05:01.833 | INFO     | __main__:ask_user_buttons:114 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-11 02:05:01.836 | INFO     | __main__:main_menu:94 - Обработан callback-запрос от пользователя Artem с ID 961741922.
+2024-01-11 02:05:08.122 | ERROR    | __main__:main_menu:98 - Ошибка в обработчике callback-запроса: cannot access local variable 'category' where it is not associated with a value
