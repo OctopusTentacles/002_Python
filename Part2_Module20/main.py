@@ -61,27 +61,15 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
 
         if call.data == 'новинки':
             category = 'новинки'
-            ask_user_buttons(call)
+            ask_user_buttons(call, category)
 
-            if call.data in ['фильм', 'сериал', 'мульт', 'main']:  # noqa: WPS510
-                category = call.data
-                get_new_url(call.message.chat.id, category)
-
-
-        if call.data == 'топ':
+        elif call.data == 'топ':
             category = 'топ'
-            ask_user_buttons(call)
+            ask_user_buttons(call, category)
 
-            if call.data in ['фильм', 'сериал', 'мульт', 'main']:  # noqa: WPS510
-                category = call.data
-                get_top_url(call.message.chat.id, category)
-
-
-        if call.data == 'history':
+        elif call.data == 'history':
             category = 'history'
             show_history(bot, call, username, user_id)
-
-
 
 
         # Сохранение запроса пользователя в базу данных:
@@ -100,7 +88,7 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
         )
 
 
-def ask_user_buttons(call: telebot.types.CallbackQuery) -> None:
+def ask_user_buttons(call: telebot.types.CallbackQuery, category_old: str) -> None:
     """Запрос от бота для выбора типа контента.
 
     Args:
@@ -110,6 +98,14 @@ def ask_user_buttons(call: telebot.types.CallbackQuery) -> None:
         keyboard = get_new_keyboard()
         bot.send_message(call.message.chat.id, 'Выбери тип', 
                          reply_markup=keyboard)
+        
+        if call.data in ['фильм', 'сериал', 'мульт', 'main']:  # noqa: WPS510
+            category = call.data
+
+            if category_old == 'новинки':
+                get_new_url(call.message.chat.id, category)
+            elif category_old == 'топ':
+                get_top_url(call.message.chat.id, category)
 
         logger.info(f'Отправлен запрос от бота для выбора типа контента '
                     f'пользователю {call.from_user.id}.'
