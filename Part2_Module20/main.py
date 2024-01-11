@@ -56,21 +56,35 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
         call (telebot.types.CallbackQuery): Callback-запрос от пользователя.
     """
     try:
+        category_old = None
+
         user_id = call.from_user.id
         username = usernames_dict.get(user_id)
 
         if call.data == 'новинки':
-            category = 'новинки'
-            ask_user_buttons(call, category)
+            category = call.data
+            category_old = 'новинки'
+            ask_user_buttons(call)
+            print(category, category_old)
 
         elif call.data == 'топ':
-            category = 'топ'
-            ask_user_buttons(call, category)
+            category_old = category
+            category = call.data
+            ask_user_buttons(call)
+            print(category)
 
         elif call.data == 'history':
-            category = 'history'
+            category = call.data
             show_history(bot, call, username, user_id)
 
+        elif call.data in ['фильм', 'сериал', 'мульт', 'main']:
+            category = call.data
+            print(category, category_old)
+
+            if category_old == 'новинки':
+                get_new_url(call.message.chat.id, category)
+            elif category_old == 'топ':
+                get_top_url(call.message.chat.id, category)
 
         # Сохранение запроса пользователя в базу данных:
         UserRequest.create(
@@ -88,7 +102,7 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
         )
 
 
-def ask_user_buttons(call: telebot.types.CallbackQuery, category_old: str) -> None:
+def ask_user_buttons(call: telebot.types.CallbackQuery) -> None:
     """Запрос от бота для выбора типа контента.
 
     Args:
@@ -99,13 +113,6 @@ def ask_user_buttons(call: telebot.types.CallbackQuery, category_old: str) -> No
         bot.send_message(call.message.chat.id, 'Выбери тип', 
                          reply_markup=keyboard)
         
-        if call.data in ['фильм', 'сериал', 'мульт', 'main']:  # noqa: WPS510
-            category = call.data
-
-            if category_old == 'новинки':
-                get_new_url(call.message.chat.id, category)
-            elif category_old == 'топ':
-                get_top_url(call.message.chat.id, category)
 
         logger.info(f'Отправлен запрос от бота для выбора типа контента '
                     f'пользователю {call.from_user.id}.'
