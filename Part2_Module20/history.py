@@ -19,10 +19,9 @@ def show_history(bot: TeleBot, call: CallbackQuery,
     Args:
         bot (TeleBot): Экземпляр бота.
         call (CallbackQuery): Callback-запрос от пользователя.
-        username (str): Имя пользователя.
+        user_name (str): Имя пользователя.
     """
     history_entries = get_user_history(user_name, user_id)
-    print(call.data)
     
     if history_entries:
         history_text = '\n'.join(history_entries)
@@ -38,19 +37,9 @@ def show_history(bot: TeleBot, call: CallbackQuery,
 
     bot.send_message(
         call.message.chat.id,
-        'Возврат в главное меню:',
-        reply_markup=get_additional_buttons()
+        'ГЛАВНОЕ МЕНЮ',
+        reply_markup=get_main_keyboard()
     )
-    print(call.data)
-    if 'main' in call.data:
-        bot.send_message(
-            call.message.chat.id,
-            'ГЛАВНОЕ МЕНЮ',
-            reply_markup=get_main_keyboard()
-        )
-
-    if __name__ == '__main__':
-        bot.infinity_polling
 
 
 def get_user_history(user_name: str, user_id: str) -> List[str]:
@@ -89,5 +78,3 @@ def get_user_history(user_name: str, user_id: str) -> List[str]:
             f'Ошибка получения истории пользователя: {exc}', exc_info=True
         )
         return []
-
-

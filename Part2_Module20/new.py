@@ -64,3 +64,4 @@ def get_new_movies(chat_id, url):
 
 if __name__ == "__main__":
     bot.infinity_polling()
+    

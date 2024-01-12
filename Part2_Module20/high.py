@@ -81,3 +81,4 @@ def get_top_rated(chat_id, url):
 
 if __name__ == '__main__':
     bot.infinity_polling()
+    

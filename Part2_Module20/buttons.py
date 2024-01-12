@@ -33,17 +33,3 @@ def get_new_keyboard():
 
     keyboard.add(button1, button2, button3, button0)
     return keyboard
-
-
-def get_additional_buttons():
-    """Возвращает клавиатуру с дополнительными кнопками.
-
-    Returns:
-        types.InlineKeyboardMarkup: Объект клавиатуры с дополнительными кнопками.
-    """
-    keyboard = types.InlineKeyboardMarkup()
-    button0 = types.InlineKeyboardButton(text='Главное меню', callback_data='main')
-    # button1 = types.InlineKeyboardButton(text='Помощь', callback_data='help')
-
-    keyboard.add(button0)
-    return keyboard
