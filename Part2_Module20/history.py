@@ -8,6 +8,8 @@ from telebot.types import CallbackQuery
 
 from logger import logger
 from models import UserRequest
+from buttons import get_additional_buttons
+from buttons import get_main_keyboard
 
 
 def show_history(bot: TeleBot, call: CallbackQuery,
@@ -20,18 +22,36 @@ def show_history(bot: TeleBot, call: CallbackQuery,
         username (str): Имя пользователя.
     """
     history_entries = get_user_history(user_name, user_id)
+    print(call.data)
     
     if history_entries:
         history_text = '\n'.join(history_entries)
         bot.send_message(
             call.message.chat.id,
-            f'История запросов пользователя:\n{history_text}'
+            f'История запросов пользователя:\n{history_text}',
         )
     else:
         bot.send_message(
             call.message.chat.id,
-            f'История запросов пользователя пуста.'
+            'История запросов пользователя пуста.',
         )
+
+    bot.send_message(
+        call.message.chat.id,
+        'Возврат в главное меню:',
+        reply_markup=get_additional_buttons()
+    )
+    print(call.data)
+    if 'main' in call.data:
+        bot.send_message(
+            call.message.chat.id,
+            'ГЛАВНОЕ МЕНЮ',
+            reply_markup=get_main_keyboard()
+        )
+
+    if __name__ == '__main__':
+        bot.infinity_polling
+
 
 def get_user_history(user_name: str, user_id: str) -> List[str]:
     """Получаем историю запросов пользователя.
@@ -69,3 +89,5 @@ def get_user_history(user_name: str, user_id: str) -> List[str]:
             f'Ошибка получения истории пользователя: {exc}', exc_info=True
         )
         return []
+
+

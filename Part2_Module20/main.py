@@ -100,7 +100,6 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
 
         elif call.data in ['фильм', 'сериал', 'мульт', 'main']:
             category = call.data
-            print(category_old, category)
 
             if category_old == 'новинки':
                 get_new_url(call.message.chat.id, category)
