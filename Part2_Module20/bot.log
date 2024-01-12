@@ -1,55 +1,11 @@
-2024-01-11 22:00:16.992 | INFO     | __main__:welcome:43 - Команда /start для пользователя Artem с ID 961741922.
-2024-01-11 22:00:20.603 | INFO     | __main__:ask_user_buttons:110 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
-2024-01-11 22:00:20.609 | INFO     | __main__:main_menu:82 - Обработан callback-запрос от пользователя Artem с ID 961741922.
-2024-01-11 22:00:23.112 | ERROR    | __main__:main_menu:86 - Ошибка в обработчике callback-запроса: cannot access local variable 'category' where it is not associated with a value
-2024-01-11 22:02:31.532 | INFO     | __main__:welcome:43 - Команда /start для пользователя Artem с ID 961741922.
-2024-01-11 22:02:35.791 | INFO     | __main__:ask_user_buttons:111 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
-2024-01-11 22:02:35.796 | INFO     | __main__:main_menu:83 - Обработан callback-запрос от пользователя Artem с ID 961741922.
-2024-01-11 22:02:38.683 | ERROR    | __main__:main_menu:87 - Ошибка в обработчике callback-запроса: NOT NULL constraint failed: userrequest.category
-2024-01-11 22:02:49.554 | ERROR    | __main__:main_menu:87 - Ошибка в обработчике callback-запроса: NOT NULL constraint failed: userrequest.category
-2024-01-11 22:06:23.474 | INFO     | __main__:welcome:43 - Команда /start для пользователя Artem с ID 961741922.
-2024-01-11 22:06:26.145 | ERROR    | __main__:ask_user_buttons:124 - Ошибка в функции ask_user_buttons: cannot access local variable 'category' where it is not associated with a value
-2024-01-11 22:06:26.151 | INFO     | __main__:main_menu:83 - Обработан callback-запрос от пользователя Artem с ID 961741922.
-2024-01-11 22:06:28.445 | ERROR    | __main__:main_menu:87 - Ошибка в обработчике callback-запроса: NOT NULL constraint failed: userrequest.category
-2024-01-11 22:09:30.971 | INFO     | __main__:welcome:43 - Команда /start для пользователя Artem с ID 961741922.
-2024-01-11 22:09:33.026 | ERROR    | __main__:ask_user_buttons:125 - Ошибка в функции ask_user_buttons: NOT NULL constraint failed: userrequest.category
-2024-01-11 22:09:33.030 | INFO     | __main__:main_menu:83 - Обработан callback-запрос от пользователя Artem с ID 961741922.
-2024-01-11 22:09:35.514 | ERROR    | __main__:main_menu:87 - Ошибка в обработчике callback-запроса: NOT NULL constraint failed: userrequest.category
-2024-01-11 22:12:53.987 | INFO     | __main__:welcome:43 - Команда /start для пользователя Artem с ID 961741922.
-2024-01-11 22:13:02.567 | ERROR    | __main__:ask_user_buttons:128 - Ошибка в функции ask_user_buttons: NOT NULL constraint failed: userrequest.category
-2024-01-11 22:13:02.571 | INFO     | __main__:main_menu:85 - Обработан callback-запрос от пользователя Artem с ID 961741922.
-2024-01-11 22:13:51.700 | ERROR    | __main__:main_menu:89 - Ошибка в обработчике callback-запроса: NOT NULL constraint failed: userrequest.category
-2024-01-11 22:26:19.318 | INFO     | __main__:welcome:43 - Команда /start для пользователя Artem с ID 961741922.
-2024-01-11 22:26:21.569 | ERROR    | __main__:main_menu:100 - Ошибка в обработчике callback-запроса: ask_user_buttons() takes 1 positional argument but 2 were given
-2024-01-11 22:26:31.652 | ERROR    | __main__:main_menu:100 - Ошибка в обработчике callback-запроса: ask_user_buttons() takes 1 positional argument but 2 were given
-2024-01-11 22:26:32.018 | ERROR    | __main__:main_menu:100 - Ошибка в обработчике callback-запроса: ask_user_buttons() takes 1 positional argument but 2 were given
-2024-01-11 22:26:32.372 | ERROR    | __main__:main_menu:100 - Ошибка в обработчике callback-запроса: ask_user_buttons() takes 1 positional argument but 2 were given
-2024-01-11 22:27:58.195 | INFO     | __main__:welcome:43 - Команда /start для пользователя Artem с ID 961741922.
-2024-01-11 22:28:00.668 | INFO     | __main__:ask_user_buttons:117 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
-2024-01-11 22:28:00.672 | INFO     | __main__:main_menu:96 - Обработан callback-запрос от пользователя Artem с ID 961741922.
-2024-01-11 22:28:10.927 | INFO     | __main__:main_menu:96 - Обработан callback-запрос от пользователя Artem с ID 961741922.
-2024-01-11 22:28:44.189 | INFO     | __main__:main_menu:96 - Обработан callback-запрос от пользователя Artem с ID 961741922.
-2024-01-11 22:36:21.555 | INFO     | __main__:welcome:43 - Команда /start для пользователя Artem с ID 961741922.
-2024-01-11 22:36:23.182 | INFO     | __main__:ask_user_buttons:117 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
-2024-01-11 22:36:23.188 | INFO     | __main__:main_menu:96 - Обработан callback-запрос от пользователя Artem с ID 961741922.
-2024-01-11 22:36:25.066 | INFO     | __main__:main_menu:96 - Обработан callback-запрос от пользователя Artem с ID 961741922.
-2024-01-11 22:40:15.148 | INFO     | __main__:welcome:43 - Команда /start для пользователя Artem с ID 961741922.
-2024-01-11 22:40:18.050 | INFO     | __main__:ask_user_buttons:117 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
-2024-01-11 22:40:18.052 | INFO     | __main__:main_menu:96 - Обработан callback-запрос от пользователя Artem с ID 961741922.
-2024-01-11 22:40:19.964 | INFO     | __main__:main_menu:96 - Обработан callback-запрос от пользователя Artem с ID 961741922.
-2024-01-11 22:41:28.349 | INFO     | __main__:welcome:43 - Команда /start для пользователя Artem с ID 961741922.
-2024-01-11 22:41:30.194 | INFO     | __main__:ask_user_buttons:117 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
-2024-01-11 22:41:30.201 | INFO     | __main__:main_menu:96 - Обработан callback-запрос от пользователя Artem с ID 961741922.
-2024-01-11 22:41:31.910 | INFO     | __main__:main_menu:96 - Обработан callback-запрос от пользователя Artem с ID 961741922.
-2024-01-11 22:42:55.752 | INFO     | __main__:welcome:43 - Команда /start для пользователя Artem с ID 961741922.
-2024-01-11 22:42:57.674 | INFO     | __main__:ask_user_buttons:117 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
-2024-01-11 22:42:57.679 | INFO     | __main__:main_menu:96 - Обработан callback-запрос от пользователя Artem с ID 961741922.
-2024-01-11 22:42:58.943 | INFO     | __main__:main_menu:96 - Обработан callback-запрос от пользователя Artem с ID 961741922.
-2024-01-11 22:44:23.522 | INFO     | __main__:welcome:43 - Команда /start для пользователя Artem с ID 961741922.
-2024-01-11 22:44:24.863 | INFO     | __main__:ask_user_buttons:117 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
-2024-01-11 22:44:24.867 | INFO     | __main__:main_menu:96 - Обработан callback-запрос от пользователя Artem с ID 961741922.
-2024-01-11 22:44:26.257 | INFO     | __main__:main_menu:96 - Обработан callback-запрос от пользователя Artem с ID 961741922.
-2024-01-11 22:46:15.359 | INFO     | __main__:welcome:43 - Команда /start для пользователя Artem с ID 961741922.
-2024-01-11 22:46:17.123 | INFO     | __main__:ask_user_buttons:117 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
-2024-01-11 22:46:17.127 | INFO     | __main__:main_menu:96 - Обработан callback-запрос от пользователя Artem с ID 961741922.
-2024-01-11 22:46:18.138 | INFO     | __main__:main_menu:96 - Обработан callback-запрос от пользователя Artem с ID 961741922.
+2024-01-12 12:01:02.530 | INFO     | __main__:welcome:57 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-12 12:01:20.851 | INFO     | __main__:ask_user_buttons:138 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-12 12:01:20.853 | INFO     | __main__:main_menu:117 - Переход из start в новинки	| Artem | ID 961741922.
+2024-01-12 12:01:49.238 | INFO     | __main__:main_menu:117 - Переход из новинки в сериал	| Artem | ID 961741922.
+2024-01-12 12:02:02.761 | INFO     | __main__:main_menu:117 - Переход из новинки в main	| Artem | ID 961741922.
+2024-01-12 12:02:16.392 | INFO     | __main__:ask_user_buttons:138 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-12 12:02:16.395 | INFO     | __main__:main_menu:117 - Переход из новинки в топ	| Artem | ID 961741922.
+2024-01-12 12:02:47.939 | INFO     | __main__:main_menu:117 - Переход из топ в сериал	| Artem | ID 961741922.
+2024-01-12 12:03:12.839 | INFO     | __main__:main_menu:117 - Переход из топ в main	| Artem | ID 961741922.
+2024-01-12 12:03:25.776 | INFO     | history:get_user_history:62 - История запросов пользователя Artem: ['2024-01-12 12:03:12\t| user: Artem\t| id: 961741922\t| main', '2024-01-12 12:02:47\t| user: Artem\t| id: 961741922\t| сериал', '2024-01-12 12:02:16\t| user: Artem\t| id: 961741922\t| топ', '2024-01-12 12:02:02\t| user: Artem\t| id: 961741922\t| main', '2024-01-12 12:01:49\t| user: Artem\t| id: 961741922\t| сериал', '2024-01-12 12:01:20\t| user: Artem\t| id: 961741922\t| новинки', '2024-01-12 12:01:02\t| user: Artem\t| id: 961741922\t| start', '2024-01-12 11:51:54\t| user: Artem\t| id: 961741922\t| main', '2024-01-12 11:50:51\t| user: Artem\t| id: 961741922\t| фильм', '2024-01-12 11:49:43\t| user: Artem\t| id: 961741922\t| main']
+2024-01-12 12:03:25.974 | INFO     | __main__:main_menu:117 - Переход из топ в history	| Artem | ID 961741922.

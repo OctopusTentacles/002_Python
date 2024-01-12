@@ -14,6 +14,14 @@ from history import show_history
 
 bot = telebot.TeleBot(BOT_TOKEN)
 usernames_dict = {}
+user_states = {}
+
+def set_user_state(user_id, category):
+    user_states[user_id] = {"category": category}
+
+def get_user_state(user_id):
+    return user_states.get(user_id, {"category": "start"})
+
 
 @bot.message_handler(commands=['start'])
 def welcome(message: telebot.types.Message) -> None:
@@ -25,8 +33,14 @@ def welcome(message: telebot.types.Message) -> None:
     try:
         user_id = message.from_user.id
         username = message.from_user.first_name
-        # Сохранение имени пользователя для использования в истории:
+
+        # Используем машину состояний, чтобы получить текущую категорию пользователя
+        current_state = get_user_state(user_id)
+        category_old = current_state["category"]
+
+        # Сохраняем имя пользователя и устанавливаем начальное состояние (категорию)
         usernames_dict[user_id] = username
+        set_user_state(user_id, "start")
 
         # Сохранение запроса пользователя в базу данных:
         UserRequest.create(
@@ -56,30 +70,37 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
         call (telebot.types.CallbackQuery): Callback-запрос от пользователя.
     """
     try:
-        category_old = None
 
         user_id = call.from_user.id
         username = usernames_dict.get(user_id)
 
+        # Используем машину состояний, чтобы получить текущую категорию пользователя
+        current_state = get_user_state(user_id)
+        category_old = current_state["category"]
+
+        # Устанавливаем значение по умолчанию для переменной category
+        category = None
+
+
+
         if call.data == 'новинки':
-            category = call.data
-            category_old = 'новинки'
+            set_user_state(user_id, 'новинки')
             ask_user_buttons(call)
-            print(category, category_old)
+            category = 'новинки'
 
         elif call.data == 'топ':
-            category_old = category
-            category = call.data
+            set_user_state(user_id, 'топ')
             ask_user_buttons(call)
-            print(category)
+            category = 'топ'
 
         elif call.data == 'history':
-            category = call.data
+            set_user_state(user_id, 'history')
             show_history(bot, call, username, user_id)
+            category = 'history'
 
         elif call.data in ['фильм', 'сериал', 'мульт', 'main']:
             category = call.data
-            print(category, category_old)
+            print(category_old, category)
 
             if category_old == 'новинки':
                 get_new_url(call.message.chat.id, category)
@@ -93,8 +114,8 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
             category=category
         )
 
-        logger.info(f'Обработан callback-запрос от '
-                    f'пользователя {username} с ID {user_id}.'
+        logger.info(f'Переход из {category_old} в {category}\t|'
+                    f' {username} | ID {user_id}.'
         )
     except Exception as exc:
         logger.error(f'Ошибка в обработчике '
