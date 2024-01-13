@@ -1,40 +1,70 @@
+"""Модуль случайного выбора контента."""
+
 
 import requests
 import telebot
 
+from typing import List
+
+from buttons import get_main_keyboard
+from buttons import get_new_keyboard
+
 from config import API_KEY
 from config import BOT_TOKEN
-from config import USERNAME
 
 bot = telebot.TeleBot(BOT_TOKEN)
+cached_content = set()
 
 
-@bot.message_handler(commands=["random"])
-def get_random_url(message):
+def get_random_url(chat_id, category: str):
+    """Получает случайный фильм/сериал/мультфильм с некоторой информацией.
 
-    url = "https://api.kinopoisk.dev/v1.4/movie/random"
+    Args:
+        category (str): Категория запроса ('movie', 'tv', 'animation').
+
+    Returns:
+        List[str]: Список строк с названиями и рейтингами.
+    """
+    url = None
+    # url = "https://api.kinopoisk.dev/v1.4/movie/random"
     # url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=3&type=movie&rating.kp=6-10"
-    headers = {"accept": "application/json", "X-API-KEY": API_KEY}
-    
-    response = requests.get(url, headers=headers)
 
-    if response.status_code == 200:
-        data = response.json()
+    if category == 'фильм':
+        url = (
+             
+        )
+        bot.send_message(chat_id, 'Случайный фильм:')
+
+    elif category == 'сериал':
+        url = (
+             
+        )
+        bot.send_message(chat_id, 'Случайный сериал:')
+
+    elif category == 'мульт':
+        url = (
+             
+        )
+        bot.send_message(chat_id, 'Случайный мультфильм:')
+
+    elif category == 'main':
+        keyboard = get_main_keyboard()
+        bot.send_message(chat_id, 'ГЛАВНОЕ МЕНЮ', reply_markup=keyboard)
+
+    if url is not None:
+        get_rand_content(chat_id, url)
+        keyboard = get_new_keyboard()
+        bot.send_message(
+            chat_id, 
+            'Выбери тип или вернись в главное меню:',
+            reply_markup=keyboard
+        )
+
+
+
+    
                 
                 
-        # Извлечь нужные данные из объекта `data`:
-        title = data.get("name")
-        rating = data.get("rating", {})
-        kp_rate = rating.get("kp", "N/A")
-        year = data.get("year")
-        print(f"Фильм: {title}\n" 
-                f"Рейтинг КП: {kp_rate}\n"
-                f"год: {year}\n")
-                
-        bot.send_message(message.chat.id,   f"Фильм с рейтингом больше 7:\n"
-                                                        f"{title}\n" 
-                                                        f"Рейтинг КП: {kp_rate}\n"
-                                                        f"год: {year}\n")
 
 
 if __name__ == "__main__":
