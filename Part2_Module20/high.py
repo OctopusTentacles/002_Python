@@ -82,11 +82,7 @@ def get_top_rated(chat_id, url):
             if title not in cached_content and count < 10:
                 cached_content.add(title)
                 count += 1
-                message_text += f'{count}. {title} рейтинг КП: {rate_kp:<}\n'
-                # message_text += '{}. {} рейтинг КП: {}\n'.format(count, title, rate_kp.rjust())
-
-
-
+                message_text += f'{count}. рейтинг КП: {rate_kp} - {title}.\n'
 
         bot.send_message(chat_id, message_text)
     else:
