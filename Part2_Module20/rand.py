@@ -10,7 +10,7 @@ bot = telebot.TeleBot(BOT_TOKEN)
 
 
 @bot.message_handler(commands=["random"])
-def get_random_film(message):
+def get_random_url(message):
 
     url = "https://api.kinopoisk.dev/v1.4/movie/random"
     # url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=3&type=movie&rating.kp=6-10"

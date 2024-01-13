@@ -13,9 +13,10 @@ def get_main_keyboard():
     keyboard = types.InlineKeyboardMarkup()
     button1 = types.InlineKeyboardButton(text='Новинки', callback_data='новинки')
     button2 = types.InlineKeyboardButton(text='Топ', callback_data='топ')
-    button3 = types.InlineKeyboardButton(text='История', callback_data='history')
+    button3 = types.InlineKeyboardButton(text='Рандом', callback_data='random')
+    button4 = types.InlineKeyboardButton(text='История', callback_data='history')
 
-    keyboard.add(button1, button2, button3)
+    keyboard.add(button1, button2, button3, button4)
     return keyboard
 
 

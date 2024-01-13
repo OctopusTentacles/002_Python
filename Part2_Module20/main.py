@@ -11,6 +11,7 @@ from high import get_top_url
 from models import UserRequest
 from logger import logger
 from history import show_history
+from rand import get_random_url
 
 bot = telebot.TeleBot(BOT_TOKEN)
 usernames_dict = {}
@@ -98,6 +99,11 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
             show_history(bot, call, username, user_id)
             category = 'history'
 
+        elif call.data == 'random':
+            set_user_state(user_id, 'random')
+            ask_user_buttons(call)
+            category = 'random'
+
         elif call.data in ['фильм', 'сериал', 'мульт', 'main']:
             category = call.data
 
@@ -105,6 +111,8 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
                 get_new_url(call.message.chat.id, category)
             elif category_old == 'топ':
                 get_top_url(call.message.chat.id, category)
+            elif category_old == 'random':
+                get_random_url(call.message.chat.id, category)
 
         # Сохранение запроса пользователя в базу данных:
         UserRequest.create(
