@@ -28,15 +28,16 @@ def get_top_url(chat_id, category: str) -> List[str]:
     url = None
 
     if category == 'фильм':
-        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&type=movie&rating.kp=9-10"
+        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&notNullFields=name&type=movie&rating.kp=9-10"
         bot.send_message(chat_id, 'Топ фильмов')
 
     elif category == 'сериал':
-        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&type=tv-series&rating.kp=9-10"
+        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&notNullFields=name&type=tv-series&rating.kp=9-10"
         bot.send_message(chat_id, 'Топ сериалов')
 
     elif category == 'мульт':
-        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&type=cartoon&rating.kp=9-10"
+        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&notNullFields=name&sortField=rating.kp&sortType=-1&type=cartoon&rating.kp=9-10"
+
         bot.send_message(chat_id, 'Топ мультфильмов')
 
     elif category == 'main':
@@ -81,4 +82,3 @@ def get_top_rated(chat_id, url):
 
 if __name__ == '__main__':
     bot.infinity_polling()
-    

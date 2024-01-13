@@ -6,10 +6,9 @@ from typing import List
 from telebot import TeleBot
 from telebot.types import CallbackQuery
 
+from buttons import get_main_keyboard
 from logger import logger
 from models import UserRequest
-from buttons import get_additional_buttons
-from buttons import get_main_keyboard
 
 
 def show_history(bot: TeleBot, call: CallbackQuery,
