@@ -30,20 +30,21 @@ def get_random_url(chat_id, category: str):
     # url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=3&type=movie&rating.kp=6-10"
 
     if category == 'фильм':
-        url = (
-             
+        url = (f'https://api.kinopoisk.dev/v1.4/movie/'
+               f'random?notNullFields=name&notNullFields=year&'
+               f'notNullFields=rating.kp&type=movie'
         )
         bot.send_message(chat_id, 'Случайный фильм:')
 
     elif category == 'сериал':
-        url = (
-             
+        url = (f'https://api.kinopoisk.dev/v1.4/movie/'
+               f'random?notNullFields=name&type=tv-series'
         )
         bot.send_message(chat_id, 'Случайный сериал:')
 
     elif category == 'мульт':
-        url = (
-             
+        url = (f'https://api.kinopoisk.dev/v1.4/movie/'
+               f'random?notNullFields=name&type=cartoon'
         )
         bot.send_message(chat_id, 'Случайный мультфильм:')
 
@@ -61,10 +62,42 @@ def get_random_url(chat_id, category: str):
         )
 
 
+def get_rand_content(chat_id, url):
+    headers = {"accept": "application/json", "X-API-KEY": API_KEY}
+    response = requests.get(url, headers=headers)
 
-    
-                
-                
+    if response == 200:
+        data = response.json()
+        contents = data.get('docs')
+
+        message_text = '\n'
+
+        for content in contents:
+            poster = content.get()
+
+
+        # "poster": {
+        #     "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/4716873/ccc5d1a9-a7fd-44e4-b1f6-a5b031c886a5/orig",
+        #     "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/4716873/ccc5d1a9-a7fd-44e4-b1f6-a5b031c886a5/x1000"
+        # }
+
+
+            tittle = content.get('name')
+
+            rate = content.get('rating')
+            rate_kp = rate.get('kp')
+
+            year = content.get('year')
+
+
+            if tittle not in cached_content:
+                cached_content.add(tittle)
+
+                message_text = f''
+        
+        bot.send_message(chat_id, message_text)
+    else:
+        print(f"Ошибка при получении данных. Код ответа: {response.status_code}")
 
 
 if __name__ == "__main__":
