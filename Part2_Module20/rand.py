@@ -26,8 +26,6 @@ def get_random_url(chat_id, category: str):
         List[str]: Список строк с названиями и рейтингами.
     """
     url = None
-    # url = "https://api.kinopoisk.dev/v1.4/movie/random"
-    # url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=3&type=movie&rating.kp=6-10"
 
     if category == 'фильм':
         url = (f'https://api.kinopoisk.dev/v1.4/movie/'
@@ -73,7 +71,8 @@ def get_rand_content(chat_id, url):
         message_text = '\n'
 
         for content in contents:
-            poster = content.get()
+            tittle = content.get('name')
+            poster = content.get('poster', {}).get('url')
 
 
         # "poster": {
@@ -82,7 +81,6 @@ def get_rand_content(chat_id, url):
         # }
 
 
-            tittle = content.get('name')
 
             rate = content.get('rating')
             rate_kp = rate.get('kp')
@@ -93,8 +91,10 @@ def get_rand_content(chat_id, url):
             if tittle not in cached_content:
                 cached_content.add(tittle)
 
-                message_text = f''
-        
+                message_text = (
+                    f'{tittle}\nгод: {year}\nрейтинг КП: {rate_kp}'
+                )
+        bot.send_photo(chat_id, photo=InputFile(poster))
         bot.send_message(chat_id, message_text)
     else:
         print(f"Ошибка при получении данных. Код ответа: {response.status_code}")
