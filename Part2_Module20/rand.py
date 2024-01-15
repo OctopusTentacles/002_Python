@@ -4,6 +4,7 @@
 import requests
 import telebot
 
+from telegram import InputFile
 from typing import List
 
 from buttons import get_main_keyboard
