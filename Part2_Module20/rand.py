@@ -9,6 +9,7 @@ from typing import List
 
 from buttons import get_main_keyboard
 from buttons import get_new_keyboard
+from logger import logger
 
 from config import API_KEY
 from config import BOT_TOKEN
@@ -29,9 +30,7 @@ def get_random_url(chat_id, category: str):
     url = None
 
     if category == 'фильм':
-        url = (f'https://api.kinopoisk.dev/v1.4/movie/'
-               f'random?notNullFields=name&notNullFields=year&'
-               f'notNullFields=rating.kp&type=movie'
+        url = (f'https://api.kinopoisk.dev/v1.4/movie/random?notNullFields=name&notNullFields=year&notNullFields=rating.kp&type=movie'
         )
         bot.send_message(chat_id, 'Случайный фильм:')
 
@@ -76,13 +75,6 @@ def get_rand_content(chat_id, url):
             poster = content.get('poster', {}).get('url')
 
 
-        # "poster": {
-        #     "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/4716873/ccc5d1a9-a7fd-44e4-b1f6-a5b031c886a5/orig",
-        #     "previewUrl": "https://avatars.mds.yandex.net/get-kinopoisk-image/4716873/ccc5d1a9-a7fd-44e4-b1f6-a5b031c886a5/x1000"
-        # }
-
-
-
             rate = content.get('rating')
             rate_kp = rate.get('kp')
 
@@ -95,10 +87,13 @@ def get_rand_content(chat_id, url):
                 message_text = (
                     f'{tittle}\nгод: {year}\nрейтинг КП: {rate_kp}'
                 )
-        bot.send_photo(chat_id, photo=InputFile(poster))
+        # bot.send_photo(chat_id, photo=InputFile(poster))
         bot.send_message(chat_id, message_text)
     else:
-        print(f"Ошибка при получении данных. Код ответа: {response.status_code}")
+        logger.error(
+            f'Ошибка при получении данных. Код ответа: {response.status_code}'
+        )
+        bot.send_message(chat_id, 'Прости, у меня неполадки!')
 
 
 if __name__ == "__main__":
