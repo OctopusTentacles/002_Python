@@ -3,3 +3,60 @@
 2024-01-15 17:37:27.861 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
 2024-01-15 17:37:32.584 | ERROR    | rand:get_rand_content:93 - Ошибка при получении данных. Код ответа: 200
 2024-01-15 17:37:32.873 | INFO     | __main__:main_menu:124 - Переход из random в фильм	| Artem | ID 961741922.
+2024-01-15 17:40:49.967 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-15 17:40:52.074 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-15 17:40:52.080 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-15 17:40:57.794 | ERROR    | rand:get_rand_content:93 - Ошибка при получении данных. Код ответа: 200
+2024-01-15 17:40:58.169 | INFO     | __main__:main_menu:124 - Переход из random в сериал	| Artem | ID 961741922.
+2024-01-15 17:41:04.602 | ERROR    | rand:get_rand_content:93 - Ошибка при получении данных. Код ответа: 200
+2024-01-15 17:41:05.083 | INFO     | __main__:main_menu:124 - Переход из random в фильм	| Artem | ID 961741922.
+2024-01-15 17:41:10.143 | ERROR    | rand:get_rand_content:93 - Ошибка при получении данных. Код ответа: 200
+2024-01-15 17:41:10.391 | INFO     | __main__:main_menu:124 - Переход из random в мульт	| Artem | ID 961741922.
+2024-01-15 17:41:14.728 | INFO     | __main__:main_menu:124 - Переход из random в main	| Artem | ID 961741922.
+2024-01-15 17:43:42.604 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-15 17:43:44.736 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-15 17:43:44.741 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-15 17:43:51.492 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: 'NoneType' object is not iterable
+2024-01-15 17:45:49.939 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-15 17:45:51.394 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-15 17:45:51.399 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-15 17:45:58.091 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: 'NoneType' object is not iterable
+2024-01-15 18:08:08.509 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-15 18:08:10.523 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-15 18:08:10.530 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-15 18:08:15.645 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: 'str' object has no attribute 'get'
+2024-01-15 18:09:32.024 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-15 18:09:34.131 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-15 18:09:34.137 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-15 18:09:42.767 | INFO     | __main__:main_menu:124 - Переход из random в фильм	| Artem | ID 961741922.
+2024-01-15 18:12:54.863 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-15 18:12:59.008 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-15 18:12:59.013 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-15 18:13:05.573 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: a bytes-like object is required, not 'InputFile'
+2024-01-15 18:19:43.431 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-15 18:19:45.418 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-15 18:19:45.422 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-15 18:19:51.375 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: a bytes-like object is required, not 'InputFile'
+2024-01-15 18:22:58.605 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-15 18:23:00.512 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-15 18:23:00.516 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-15 18:23:04.950 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: 'list' object has no attribute 'get'
+2024-01-15 18:24:44.351 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-15 18:24:46.078 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-15 18:24:46.082 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-15 18:24:48.758 | INFO     | __main__:main_menu:124 - Переход из random в main	| Artem | ID 961741922.
+2024-01-15 18:24:50.660 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-15 18:24:50.664 | INFO     | __main__:main_menu:124 - Переход из random в random	| Artem | ID 961741922.
+2024-01-15 18:24:59.014 | INFO     | __main__:main_menu:124 - Переход из random в фильм	| Artem | ID 961741922.
+2024-01-15 18:38:00.606 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-15 18:38:03.134 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-15 18:38:03.138 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-15 18:38:09.545 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: a bytes-like object is required, not 'InputFile'
+2024-01-15 18:42:13.140 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-15 18:42:16.907 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-15 18:42:16.912 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-15 18:42:25.077 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: a bytes-like object is required, not 'InputFile'
+2024-01-15 18:48:14.813 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-15 18:48:17.389 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-15 18:48:17.392 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-15 18:48:23.691 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: [Errno 2] No such file or directory: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/2885d434-2893-4092-8b86-6dc268ba9abf/orig'

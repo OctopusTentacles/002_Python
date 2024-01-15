@@ -30,8 +30,7 @@ def get_random_url(chat_id, category: str):
     url = None
 
     if category == 'фильм':
-        url = (f'https://api.kinopoisk.dev/v1.4/movie/random?notNullFields=name&notNullFields=year&notNullFields=rating.kp&type=movie'
-        )
+        url = (f'https://api.kinopoisk.dev/v1.4/movie/random?notNullFields=name&notNullFields=year&notNullFields=rating.kp&notNullFields=poster.url&type=movie'        )
         bot.send_message(chat_id, 'Случайный фильм:')
 
     elif category == 'сериал':
@@ -64,15 +63,17 @@ def get_rand_content(chat_id, url):
     headers = {"accept": "application/json", "X-API-KEY": API_KEY}
     response = requests.get(url, headers=headers)
 
-    if response == 200:
+    if response.status_code == 200:
         data = response.json()
-        contents = data.get('docs')
+        contents = [data]
 
         message_text = '\n'
 
         for content in contents:
             tittle = content.get('name')
-            poster = content.get('poster', {}).get('url')
+            # poster = content.get('poster', {}).get('url')
+            poster = content.get('poster')
+            poster_url = poster.get('url')
 
 
             rate = content.get('rating')
@@ -81,14 +82,23 @@ def get_rand_content(chat_id, url):
             year = content.get('year')
 
 
-            if tittle not in cached_content:
+        if tittle not in cached_content:
                 cached_content.add(tittle)
 
                 message_text = (
                     f'{tittle}\nгод: {year}\nрейтинг КП: {rate_kp}'
                 )
-        # bot.send_photo(chat_id, photo=InputFile(poster))
-        bot.send_message(chat_id, message_text)
+        with open(poster_url, 'rb') as photo_file:
+            photo = InputFile(photo_file)
+            bot.send_photo(chat_id, photo=photo, caption=message_text)
+
+
+
+
+
+        # photo = InputFile(poster_url)
+        # bot.send_photo(chat_id, photo=photo, caption=message_text)
+        # bot.send_message(chat_id, message_text)
     else:
         logger.error(
             f'Ошибка при получении данных. Код ответа: {response.status_code}'
