@@ -38,8 +38,11 @@ def get_random_url(chat_id, category: str):
         bot.send_message(chat_id, 'Случайный фильм:')
 
     elif category == 'сериал':
-        url = (f'https://api.kinopoisk.dev/v1.4/movie/'
-               f'random?notNullFields=name&type=tv-series'
+        url = (
+            f'https://api.kinopoisk.dev/v1.4/movie/random?'
+            f'notNullFields=name&notNullFields=year&notNullFields=rating.kp&'
+            f'notNullFields=poster.url&notNullFields=backdrop.url&'
+            f'notNullFields=logo.url&notNullFields=description&type=tv-series'
         )
         bot.send_message(chat_id, 'Случайный сериал:')
 
@@ -74,30 +77,32 @@ def get_rand_content(chat_id, url):
         message_text = '\n'
 
         for content in contents:
+            poster = content.get('poster', {}).get('previewUrl')
+            backdrop = content.get('backdrop', {}).get('previewUrl')
+            logo = content.get('logo', {}).get('url')
+
             tittle = content.get('name')
-            poster = content.get('poster', {}).get('url')
-            # poster = content.get('poster')
-            # poster_url = poster.get('url')
-
-
-            rate = content.get('rating')
-            rate_kp = rate.get('kp')
-
             year = content.get('year')
+
+            about = content.get('description')
+
+
+            rate = content.get('rating', {}).get('kp')
+
 
 
         if tittle not in cached_content:
                 cached_content.add(tittle)
 
                 message_text = (
-                    f'{tittle}\nгод: {year}\nрейтинг КП: {rate_kp}'
+                    f'{tittle} ({year})\n\n'
+                    f'{about}\n\n'
+                    f'КП: {rate}'
                 )
 
                 image_data = requests.get(poster).content
                 image_io = BytesIO(image_data)
                 bot.send_photo(chat_id, image_io, caption=message_text)
-
-
 
     else:
         logger.error(
