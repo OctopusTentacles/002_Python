@@ -60,3 +60,14 @@
 2024-01-15 18:48:17.389 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
 2024-01-15 18:48:17.392 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
 2024-01-15 18:48:23.691 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: [Errno 2] No such file or directory: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/2885d434-2893-4092-8b86-6dc268ba9abf/orig'
+2024-01-15 21:42:27.303 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-15 21:42:30.150 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-15 21:42:30.156 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-15 21:42:41.156 | INFO     | __main__:main_menu:124 - Переход из random в фильм	| Artem | ID 961741922.
+2024-01-15 21:43:41.451 | INFO     | __main__:main_menu:124 - Переход из random в main	| Artem | ID 961741922.
+2024-01-15 21:43:44.216 | INFO     | history:get_user_history:70 - История запросов пользователя Artem: ['2024-01-15 21:43:41\t| user: Artem\t| id: 961741922\t| main', '2024-01-15 21:42:41\t| user: Artem\t| id: 961741922\t| фильм', '2024-01-15 21:42:30\t| user: Artem\t| id: 961741922\t| random', '2024-01-15 21:42:26\t| user: Artem\t| id: 961741922\t| start', '2024-01-15 18:48:17\t| user: Artem\t| id: 961741922\t| random', '2024-01-15 18:48:14\t| user: Artem\t| id: 961741922\t| start', '2024-01-15 18:42:16\t| user: Artem\t| id: 961741922\t| random', '2024-01-15 18:42:12\t| user: Artem\t| id: 961741922\t| start', '2024-01-15 18:38:03\t| user: Artem\t| id: 961741922\t| random', '2024-01-15 18:38:00\t| user: Artem\t| id: 961741922\t| start']
+2024-01-15 21:43:44.797 | INFO     | __main__:main_menu:124 - Переход из random в history	| Artem | ID 961741922.
+2024-01-15 21:45:11.346 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-15 21:45:13.414 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-15 21:45:13.418 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-15 21:45:48.631 | INFO     | __main__:main_menu:124 - Переход из random в фильм	| Artem | ID 961741922.

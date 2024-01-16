@@ -4,7 +4,7 @@
 import requests
 import telebot
 
-from telegram import InputFile
+from io import BytesIO
 from typing import List
 
 from buttons import get_main_keyboard
@@ -30,7 +30,11 @@ def get_random_url(chat_id, category: str):
     url = None
 
     if category == 'фильм':
-        url = (f'https://api.kinopoisk.dev/v1.4/movie/random?notNullFields=name&notNullFields=year&notNullFields=rating.kp&notNullFields=poster.url&type=movie'        )
+        url = (
+            f'https://api.kinopoisk.dev/v1.4/movie/random?'
+            f'notNullFields=name&notNullFields=year&notNullFields=rating.kp&'
+            f'notNullFields=poster.url&type=movie'
+        )
         bot.send_message(chat_id, 'Случайный фильм:')
 
     elif category == 'сериал':
@@ -71,9 +75,9 @@ def get_rand_content(chat_id, url):
 
         for content in contents:
             tittle = content.get('name')
-            # poster = content.get('poster', {}).get('url')
-            poster = content.get('poster')
-            poster_url = poster.get('url')
+            poster = content.get('poster', {}).get('url')
+            # poster = content.get('poster')
+            # poster_url = poster.get('url')
 
 
             rate = content.get('rating')
@@ -88,17 +92,13 @@ def get_rand_content(chat_id, url):
                 message_text = (
                     f'{tittle}\nгод: {year}\nрейтинг КП: {rate_kp}'
                 )
-        with open(poster_url, 'rb') as photo_file:
-            photo = InputFile(photo_file)
-            bot.send_photo(chat_id, photo=photo, caption=message_text)
+
+                image_data = requests.get(poster).content
+                image_io = BytesIO(image_data)
+                bot.send_photo(chat_id, image_io, caption=message_text)
 
 
 
-
-
-        # photo = InputFile(poster_url)
-        # bot.send_photo(chat_id, photo=photo, caption=message_text)
-        # bot.send_message(chat_id, message_text)
     else:
         logger.error(
             f'Ошибка при получении данных. Код ответа: {response.status_code}'
