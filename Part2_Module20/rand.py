@@ -92,17 +92,26 @@ def get_rand_content(chat_id, url):
 
 
         if tittle not in cached_content:
-                cached_content.add(tittle)
+            cached_content.add(tittle)
 
-                message_text = (
+            message_text = (
                     f'{tittle} ({year})\n\n'
                     f'{about}\n\n'
                     f'КП: {rate}'
                 )
 
-                image_data = requests.get(poster).content
-                image_io = BytesIO(image_data)
-                bot.send_photo(chat_id, image_io, caption=message_text)
+            poster_io = BytesIO(requests.get(poster).content)
+            backdrop_io = BytesIO(requests.get(backdrop).content)
+            logo_io = BytesIO(requests.get(logo).content)
+            media = [
+                telebot.types.InputMediaPhoto(media=poster_io),
+                telebot.types.InputMediaPhoto(media=backdrop_io),
+                telebot.types.InputMediaPhoto(media=logo_io)
+            ]
+
+
+            bot.send_madia_group(chat_id, media)
+            bot.send_message(chat_id, caption=message_text)
 
     else:
         logger.error(

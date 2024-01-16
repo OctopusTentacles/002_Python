@@ -83,3 +83,12 @@
 2024-01-16 20:51:46.742 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
 2024-01-16 20:51:46.747 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
 2024-01-16 20:51:51.156 | INFO     | __main__:main_menu:124 - Переход из random в сериал	| Artem | ID 961741922.
+2024-01-16 21:27:13.183 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-16 21:27:15.805 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-16 21:27:15.809 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-16 21:27:38.025 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: TeleBot.send_photo() got multiple values for argument 'caption'
+2024-01-16 21:28:42.859 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2024-01-16 21:29:25.830 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-16 21:29:27.734 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-16 21:29:27.739 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-16 21:30:03.880 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: 'TeleBot' object has no attribute 'send_madia_group'
