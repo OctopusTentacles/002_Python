@@ -81,6 +81,8 @@ def get_rand_content(chat_id, url):
             backdrop = content.get('backdrop', {}).get('previewUrl')
             logo = content.get('logo', {}).get('url')
 
+            print(poster, backdrop, logo)
+
             tittle = content.get('name')
             year = content.get('year')
 
@@ -110,8 +112,8 @@ def get_rand_content(chat_id, url):
             ]
 
 
-            bot.send_madia_group(chat_id, media)
-            bot.send_message(chat_id, caption=message_text)
+            bot.send_media_group(chat_id, media)
+            bot.send_message(chat_id, message_text)
 
     else:
         logger.error(
