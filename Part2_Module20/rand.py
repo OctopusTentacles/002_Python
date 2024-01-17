@@ -33,7 +33,8 @@ def get_random_url(chat_id, category: str):
         url = (
             f'https://api.kinopoisk.dev/v1.4/movie/random?'
             f'notNullFields=name&notNullFields=year&notNullFields=rating.kp&'
-            f'notNullFields=poster.url&type=movie'
+            f'notNullFields=poster.url&notNullFields=backdrop.url&'
+            f'notNullFields=description&type=movie'
         )
         bot.send_message(chat_id, 'Случайный фильм:')
 
@@ -42,13 +43,16 @@ def get_random_url(chat_id, category: str):
             f'https://api.kinopoisk.dev/v1.4/movie/random?'
             f'notNullFields=name&notNullFields=year&notNullFields=rating.kp&'
             f'notNullFields=poster.url&notNullFields=backdrop.url&'
-            f'notNullFields=logo.url&notNullFields=description&type=tv-series'
+            f'notNullFields=description&type=tv-series'
         )
         bot.send_message(chat_id, 'Случайный сериал:')
 
     elif category == 'мульт':
-        url = (f'https://api.kinopoisk.dev/v1.4/movie/'
-               f'random?notNullFields=name&type=cartoon'
+        url = (
+            f'https://api.kinopoisk.dev/v1.4/movie/random?'
+            f'notNullFields=name&notNullFields=year&notNullFields=rating.kp&'
+            f'notNullFields=poster.url&notNullFields=backdrop.url&'
+            f'notNullFields=description&type=cartoon'
         )
         bot.send_message(chat_id, 'Случайный мультфильм:')
 
@@ -79,19 +83,12 @@ def get_rand_content(chat_id, url):
         for content in contents:
             poster = content.get('poster', {}).get('previewUrl')
             backdrop = content.get('backdrop', {}).get('previewUrl')
-            logo = content.get('logo', {}).get('url')
-
-            print(poster, backdrop, logo)
 
             tittle = content.get('name')
             year = content.get('year')
 
             about = content.get('description')
-
-
             rate = content.get('rating', {}).get('kp')
-
-
 
         if tittle not in cached_content:
             cached_content.add(tittle)
@@ -101,16 +98,12 @@ def get_rand_content(chat_id, url):
                     f'{about}\n\n'
                     f'КП: {rate}'
                 )
-
             poster_io = BytesIO(requests.get(poster).content)
             backdrop_io = BytesIO(requests.get(backdrop).content)
-            logo_io = BytesIO(requests.get(logo).content)
             media = [
                 telebot.types.InputMediaPhoto(media=poster_io),
                 telebot.types.InputMediaPhoto(media=backdrop_io),
-                telebot.types.InputMediaPhoto(media=logo_io)
             ]
-
 
             bot.send_media_group(chat_id, media)
             bot.send_message(chat_id, message_text)
