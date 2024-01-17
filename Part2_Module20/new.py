@@ -15,7 +15,12 @@ def get_new_url(chat_id, category):
     url = None
 
     if category == "фильм":
-        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&type=movie&year=2023"
+        url = (
+            f'https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&'
+            f'selectFields=name&selectFields=year&selectFields=poster&'
+            f'notNullFields=name&sortField=year&sortType=-1&'
+            f'type=movie&year=2023-2024'
+        )
         bot.send_message(chat_id, "5 новых фильмов:")
 
     elif category == "сериал":
@@ -64,4 +69,3 @@ def get_new_movies(chat_id, url):
 
 if __name__ == "__main__":
     bot.infinity_polling()
-    

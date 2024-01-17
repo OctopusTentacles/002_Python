@@ -125,3 +125,8 @@
 2024-01-17 21:43:39.168 | INFO     | __main__:main_menu:124 - Переход из random в мульт	| Artem | ID 961741922.
 2024-01-17 21:44:26.501 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: failed to send message #2 with the error message "IMAGE_PROCESS_FAILED"
 2024-01-17 21:45:08.434 | INFO     | __main__:main_menu:124 - Переход из random в фильм	| Artem | ID 961741922.
+2024-01-17 22:31:54.742 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-17 22:31:57.686 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-17 22:31:57.690 | INFO     | __main__:main_menu:124 - Переход из start в новинки	| Artem | ID 961741922.
+2024-01-17 22:32:00.835 | INFO     | __main__:main_menu:124 - Переход из новинки в фильм	| Artem | ID 961741922.
+2024-01-17 22:32:09.867 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: message must be non-empty
