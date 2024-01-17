@@ -130,3 +130,31 @@
 2024-01-17 22:31:57.690 | INFO     | __main__:main_menu:124 - Переход из start в новинки	| Artem | ID 961741922.
 2024-01-17 22:32:00.835 | INFO     | __main__:main_menu:124 - Переход из новинки в фильм	| Artem | ID 961741922.
 2024-01-17 22:32:09.867 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: message must be non-empty
+2024-01-17 22:43:11.569 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-17 22:43:13.513 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-17 22:43:13.516 | INFO     | __main__:main_menu:124 - Переход из start в новинки	| Artem | ID 961741922.
+2024-01-17 22:43:16.249 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2024-01-17 22:46:40.306 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-17 22:46:41.864 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-17 22:46:41.867 | INFO     | __main__:main_menu:124 - Переход из start в новинки	| Artem | ID 961741922.
+2024-01-17 22:46:44.057 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2024-01-17 22:49:24.535 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-17 22:49:26.941 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-17 22:49:26.946 | INFO     | __main__:main_menu:124 - Переход из start в новинки	| Artem | ID 961741922.
+2024-01-17 22:49:29.472 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2024-01-17 22:51:48.904 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-17 22:51:50.960 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-17 22:51:50.961 | INFO     | __main__:main_menu:124 - Переход из start в новинки	| Artem | ID 961741922.
+2024-01-17 22:51:53.931 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2024-01-17 22:52:05.529 | INFO     | __main__:main_menu:124 - Переход из новинки в main	| Artem | ID 961741922.
+2024-01-17 22:52:08.099 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-17 22:52:08.102 | INFO     | __main__:main_menu:124 - Переход из новинки в топ	| Artem | ID 961741922.
+2024-01-17 22:52:13.383 | INFO     | __main__:main_menu:124 - Переход из топ в фильм	| Artem | ID 961741922.
+2024-01-17 22:52:28.687 | INFO     | __main__:main_menu:124 - Переход из топ в main	| Artem | ID 961741922.
+2024-01-17 22:52:31.394 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-17 22:52:31.398 | INFO     | __main__:main_menu:124 - Переход из топ в random	| Artem | ID 961741922.
+2024-01-17 22:52:40.317 | INFO     | __main__:main_menu:124 - Переход из random в фильм	| Artem | ID 961741922.
+2024-01-17 22:52:54.153 | INFO     | __main__:main_menu:124 - Переход из random в main	| Artem | ID 961741922.
+2024-01-17 22:52:56.888 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-17 22:52:56.891 | INFO     | __main__:main_menu:124 - Переход из random в новинки	| Artem | ID 961741922.
+2024-01-17 22:53:00.032 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: cannot access local variable 'image_io' where it is not associated with a value
