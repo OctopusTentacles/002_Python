@@ -87,6 +87,8 @@ def get_rand_content(chat_id, url):
             tittle = content.get('name')
             year = content.get('year')
 
+            actors = 
+
             about = content.get('description')
             rate = content.get('rating', {}).get('kp')
 

@@ -113,3 +113,15 @@
 2024-01-16 21:46:04.931 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
 2024-01-16 21:46:37.829 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: failed to send message #2 with the error message "IMAGE_PROCESS_FAILED"
 2024-01-16 21:47:25.391 | INFO     | __main__:main_menu:124 - Переход из random в сериал	| Artem | ID 961741922.
+2024-01-16 21:56:02.882 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-16 21:56:04.722 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-16 21:56:04.725 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-16 21:56:11.103 | INFO     | __main__:main_menu:124 - Переход из random в сериал	| Artem | ID 961741922.
+2024-01-16 21:57:07.541 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: failed to send message #2 with the error message "IMAGE_PROCESS_FAILED"
+2024-01-16 21:57:24.791 | INFO     | __main__:main_menu:124 - Переход из random в сериал	| Artem | ID 961741922.
+2024-01-17 21:43:12.584 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-17 21:43:15.174 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-17 21:43:15.179 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-17 21:43:39.168 | INFO     | __main__:main_menu:124 - Переход из random в мульт	| Artem | ID 961741922.
+2024-01-17 21:44:26.501 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: failed to send message #2 with the error message "IMAGE_PROCESS_FAILED"
+2024-01-17 21:45:08.434 | INFO     | __main__:main_menu:124 - Переход из random в фильм	| Artem | ID 961741922.
