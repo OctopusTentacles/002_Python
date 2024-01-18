@@ -18,16 +18,29 @@ def get_new_url(chat_id, category):
 
     if category == "фильм":
         url = (
-            f'https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&selectFields=name&selectFields=year&selectFields=poster&notNullFields=name&notNullFields=poster.url&sortField=year&sortType=-1&type=movie&year=2023-2024'
+            f'https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&'
+            f'selectFields=name&selectFields=year&selectFields=poster&'
+            f'notNullFields=name&notNullFields=poster.url&'
+            f'sortField=year&sortType=-1&type=movie&year=2023-2024'
         )
         bot.send_message(chat_id, "5 новых фильмов:")
 
     elif category == "сериал":
-        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&selectFields=name&selectFields=year&selectFields=poster&notNullFields=name&notNullFields=poster.url&sortField=year&sortType=-1&type=tv-series&year=2023-2024"
+        url = (
+            f'https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&'
+            f'selectFields=name&selectFields=year&selectFields=poster&'
+            f'notNullFields=name&notNullFields=poster.url&'
+            f'sortField=year&sortType=-1&type=tv-series&year=2023-2024'
+        )
         bot.send_message(chat_id, "5 новых сериалов:")
 
     elif category == "мульт":
-        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&selectFields=name&selectFields=year&selectFields=poster&notNullFields=name&notNullFields=poster.url&sortField=year&sortType=-1&type=cartoon&year=2023-2024"
+        url = (
+            f'https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&'
+            f'selectFields=name&selectFields=year&selectFields=poster&'
+            f'notNullFields=name&notNullFields=poster.url&'
+            f'sortField=year&sortType=-1&type=cartoon&year=2023-2024'
+        )
         bot.send_message(chat_id, "5 новых мультфильмов:")
 
     elif category == "main":
@@ -37,9 +50,11 @@ def get_new_url(chat_id, category):
     if url is not None:
         get_new_movies(chat_id, url)
         keyboard = get_new_keyboard()
-        bot.send_message(chat_id, "Выбери тип или назад:", reply_markup=keyboard)
-
-
+        bot.send_message(
+            chat_id, 'НОВИНКИ   '
+            'Выбери тип новинок или вернись в главное меню:', 
+            reply_markup=keyboard
+        )
 
 
 def get_new_movies(chat_id, url):
@@ -48,28 +63,21 @@ def get_new_movies(chat_id, url):
 
     if response.status_code == 200:
         data = response.json()
-        contents = [data]
+        contents = data.get('docs')
 
         count = 0
-        message_text = "\n"
-
-        print(url)
 
         for content in contents:
             poster = content.get('poster', {}).get('previewUrl')
             title = content.get('name')
             year = content.get('year')
-
-            print(title)
                 
             if title not in cached_movie and count < 5:
                 cached_movie.add(title)
                 count += 1
 
-                message_text += f"{count}: {title} ({year})\n"
+                message_text = f"{count}: {title} ({year})\n"
                 image_io = BytesIO(requests.get(poster).content)
-
-                print(image_io)
 
                 bot.send_photo(chat_id, image_io, caption=message_text)
     else:
