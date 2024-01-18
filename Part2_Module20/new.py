@@ -23,11 +23,11 @@ def get_new_url(chat_id, category):
         bot.send_message(chat_id, "5 новых фильмов:")
 
     elif category == "сериал":
-        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&type=tv-series&year=2023"
+        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&selectFields=name&selectFields=year&selectFields=poster&notNullFields=name&notNullFields=poster.url&sortField=year&sortType=-1&type=tv-series&year=2023-2024"
         bot.send_message(chat_id, "5 новых сериалов:")
 
     elif category == "мульт":
-        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&type=cartoon&year=2023"
+        url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=100&selectFields=name&selectFields=year&selectFields=poster&notNullFields=name&notNullFields=poster.url&sortField=year&sortType=-1&type=cartoon&year=2023-2024"
         bot.send_message(chat_id, "5 новых мультфильмов:")
 
     elif category == "main":
@@ -61,11 +61,11 @@ def get_new_movies(chat_id, url):
             if title not in cached_movie and count < 5:
                 cached_movie.add(title)
                 count += 1
-                message_text += f"{count}: {title} ({year})\n"
 
+                message_text += f"{count}: {title} ({year})\n"
                 image_io = BytesIO(requests.get(poster).content)
 
-        bot.send_photo(chat_id, image_io, caption=message_text)
+                bot.send_photo(chat_id, image_io, caption=message_text)
     else:
         print(f"Ошибка при получении данных. Код ответа: {response.status_code}")
 
