@@ -64,7 +64,7 @@ def get_random_url(chat_id, category: str):
         get_rand_content(chat_id, url)
         keyboard = get_new_keyboard()
         bot.send_message(
-            chat_id, 
+            chat_id, 'РАНДОМ    '
             'Выбери тип или вернись в главное меню:',
             reply_markup=keyboard
         )
@@ -77,8 +77,6 @@ def get_rand_content(chat_id, url):
     if response.status_code == 200:
         data = response.json()
         contents = [data]
-
-        message_text = '\n'
 
         for content in contents:
             poster = content.get('poster', {}).get('previewUrl')
@@ -98,8 +96,10 @@ def get_rand_content(chat_id, url):
                     f'{about}\n\n'
                     f'КП: {rate}'
                 )
+            # poster = requests.get(poster).content
             poster_io = BytesIO(requests.get(poster).content)
             backdrop_io = BytesIO(requests.get(backdrop).content)
+            
             media = [
                 telebot.types.InputMediaPhoto(media=poster_io),
                 telebot.types.InputMediaPhoto(media=backdrop_io),

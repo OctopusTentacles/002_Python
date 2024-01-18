@@ -227,3 +227,18 @@
 2024-01-18 22:01:30.521 | INFO     | __main__:main_menu:124 - Переход из новинки в фильм	| Artem | ID 961741922.
 2024-01-18 22:01:55.890 | INFO     | __main__:main_menu:124 - Переход из новинки в фильм	| Artem | ID 961741922.
 2024-01-18 22:02:12.954 | INFO     | __main__:main_menu:124 - Переход из новинки в main	| Artem | ID 961741922.
+2024-01-18 22:07:51.379 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-18 22:07:53.722 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-18 22:07:53.727 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-18 22:08:04.042 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: 'NoneType' object is not iterable
+2024-01-18 22:14:53.833 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-18 22:14:55.801 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-18 22:14:55.805 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-18 22:15:00.767 | INFO     | __main__:main_menu:124 - Переход из random в мульт	| Artem | ID 961741922.
+2024-01-18 22:15:43.795 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: failed to send message #2 with the error message "IMAGE_PROCESS_FAILED"
+2024-01-18 22:17:23.398 | INFO     | __main__:main_menu:124 - Переход из random в сериал	| Artem | ID 961741922.
+2024-01-18 22:18:23.954 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: failed to send message #2 with the error message "IMAGE_PROCESS_FAILED"
+2024-01-18 22:18:49.936 | INFO     | __main__:main_menu:124 - Переход из random в фильм	| Artem | ID 961741922.
+2024-01-18 22:19:08.319 | INFO     | __main__:main_menu:124 - Переход из random в main	| Artem | ID 961741922.
+2024-01-18 22:19:10.388 | INFO     | history:get_user_history:70 - История запросов пользователя Artem: ['2024-01-18 22:19:08\t| user: Artem\t| id: 961741922\t| main', '2024-01-18 22:18:49\t| user: Artem\t| id: 961741922\t| фильм', '2024-01-18 22:17:23\t| user: Artem\t| id: 961741922\t| сериал', '2024-01-18 22:15:00\t| user: Artem\t| id: 961741922\t| мульт', '2024-01-18 22:14:55\t| user: Artem\t| id: 961741922\t| random', '2024-01-18 22:14:53\t| user: Artem\t| id: 961741922\t| start', '2024-01-18 22:07:53\t| user: Artem\t| id: 961741922\t| random', '2024-01-18 22:07:50\t| user: Artem\t| id: 961741922\t| start', '2024-01-18 22:02:12\t| user: Artem\t| id: 961741922\t| main', '2024-01-18 22:01:55\t| user: Artem\t| id: 961741922\t| фильм']
+2024-01-18 22:19:10.701 | INFO     | __main__:main_menu:124 - Переход из random в history	| Artem | ID 961741922.
