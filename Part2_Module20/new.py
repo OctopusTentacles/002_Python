@@ -53,10 +53,14 @@ def get_new_movies(chat_id, url):
         count = 0
         message_text = "\n"
 
+        print(url)
+
         for content in contents:
             poster = content.get('poster', {}).get('previewUrl')
             title = content.get('name')
             year = content.get('year')
+
+            print(title)
                 
             if title not in cached_movie and count < 5:
                 cached_movie.add(title)
@@ -64,6 +68,8 @@ def get_new_movies(chat_id, url):
 
                 message_text += f"{count}: {title} ({year})\n"
                 image_io = BytesIO(requests.get(poster).content)
+
+                print(image_io)
 
                 bot.send_photo(chat_id, image_io, caption=message_text)
     else:

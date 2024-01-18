@@ -158,3 +158,50 @@
 2024-01-17 22:52:56.888 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
 2024-01-17 22:52:56.891 | INFO     | __main__:main_menu:124 - Переход из random в новинки	| Artem | ID 961741922.
 2024-01-17 22:53:00.032 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: cannot access local variable 'image_io' where it is not associated with a value
+2024-01-18 19:31:33.771 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-18 19:31:33.772 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-18 19:31:34.539 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-18 19:31:41.108 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-18 19:31:41.112 | INFO     | __main__:main_menu:124 - Переход из start в новинки	| Artem | ID 961741922.
+2024-01-18 19:31:44.496 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2024-01-18 19:33:03.635 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-18 19:33:08.730 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-18 19:33:08.734 | INFO     | __main__:main_menu:124 - Переход из start в новинки	| Artem | ID 961741922.
+2024-01-18 19:33:12.359 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2024-01-18 19:33:31.374 | INFO     | __main__:main_menu:124 - Переход из новинки в main	| Artem | ID 961741922.
+2024-01-18 19:33:33.693 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-18 19:33:33.698 | INFO     | __main__:main_menu:124 - Переход из новинки в random	| Artem | ID 961741922.
+2024-01-18 19:33:38.151 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: file must be non-empty
+2024-01-18 19:33:56.926 | INFO     | __main__:main_menu:124 - Переход из random в main	| Artem | ID 961741922.
+2024-01-18 19:34:00.646 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-18 19:34:00.649 | INFO     | __main__:main_menu:124 - Переход из random в топ	| Artem | ID 961741922.
+2024-01-18 19:34:05.878 | INFO     | __main__:main_menu:124 - Переход из топ в фильм	| Artem | ID 961741922.
+2024-01-18 19:34:23.392 | INFO     | __main__:main_menu:124 - Переход из топ в фильм	| Artem | ID 961741922.
+2024-01-18 19:34:34.144 | INFO     | __main__:main_menu:124 - Переход из топ в фильм	| Artem | ID 961741922.
+2024-01-18 19:34:46.958 | INFO     | __main__:main_menu:124 - Переход из топ в сериал	| Artem | ID 961741922.
+2024-01-18 19:36:34.255 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-18 19:36:35.899 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-18 19:36:35.902 | INFO     | __main__:main_menu:124 - Переход из start в random	| Artem | ID 961741922.
+2024-01-18 19:36:47.238 | INFO     | __main__:main_menu:124 - Переход из random в фильм	| Artem | ID 961741922.
+2024-01-18 19:37:25.260 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: failed to send message #2 with the error message "IMAGE_PROCESS_FAILED"
+2024-01-18 19:40:27.877 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: file must be non-empty
+2024-01-18 19:40:39.426 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: file must be non-empty
+2024-01-18 19:41:20.553 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: failed to send message #2 with the error message "IMAGE_PROCESS_FAILED"
+2024-01-18 19:41:33.385 | INFO     | __main__:main_menu:124 - Переход из random в main	| Artem | ID 961741922.
+2024-01-18 19:41:36.176 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-18 19:41:36.179 | INFO     | __main__:main_menu:124 - Переход из random в random	| Artem | ID 961741922.
+2024-01-18 19:41:39.367 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: file must be non-empty
+2024-01-18 19:45:13.124 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-18 19:45:19.549 | INFO     | history:get_user_history:70 - История запросов пользователя Artem: ['2024-01-18 19:45:12\t| user: Artem\t| id: 961741922\t| start', '2024-01-18 19:41:36\t| user: Artem\t| id: 961741922\t| random', '2024-01-18 19:41:33\t| user: Artem\t| id: 961741922\t| main', '2024-01-18 19:36:47\t| user: Artem\t| id: 961741922\t| фильм', '2024-01-18 19:36:35\t| user: Artem\t| id: 961741922\t| random', '2024-01-18 19:36:33\t| user: Artem\t| id: 961741922\t| start', '2024-01-18 19:34:46\t| user: Artem\t| id: 961741922\t| сериал', '2024-01-18 19:34:34\t| user: Artem\t| id: 961741922\t| фильм', '2024-01-18 19:34:23\t| user: Artem\t| id: 961741922\t| фильм', '2024-01-18 19:34:05\t| user: Artem\t| id: 961741922\t| фильм']
+2024-01-18 19:45:20.026 | INFO     | __main__:main_menu:124 - Переход из start в history	| Artem | ID 961741922.
+2024-01-18 19:45:25.629 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-18 19:45:25.633 | INFO     | __main__:main_menu:124 - Переход из history в новинки	| Artem | ID 961741922.
+2024-01-18 19:45:30.380 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2024-01-18 19:50:44.272 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-18 19:50:45.973 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-18 19:50:45.978 | INFO     | __main__:main_menu:124 - Переход из start в новинки	| Artem | ID 961741922.
+2024-01-18 19:50:49.397 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+2024-01-18 19:52:16.386 | INFO     | __main__:welcome:58 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-18 19:52:17.926 | INFO     | __main__:ask_user_buttons:145 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-18 19:52:17.929 | INFO     | __main__:main_menu:124 - Переход из start в новинки	| Artem | ID 961741922.
+2024-01-18 19:52:19.855 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
