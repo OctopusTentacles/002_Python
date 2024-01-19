@@ -96,7 +96,6 @@ def get_rand_content(chat_id, url):
                     f'{about}\n\n'
                     f'КП: {rate}'
                 )
-            # poster = requests.get(poster).content
             poster_io = BytesIO(requests.get(poster).content)
             backdrop_io = BytesIO(requests.get(backdrop).content)
             
