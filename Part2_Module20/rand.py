@@ -64,7 +64,7 @@ def get_random_url(chat_id, category: str):
         get_rand_content(chat_id, url)
         keyboard = get_new_keyboard()
         bot.send_message(
-            chat_id, 'РАНДОМ    '
+            chat_id, 'МЕНЮ РАНДОМ    '
             'Выбери тип или вернись в главное меню:',
             reply_markup=keyboard
         )

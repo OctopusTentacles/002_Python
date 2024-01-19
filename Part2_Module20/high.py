@@ -8,6 +8,7 @@ from typing import List
 
 from buttons import get_main_keyboard
 from buttons import get_new_keyboard
+from logger import logger
 
 from config import API_KEY
 from config import BOT_TOKEN
@@ -56,7 +57,7 @@ def get_top_url(chat_id, category: str) -> List[str]:
         get_top_rated(chat_id, url)
         keyboard = get_new_keyboard()
         bot.send_message(
-            chat_id, 
+            chat_id, 'МЕНЮ НОВИНКИ  '
             'Выбери тип или вернись в главное меню:',
             reply_markup=keyboard
         )
@@ -85,8 +86,12 @@ def get_top_rated(chat_id, url):
                 message_text += f'{count}. рейтинг КП: {rate_kp} - {title}.\n'
 
         bot.send_message(chat_id, message_text)
+        
     else:
-        print(f"Ошибка при получении данных. Код ответа: {response.status_code}")
+        logger.error(
+            f'Ошибка при получении данных. Код ответа: {response.status_code}'
+        )
+        bot.send_message(chat_id, 'Прости, у меня неполадки!')
 
 
 if __name__ == '__main__':

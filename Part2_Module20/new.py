@@ -1,3 +1,5 @@
+"""Модуль получения новинов"""
+
 import requests
 import telebot
 
@@ -5,6 +7,8 @@ from io import BytesIO
 
 from buttons import get_main_keyboard
 from buttons import get_new_keyboard
+from logger import logger
+
 from config import API_KEY
 from config import BOT_TOKEN
 
@@ -51,7 +55,7 @@ def get_new_url(chat_id, category):
         get_new_movies(chat_id, url)
         keyboard = get_new_keyboard()
         bot.send_message(
-            chat_id, 'НОВИНКИ   '
+            chat_id, 'МЕНЮ НОВИНКИ   '
             'Выбери тип новинок или вернись в главное меню:', 
             reply_markup=keyboard
         )
@@ -81,7 +85,10 @@ def get_new_movies(chat_id, url):
 
                 bot.send_photo(chat_id, image_io, caption=message_text)
     else:
-        print(f"Ошибка при получении данных. Код ответа: {response.status_code}")
+        logger.error(
+            f'Ошибка при получении данных. Код ответа: {response.status_code}'
+        )
+        bot.send_message(chat_id, 'Прости, у меня неполадки!')
 
 
 if __name__ == "__main__":
