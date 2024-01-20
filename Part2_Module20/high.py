@@ -57,7 +57,7 @@ def get_top_url(chat_id, category: str) -> List[str]:
         get_top_rated(chat_id, url)
         keyboard = get_new_keyboard()
         bot.send_message(
-            chat_id, 'МЕНЮ НОВИНКИ  '
+            chat_id, 'МЕНЮ ТОП  '
             'Выбери тип или вернись в главное меню:',
             reply_markup=keyboard
         )
@@ -86,7 +86,7 @@ def get_top_rated(chat_id, url):
                 message_text += f'{count}. рейтинг КП: {rate_kp} - {title}.\n'
 
         bot.send_message(chat_id, message_text)
-        
+
     else:
         logger.error(
             f'Ошибка при получении данных. Код ответа: {response.status_code}'
