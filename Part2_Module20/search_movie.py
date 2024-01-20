@@ -25,12 +25,18 @@ def get_search_movie_url(chat_id, category: str):
         bot.send_message(chat_id, 'ГЛАВНОЕ МЕНЮ', reply_markup=keyboard)
 
     else:
-        bot.send_message(chat_id, 'введи название фильма')
-        query = 
-        
+        @bot.message_handler(content_types=['text'])
+        # def get_text(message):
+        message = bot.send_message(chat_id, 'Введи название фильма')
+        bot.register_next_step_handler(message)
+
+
+        # Получаем введенное пользователем название фильма
+        query = message.text.strip()
+
         url = (
             f'https://api.kinopoisk.dev/v1.4/movie/search?page=1&limit=1&'
-            f'query=%D1%82%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D0%B0%D1%82%D0%BE%D1%80'
+            f'query={query}'
         )
 
     
