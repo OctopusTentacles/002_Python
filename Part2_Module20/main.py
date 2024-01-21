@@ -107,8 +107,9 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
 
         elif call.data == 'search_movie':
             set_user_state(user_id, 'search_movie')
-            get_search_movie(call.message.chat.id, category)
             category = 'search_movie'
+            get_search_movie(call.message.chat.id, category)
+            
 
 
 

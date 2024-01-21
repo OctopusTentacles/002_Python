@@ -18,12 +18,12 @@ bot = telebot.TeleBot(BOT_TOKEN)
 
 
 @bot.message_handler(content_types=['text'])
-def user_input_title(message):
+def user_input_title(chat_id):
     """
     """    
-    message = bot.send_message(message.chat.id, 'Введи название фильма')
-    bot.register_next_step_handler(message, create_url)
-    print('user message', message.text)
+    # bot.send_message(chat_id, 'Введи название фильма')
+    bot.register_next_step_handler_by_chat_id(chat_id, create_url)
+    print('user message', chat_id)
 
 
 def create_url(message):
@@ -45,12 +45,9 @@ def get_search_movie(chat_id, category: str):
         bot.send_message(chat_id, 'ГЛАВНОЕ МЕНЮ', reply_markup=keyboard)
 
     elif category == 'search_movie':
-        user_input_title()
+        bot.send_message(chat_id, 'Введи название фильма')
 
-
-    
-
-
+        user_input_title(chat_id)
 
 
 
