@@ -320,3 +320,18 @@
 2024-01-21 00:41:08.177 | INFO     | __main__:main_menu:124 - Переход из random в random	| Artem | ID 961741922.
 2024-01-21 00:41:40.284 | ERROR    | __main__:main_menu:128 - Ошибка в обработчике callback-запроса: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: failed to send message #2 with the error message "IMAGE_PROCESS_FAILED"
 2024-01-21 00:42:13.138 | INFO     | __main__:main_menu:124 - Переход из random в сериал	| Artem | ID 961741922.
+2024-01-21 11:37:57.219 | INFO     | __main__:ask_user_buttons:152 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-21 11:37:57.228 | INFO     | __main__:main_menu:131 - Переход из start в random	| None | ID 961741922.
+2024-01-21 11:38:39.414 | INFO     | __main__:main_menu:131 - Переход из random в main	| None | ID 961741922.
+2024-01-21 11:38:46.861 | ERROR    | __main__:main_menu:135 - Ошибка в обработчике callback-запроса: NOT NULL constraint failed: userrequest.category
+2024-01-21 17:57:38.568 | INFO     | history:get_user_history:70 - История запросов пользователя None: []
+2024-01-21 17:57:39.221 | INFO     | __main__:main_menu:131 - Переход из start в history	| None | ID 961741922.
+2024-01-21 17:57:54.211 | ERROR    | __main__:main_menu:135 - Ошибка в обработчике callback-запроса: NOT NULL constraint failed: userrequest.category
+2024-01-21 18:00:37.064 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-21 18:00:44.708 | ERROR    | __main__:main_menu:135 - Ошибка в обработчике callback-запроса: NOT NULL constraint failed: userrequest.category
+2024-01-21 18:02:29.749 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-21 18:02:31.781 | ERROR    | __main__:main_menu:135 - Ошибка в обработчике callback-запроса: NOT NULL constraint failed: userrequest.category
+2024-01-21 18:11:17.863 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-21 18:11:20.176 | ERROR    | __main__:main_menu:135 - Ошибка в обработчике callback-запроса: NOT NULL constraint failed: userrequest.category
+2024-01-21 19:44:24.455 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-21 19:44:26.388 | ERROR    | __main__:main_menu:136 - Ошибка в обработчике callback-запроса: user_input_title() takes 1 positional argument but 2 were given

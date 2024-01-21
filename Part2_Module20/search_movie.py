@@ -18,25 +18,15 @@ bot = telebot.TeleBot(BOT_TOKEN)
 
 
 @bot.message_handler(content_types=['text'])
-def user_input_title(chat_id, category: str):
+def user_input_title(message):
     """
     """    
-
-    print(category)
-
-    if category == 'main':
-        keyboard = get_main_keyboard()
-        bot.send_message(chat_id, 'ГЛАВНОЕ МЕНЮ', reply_markup=keyboard)
-
-    else:
-        message = bot.send_message(chat_id, 'Введи название фильма')
-        bot.register_next_step_handler(message, get_search_url)
+    message = bot.send_message(message.chat.id, 'Введи название фильма')
+    bot.register_next_step_handler(message, create_url)
+    print('user message', message.text)
 
 
-def get_search_url(message):
-
-    chat_id = message.chat.id
-
+def create_url(message):
     # Получаем введенное пользователем название фильма
     query = message.text.strip()
 
@@ -45,5 +35,24 @@ def get_search_url(message):
         f'query={query}'
     )
 
-    print(message)
+    print('ссылка поиска', query)
+
+
+def get_search_movie(chat_id, category: str):
+
+    if category == 'main':
+        keyboard = get_main_keyboard()
+        bot.send_message(chat_id, 'ГЛАВНОЕ МЕНЮ', reply_markup=keyboard)
+
+    elif category == 'search_movie':
+        user_input_title()
+
+
     
+
+
+
+
+
+if __name__ == '__main__':
+    bot.infinity_polling()
