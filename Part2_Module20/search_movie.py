@@ -17,26 +17,29 @@ from config import BOT_TOKEN
 bot = telebot.TeleBot(BOT_TOKEN)
 
 
-def get_search_movie_url(chat_id, category: str):
+@bot.message_handler(content_types=['text'])
+def user_input_title(chat_id, category: str):
     """
-    """
+    """    
     if category == 'main':
         keyboard = get_main_keyboard()
         bot.send_message(chat_id, 'ГЛАВНОЕ МЕНЮ', reply_markup=keyboard)
 
     else:
-        @bot.message_handler(content_types=['text'])
-        # def get_text(message):
         message = bot.send_message(chat_id, 'Введи название фильма')
-        bot.register_next_step_handler(message)
+        bot.register_next_step_handler(message, get_search_url)
 
 
-        # Получаем введенное пользователем название фильма
-        query = message.text.strip()
+def get_search_url(message):
 
-        url = (
-            f'https://api.kinopoisk.dev/v1.4/movie/search?page=1&limit=1&'
-            f'query={query}'
-        )
+    chat_id = message.chat.id
+
+    # Получаем введенное пользователем название фильма
+    query = message.text.strip()
+
+    url = (
+        f'https://api.kinopoisk.dev/v1.4/movie/search?page=1&limit=1&'
+        f'query={query}'
+    )
 
     
