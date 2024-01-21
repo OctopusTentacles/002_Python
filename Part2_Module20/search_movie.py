@@ -21,6 +21,9 @@ bot = telebot.TeleBot(BOT_TOKEN)
 def user_input_title(chat_id, category: str):
     """
     """    
+
+    print(category)
+
     if category == 'main':
         keyboard = get_main_keyboard()
         bot.send_message(chat_id, 'ГЛАВНОЕ МЕНЮ', reply_markup=keyboard)
@@ -42,4 +45,5 @@ def get_search_url(message):
         f'query={query}'
     )
 
+    print(message)
     

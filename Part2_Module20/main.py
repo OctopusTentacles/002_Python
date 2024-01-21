@@ -12,6 +12,7 @@ from models import UserRequest
 from logger import logger
 from history import show_history
 from rand import get_random_url
+from search_movie import user_input_title
 
 bot = telebot.TeleBot(BOT_TOKEN)
 usernames_dict = {}
@@ -103,6 +104,12 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
             set_user_state(user_id, 'random')
             ask_user_buttons(call)
             category = 'random'
+
+        elif call.data == 'search_movie':
+            set_user_state(user_id, 'search_movie')
+            user_input_title(call.message.chat.id, category)
+
+
 
         elif call.data in ['фильм', 'сериал', 'мульт', 'main']:
             category = call.data
