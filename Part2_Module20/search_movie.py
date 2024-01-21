@@ -31,22 +31,24 @@ def get_search_movie(chat_id, category: str):
 
 
 @bot.message_handler(content_types=['text'])
-def user_input_title(message):
+def user_input_title(chat_id):
     """функция срабатывает автоматически при отправке текстового сообщения"""
 
-    user_response[message.chat.id] = message.text.strip()
+    user_response[chat_id] = chat_id.strip()
+    print(user_response[chat_id])
+    
+    # # Сохранение запроса пользователя в базу данных:
+    # UserRequest.create(
+    #     user_name=str(message.from_user.first_name),
+    #     user_id=str(message.from_user.id),
+    #     category='search_movie'
+    # )
 
-    # Сохранение запроса пользователя в базу данных:
-    UserRequest.create(
-        user_name=str(username),
-        user_id=str(user_id),
-        category=category
-    )
+    create_url(chat_id)
 
-
-def create_url(message):
+def create_url(chat_id):
     # Получаем введенное пользователем название фильма
-    query = message.text.strip()
+    query = user_response.get(chat_id, '')
 
     url = (
         f'https://api.kinopoisk.dev/v1.4/movie/search?page=1&limit=1&'

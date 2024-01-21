@@ -355,3 +355,15 @@
 2024-01-21 20:24:23.679 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
 2024-01-21 20:45:37.621 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
 2024-01-21 20:45:39.548 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-21 22:08:25.216 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-21 22:08:26.863 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-21 22:09:08.351 | INFO     | history:get_user_history:70 - История запросов пользователя Artem: ['2024-01-21 22:08:26\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-21 22:08:24\t| user: Artem\t| id: 961741922\t| start', '2024-01-21 20:45:39\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-21 20:45:37\t| user: Artem\t| id: 961741922\t| start', '2024-01-21 20:24:23\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-21 20:24:21\t| user: Artem\t| id: 961741922\t| start', '2024-01-21 20:19:12\t| user: Artem\t| id: 961741922\t| start', '2024-01-21 20:17:57\t| user: Artem\t| id: 961741922\t| start', '2024-01-21 20:11:09\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-21 20:11:07\t| user: Artem\t| id: 961741922\t| start']
+2024-01-21 22:09:08.883 | INFO     | __main__:main_menu:133 - Переход из search_movie в history	| Artem | ID 961741922.
+2024-01-21 22:14:35.176 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-21 22:14:36.876 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-21 22:20:18.013 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-21 22:20:19.253 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-21 22:24:05.249 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-21 22:24:06.455 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-21 22:28:12.726 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-21 22:28:14.213 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
