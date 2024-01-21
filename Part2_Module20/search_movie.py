@@ -9,21 +9,39 @@ from io import BytesIO
 from buttons import get_main_keyboard
 from buttons import get_new_keyboard
 from logger import logger
+from models import UserRequest
 
 from config import API_KEY
 from config import BOT_TOKEN
 
 
 bot = telebot.TeleBot(BOT_TOKEN)
+user_response = {}
+
+
+def get_search_movie(chat_id, category: str):
+
+    if category == 'main':
+        keyboard = get_main_keyboard()
+        bot.send_message(chat_id, 'ГЛАВНОЕ МЕНЮ', reply_markup=keyboard)
+
+    elif category == 'search_movie':
+        bot.send_message(chat_id, 'Введи название фильма')
+
 
 
 @bot.message_handler(content_types=['text'])
-def user_input_title(chat_id):
-    """
-    """    
-    # bot.send_message(chat_id, 'Введи название фильма')
-    bot.register_next_step_handler_by_chat_id(chat_id, create_url)
-    print('user message', chat_id)
+def user_input_title(message):
+    """функция срабатывает автоматически при отправке текстового сообщения"""
+
+    user_response[message.chat.id] = message.text.strip()
+
+    # Сохранение запроса пользователя в базу данных:
+    UserRequest.create(
+        user_name=str(username),
+        user_id=str(user_id),
+        category=category
+    )
 
 
 def create_url(message):
@@ -38,16 +56,6 @@ def create_url(message):
     print('ссылка поиска', query)
 
 
-def get_search_movie(chat_id, category: str):
-
-    if category == 'main':
-        keyboard = get_main_keyboard()
-        bot.send_message(chat_id, 'ГЛАВНОЕ МЕНЮ', reply_markup=keyboard)
-
-    elif category == 'search_movie':
-        bot.send_message(chat_id, 'Введи название фильма')
-
-        user_input_title(chat_id)
 
 
 
