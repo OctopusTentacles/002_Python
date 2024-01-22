@@ -32,28 +32,30 @@ def get_search_movie(bot: TeleBot, call: CallbackQuery,
 
         bot.register_next_step_handler(call.message, user_input_title)
         
-        logger.info(f'Отправлен запрос от бота для выбора типа контента '
-                    f'пользователю {call.message}.'
-        )
         print(2)
 
-def user_input_title(message):
-    """Функция срабатывает автоматически при отправке текстового сообщения"""
+def user_input_title(call):
 
     print(3)
 
-    chat_id = message.chat.id
+    chat_id = call.chat.id
 
-    user_response[chat_id] = message.text.strip()
+    user_response[chat_id] = call.text.strip()
+    
+    logger.info(
+        f'Пользователь ищет фильм '
+        f'по названию {call.text.strip()}.'
+    )
+
     print(user_response[chat_id])
 
     print(4)
 
-    create_url(message)
+    create_url(call.text.strip())
 
-def create_url(chat_id):
+def create_url(call):
     # Получаем введенное пользователем название фильма
-    query = user_response.get(chat_id, '')
+    query = call
 
     print(5)
 
@@ -62,7 +64,7 @@ def create_url(chat_id):
         f'query={query}'
     )
 
-    print('ссылка поиска', query)
+    print('ссылка поиска', url)
 
 
 # if __name__ == '__main__':
