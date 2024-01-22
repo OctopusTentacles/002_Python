@@ -421,3 +421,6 @@
 2024-01-22 14:43:08.723 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
 2024-01-22 14:43:11.791 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
 2024-01-22 14:43:20.493 | INFO     | search_movie:user_input_title:45 - Пользователь ищет фильм по названию терминатор.
+2024-01-22 15:45:26.577 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-22 15:45:28.171 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-22 15:45:36.145 | INFO     | search_movie:create_url:37 - Пользователь ищет фильм по названию Терминатор 2.

@@ -19,49 +19,29 @@ from models import UserRequest
 user_response = {}
 
 
-def get_search_movie(bot: TeleBot, call: CallbackQuery,
+def user_input_title(bot: TeleBot, call: CallbackQuery,
                  user_name: str, user_id: str):
+    """"""  
+
+    bot.send_message(call.message.chat.id, 'Введи название фильма')
+    bot.register_next_step_handler(call.message, create_url)
         
 
-        bot.send_message(
-             call.message.chat.id,
-             f'Введи название фильма'
-        )
-
-        print(1)
-
-        bot.register_next_step_handler(call.message, user_input_title)
-        
-        print(2)
-
-def user_input_title(call):
-
-    print(3)
+def create_url(call):
 
     chat_id = call.chat.id
 
+    # это нужно дальше изменить на вид - фильм: данные
     user_response[chat_id] = call.text.strip()
     
     logger.info(
-        f'Пользователь ищет фильм '
-        f'по названию {call.text.strip()}.'
+        f'Пользователь ищет фильм по названию {call.text.strip()}.'
     )
-
     print(user_response[chat_id])
-
-    print(4)
-
-    create_url(call.text.strip())
-
-def create_url(call):
-    # Получаем введенное пользователем название фильма
-    query = call
-
-    print(5)
 
     url = (
         f'https://api.kinopoisk.dev/v1.4/movie/search?page=1&limit=1&'
-        f'query={query}'
+        f'query={call.text.strip()}'
     )
 
     print('ссылка поиска', url)
