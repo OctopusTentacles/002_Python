@@ -375,3 +375,13 @@
 2024-01-22 13:17:48.145 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
 2024-01-22 13:21:43.964 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
 2024-01-22 13:21:58.938 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-22 13:24:54.096 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-22 13:24:58.641 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-22 13:28:58.421 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-22 13:29:00.511 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-22 13:37:13.036 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-22 13:37:19.149 | ERROR    | __main__:main_menu:137 - Ошибка в обработчике callback-запроса: 'int' object has no attribute 'message'
+2024-01-22 13:43:54.080 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-22 13:43:57.660 | ERROR    | __main__:main_menu:137 - Ошибка в обработчике callback-запроса: 'int' object has no attribute 'chat'
+2024-01-22 13:56:21.339 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-22 13:56:23.633 | ERROR    | __main__:main_menu:137 - Ошибка в обработчике callback-запроса: 'int' object has no attribute 'chat'
