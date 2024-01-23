@@ -108,7 +108,11 @@ def main_menu(call: telebot.types.CallbackQuery) -> None:
         elif call.data == 'search_movie':
             set_user_state(user_id, 'search_movie')
             category = 'search_movie'
+<<<<<<< HEAD
             user_input_title(bot, call)
+=======
+            user_input_title(call, username, user_id)
+>>>>>>> 90b65c851aa37de34fb5a8f835b5360fbc52edd2
             
 
 
