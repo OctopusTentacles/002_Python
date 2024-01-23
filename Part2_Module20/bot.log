@@ -429,3 +429,36 @@
 2024-01-22 15:53:50.058 | INFO     | search_movie:create_url:39 - Пользователь ищет фильм по названию Терминатор 2.
 2024-01-22 16:10:11.877 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
 2024-01-22 16:10:14.820 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-22 16:29:46.203 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-22 16:29:48.350 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-22 16:30:37.462 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-22 16:30:40.287 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-22 21:26:28.104 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-22 21:26:30.082 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-22 21:29:10.276 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-22 21:29:11.391 | ERROR    | __main__:main_menu:137 - Ошибка в обработчике callback-запроса: user_input_title() missing 1 required positional argument: 'user_id'
+2024-01-22 21:30:49.986 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-22 21:30:51.294 | ERROR    | __main__:main_menu:137 - Ошибка в обработчике callback-запроса: user_input_title() missing 1 required positional argument: 'user_id'
+2024-01-22 21:32:42.217 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-22 21:32:44.418 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-22 21:36:29.342 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-22 21:36:30.778 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-22 21:36:36.150 | INFO     | search_movie:create_url:37 - Пользователь ищет фильм по названию терминатор 2.
+2024-01-22 21:40:38.512 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-22 21:40:40.170 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-22 21:40:45.761 | INFO     | search_movie:create_url:40 - Пользователь ищет фильм по названию терминатор 2.
+2024-01-22 21:53:30.639 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-22 21:53:33.405 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-22 21:56:14.451 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-22 21:56:15.968 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-22 21:59:30.286 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-22 21:59:31.622 | ERROR    | __main__:main_menu:137 - Ошибка в обработчике callback-запроса: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: chat not found
+2024-01-22 22:00:05.529 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-22 22:00:07.512 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-22 22:00:14.383 | INFO     | search_movie:create_url:40 - Пользователь ищет фильм по названию терминатор 2.
+2024-01-22 22:06:38.437 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-22 22:06:39.956 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-22 22:06:46.147 | INFO     | search_movie:create_url:44 - Пользователь ищет фильм по названию терминатор 2.
+2024-01-22 22:10:56.410 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-22 22:10:57.959 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-22 22:11:03.599 | INFO     | search_movie:create_url:43 - Пользователь ищет фильм по названию терминатор 2.
