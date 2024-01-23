@@ -64,11 +64,7 @@ def create_url(call, bot):
 
     get_search_content(bot, url, chat_id)
     keyboard = get_new_keyboard()
-    bot.send_message(
-        chat_id, 'МЕНЮ НОВИНКИ   '
-        'Выбери тип новинок или вернись в главное меню:', 
-        reply_markup=keyboard
-    )
+    bot.send_message(chat_id, "ГЛАВНОЕ МЕНЮ", reply_markup=keyboard)
 
 
 
@@ -76,8 +72,26 @@ def get_search_content(bot, url, chat_id):
 
     bot.send_message(chat_id, 'сейчас найдем')
 
-    
+    headers = {"accept": "application/json", "X-API-KEY": API_KEY}
+    response = requests.get(url, headers=headers)
 
+    if response.status_code == 200:
+        data = response.json()
+        contents = data.get('docs')
+
+        for content in contents:
+            poster = content.get('poster', {}).get('previewUrl')
+            title = content.get('name')
+            year = content.get('year')
+
+
+
+            image_io = BytesIO(requests.get(poster).content)
+            message_text = (
+                f'{title} ({year})\n'
+            )
+
+            bot.send_photo(chat_id, image_io, caption=message_text)
 
 
 if __name__ == '__main__':
