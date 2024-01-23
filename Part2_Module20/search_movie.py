@@ -9,7 +9,6 @@ from urllib.parse import quote
 
 
 from buttons import get_main_keyboard
-from buttons import get_new_keyboard
 from logger import logger
 from models import UserRequest
 
@@ -63,7 +62,7 @@ def create_url(call, bot):
 
 
     get_search_content(bot, url, chat_id)
-    keyboard = get_new_keyboard()
+    keyboard = get_main_keyboard()
     bot.send_message(chat_id, "ГЛАВНОЕ МЕНЮ", reply_markup=keyboard)
 
 
@@ -83,12 +82,31 @@ def get_search_content(bot, url, chat_id):
             poster = content.get('poster', {}).get('previewUrl')
             title = content.get('name')
             year = content.get('year')
+            length = content.get('movieLength')
+
+            genres_data = content.get('genres', [])
+            genres = ', '.join(genre.get('name') for genre in genres_data)
+            
+            countries_data = content.get('countries',  [])
+            countries = ', '.join(country.get('name') for country in countries_data)
+
+            description = content.get('description')
+
+            rate_kp = content.get('rating', {}).get('kp')
+            rate_imdb = content.get('rating', {}).get('imdb')
 
 
 
             image_io = BytesIO(requests.get(poster).content)
             message_text = (
-                f'{title} ({year})\n'
+                f'{title}   ({year})\n\n'
+                f'жанр: {genres}.\n\n'
+                f'страна: {countries}.\n\n'
+                f'{description}.\n\n'
+                f'длительность: {length} мин.\n\n'
+                f'КП: {rate_kp}\n'
+                f'IMDB: {rate_imdb}'
+
             )
 
             bot.send_photo(chat_id, image_io, caption=message_text)

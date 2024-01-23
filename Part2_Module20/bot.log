@@ -480,3 +480,26 @@
 2024-01-23 13:03:02.998 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
 2024-01-23 13:03:05.510 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
 2024-01-23 13:03:14.491 | INFO     | search_movie:create_url:48 - Пользователь ищет фильм по названию терминатор 2.
+2024-01-23 13:34:51.136 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-23 13:34:53.251 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-23 13:34:59.519 | INFO     | search_movie:create_url:47 - Пользователь ищет фильм по названию терминатор.
+2024-01-23 13:45:45.174 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-23 13:45:47.219 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-23 13:45:56.533 | INFO     | search_movie:create_url:47 - Пользователь ищет фильм по названию терминатор.
+2024-01-23 14:46:01.722 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-23 14:46:03.753 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-23 14:46:10.628 | INFO     | search_movie:create_url:47 - Пользователь ищет фильм по названию терминатор.
+2024-01-23 14:53:25.448 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-23 14:53:31.201 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-23 14:53:38.480 | INFO     | search_movie:create_url:47 - Пользователь ищет фильм по названию терминатор 2.
+2024-01-23 14:54:09.980 | INFO     | __main__:ask_user_buttons:154 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-23 14:54:09.987 | INFO     | __main__:main_menu:133 - Переход из search_movie в топ	| Artem | ID 961741922.
+2024-01-23 14:54:30.152 | INFO     | __main__:main_menu:133 - Переход из топ в фильм	| Artem | ID 961741922.
+2024-01-23 14:54:49.461 | INFO     | __main__:main_menu:133 - Переход из топ в фильм	| Artem | ID 961741922.
+2024-01-23 14:55:27.508 | INFO     | __main__:main_menu:133 - Переход из топ в main	| Artem | ID 961741922.
+2024-01-23 14:55:29.451 | INFO     | __main__:main_menu:133 - Переход из топ в search_movie	| Artem | ID 961741922.
+2024-01-23 14:55:37.740 | INFO     | search_movie:create_url:47 - Пользователь ищет фильм по названию форест гамп.
+2024-01-23 14:56:39.920 | INFO     | history:get_user_history:70 - История запросов пользователя Artem: ['2024-01-23 14:55:29\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-23 14:55:27\t| user: Artem\t| id: 961741922\t| main', '2024-01-23 14:54:49\t| user: Artem\t| id: 961741922\t| фильм', '2024-01-23 14:54:30\t| user: Artem\t| id: 961741922\t| фильм', '2024-01-23 14:54:09\t| user: Artem\t| id: 961741922\t| топ', '2024-01-23 14:53:31\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-23 14:53:24\t| user: Artem\t| id: 961741922\t| start', '2024-01-23 14:46:03\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-23 14:46:01\t| user: Artem\t| id: 961741922\t| start', '2024-01-23 13:45:47\t| user: Artem\t| id: 961741922\t| search_movie']
+2024-01-23 14:56:40.534 | INFO     | __main__:main_menu:133 - Переход из search_movie в history	| Artem | ID 961741922.
+2024-01-23 14:57:15.453 | INFO     | __main__:main_menu:133 - Переход из history в search_movie	| Artem | ID 961741922.
+2024-01-23 14:57:23.398 | INFO     | search_movie:create_url:47 - Пользователь ищет фильм по названию фьюриоса.
