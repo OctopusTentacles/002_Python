@@ -5,7 +5,6 @@ import telebot
 
 from io import BytesIO
 
-# from telebot import TeleBot
 from telebot.types import CallbackQuery
 from urllib.parse import quote
 
@@ -15,10 +14,6 @@ from logger import logger
 from models import UserRequest
 
 from config import API_KEY
-# from config import BOT_TOKEN
-
-
-# bot = telebot.TeleBot(BOT_TOKEN)
 
 cached_content = {}
 
@@ -56,13 +51,20 @@ def create_url(call, bot):
         f'https://api.kinopoisk.dev/v1.4/movie/search?page=1&limit=1&'
         f'query={encoding_title}'
     )
-    get_search_content(bot, url, chat_id)
+    search_content(bot, url, chat_id)
     keyboard = get_main_keyboard()
     bot.send_message(chat_id, "ГЛАВНОЕ МЕНЮ", reply_markup=keyboard)
 
 
-def get_search_content(bot, url, chat_id):
-    """Выполняет поиск фильма и отправляет результат пользователю."""
+def search_content(bot, url, chat_id):
+    """Получает ссылку с краткой информацией о контенте из слов пользователя.
+    Берем из нее ID и формируем ссылку о контенте с полной информацией.
+        
+    Args:
+        bot (TeleBot): Экземпляр бота.
+        url: .
+        chat_id: .
+    """
     bot.send_message(chat_id, 'сейчас найдем')
 
     headers = {"accept": "application/json", "X-API-KEY": API_KEY}
@@ -75,15 +77,30 @@ def get_search_content(bot, url, chat_id):
         for content in contents:
             id = content.get('id')
 
+            if id not in cached_content:
+                url = f'https://api.kinopoisk.dev/v1.4/movie/{id}'
 
-            
+                print(url)
+                get_content_from_url(bot, url, chat_id)
 
 
+
+def get_content_from_url(bot, url, chat_id):
+
+    headers = {"accept": "application/json", "X-API-KEY": API_KEY}
+    response = requests.get(url, headers=headers)
+
+    if response.status_code == 200:
+        data = response.json()
+        contents = [data]
+
+        for content in contents:
 
 
             poster = content.get('poster', {}).get('previewUrl')
             title = content.get('name')
             year = content.get('year')
+            premiere = content.get('premiere', {}.get('world'))
 
             movieLength = content.get('movieLength')
             seriesLength = content.get('seriesLength')
@@ -91,6 +108,20 @@ def get_search_content(bot, url, chat_id):
                 length = movieLength
             else:
                 length = seriesLength
+
+
+            persons_data = content.get('persons', [])
+            # Разделяем режиссёров и актеров:
+            directors_data = [
+                person for person in persons_data if person.get('profession' == 'режиссеры')
+            ]
+            actors_data = [
+                person for person in persons_data if person.get('profession' == 'актеры')
+            ]
+            # получаем имена:
+            directors = ', '.join(director.get('name') for director in directors_data)
+            actors = ', '.join(actor.get('name') for actor in actors_data)
+
 
             genres_data = content.get('genres', [])
             genres = ', '.join(genre.get('name') for genre in genres_data)
@@ -107,8 +138,11 @@ def get_search_content(bot, url, chat_id):
             image_io = BytesIO(requests.get(poster).content)
             message_text = (
                 f'{title}   ({year})\n\n'
+                f'премьера: {premiere}\n\n'
                 f'жанр: {genres}.\n\n'
                 f'страна: {countries}.\n\n'
+                f'режиссер: {directors}\n'
+                f'актеры: {actors}\n\n'
                 f'{description}.\n\n'
                 f'длительность: {length} мин.\n\n'
                 f'КП: {rate_kp}\n'
