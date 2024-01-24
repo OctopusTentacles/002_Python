@@ -20,7 +20,7 @@ from config import API_KEY
 
 # bot = telebot.TeleBot(BOT_TOKEN)
 
-user_response = {}
+cached_content = {}
 
 
 def user_input_title(bot: telebot, call: CallbackQuery):
@@ -40,9 +40,6 @@ def create_url(call, bot):
     """Обработчик ввода, формирует URL для поиска фильма."""
 
     chat_id = call.chat.id
-
-    # это нужно дальше изменить на вид - фильм: данные
-    user_response[chat_id] = call.text.strip()
     
     logger.info(
         f'Пользователь ищет фильм по названию {call.text.strip()}.'
@@ -76,6 +73,14 @@ def get_search_content(bot, url, chat_id):
         contents = data.get('docs')
 
         for content in contents:
+            id = content.get('id')
+
+
+            
+
+
+
+
             poster = content.get('poster', {}).get('previewUrl')
             title = content.get('name')
             year = content.get('year')
