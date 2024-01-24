@@ -104,23 +104,29 @@ def get_content_from_url(bot, url, chat_id):
 
             movieLength = content.get('movieLength')
             seriesLength = content.get('seriesLength')
-            if seriesLength is None:
+            if movieLength is None and seriesLength is None:
+                length = 0
+            elif seriesLength is None:
                 length = movieLength
             else:
                 length = seriesLength
 
 
             persons_data = content.get('persons', [])
-            # Разделяем режиссёров и актеров:
-            directors_data = [
-                person for person in persons_data if person.get('profession' == 'режиссеры')
-            ]
-            actors_data = [
-                person for person in persons_data if person.get('profession' == 'актеры')
-            ]
             # получаем имена:
-            directors = ', '.join(director.get('name') for director in directors_data)
-            actors = ', '.join(actor.get('name') for actor in actors_data)
+            directors = ', '.join(
+                person['name'] for person in persons_data 
+                if person['profession'] == 'режиссеры' and
+                person['name'] is not None
+            )
+            actors = ', '.join(
+                person['name'] for person in persons_data
+                if person['profession'] == 'актеры' and
+                person['name'] is not None
+            )
+            # получаем имена:
+            # directors = ', '.join(director.get('name') for director in directors_data)
+            # actors = ', '.join(actor.get('name') for actor in actors_data)
 
 
             genres_data = content.get('genres', [])
