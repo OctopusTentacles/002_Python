@@ -523,3 +523,30 @@
 2024-01-23 16:49:29.397 | INFO     | search_movie:get_search_content:106 - Пользователь получил данные по: Джон Уик.
 2024-01-23 16:50:06.007 | INFO     | history:get_user_history:70 - История запросов пользователя Artem: ['2024-01-23 16:49:19\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-23 16:49:15\t| user: Artem\t| id: 961741922\t| main', '2024-01-23 16:48:46\t| user: Artem\t| id: 961741922\t| сериал', '2024-01-23 16:48:30\t| user: Artem\t| id: 961741922\t| random', '2024-01-23 16:48:27\t| user: Artem\t| id: 961741922\t| main', '2024-01-23 16:47:16\t| user: Artem\t| id: 961741922\t| random', '2024-01-23 16:47:12\t| user: Artem\t| id: 961741922\t| main', '2024-01-23 16:46:35\t| user: Artem\t| id: 961741922\t| мульт', '2024-01-23 16:45:59\t| user: Artem\t| id: 961741922\t| сериал', '2024-01-23 16:45:18\t| user: Artem\t| id: 961741922\t| новинки']
 2024-01-23 16:50:06.440 | INFO     | __main__:main_menu:133 - Переход из search_movie в history	| Artem | ID 961741922.
+2024-01-23 17:14:35.688 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-23 17:14:37.602 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-23 17:14:45.335 | INFO     | search_movie:create_url:45 - Пользователь ищет фильм по названию джон уик 4.
+2024-01-23 17:14:56.827 | INFO     | search_movie:get_search_content:112 - Пользователь получил данные по: Джон Уик 4.
+2024-01-23 17:15:24.180 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-23 17:15:28.142 | INFO     | search_movie:create_url:45 - Пользователь ищет фильм по названию очень странные дела.
+2024-01-23 17:15:33.866 | INFO     | search_movie:get_search_content:112 - Пользователь получил данные по: Очень странные дела.
+2024-01-23 17:19:28.772 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-23 17:19:32.703 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-23 17:19:48.012 | INFO     | search_movie:create_url:45 - Пользователь ищет фильм по названию фьюриоса.
+2024-01-23 17:19:52.248 | INFO     | search_movie:get_search_content:112 - Пользователь получил данные по: Фуриоса: Хроники Безумного Макса.
+2024-01-23 17:20:31.932 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-23 17:20:39.412 | INFO     | search_movie:create_url:45 - Пользователь ищет фильм по названию игра в кальмара.
+2024-01-23 17:20:41.818 | INFO     | search_movie:get_search_content:112 - Пользователь получил данные по: Игра в кальмара.
+2024-01-24 12:16:41.762 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-24 12:16:44.671 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-24 12:16:56.093 | INFO     | search_movie:create_url:47 - Пользователь ищет фильм по названию фуриоса.
+2024-01-24 12:17:05.615 | INFO     | search_movie:get_search_content:114 - Пользователь получил данные по: Фуриоса: Хроники Безумного Макса.
+2024-01-24 12:17:16.707 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-24 12:17:24.173 | INFO     | search_movie:create_url:47 - Пользователь ищет фильм по названию дом драконов.
+2024-01-24 12:17:29.428 | INFO     | search_movie:get_search_content:114 - Пользователь получил данные по: Дом Дракона.
+2024-01-24 12:17:55.583 | INFO     | history:get_user_history:70 - История запросов пользователя Artem: ['2024-01-24 12:17:16\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-24 12:16:44\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-24 12:16:41\t| user: Artem\t| id: 961741922\t| start', '2024-01-23 17:20:31\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-23 17:19:32\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-23 17:19:28\t| user: Artem\t| id: 961741922\t| start', '2024-01-23 17:15:24\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-23 17:14:37\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-23 17:14:35\t| user: Artem\t| id: 961741922\t| start', '2024-01-23 16:50:06\t| user: Artem\t| id: 961741922\t| history']
+2024-01-24 12:17:56.422 | INFO     | __main__:main_menu:133 - Переход из search_movie в history	| Artem | ID 961741922.
+2024-01-24 12:18:22.933 | INFO     | __main__:ask_user_buttons:154 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-24 12:18:22.939 | INFO     | __main__:main_menu:133 - Переход из history в random	| Artem | ID 961741922.
+2024-01-24 12:18:39.271 | INFO     | __main__:main_menu:133 - Переход из random в мульт	| Artem | ID 961741922.
+2024-01-24 12:19:07.570 | INFO     | __main__:main_menu:133 - Переход из random в main	| Artem | ID 961741922.

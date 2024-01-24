@@ -1,9 +1,11 @@
+"""Модуль поиска контента по названию."""
+
 import requests
 import telebot
 
 from io import BytesIO
 
-from telebot import TeleBot
+# from telebot import TeleBot
 from telebot.types import CallbackQuery
 from urllib.parse import quote
 
@@ -13,10 +15,10 @@ from logger import logger
 from models import UserRequest
 
 from config import API_KEY
-from config import BOT_TOKEN
+# from config import BOT_TOKEN
 
 
-bot = telebot.TeleBot(BOT_TOKEN)
+# bot = telebot.TeleBot(BOT_TOKEN)
 
 user_response = {}
 
@@ -77,7 +79,13 @@ def get_search_content(bot, url, chat_id):
             poster = content.get('poster', {}).get('previewUrl')
             title = content.get('name')
             year = content.get('year')
-            length = content.get('movieLength')
+
+            movieLength = content.get('movieLength')
+            seriesLength = content.get('seriesLength')
+            if seriesLength is None:
+                length = movieLength
+            else:
+                length = seriesLength
 
             genres_data = content.get('genres', [])
             genres = ', '.join(genre.get('name') for genre in genres_data)
@@ -115,5 +123,5 @@ def get_search_content(bot, url, chat_id):
         bot.send_message(chat_id, 'Прости, неполадки, давай еще раз...')
 
 
-if __name__ == '__main__':
-    bot.infinity_polling()
+# if __name__ == '__main__':
+#     bot.infinity_polling()
