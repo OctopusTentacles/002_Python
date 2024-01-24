@@ -550,3 +550,19 @@
 2024-01-24 12:18:22.939 | INFO     | __main__:main_menu:133 - Переход из history в random	| Artem | ID 961741922.
 2024-01-24 12:18:39.271 | INFO     | __main__:main_menu:133 - Переход из random в мульт	| Artem | ID 961741922.
 2024-01-24 12:19:07.570 | INFO     | __main__:main_menu:133 - Переход из random в main	| Artem | ID 961741922.
+2024-01-24 12:23:22.125 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-24 12:23:24.261 | INFO     | __main__:ask_user_buttons:154 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-24 12:23:24.264 | INFO     | __main__:main_menu:133 - Переход из start в random	| Artem | ID 961741922.
+2024-01-24 12:23:34.258 | INFO     | __main__:main_menu:133 - Переход из random в мульт	| Artem | ID 961741922.
+2024-01-24 12:23:58.094 | INFO     | __main__:main_menu:133 - Переход из random в сериал	| Artem | ID 961741922.
+2024-01-24 12:24:29.429 | INFO     | __main__:main_menu:133 - Переход из random в фильм	| Artem | ID 961741922.
+2024-01-24 12:24:47.606 | INFO     | __main__:main_menu:133 - Переход из random в main	| Artem | ID 961741922.
+2024-01-24 12:24:51.689 | INFO     | history:get_user_history:70 - История запросов пользователя Artem: ['2024-01-24 12:24:47\t| user: Artem\t| id: 961741922\t| main', '2024-01-24 12:24:29\t| user: Artem\t| id: 961741922\t| фильм', '2024-01-24 12:23:58\t| user: Artem\t| id: 961741922\t| сериал', '2024-01-24 12:23:34\t| user: Artem\t| id: 961741922\t| мульт', '2024-01-24 12:23:24\t| user: Artem\t| id: 961741922\t| random', '2024-01-24 12:23:21\t| user: Artem\t| id: 961741922\t| start', '2024-01-24 12:19:07\t| user: Artem\t| id: 961741922\t| main', '2024-01-24 12:18:39\t| user: Artem\t| id: 961741922\t| мульт', '2024-01-24 12:18:22\t| user: Artem\t| id: 961741922\t| random', '2024-01-24 12:17:56\t| user: Artem\t| id: 961741922\t| history']
+2024-01-24 12:24:52.156 | INFO     | __main__:main_menu:133 - Переход из random в history	| Artem | ID 961741922.
+2024-01-24 12:30:30.238 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-24 12:30:33.653 | INFO     | __main__:ask_user_buttons:154 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-24 12:30:33.660 | INFO     | __main__:main_menu:133 - Переход из start в random	| Artem | ID 961741922.
+2024-01-24 12:30:46.346 | INFO     | __main__:main_menu:133 - Переход из random в фильм	| Artem | ID 961741922.
+2024-01-24 12:31:15.486 | INFO     | __main__:main_menu:133 - Переход из random в сериал	| Artem | ID 961741922.
+2024-01-24 12:31:30.919 | INFO     | __main__:main_menu:133 - Переход из random в мульт	| Artem | ID 961741922.
+2024-01-24 12:31:54.722 | INFO     | __main__:main_menu:133 - Переход из random в main	| Artem | ID 961741922.

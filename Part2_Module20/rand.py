@@ -80,32 +80,52 @@ def get_rand_content(chat_id, url):
 
         for content in contents:
             poster = content.get('poster', {}).get('previewUrl')
-            backdrop = content.get('backdrop', {}).get('previewUrl')
+            # backdrop = content.get('backdrop', {}).get('previewUrl')
 
             tittle = content.get('name')
             year = content.get('year')
 
-            about = content.get('description')
-            rate = content.get('rating', {}).get('kp')
+            movieLength = content.get('movieLength')
+            seriesLength = content.get('seriesLength')
+            if seriesLength is None:
+                length = movieLength
+            else:
+                length = seriesLength
+
+            genres_data = content.get('genres', [])
+            genres = ', '.join(genre.get('name') for genre in genres_data)
+
+            countries_data = content.get('countries',  [])
+            countries = ', '.join(country.get('name') for country in countries_data)
+
+            description = content.get('description')
+
+            rate_kp = content.get('rating', {}).get('kp')
+            rate_imdb = content.get('rating', {}).get('imdb')
 
         if tittle not in cached_content:
             cached_content.add(tittle)
 
             message_text = (
                     f'{tittle} ({year})\n\n'
-                    f'{about}\n\n'
-                    f'КП: {rate}'
+                    f'жанр: {genres}.\n\n'
+                    f'страна: {countries}.\n\n'
+                    f'{description}\n\n'
+                    f'длительность: {length} мин.\n\n'
+                    f'КП: {rate_kp}\n'
+                    f'IMDB: {rate_imdb}'
                 )
             poster_io = BytesIO(requests.get(poster).content)
-            backdrop_io = BytesIO(requests.get(backdrop).content)
+            # backdrop_io = BytesIO(requests.get(backdrop).content)
             
-            media = [
-                telebot.types.InputMediaPhoto(media=poster_io),
-                telebot.types.InputMediaPhoto(media=backdrop_io),
-            ]
+            # media = [
+            #     telebot.types.InputMediaPhoto(media=poster_io),
+            #     telebot.types.InputMediaPhoto(media=backdrop_io),
+            # ]
 
-            bot.send_media_group(chat_id, media)
-            bot.send_message(chat_id, message_text)
+            # bot.send_media_group(chat_id, media)
+            # bot.send_message(chat_id, message_text)
+            bot.send_photo(chat_id, poster_io, caption=message_text)
 
     else:
         logger.error(
