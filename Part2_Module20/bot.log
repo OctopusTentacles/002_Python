@@ -648,3 +648,15 @@
 2024-01-25 14:38:00.472 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
 2024-01-25 14:38:09.620 | INFO     | search_movie:create_url:39 - Пользователь ищет фильм по названию девушки приглашают кавалеров куравлев.
 2024-01-25 14:38:15.569 | INFO     | search_movie:get_content_from_url:172 - Пользователь получил данные по: Девушки.
+2024-01-25 15:22:12.163 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-25 15:22:17.002 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-25 15:22:23.657 | INFO     | search_movie:create_url:39 - Пользователь ищет фильм по названию фуриоса.
+2024-01-25 15:23:53.995 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-25 15:23:55.716 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-25 15:24:07.233 | INFO     | search_movie:create_url:39 - Пользователь ищет фильм по названию фуриоса.
+2024-01-25 15:24:55.793 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-25 15:24:58.124 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-25 15:25:05.787 | INFO     | search_movie:create_url:39 - Пользователь ищет фильм по названию фуриоса.
+2024-01-25 15:25:10.194 | INFO     | search_movie:get_content_from_url:174 - Пользователь получил данные по: Фуриоса: Хроники Безумного Макса.
+2024-01-25 15:25:22.681 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-25 15:25:35.959 | INFO     | search_movie:create_url:39 - Пользователь ищет фильм по названию фуриоса.

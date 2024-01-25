@@ -2,6 +2,7 @@
 
 import requests
 import telebot
+import base64
 
 from io import BytesIO
 
@@ -80,12 +81,19 @@ def search_content(bot, url, chat_id):
             if id not in cached_content:
                 url = f'https://api.kinopoisk.dev/v1.4/movie/{id}'
 
-                print(url)
-                get_content_from_url(bot, url, chat_id)
+                get_content_from_url(bot, url, chat_id, id)
+            else:
+                cached_data = cached_content.get(id, {})
+                cached_poster = cached_data.get('poster', '')
+                cachaed_text = cached_data.get('text', '')
+
+                # декодирование постера:
+                poster_bytes = base64.b64decode(cached_poster)
+                poster_io = BytesIO(poster_bytes)
 
 
 
-def get_content_from_url(bot, url, chat_id):
+def get_content_from_url(bot, url, chat_id, id):
 
     headers = {"accept": "application/json", "X-API-KEY": API_KEY}
     response = requests.get(url, headers=headers)
@@ -119,7 +127,6 @@ def get_content_from_url(bot, url, chat_id):
 
 
             persons_data = content.get('persons', [])
-            # получаем имена:
             directors = ', '.join(
                 person['name'] for person in persons_data 
                 if person['profession'] == 'режиссеры' and
@@ -130,10 +137,6 @@ def get_content_from_url(bot, url, chat_id):
                 if person['profession'] == 'актеры' and
                 person['name'] is not None
             )
-            # получаем имена:
-            # directors = ', '.join(director.get('name') for director in directors_data)
-            # actors = ', '.join(actor.get('name') for actor in actors_data)
-
 
             genres_data = content.get('genres', [])
             genres = ', '.join(genre.get('name') for genre in genres_data)
@@ -168,17 +171,23 @@ def get_content_from_url(bot, url, chat_id):
                 f'трейлер: {trailer}'
             )
 
+            # положить в кэш по id - message_text и poster:
+            poster_b64 = base64.b64encode(image_io.getvalue()).decode('utf-8')
+            cached_content[id] = {
+                'poster': poster_b64,
+                'text': message_text
+            }
+
             bot.send_photo(chat_id, image_io, caption=message_text)
             logger.info(
                 f'Пользователь получил данные по: {title}.'
             )
 
-
     else:
+        bot.send_message(chat_id, 'Прости, неполадки, давай еще раз...')
         logger.error(
             f'Ошибка при получении данных. Код ответа: {response.status_code}'
         )
-        bot.send_message(chat_id, 'Прости, неполадки, давай еще раз...')
 
 
 # if __name__ == '__main__':
