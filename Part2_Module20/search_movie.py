@@ -75,13 +75,17 @@ def search_content(bot, url, chat_id):
         data = response.json()
         contents = data.get('docs')
 
+        # получаем id для получения полной информации и кэширования:
         for content in contents:
             id = content.get('id')
 
+            # если id нет в кэше 
+            # создаем ссылку с полной инфо и отправляем на разбор:
             if id not in cached_content:
                 url = f'https://api.kinopoisk.dev/v1.4/movie/{id}'
 
                 get_content_from_url(bot, url, chat_id, id)
+            
             else:
                 cached_data = cached_content.get(id, {})
                 cached_poster = cached_data.get('poster', '')
@@ -90,10 +94,16 @@ def search_content(bot, url, chat_id):
                 # декодирование постера:
                 poster_bytes = base64.b64decode(cached_poster)
                 poster_io = BytesIO(poster_bytes)
+                bot.send_photo(chat_id, poster_io, caption=cachaed_text)
+                logger.info(
+                    f'Пользователь получил данные из кэша.'
+                )
+
 
 
 
 def get_content_from_url(bot, url, chat_id, id):
+    """"""
 
     headers = {"accept": "application/json", "X-API-KEY": API_KEY}
     response = requests.get(url, headers=headers)

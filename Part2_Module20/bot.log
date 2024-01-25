@@ -660,3 +660,10 @@
 2024-01-25 15:25:10.194 | INFO     | search_movie:get_content_from_url:174 - Пользователь получил данные по: Фуриоса: Хроники Безумного Макса.
 2024-01-25 15:25:22.681 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
 2024-01-25 15:25:35.959 | INFO     | search_movie:create_url:39 - Пользователь ищет фильм по названию фуриоса.
+2024-01-25 15:50:14.029 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-25 15:50:17.171 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-25 15:50:31.973 | INFO     | search_movie:create_url:40 - Пользователь ищет фильм по названию фуриоса.
+2024-01-25 15:50:43.177 | INFO     | search_movie:get_content_from_url:187 - Пользователь получил данные по: Фуриоса: Хроники Безумного Макса.
+2024-01-25 15:50:57.396 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-25 15:51:07.527 | INFO     | search_movie:create_url:40 - Пользователь ищет фильм по названию фуриоса.
+2024-01-25 15:51:09.332 | INFO     | search_movie:search_content:94 - Пользователь получил данные из кэша.
