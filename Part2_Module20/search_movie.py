@@ -146,6 +146,12 @@ def get_content_from_url(bot, url, chat_id):
             rate_kp = content.get('rating', {}).get('kp')
             rate_imdb = content.get('rating', {}).get('imdb')
 
+            trailers_data = content.get('videos', {}).get('trailers', [])
+            if trailers_data:
+                trailer = trailers_data[0].get('url', '')
+            else:
+                trailer = 'не сняли'
+
 
             image_io = BytesIO(requests.get(poster).content)
             message_text = (
@@ -158,7 +164,8 @@ def get_content_from_url(bot, url, chat_id):
                 f'{description}.\n\n'
                 f'длительность: {length} мин.\n\n'
                 f'КП: {rate_kp}\n'
-                f'IMDB: {rate_imdb}'
+                f'IMDB: {rate_imdb}\n\n'
+                f'трейлер: {trailer}'
             )
 
             bot.send_photo(chat_id, image_io, caption=message_text)

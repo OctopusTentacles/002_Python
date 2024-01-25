@@ -632,3 +632,19 @@
 2024-01-25 14:11:15.245 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
 2024-01-25 14:11:22.043 | INFO     | search_movie:create_url:39 - Пользователь ищет фильм по названию джон уик 4.
 2024-01-25 14:11:29.385 | INFO     | search_movie:get_content_from_url:165 - Пользователь получил данные по: Джон Уик 4.
+2024-01-25 14:30:55.458 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-25 14:30:58.061 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-25 14:31:06.561 | INFO     | search_movie:create_url:39 - Пользователь ищет фильм по названию фуриоса.
+2024-01-25 14:31:17.308 | INFO     | search_movie:get_content_from_url:172 - Пользователь получил данные по: Фуриоса: Хроники Безумного Макса.
+2024-01-25 14:33:33.697 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-25 14:33:38.328 | INFO     | search_movie:create_url:39 - Пользователь ищет фильм по названию девушки приглашают кавалеров.
+2024-01-25 14:33:42.321 | INFO     | search_movie:get_content_from_url:172 - Пользователь получил данные по: Девушки.
+2024-01-25 14:35:00.012 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-25 14:35:03.407 | INFO     | search_movie:create_url:39 - Пользователь ищет фильм по названию девушки приглашают кавалеров.
+2024-01-25 14:35:06.644 | INFO     | search_movie:get_content_from_url:172 - Пользователь получил данные по: Девушки.
+2024-01-25 14:35:37.917 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-25 14:35:46.478 | INFO     | search_movie:create_url:39 - Пользователь ищет фильм по названию ветряная река.
+2024-01-25 14:35:50.101 | INFO     | search_movie:get_content_from_url:172 - Пользователь получил данные по: Ветреная река.
+2024-01-25 14:38:00.472 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-25 14:38:09.620 | INFO     | search_movie:create_url:39 - Пользователь ищет фильм по названию девушки приглашают кавалеров куравлев.
+2024-01-25 14:38:15.569 | INFO     | search_movie:get_content_from_url:172 - Пользователь получил данные по: Девушки.
