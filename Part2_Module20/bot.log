@@ -618,3 +618,17 @@
 2024-01-24 16:54:04.246 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
 2024-01-24 16:54:11.931 | INFO     | search_movie:create_url:39 - Пользователь ищет фильм по названию джон уик 3.
 2024-01-24 16:54:15.274 | INFO     | search_movie:get_content_from_url:161 - Пользователь получил данные по: Джон Уик 3.
+2024-01-25 13:44:28.665 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-25 13:44:32.248 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-25 13:44:44.025 | INFO     | search_movie:create_url:39 - Пользователь ищет фильм по названию джон уик 4.
+2024-01-25 13:57:51.156 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-25 13:57:52.849 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-25 13:58:00.035 | INFO     | search_movie:create_url:39 - Пользователь ищет фильм по названию джон уик 4.
+2024-01-25 14:02:36.231 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-25 14:02:38.166 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-25 14:02:47.689 | INFO     | search_movie:create_url:39 - Пользователь ищет фильм по названию джон уик 4.
+2024-01-25 14:02:54.139 | INFO     | search_movie:get_content_from_url:162 - Пользователь получил данные по: Джон Уик 4.
+2024-01-25 14:11:13.218 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-25 14:11:15.245 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-25 14:11:22.043 | INFO     | search_movie:create_url:39 - Пользователь ищет фильм по названию джон уик 4.
+2024-01-25 14:11:29.385 | INFO     | search_movie:get_content_from_url:165 - Пользователь получил данные по: Джон Уик 4.

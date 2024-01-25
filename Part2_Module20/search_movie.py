@@ -100,7 +100,13 @@ def get_content_from_url(bot, url, chat_id):
             poster = content.get('poster', {}).get('previewUrl')
             title = content.get('name')
             year = content.get('year')
-            premiere = content.get('premiere', {}.get('world'))
+
+            premiere_data = content.get('premiere', {}).get('world')
+            if premiere_data:
+                premiere = premiere_data.split('T')[0]
+            else:
+                premiere = 'неизвестно'
+               
 
             movieLength = content.get('movieLength')
             seriesLength = content.get('seriesLength')
