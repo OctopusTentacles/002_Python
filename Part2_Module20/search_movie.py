@@ -91,15 +91,21 @@ def search_content(bot, url, chat_id):
                 cached_poster = cached_data.get('poster', '')
                 cachaed_text = cached_data.get('text', '')
 
-                if 
-                # декодирование постера:
-                poster_bytes = base64.b64decode(cached_poster)
-                poster_io = BytesIO(poster_bytes)
-                bot.send_photo(chat_id, poster_io, caption=cachaed_text)
-                logger.info(
-                    f'Пользователь получил данные из кэша.'
-                )
-
+                if cached_poster != None:
+                    # декодирование постера:
+                    poster_bytes = base64.b64decode(cached_poster)
+                    poster_io = BytesIO(poster_bytes)
+                    bot.send_photo(chat_id, poster_io, caption=cachaed_text)
+                    logger.info(
+                        f'Пользователь получил данные из кэша.'
+                    )
+                else:
+                    bot.send_message(
+                        chat_id, f'ПРОСТИ, ПОСТЕРА НЕТ!\n\n{cachaed_text}'
+                    )
+                    logger.info(
+                        f'Пользователь получил данные из кэша без постера.'
+                    )
 
 
 
@@ -208,8 +214,10 @@ def get_content_from_url(bot, url, chat_id, id):
                     'poster': None,
                     'text': message_text
                 }
-                bot.send_message(chat_id, f'Прости, ПОСТЕРА нет!\n\n', message_text)
-
+                bot.send_message(chat_id, f'ПРОСТИ, ПОСТЕРА НЕТ!\n\n{message_text}')
+                logger.info(
+                    f'Пользователь получил данные БЕЗ ПОСТЕРА по: {title}.'
+                )
 
     else:
         bot.send_message(chat_id, 'Прости, неполадки, давай еще раз...')

@@ -701,3 +701,29 @@
 2024-01-25 16:51:24.348 | INFO     | search_movie:create_url:40 - Пользователь ищет фильм по названию Лорды раздевалки.
 2024-01-25 16:52:03.383 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
 2024-01-25 16:52:13.928 | INFO     | search_movie:create_url:40 - Пользователь ищет фильм по названию лорды раздевалки.
+2024-01-26 14:19:54.493 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-26 14:19:57.105 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-26 14:20:02.666 | INFO     | search_movie:create_url:40 - Пользователь ищет фильм по названию фуриоса.
+2024-01-26 14:20:07.342 | INFO     | search_movie:get_content_from_url:209 - Пользователь получил данные по: Фуриоса: Хроники Безумного Макса.
+2024-01-26 14:20:11.904 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-26 14:20:17.580 | INFO     | search_movie:create_url:40 - Пользователь ищет фильм по названию фуриоса.
+2024-01-26 14:20:19.094 | INFO     | search_movie:search_content:99 - Пользователь получил данные из кэша.
+2024-01-26 14:20:22.965 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-26 14:20:26.549 | INFO     | search_movie:create_url:40 - Пользователь ищет фильм по названию Лорды раздевалки.
+2024-01-26 14:21:20.868 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-26 14:21:24.533 | INFO     | search_movie:create_url:40 - Пользователь ищет фильм по названию лорды раздевалки.
+2024-01-26 14:22:52.558 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-26 14:22:58.460 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-26 14:23:00.842 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-26 14:23:06.368 | INFO     | search_movie:create_url:40 - Пользователь ищет фильм по названию лорды.
+2024-01-26 14:26:01.868 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-26 14:26:06.184 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-26 14:26:14.063 | INFO     | search_movie:create_url:40 - Пользователь ищет фильм по названию лорды раздевалки.
+2024-01-26 14:26:37.460 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-26 14:26:44.782 | INFO     | search_movie:create_url:40 - Пользователь ищет фильм по названию лорды раздевалки.
+2024-01-26 14:26:45.933 | INFO     | search_movie:search_content:106 - Пользователь получил данные из кэша без постера.
+2024-01-26 14:26:56.159 | INFO     | history:get_user_history:70 - История запросов пользователя Artem: ['2024-01-26 14:26:37\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-26 14:26:06\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-26 14:26:01\t| user: Artem\t| id: 961741922\t| start', '2024-01-26 14:23:00\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-26 14:22:57\t| user: Artem\t| id: 961741922\t| start', '2024-01-26 14:22:52\t| user: Artem\t| id: 961741922\t| start', '2024-01-26 14:21:20\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-26 14:20:22\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-26 14:20:11\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-26 14:19:57\t| user: Artem\t| id: 961741922\t| search_movie']
+2024-01-26 14:26:56.667 | INFO     | __main__:main_menu:133 - Переход из search_movie в history	| Artem | ID 961741922.
+2024-01-26 14:27:00.339 | INFO     | __main__:ask_user_buttons:154 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-26 14:27:00.343 | INFO     | __main__:main_menu:133 - Переход из history в random	| Artem | ID 961741922.
+2024-01-26 14:27:05.377 | INFO     | __main__:main_menu:133 - Переход из random в мульт	| Artem | ID 961741922.
