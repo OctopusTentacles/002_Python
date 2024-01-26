@@ -89,22 +89,31 @@ def search_content(bot, url, chat_id):
             else:
                 cached_data = cached_content.get(id, {})
                 cached_poster = cached_data.get('poster', '')
-                cachaed_text = cached_data.get('text', '')
+                cachaed_text_1 = cached_data.get('text_1', '')
+                cachaed_text_2 = cached_data.get('text_2', '')
 
                 if cached_poster != None:
                     # декодирование постера:
                     poster_bytes = base64.b64decode(cached_poster)
                     poster_io = BytesIO(poster_bytes)
-                    bot.send_photo(chat_id, poster_io, caption=cachaed_text)
+                    bot.send_photo(chat_id, poster_io, caption=cachaed_text_1)
+                    bot.send_message(chat_id, cachaed_text_2[:4096])
+                    if len(cachaed_text_2) > 4096:
+                        bot.send_message(chat_id, cachaed_text_2[4096:])
+
                     logger.info(
                         f'Пользователь получил данные из кэша.'
                     )
                 else:
                     bot.send_message(
-                        chat_id, f'ПРОСТИ, ПОСТЕРА НЕТ!\n\n{cachaed_text}'
+                        chat_id, f'ПРОСТИ, ПОСТЕРА НЕТ!\n\n{cachaed_text_1}'
                     )
+                    bot.send_message(chat_id, cachaed_text_2[:4096])
+                    if len(cachaed_text_2) > 4096:
+                        bot.send_message(chat_id, cachaed_text_2[4096:])
+
                     logger.info(
-                        f'Пользователь получил данные из кэша без постера.'
+                        f'Пользователь получил данные из кэша БЕЗ ПОСТЕРА.'
                     )
 
 
@@ -182,11 +191,13 @@ def get_content_from_url(bot, url, chat_id, id):
                 trailer = 'не сняли'
 
 
-            message_text = (
+            message_text_1 = (
                 f'{title}   ({year})\n\n'
                 f'премьера: {premiere}\n\n'
                 f'жанр: {genres}.\n\n'
                 f'страна: {countries}.\n\n'
+            )
+            message_text_2 = (
                 f'режиссер: {directors}\n'
                 f'актеры: {actors}\n\n'
                 f'{description}.\n\n'
@@ -202,19 +213,27 @@ def get_content_from_url(bot, url, chat_id, id):
                 poster_b64 = base64.b64encode(image_io.getvalue()).decode('utf-8')
                 cached_content[id] = {
                     'poster': poster_b64,
-                    'text': message_text
+                    'text_1': message_text_1,
+                    'text_2': message_text_2
                 }
 
-                bot.send_photo(chat_id, image_io, caption=message_text)
+                bot.send_photo(chat_id, image_io, caption=message_text_1)
+                bot.send_message(chat_id, message_text_2[:4096])
+                if len(message_text_2) > 4096:
+                    bot.send_message(chat_id, message_text_2[4096:])
                 logger.info(
                     f'Пользователь получил данные по: {title}.'
                 )
             else:
                 cached_content[id] = {
                     'poster': None,
-                    'text': message_text
+                    'text_1': message_text_1,
+                    'text_2': message_text_2
                 }
-                bot.send_message(chat_id, f'ПРОСТИ, ПОСТЕРА НЕТ!\n\n{message_text}')
+                bot.send_message(chat_id, f'ПРОСТИ, ПОСТЕРА НЕТ!\n\n{message_text_1}')
+                bot.send_message(chat_id, message_text_2[:4096])
+                if len(message_text_2) > 4096:
+                    bot.send_message(chat_id, message_text_2[4096:])
                 logger.info(
                     f'Пользователь получил данные БЕЗ ПОСТЕРА по: {title}.'
                 )
