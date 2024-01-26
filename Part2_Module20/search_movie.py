@@ -91,6 +91,7 @@ def search_content(bot, url, chat_id):
                 cached_poster = cached_data.get('poster', '')
                 cachaed_text = cached_data.get('text', '')
 
+                if 
                 # декодирование постера:
                 poster_bytes = base64.b64decode(cached_poster)
                 poster_io = BytesIO(poster_bytes)
@@ -103,7 +104,16 @@ def search_content(bot, url, chat_id):
 
 
 def get_content_from_url(bot, url, chat_id, id):
-    """"""
+    """Получает ссылку с полной информацией о контенте.
+    Берет нужные элементы и формирует сообщение для пользователя.
+    Также ложит данные в кэш.
+        
+    Args:
+        bot (TeleBot): Экземпляр бота.
+        url: полная ссылка на контент.
+        chat_id: .
+        id: номер контента.
+    """
 
     headers = {"accept": "application/json", "X-API-KEY": API_KEY}
     response = requests.get(url, headers=headers)
@@ -166,7 +176,6 @@ def get_content_from_url(bot, url, chat_id, id):
                 trailer = 'не сняли'
 
 
-            image_io = BytesIO(requests.get(poster).content)
             message_text = (
                 f'{title}   ({year})\n\n'
                 f'премьера: {premiere}\n\n'
@@ -181,17 +190,26 @@ def get_content_from_url(bot, url, chat_id, id):
                 f'трейлер: {trailer}'
             )
 
-            # положить в кэш по id - message_text и poster:
-            poster_b64 = base64.b64encode(image_io.getvalue()).decode('utf-8')
-            cached_content[id] = {
-                'poster': poster_b64,
-                'text': message_text
-            }
+            if poster:
+                image_io = BytesIO(requests.get(poster).content)
+                # положить в кэш по id - message_text и poster:
+                poster_b64 = base64.b64encode(image_io.getvalue()).decode('utf-8')
+                cached_content[id] = {
+                    'poster': poster_b64,
+                    'text': message_text
+                }
 
-            bot.send_photo(chat_id, image_io, caption=message_text)
-            logger.info(
-                f'Пользователь получил данные по: {title}.'
-            )
+                bot.send_photo(chat_id, image_io, caption=message_text)
+                logger.info(
+                    f'Пользователь получил данные по: {title}.'
+                )
+            else:
+                cached_content[id] = {
+                    'poster': None,
+                    'text': message_text
+                }
+                bot.send_message(chat_id, f'Прости, ПОСТЕРА нет!\n\n', message_text)
+
 
     else:
         bot.send_message(chat_id, 'Прости, неполадки, давай еще раз...')
