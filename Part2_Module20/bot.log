@@ -788,3 +788,35 @@
 2024-01-26 15:31:40.572 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
 2024-01-26 15:31:44.533 | INFO     | search_movie:create_url:40 - Пользователь ищет фильм по названию Лига справедливости: Кризис на бесконечных землях.
 2024-01-26 15:31:48.431 | INFO     | search_movie:get_content_from_url:224 - Пользователь получил данные по: Лига справедливости: Кризис на бесконечных землях. Часть 1.
+2024-01-26 15:48:13.196 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-26 15:48:15.374 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-26 15:48:24.224 | INFO     | search_movie:create_url:36 - Пользователь ищет фильм по названию терминатор 4.
+2024-01-26 15:48:29.501 | INFO     | search_movie:get_content_from_url:219 - Пользователь получил данные по: Терминатор: Да придёт спаситель.
+2024-01-26 15:49:29.985 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-26 15:49:53.576 | INFO     | search_movie:create_url:36 - Пользователь ищет фильм по названию 1 + 1.
+2024-01-26 15:49:55.667 | INFO     | search_movie:get_content_from_url:232 - Пользователь получил данные БЕЗ ПОСТЕРА по: None.
+2024-01-26 15:50:18.780 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-26 15:50:26.133 | INFO     | search_movie:create_url:36 - Пользователь ищет фильм по названию один плюс один.
+2024-01-26 15:50:30.131 | INFO     | search_movie:get_content_from_url:219 - Пользователь получил данные по: Пара на праздники.
+2024-01-26 15:50:52.624 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-26 15:50:56.915 | INFO     | search_movie:create_url:36 - Пользователь ищет фильм по названию 1+1.
+2024-01-26 15:51:00.294 | INFO     | search_movie:get_content_from_url:219 - Пользователь получил данные по: 1+1.
+2024-01-26 15:52:15.258 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-26 15:52:17.246 | INFO     | search_movie:create_url:36 - Пользователь ищет фильм по названию терминатор 4.
+2024-01-26 15:52:19.251 | INFO     | search_movie:search_content:100 - Пользователь получил данные из кэша.
+2024-01-26 16:37:44.153 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-26 16:37:45.665 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-26 16:37:53.651 | INFO     | search_movie:create_url:36 - Пользователь ищет фильм по названию женщины.
+2024-01-26 16:37:59.267 | INFO     | search_movie:get_content_from_url:220 - Пользователь получил данные по: Женщины.
+2024-01-26 16:38:27.187 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-26 16:38:36.242 | INFO     | search_movie:create_url:36 - Пользователь ищет фильм по названию терминатор да придет спаситель.
+2024-01-26 16:38:40.457 | INFO     | search_movie:get_content_from_url:220 - Пользователь получил данные по: Терминатор: Да придет спаситель — Анимационный сериал.
+2024-01-26 16:39:02.218 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-26 16:39:07.713 | INFO     | search_movie:create_url:36 - Пользователь ищет фильм по названию терминатор 4.
+2024-01-26 16:39:11.820 | INFO     | search_movie:get_content_from_url:220 - Пользователь получил данные по: Терминатор: Да придёт спаситель.
+2024-01-26 16:40:19.348 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-26 16:40:31.415 | INFO     | search_movie:create_url:36 - Пользователь ищет фильм по названию дамы приглашают кавалеров.
+2024-01-26 16:40:34.904 | INFO     | search_movie:get_content_from_url:220 - Пользователь получил данные по: Дамы приглашают кавалеров.
+2024-01-26 16:44:03.125 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-26 16:44:10.303 | INFO     | search_movie:create_url:36 - Пользователь ищет фильм по названию ветреная река.
+2024-01-26 16:44:13.750 | INFO     | search_movie:get_content_from_url:220 - Пользователь получил данные по: Ветреная река.

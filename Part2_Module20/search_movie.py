@@ -1,25 +1,22 @@
 """Модуль поиска контента по названию."""
 
-import requests
-import telebot
 import base64
-
 from io import BytesIO
-
-from telebot.types import CallbackQuery
 from urllib.parse import quote
 
+import requests
+import telebot
+from telebot.types import CallbackQuery
 
 from buttons import get_main_keyboard
+from config import API_KEY
 from logger import logger
 from models import UserRequest
-
-from config import API_KEY
 
 cached_content = {}
 
 
-def user_input_title(bot: telebot, call: CallbackQuery):
+def user_input_title(bot: telebot, call: CallbackQuery) -> None:
     """отправляет сообщение пользователю и регистрирует следующий шаг 
     обработчика ввода.
     
@@ -32,11 +29,10 @@ def user_input_title(bot: telebot, call: CallbackQuery):
     bot.register_next_step_handler(call.message, create_url, bot)
 
 
-def create_url(call, bot):
+def create_url(call: CallbackQuery, bot: telebot) -> None:
     """Обработчик ввода, формирует URL для поиска фильма."""
 
     chat_id = call.chat.id
-    
     logger.info(
         f'Пользователь ищет фильм по названию {call.text.strip()}.'
     )
@@ -57,7 +53,7 @@ def create_url(call, bot):
     bot.send_message(chat_id, "ГЛАВНОЕ МЕНЮ", reply_markup=keyboard)
 
 
-def search_content(bot, url, chat_id):
+def search_content(bot: telebot, url: str, chat_id: int) -> str:
     """Получает ссылку с краткой информацией о контенте из слов пользователя.
     Берем из нее ID и формируем ссылку о контенте с полной информацией.
         
@@ -115,10 +111,14 @@ def search_content(bot, url, chat_id):
                     logger.info(
                         f'Пользователь получил данные из кэша БЕЗ ПОСТЕРА.'
                     )
+    else:
+        bot.send_message(chat_id, 'Прости, неполадки, давай еще раз...')
+        logger.error(
+            f'Ошибка при получении данных. Код ответа: {response.status_code}'
+        )
 
 
-
-def get_content_from_url(bot, url, chat_id, id):
+def get_content_from_url(bot: telebot, url: str, chat_id: int, id: int) -> None:
     """Получает ссылку с полной информацией о контенте.
     Берет нужные элементы и формирует сообщение для пользователя.
     Также ложит данные в кэш.
@@ -129,7 +129,6 @@ def get_content_from_url(bot, url, chat_id, id):
         chat_id: .
         id: номер контента.
     """
-
     headers = {"accept": "application/json", "X-API-KEY": API_KEY}
     response = requests.get(url, headers=headers)
 
@@ -138,8 +137,6 @@ def get_content_from_url(bot, url, chat_id, id):
         contents = [data]
 
         for content in contents:
-
-
             poster = content.get('poster', {}).get('previewUrl')
             title = content.get('name')
             year = content.get('year')
@@ -149,7 +146,6 @@ def get_content_from_url(bot, url, chat_id, id):
                 premiere = premiere_data.split('T')[0]
             else:
                 premiere = 'неизвестно'
-               
 
             movieLength = content.get('movieLength')
             seriesLength = content.get('seriesLength')
@@ -159,7 +155,6 @@ def get_content_from_url(bot, url, chat_id, id):
                 length = movieLength
             else:
                 length = seriesLength
-
 
             persons_data = content.get('persons', [])
             directors = ', '.join(
@@ -196,14 +191,15 @@ def get_content_from_url(bot, url, chat_id, id):
                 f'премьера: {premiere}\n\n'
                 f'жанр: {genres}.\n\n'
                 f'страна: {countries}.\n\n'
-            )
-            message_text_2 = (
-                f'режиссер: {directors}\n'
+                f'режиссер: {directors}\n\n'
                 f'актеры: {actors}\n\n'
-                f'{description}.\n\n'
                 f'длительность: {length} мин.\n\n'
                 f'КП: {rate_kp}\n'
                 f'IMDB: {rate_imdb}\n\n'
+
+            )
+            message_text_2 = (
+                f'описание:\n{description}.\n\n'
                 f'трейлер: {trailer}'
             )
 
@@ -243,7 +239,3 @@ def get_content_from_url(bot, url, chat_id, id):
         logger.error(
             f'Ошибка при получении данных. Код ответа: {response.status_code}'
         )
-
-
-# if __name__ == '__main__':
-#     bot.infinity_polling()
