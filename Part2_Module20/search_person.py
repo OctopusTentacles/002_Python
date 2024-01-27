@@ -138,6 +138,7 @@ def get_name_from_url(bot: telebot, url: str, chat_id: int, id: int) -> None:
             title = content.get('name')
             age = content.get('age')
             growth = content.get('growth')
+            countAwards = content.get('countAwards')
 
             birthday_data = content.get('birthday')
             if birthday_data:
@@ -164,7 +165,52 @@ def get_name_from_url(bot: telebot, url: str, chat_id: int, id: int) -> None:
             )
 
 
+# "death": null,
+# "deathPlace": [],
+            
 
+            message_text_1 = (
+                f'{title}   ({age})\n\n'
+                f'дата рождения: {birthday}\n\n'
+                f'место раждения: {birthPlace}\n\n'
+                f'рост: {growth}\n\n'
+                f'профессия: {profession}\n\n'
+                f'количество наград: {countAwards}'
+            )
+            message_text_2 = (
+                f'{facts}'
+            )
+
+            if poster:
+                image_io = BytesIO(requests.get(poster).content)
+                # положить в кэш по id - message_text и poster:
+                poster_64 = base64.b64encode(image_io.getvalue()).decode('utf-8')
+                cached_names[id] = {
+                    'poster': poster_64,
+                    'text_1': message_text_1,
+                    'text_2': message_text_2
+                }
+
+                bot.send_photo(chat_id, image_io, caption=message_text_1)
+                bot.send_message(chat_id, message_text_2[:4096])
+                if len(message_text_2) > 4096:
+                    bot.send_message(chat_id, message_text_2[4096:])
+                logger.info(
+                    f'Пользователь получил данные по: {title}.'
+                )
+            else:
+                cached_names[id] = {
+                    'poster': None,
+                    'text_1': message_text_1,
+                    'text_2': message_text_2
+                }
+                bot.send_message(chat_id, f'ПРОСТИ, ФОТО НЕТ!\n\n{message_text_1}')
+                bot.send_message(chat_id, message_text_2[:4096])
+                if len(message_text_2) > 4096:
+                    bot.send_message(chat_id, message_text_2[4096:])
+                logger.info(
+                    f'Пользователь получил данные БЕЗ ФОТО по: {title}.'
+                )
 
 
     else:
