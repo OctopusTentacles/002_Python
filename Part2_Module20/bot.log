@@ -820,3 +820,7 @@
 2024-01-26 16:44:03.125 | INFO     | __main__:main_menu:133 - Переход из search_movie в search_movie	| Artem | ID 961741922.
 2024-01-26 16:44:10.303 | INFO     | search_movie:create_url:36 - Пользователь ищет фильм по названию ветреная река.
 2024-01-26 16:44:13.750 | INFO     | search_movie:get_content_from_url:220 - Пользователь получил данные по: Ветреная река.
+2024-01-26 16:46:15.498 | INFO     | __main__:welcome:59 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-26 16:46:17.825 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-01-26 16:46:24.781 | INFO     | search_movie:create_url:36 - Пользователь ищет фильм по названию песня имен.
+2024-01-26 16:46:29.263 | INFO     | search_movie:get_content_from_url:220 - Пользователь получил данные по: Песня имен.
