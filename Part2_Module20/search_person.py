@@ -59,7 +59,7 @@ def search_name(bot: telebot, url: str, chat_id: int) -> str:
         url: .
         chat_id: .
     """
-    bot.send_message(chat_id, 'сейчас найдем')
+    bot.send_message(chat_id, 'сейчас найдем...')
 
     headers = {"accept": "application/json", "X-API-KEY": API_KEY}
     response = requests.get(url, headers=headers)
@@ -147,10 +147,13 @@ def get_name_from_url(bot: telebot, url: str, chat_id: int, id: int) -> None:
                 birthday = 'неизвестно'
 
             birthPlace_data = content.get('birthPlace', [])
-            birthPlace = ', '.join(
-                place['value'] for place in birthPlace_data
-                if place['value'] is not None
-            )
+            if birthday_data:
+                birthPlace = ', '.join(
+                    place['value'] for place in birthPlace_data
+                    if place['value'] is not None
+                )
+            else:
+                birthPlace = 'неизвестно'
 
             profession_data = content.get('profession', [])
             profession = ', '.join(
@@ -159,7 +162,7 @@ def get_name_from_url(bot: telebot, url: str, chat_id: int, id: int) -> None:
             )
 
             facts_data = content.get('facts', [])
-            facts = '\n'.join(
+            facts = '\n\n'.join(
                 fact['value'] for fact in facts_data
                 if fact['value'] is not None
             )

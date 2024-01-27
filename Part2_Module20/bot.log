@@ -824,3 +824,18 @@
 2024-01-26 16:46:17.825 | INFO     | __main__:main_menu:133 - Переход из start в search_movie	| Artem | ID 961741922.
 2024-01-26 16:46:24.781 | INFO     | search_movie:create_url:36 - Пользователь ищет фильм по названию песня имен.
 2024-01-26 16:46:29.263 | INFO     | search_movie:get_content_from_url:220 - Пользователь получил данные по: Песня имен.
+2024-01-27 23:06:39.343 | INFO     | __main__:welcome:60 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-27 23:06:52.303 | INFO     | __main__:main_menu:139 - Переход из start в search_person	| Artem | ID 961741922.
+2024-01-27 23:07:02.877 | INFO     | search_person:create_url:36 - Пользователь ищет человека по имени: киану ривз.
+2024-01-27 23:07:06.281 | INFO     | search_person:get_name_from_url:198 - Пользователь получил данные по: Киану Ривз.
+2024-01-27 23:13:09.284 | INFO     | __main__:main_menu:139 - Переход из search_person в search_person	| Artem | ID 961741922.
+2024-01-27 23:13:18.202 | INFO     | search_person:create_url:36 - Пользователь ищет человека по имени: бред пит.
+2024-01-27 23:19:39.970 | INFO     | __main__:welcome:60 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-27 23:19:42.410 | INFO     | __main__:main_menu:139 - Переход из start в search_person	| Artem | ID 961741922.
+2024-01-27 23:19:46.308 | INFO     | search_person:create_url:36 - Пользователь ищет человека по имени: бред пит.
+2024-01-27 23:21:29.387 | INFO     | __main__:main_menu:139 - Переход из search_person в search_movie	| Artem | ID 961741922.
+2024-01-27 23:21:37.392 | INFO     | search_movie:create_url:36 - Пользователь ищет фильм по названию брэд пит.
+2024-01-27 23:21:40.337 | INFO     | search_movie:get_content_from_url:220 - Пользователь получил данные по: Брэд Уильямс: Веселый размер.
+2024-01-27 23:22:01.173 | INFO     | __main__:main_menu:139 - Переход из search_movie в search_person	| Artem | ID 961741922.
+2024-01-27 23:22:16.959 | INFO     | search_person:create_url:36 - Пользователь ищет человека по имени: брэд питт.
+2024-01-27 23:22:20.166 | INFO     | search_person:get_name_from_url:201 - Пользователь получил данные по: Брэд Питт.
