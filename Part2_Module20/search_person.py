@@ -4,6 +4,7 @@ import base64
 from io import BytesIO
 from urllib.parse import quote
 
+import re
 import requests
 import telebot
 from telebot.types import CallbackQuery
@@ -115,6 +116,28 @@ def search_name(bot: telebot, url: str, chat_id: int) -> str:
         )
 
 
+def make_links_active(text):
+    """В фактах встречаются ссылки типа -
+    <a href="/name/77564/" class="all">Дженнифер Сайм</a> 
+    попробуем их обработать.
+    
+    pattern:
+        <a - начало тега <a.
+        \s+ - один или более пробельных символов.
+        href="([^"]+)" - атрибут href со значением внутри кавычек. 
+        ([^"]+) - захватить любую последовательность символов, 
+                не содержащую двойные кавычки.
+        
+    """
+
+    pattern = re.compile(r'<a\s+href="([^"]+)"\s+class="all">([^<]+)</a>', re.IGNORECASE)
+    facts_data_with_links = re.sub(pattern, r'\2', text)
+    return facts_data_with_links
+
+
+
+
+
 def get_name_from_url(bot: telebot, url: str, chat_id: int, id: int) -> None:
     """Получает ссылку с полной информацией о человеке.
     Берет нужные элементы и формирует сообщение для пользователя.
@@ -162,10 +185,13 @@ def get_name_from_url(bot: telebot, url: str, chat_id: int, id: int) -> None:
             )
 
             facts_data = content.get('facts', [])
-            facts = '\n\n'.join(
-                fact['value'] for fact in facts_data
-                if fact['value'] is not None
-            )
+            if facts_data:
+                facts = '\n\n'.join(
+                    make_links_active(fact['value']) for fact in facts_data
+                    if fact['value'] is not None
+                )
+            else:
+                facts = 'ФАКТЫ - неизвестно'
 
 
 # "death": null,
