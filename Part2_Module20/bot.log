@@ -881,3 +881,24 @@
 2024-01-28 14:36:30.086 | INFO     | __main__:main_menu:139 - Переход из search_movie в search_person	| Artem | ID 961741922.
 2024-01-28 14:36:34.759 | INFO     | search_person:create_url:37 - Пользователь ищет человека по имени: Леонид Куравлёв.
 2024-01-28 14:36:38.714 | INFO     | search_person:get_name_from_url:225 - Пользователь получил данные по: Леонид Куравлёв.
+2024-01-28 14:55:11.202 | INFO     | __main__:welcome:60 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-28 14:55:13.271 | INFO     | __main__:main_menu:139 - Переход из start в search_person	| Artem | ID 961741922.
+2024-01-28 14:55:19.675 | INFO     | search_person:create_url:38 - Пользователь ищет человека по имени: брэд питт.
+2024-01-28 14:55:24.597 | INFO     | search_person:get_name_from_url:243 - Пользователь получил данные по: Брэд Питт.
+2024-01-28 14:55:40.883 | INFO     | __main__:main_menu:139 - Переход из search_person в search_person	| Artem | ID 961741922.
+2024-01-28 14:55:52.921 | INFO     | search_person:create_url:38 - Пользователь ищет человека по имени: киану ривз.
+2024-01-28 14:55:56.960 | INFO     | search_person:get_name_from_url:243 - Пользователь получил данные по: Киану Ривз.
+2024-01-28 15:29:22.491 | INFO     | __main__:welcome:60 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-28 15:29:24.637 | INFO     | __main__:main_menu:139 - Переход из start в search_person	| Artem | ID 961741922.
+2024-01-28 15:29:30.381 | INFO     | search_person:create_url:38 - Пользователь ищет человека по имени: брэд питт.
+2024-01-28 15:29:35.573 | INFO     | search_person:get_name_from_url:229 - Пользователь получил данные по: Брэд Питт.
+2024-01-28 15:35:40.932 | INFO     | __main__:welcome:60 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-28 15:35:43.377 | INFO     | __main__:main_menu:139 - Переход из start в search_person	| Artem | ID 961741922.
+2024-01-28 15:35:51.752 | INFO     | search_person:create_url:38 - Пользователь ищет человека по имени: брэд питт.
+2024-01-28 15:36:39.665 | INFO     | __main__:welcome:60 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-28 15:36:41.543 | INFO     | __main__:main_menu:139 - Переход из start в search_person	| Artem | ID 961741922.
+2024-01-28 15:36:47.553 | INFO     | search_person:create_url:38 - Пользователь ищет человека по имени: брэд питт.
+2024-01-28 15:36:55.582 | INFO     | search_person:get_name_from_url:229 - Пользователь получил данные по: Брэд Питт.
+2024-01-28 15:37:24.947 | INFO     | __main__:main_menu:139 - Переход из search_person в search_person	| Artem | ID 961741922.
+2024-01-28 15:37:31.217 | INFO     | search_person:create_url:38 - Пользователь ищет человека по имени: киану ривз.
+2024-01-28 15:37:36.634 | INFO     | search_person:get_name_from_url:229 - Пользователь получил данные по: Киану Ривз.

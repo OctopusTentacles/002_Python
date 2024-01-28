@@ -122,36 +122,20 @@ def remove_html(text):
     <a href="/name/77564/" class="all">Дженнифер Сайм</a> 
     И HTML-коды  - попробуем их обработать.
 
-    pattern:
-        <a - начало тега <a.
-        \s+ - один или более пробельных символов.
-        href="([^"]+)" - атрибут href со значением внутри кавычек. 
-        ([^"]+) - захватить любую последовательность символов, 
-                не содержащую двойные кавычки.
-        ([^<]+) - текст внутри тэгов.
-    
-    lambda match:
-        анонимная функция принимает объект совпадения (match) и 
-        применяет к тексту второй группы (match.group(2)) 
-        функцию html.unescape.
-
-    match.group(2):
-        текст внутри тэгов <a>.
-
     html.unescape:
         преобразует HTML-коды в соответствующие символы.
+
+    pattern:
+        <(.*?)> - любое вхождение любых символов между < >.
+
+    re.sub:
+        удаляем паттерн из текста.
     """
-    pattern = re.compile(
-        r'<a\s+href="([^"]+)"\s+class="all">([^<]+)</a>', re.IGNORECASE
-    )
-    facts_data = re.sub(
-        pattern, lambda match: html.unescape(match.group(2)), text
-    )
+    text = html.unescape(text)
+    pattern = re.compile(r'<(.*?)>')
+    text = re.sub(pattern, '', text)
 
-    return facts_data
-
-
-
+    return text
 
 
 def get_name_from_url(bot: telebot, url: str, chat_id: int, id: int) -> None:
