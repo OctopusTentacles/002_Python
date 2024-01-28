@@ -4,6 +4,7 @@ import base64
 from io import BytesIO
 from urllib.parse import quote
 
+import html
 import re
 import requests
 import telebot
@@ -116,23 +117,38 @@ def search_name(bot: telebot, url: str, chat_id: int) -> str:
         )
 
 
-def make_links_active(text):
+def remove_html(text):
     """В фактах встречаются ссылки типа -
     <a href="/name/77564/" class="all">Дженнифер Сайм</a> 
-    попробуем их обработать.
-    
+    И HTML-коды  - попробуем их обработать.
+
     pattern:
         <a - начало тега <a.
         \s+ - один или более пробельных символов.
         href="([^"]+)" - атрибут href со значением внутри кавычек. 
         ([^"]+) - захватить любую последовательность символов, 
                 не содержащую двойные кавычки.
-        
-    """
+        ([^<]+) - текст внутри тэгов.
+    
+    lambda match:
+        анонимная функция принимает объект совпадения (match) и 
+        применяет к тексту второй группы (match.group(2)) 
+        функцию html.unescape.
 
-    pattern = re.compile(r'<a\s+href="([^"]+)"\s+class="all">([^<]+)</a>', re.IGNORECASE)
-    facts_data_with_links = re.sub(pattern, r'\2', text)
-    return facts_data_with_links
+    match.group(2):
+        текст внутри тэгов <a>.
+
+    html.unescape:
+        преобразует HTML-коды в соответствующие символы.
+    """
+    pattern = re.compile(
+        r'<a\s+href="([^"]+)"\s+class="all">([^<]+)</a>', re.IGNORECASE
+    )
+    facts_data = re.sub(
+        pattern, lambda match: html.unescape(match.group(2)), text
+    )
+
+    return facts_data
 
 
 
@@ -187,7 +203,7 @@ def get_name_from_url(bot: telebot, url: str, chat_id: int, id: int) -> None:
             facts_data = content.get('facts', [])
             if facts_data:
                 facts = '\n\n'.join(
-                    make_links_active(fact['value']) for fact in facts_data
+                    remove_html(fact['value']) for fact in facts_data
                     if fact['value'] is not None
                 )
             else:

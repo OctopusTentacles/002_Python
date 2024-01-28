@@ -859,3 +859,25 @@
 2024-01-28 14:14:12.864 | INFO     | __main__:main_menu:139 - Переход из start в search_person	| Artem | ID 961741922.
 2024-01-28 14:14:18.775 | INFO     | search_person:create_url:37 - Пользователь ищет человека по имени: брэд питт.
 2024-01-28 14:14:24.491 | INFO     | search_person:get_name_from_url:227 - Пользователь получил данные по: Брэд Питт.
+2024-01-28 14:31:40.360 | INFO     | __main__:welcome:60 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-28 14:31:43.044 | INFO     | __main__:main_menu:139 - Переход из start в search_person	| Artem | ID 961741922.
+2024-01-28 14:31:48.834 | INFO     | search_person:create_url:37 - Пользователь ищет человека по имени: бред пит.
+2024-01-28 14:31:51.293 | INFO     | search_person:get_name_from_url:238 - Пользователь получил данные БЕЗ ФОТО по: Пит Брен.
+2024-01-28 14:32:05.846 | INFO     | __main__:main_menu:139 - Переход из search_person в search_person	| Artem | ID 961741922.
+2024-01-28 14:32:15.532 | INFO     | search_person:create_url:37 - Пользователь ищет человека по имени: брэд питт.
+2024-01-28 14:32:20.735 | INFO     | search_person:get_name_from_url:225 - Пользователь получил данные по: Брэд Питт.
+2024-01-28 14:32:28.418 | INFO     | __main__:main_menu:139 - Переход из search_person в search_person	| Artem | ID 961741922.
+2024-01-28 14:32:35.760 | INFO     | search_person:create_url:37 - Пользователь ищет человека по имени: киану ривз.
+2024-01-28 14:32:39.522 | INFO     | search_person:get_name_from_url:225 - Пользователь получил данные по: Киану Ривз.
+2024-01-28 14:33:33.375 | INFO     | __main__:main_menu:139 - Переход из search_person в search_person	| Artem | ID 961741922.
+2024-01-28 14:33:38.587 | INFO     | search_person:create_url:37 - Пользователь ищет человека по имени: Гвинет Пэлтроу.
+2024-01-28 14:33:43.933 | INFO     | search_person:get_name_from_url:225 - Пользователь получил данные по: Гвинет Пэлтроу.
+2024-01-28 14:35:03.138 | INFO     | __main__:main_menu:139 - Переход из search_person в search_person	| Artem | ID 961741922.
+2024-01-28 14:35:37.618 | INFO     | search_person:create_url:37 - Пользователь ищет человека по имени: афоня.
+2024-01-28 14:35:39.964 | INFO     | search_person:get_name_from_url:238 - Пользователь получил данные БЕЗ ФОТО по: Афонсо Родригес.
+2024-01-28 14:36:06.809 | INFO     | __main__:main_menu:139 - Переход из search_person в search_movie	| Artem | ID 961741922.
+2024-01-28 14:36:17.048 | INFO     | search_movie:create_url:36 - Пользователь ищет фильм по названию дамы приглашают кавалеров.
+2024-01-28 14:36:20.662 | INFO     | search_movie:get_content_from_url:220 - Пользователь получил данные по: Дамы приглашают кавалеров.
+2024-01-28 14:36:30.086 | INFO     | __main__:main_menu:139 - Переход из search_movie в search_person	| Artem | ID 961741922.
+2024-01-28 14:36:34.759 | INFO     | search_person:create_url:37 - Пользователь ищет человека по имени: Леонид Куравлёв.
+2024-01-28 14:36:38.714 | INFO     | search_person:get_name_from_url:225 - Пользователь получил данные по: Леонид Куравлёв.
