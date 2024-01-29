@@ -173,7 +173,7 @@ def get_name_from_url(bot: telebot, url: str, chat_id: int, id: int) -> None:
                 birthday = 'неизвестно'
 
             birthPlace_data = content.get('birthPlace', [])
-            if birthday_data:
+            if birthPlace_data:
                 birthPlace = ', '.join(
                     place['value'] for place in birthPlace_data
                     if place['value'] is not None
