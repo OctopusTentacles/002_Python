@@ -5,7 +5,7 @@ import telebot
 
 from buttons import get_main_keyboard
 from buttons import get_new_keyboard
-from config import BOT_TOKEN
+from config_data.config import BOT_TOKEN
 from new import get_new_url
 from high import get_top_url
 from models import UserRequest
