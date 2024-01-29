@@ -11,7 +11,7 @@ import requests
 import telebot
 from telebot.types import CallbackQuery
 
-from buttons import get_main_keyboard
+from keyboards.inline import get_main_keyboard
 from config_data.config import API_KEY
 from logger import logger
 

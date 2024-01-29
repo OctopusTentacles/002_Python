@@ -5,8 +5,8 @@ import telebot
 
 from io import BytesIO
 
-from buttons import get_main_keyboard
-from buttons import get_new_keyboard
+from keyboards.inline import get_main_keyboard
+from keyboards.inline import get_new_keyboard
 from logger import logger
 
 from config_data.config import API_KEY

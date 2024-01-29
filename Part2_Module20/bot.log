@@ -940,3 +940,20 @@
 2024-01-29 13:57:20.255 | INFO     | __main__:main_menu:139 - Переход из search_person в search_person	| Artem | ID 961741922.
 2024-01-29 13:57:27.768 | INFO     | search_person:create_url:42 - Пользователь ищет человека по имени: джонни дэп.
 2024-01-29 13:57:38.251 | INFO     | search_person:get_name_from_url:230 - Пользователь получил данные по: Джонни Депп.
+2024-01-29 14:32:52.875 | INFO     | __main__:welcome:60 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-29 14:32:56.541 | INFO     | __main__:main_menu:139 - Переход из start в search_person	| Artem | ID 961741922.
+2024-01-29 14:33:05.680 | INFO     | search_person:create_url:42 - Пользователь ищет человека по имени: маома.
+2024-01-29 14:33:08.629 | INFO     | search_person:get_name_from_url:243 - Пользователь получил данные БЕЗ ФОТО по: Сюй Маомао.
+2024-01-29 14:33:20.251 | INFO     | __main__:main_menu:139 - Переход из search_person в search_person	| Artem | ID 961741922.
+2024-01-29 14:33:25.790 | INFO     | search_person:create_url:42 - Пользователь ищет человека по имени: мамоа.
+2024-01-29 14:33:28.003 | INFO     | search_person:get_name_from_url:243 - Пользователь получил данные БЕЗ ФОТО по: Мамору Хагивара.
+2024-01-29 14:33:43.450 | INFO     | __main__:main_menu:139 - Переход из search_person в search_movie	| Artem | ID 961741922.
+2024-01-29 14:33:56.083 | INFO     | search_movie:create_url:36 - Пользователь ищет фильм по названию аквамэн.
+2024-01-29 14:34:00.978 | INFO     | search_movie:get_content_from_url:220 - Пользователь получил данные по: Аквамэн.
+2024-01-29 14:34:15.365 | INFO     | __main__:main_menu:139 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-01-29 14:34:22.445 | INFO     | search_movie:create_url:36 - Пользователь ищет фильм по названию аквамен.
+2024-01-29 14:34:26.613 | INFO     | search_movie:get_content_from_url:220 - Пользователь получил данные по: Аквамен.
+2024-01-29 14:34:52.091 | INFO     | __main__:main_menu:139 - Переход из search_movie в search_person	| Artem | ID 961741922.
+2024-01-29 14:34:57.576 | INFO     | search_person:create_url:42 - Пользователь ищет человека по имени: Эмбер Хёрд.
+2024-01-29 14:35:02.860 | INFO     | search_person:get_name_from_url:230 - Пользователь получил данные по: Эмбер Хёрд.
+2024-01-29 17:12:50.704 | ERROR    | __main__:welcome:64 - Ошибка в обработчике команды /start: 'module' object is not callable
