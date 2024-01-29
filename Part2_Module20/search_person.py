@@ -1,11 +1,12 @@
 """Модуль поиска по имени."""
 
+
 import base64
+import html
+import re
 from io import BytesIO
 from urllib.parse import quote
 
-import html
-import re
 import requests
 import telebot
 from telebot.types import CallbackQuery
@@ -13,32 +14,34 @@ from telebot.types import CallbackQuery
 from buttons import get_main_keyboard
 from config import API_KEY
 from logger import logger
-from models import UserRequest
+
 
 cached_names = {}
 
 
 def user_input_name(bot: telebot, call: CallbackQuery) -> None:
-    """отправляет сообщение пользователю и регистрирует следующий шаг 
-    обработчика ввода.
-    
+    """отправляет сообщение пользователю и 
+    регистрирует следующий шаг обработчика ввода.
+
     Args:
         bot (TeleBot): Экземпляр бота.
         call (CallbackQuery): Callback-запрос от пользователя.
     """  
-
     bot.send_message(call.message.chat.id, 'Введи имя:')
     bot.register_next_step_handler(call.message, create_url, bot)
 
 
 def create_url(call: CallbackQuery, bot: telebot) -> None:
-    """Обработчик ввода, формирует URL для поиска человека по имени."""
-
+    """Обработчик ввода, формирует URL для поиска человека по имени.
+        
+    Args:
+        bot (TeleBot): Экземпляр бота.
+        call (CallbackQuery): Callback-запрос от пользователя.
+    """
     chat_id = call.chat.id
     logger.info(
         f'Пользователь ищет человека по имени: {call.text.strip()}.'
     )
-
     # Получить введенное пользователем название и закодировать:
     user_title = call.text.strip()
     encoding_title = quote(user_title)
@@ -117,7 +120,7 @@ def search_name(bot: telebot, url: str, chat_id: int) -> str:
         )
 
 
-def remove_html(text):
+def remove_html(text: str) -> str:
     """В фактах встречаются ссылки типа -
     <a href="/name/77564/" class="all">Дженнифер Сайм</a> 
     И HTML-коды  - попробуем их обработать.
@@ -196,7 +199,7 @@ def get_name_from_url(bot: telebot, url: str, chat_id: int, id: int) -> None:
 
 # "death": null,
 # "deathPlace": [],
-            
+
 
             message_text_1 = (
                 f'{title}   ({age})\n\n'
@@ -240,7 +243,6 @@ def get_name_from_url(bot: telebot, url: str, chat_id: int, id: int) -> None:
                 logger.info(
                     f'Пользователь получил данные БЕЗ ФОТО по: {title}.'
                 )
-
 
     else:
         bot.send_message(chat_id, 'Прости, неполадки, давай еще раз...')
