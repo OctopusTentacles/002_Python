@@ -966,3 +966,19 @@
 2024-01-30 15:32:14.921 | INFO     | __main__:main_menu:139 - Переход из random в search_movie	| Artem | ID 961741922.
 2024-01-30 15:32:24.941 | INFO     | search_movie:create_url:36 - Пользователь ищет фильм по названию дамы приглашают кавалеров.
 2024-01-30 15:32:30.615 | INFO     | search_movie:get_content_from_url:220 - Пользователь получил данные по: Дамы приглашают кавалеров.
+2024-01-30 16:14:58.031 | INFO     | __main__:welcome:60 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-30 16:14:59.771 | INFO     | __main__:ask_user_buttons:160 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-30 16:14:59.776 | INFO     | __main__:main_menu:139 - Переход из start в новинки	| Artem | ID 961741922.
+2024-01-30 16:15:12.664 | INFO     | __main__:main_menu:139 - Переход из новинки в фильм	| Artem | ID 961741922.
+2024-01-30 16:15:25.535 | INFO     | __main__:main_menu:139 - Переход из новинки в сериал	| Artem | ID 961741922.
+2024-01-30 16:16:28.482 | ERROR    | __main__:main_menu:143 - Ошибка в обработчике callback-запроса: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=30)
+2024-01-30 16:16:29.864 | INFO     | __main__:main_menu:139 - Переход из новинки в main	| Artem | ID 961741922.
+2024-01-30 16:16:39.156 | INFO     | history:get_user_history:70 - История запросов пользователя Artem: ['2024-01-30 16:16:29\t| user: Artem\t| id: 961741922\t| main', '2024-01-30 16:15:25\t| user: Artem\t| id: 961741922\t| сериал', '2024-01-30 16:15:12\t| user: Artem\t| id: 961741922\t| фильм', '2024-01-30 16:14:59\t| user: Artem\t| id: 961741922\t| новинки', '2024-01-30 16:14:57\t| user: Artem\t| id: 961741922\t| start', '2024-01-30 15:32:14\t| user: Artem\t| id: 961741922\t| search_movie', '2024-01-30 15:32:11\t| user: Artem\t| id: 961741922\t| main', '2024-01-30 15:32:04\t| user: Artem\t| id: 961741922\t| сериал', '2024-01-30 15:31:43\t| user: Artem\t| id: 961741922\t| мульт', '2024-01-30 15:31:23\t| user: Artem\t| id: 961741922\t| random']
+2024-01-30 16:16:39.707 | INFO     | __main__:main_menu:139 - Переход из новинки в history	| Artem | ID 961741922.
+2024-01-30 16:16:42.229 | INFO     | __main__:main_menu:139 - Переход из history в search_person	| Artem | ID 961741922.
+2024-01-30 16:16:49.585 | INFO     | search_person:create_url:42 - Пользователь ищет человека по имени: ван дамм.
+2024-01-30 16:16:54.704 | INFO     | search_person:get_name_from_url:230 - Пользователь получил данные по: Роберт ван Дамм.
+2024-01-30 16:17:05.592 | INFO     | __main__:main_menu:139 - Переход из search_person в search_person	| Artem | ID 961741922.
+2024-01-30 16:17:13.855 | INFO     | search_person:create_url:42 - Пользователь ищет человека по имени: жан клод ван дам.
+2024-01-30 16:17:17.829 | INFO     | search_person:get_name_from_url:230 - Пользователь получил данные по: Жан-Клод Ван Дамм.
+2024-01-30 16:17:23.995 | ERROR    | __main__:main_menu:143 - Ошибка в обработчике callback-запроса: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=30)
