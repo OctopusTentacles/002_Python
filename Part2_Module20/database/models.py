@@ -12,8 +12,8 @@ from peewee import SqliteDatabase
 # Получение текущего каталога, где находится скрипт:
 cur_dir = os.path.dirname(__file__)
 
-# Инициализация базы данных (SQLite) в каталоге скрипта:
-db = SqliteDatabase(os.path.join(cur_dir, 'user_history.db'))
+# Инициализация базы данных (SQLite) в каталоге database:
+db = SqliteDatabase(os.path.join(cur_dir, 'database', 'user_history.db'))
 
 
 class UserRequest(Model):

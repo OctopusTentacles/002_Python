@@ -8,7 +8,7 @@ from keyboards.inline import get_new_keyboard
 from config_data.config import BOT_TOKEN
 from new import get_new_url
 from high import get_top_url
-from models import UserRequest
+from database import UserRequest
 from logger import logger
 from history import show_history
 from rand import get_random_url
