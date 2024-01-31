@@ -1040,3 +1040,24 @@
 2024-01-31 15:06:01.882 | INFO     | __main__:main_menu:139 - Переход из start в search_person	| Artem | ID 961741922.
 2024-01-31 15:06:12.625 | INFO     | handlers.search_person:create_url:42 - Пользователь ищет человека по имени: шарлиз терон.
 2024-01-31 15:06:19.382 | INFO     | handlers.search_person:get_name_from_url:230 - Пользователь получил данные по: Шарлиз Терон.
+2024-01-31 16:09:01.891 | INFO     | __main__:welcome:60 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-31 16:09:24.721 | INFO     | __main__:ask_user_buttons:160 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-31 16:09:24.730 | INFO     | __main__:main_menu:139 - Переход из start в random	| Artem | ID 961741922.
+2024-01-31 16:09:39.081 | INFO     | __main__:main_menu:139 - Переход из random в мульт	| Artem | ID 961741922.
+2024-01-31 16:09:57.611 | INFO     | __main__:main_menu:139 - Переход из random в сериал	| Artem | ID 961741922.
+2024-01-31 16:10:39.601 | INFO     | __main__:main_menu:139 - Переход из random в фильм	| Artem | ID 961741922.
+2024-01-31 16:10:56.174 | INFO     | __main__:main_menu:139 - Переход из random в main	| Artem | ID 961741922.
+2024-01-31 16:11:07.044 | INFO     | __main__:ask_user_buttons:160 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-31 16:11:07.049 | INFO     | __main__:main_menu:139 - Переход из random в топ	| Artem | ID 961741922.
+2024-01-31 16:11:17.448 | INFO     | __main__:main_menu:139 - Переход из топ в мульт	| Artem | ID 961741922.
+2024-01-31 16:11:32.086 | INFO     | __main__:main_menu:139 - Переход из топ в сериал	| Artem | ID 961741922.
+2024-01-31 16:11:46.556 | INFO     | __main__:main_menu:139 - Переход из топ в фильм	| Artem | ID 961741922.
+2024-01-31 16:11:58.227 | INFO     | __main__:main_menu:139 - Переход из топ в main	| Artem | ID 961741922.
+2024-01-31 16:12:10.215 | INFO     | handlers.history:get_user_history:70 - История запросов пользователя Artem: ['2024-01-31 16:11:58\t| user: Artem\t| id: 961741922\t| main', '2024-01-31 16:11:46\t| user: Artem\t| id: 961741922\t| фильм', '2024-01-31 16:11:32\t| user: Artem\t| id: 961741922\t| сериал', '2024-01-31 16:11:17\t| user: Artem\t| id: 961741922\t| мульт', '2024-01-31 16:11:07\t| user: Artem\t| id: 961741922\t| топ', '2024-01-31 16:10:56\t| user: Artem\t| id: 961741922\t| main', '2024-01-31 16:10:39\t| user: Artem\t| id: 961741922\t| фильм', '2024-01-31 16:09:57\t| user: Artem\t| id: 961741922\t| сериал', '2024-01-31 16:09:39\t| user: Artem\t| id: 961741922\t| мульт', '2024-01-31 16:09:24\t| user: Artem\t| id: 961741922\t| random']
+2024-01-31 16:12:11.128 | INFO     | __main__:main_menu:139 - Переход из топ в history	| Artem | ID 961741922.
+2024-01-31 16:12:40.085 | INFO     | __main__:main_menu:139 - Переход из history в search_movie	| Artem | ID 961741922.
+2024-01-31 16:12:52.597 | INFO     | handlers.search_movie:create_url:36 - Пользователь ищет фильм по названию вернуть из мертвых.
+2024-01-31 16:12:59.070 | INFO     | handlers.search_movie:get_content_from_url:220 - Пользователь получил данные по: Вернуть из мертвых.
+2024-01-31 16:14:18.717 | INFO     | __main__:main_menu:139 - Переход из search_movie в search_person	| Artem | ID 961741922.
+2024-01-31 16:14:22.910 | INFO     | handlers.search_person:create_url:41 - Пользователь ищет человека по имени: Элиза Душку.
+2024-01-31 16:14:30.626 | INFO     | handlers.search_person:get_name_from_url:229 - Пользователь получил данные по: Элиза Душку.

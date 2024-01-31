@@ -7,7 +7,7 @@ from telebot import TeleBot
 from telebot.types import CallbackQuery
 
 from keyboards.inline import get_main_keyboard
-from logger import logger
+from log_data import logger
 from database import UserRequest
 
 

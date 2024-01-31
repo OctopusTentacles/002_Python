@@ -4,16 +4,15 @@
 import base64
 import html
 import re
-from io import BytesIO
-from urllib.parse import quote
-
 import requests
 import telebot
-from telebot.types import CallbackQuery
 
-from keyboards.inline import get_main_keyboard
 from config_data.config import API_KEY
-from logger import logger
+from io import BytesIO
+from keyboards.inline import get_main_keyboard
+from log_data import logger
+from telebot.types import CallbackQuery
+from urllib.parse import quote
 
 
 cached_names = {}

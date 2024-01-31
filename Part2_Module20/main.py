@@ -13,7 +13,7 @@ from handlers import user_input_name
 from handlers import user_input_title
 from keyboards.inline import get_main_keyboard
 from keyboards.inline import get_new_keyboard
-from logger import logger
+from log_data import logger
 
 bot = telebot.TeleBot(BOT_TOKEN)
 usernames_dict = {}

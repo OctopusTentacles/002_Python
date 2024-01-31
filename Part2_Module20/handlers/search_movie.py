@@ -10,7 +10,7 @@ from telebot.types import CallbackQuery
 
 from keyboards.inline import get_main_keyboard
 from config_data.config import API_KEY
-from logger import logger
+from log_data import logger
 from database import UserRequest
 
 cached_content = {}
