@@ -982,3 +982,25 @@
 2024-01-30 16:17:13.855 | INFO     | search_person:create_url:42 - Пользователь ищет человека по имени: жан клод ван дам.
 2024-01-30 16:17:17.829 | INFO     | search_person:get_name_from_url:230 - Пользователь получил данные по: Жан-Клод Ван Дамм.
 2024-01-30 16:17:23.995 | ERROR    | __main__:main_menu:143 - Ошибка в обработчике callback-запроса: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=30)
+2024-01-31 14:05:13.931 | INFO     | __main__:welcome:60 - Команда /start для пользователя Artem с ID 961741922.
+2024-01-31 14:05:18.233 | INFO     | __main__:ask_user_buttons:160 - Отправлен запрос от бота для выбора типа контента пользователю 961741922.
+2024-01-31 14:05:18.239 | INFO     | __main__:main_menu:139 - Переход из start в random	| Artem | ID 961741922.
+2024-01-31 14:05:31.186 | INFO     | __main__:main_menu:139 - Переход из random в мульт	| Artem | ID 961741922.
+2024-01-31 14:05:48.224 | INFO     | __main__:main_menu:139 - Переход из random в main	| Artem | ID 961741922.
+2024-01-31 14:05:50.160 | INFO     | history:get_user_history:70 - История запросов пользователя Artem: ['2024-01-31 14:05:48\t| user: Artem\t| id: 961741922\t| main', '2024-01-31 14:05:31\t| user: Artem\t| id: 961741922\t| мульт', '2024-01-31 14:05:18\t| user: Artem\t| id: 961741922\t| random', '2024-01-31 14:05:13\t| user: Artem\t| id: 961741922\t| start']
+2024-01-31 14:05:51.124 | INFO     | __main__:main_menu:139 - Переход из random в history	| Artem | ID 961741922.
+2024-01-31 14:05:59.593 | INFO     | __main__:main_menu:139 - Переход из history в search_person	| Artem | ID 961741922.
+2024-01-31 14:06:06.433 | INFO     | search_person:create_url:42 - Пользователь ищет человека по имени: никулин.
+2024-01-31 14:06:10.762 | INFO     | search_person:get_name_from_url:243 - Пользователь получил данные БЕЗ ФОТО по: Игорь Никулин.
+2024-01-31 14:06:22.712 | INFO     | __main__:main_menu:139 - Переход из search_person в search_person	| Artem | ID 961741922.
+2024-01-31 14:06:29.774 | INFO     | search_person:create_url:42 - Пользователь ищет человека по имени: никуллин.
+2024-01-31 14:06:32.007 | INFO     | search_person:get_name_from_url:243 - Пользователь получил данные БЕЗ ФОТО по: Никулина Василь.
+2024-01-31 14:06:37.763 | INFO     | __main__:main_menu:139 - Переход из search_person в search_movie	| Artem | ID 961741922.
+2024-01-31 14:06:44.127 | INFO     | search_movie:create_url:36 - Пользователь ищет фильм по названию самогонщики.
+2024-01-31 14:06:51.657 | INFO     | search_movie:get_content_from_url:220 - Пользователь получил данные по: Самогонщики.
+2024-01-31 14:07:09.582 | INFO     | __main__:main_menu:139 - Переход из search_movie в search_person	| Artem | ID 961741922.
+2024-01-31 14:07:21.689 | INFO     | search_person:create_url:42 - Пользователь ищет человека по имени: юрий никулин.
+2024-01-31 14:07:26.690 | INFO     | search_person:get_name_from_url:230 - Пользователь получил данные по: Юрий Никулин.
+2024-01-31 14:08:07.469 | INFO     | __main__:main_menu:139 - Переход из search_person в search_person	| Artem | ID 961741922.
+2024-01-31 14:08:15.446 | INFO     | search_person:create_url:42 - Пользователь ищет человека по имени: Евгений Моргунов.
+2024-01-31 14:08:20.322 | INFO     | search_person:get_name_from_url:230 - Пользователь получил данные по: Евгений Моргунов.

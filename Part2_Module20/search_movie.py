@@ -11,7 +11,7 @@ from telebot.types import CallbackQuery
 from keyboards.inline import get_main_keyboard
 from config_data.config import API_KEY
 from logger import logger
-from models import UserRequest
+from database import UserRequest
 
 cached_content = {}
 
