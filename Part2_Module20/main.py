@@ -3,17 +3,17 @@
 
 import telebot
 
+from config_data.config import BOT_TOKEN
+from database import UserRequest
+from handlers import get_new_url
+from handlers import get_random_url
+from handlers import get_top_url
+from handlers import show_history
+from handlers import user_input_name
+from handlers import user_input_title
 from keyboards.inline import get_main_keyboard
 from keyboards.inline import get_new_keyboard
-from config_data.config import BOT_TOKEN
-from handlers import get_new_url
-from handlers import get_top_url
-from database import UserRequest
 from logger import logger
-from handlers import show_history
-from handlers import get_random_url
-from handlers import user_input_title
-from search_person import user_input_name
 
 bot = telebot.TeleBot(BOT_TOKEN)
 usernames_dict = {}
