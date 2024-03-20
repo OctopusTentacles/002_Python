@@ -1061,3 +1061,19 @@
 2024-01-31 16:14:18.717 | INFO     | __main__:main_menu:139 - Переход из search_movie в search_person	| Artem | ID 961741922.
 2024-01-31 16:14:22.910 | INFO     | handlers.search_person:create_url:41 - Пользователь ищет человека по имени: Элиза Душку.
 2024-01-31 16:14:30.626 | INFO     | handlers.search_person:get_name_from_url:229 - Пользователь получил данные по: Элиза Душку.
+2024-02-05 09:50:23.690 | INFO     | __main__:welcome:60 - Команда /start для пользователя Artem с ID 961741922.
+2024-02-05 09:50:26.247 | INFO     | __main__:main_menu:139 - Переход из start в search_movie	| Artem | ID 961741922.
+2024-02-05 09:50:35.939 | INFO     | __main__:main_menu:139 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-02-05 09:50:53.114 | INFO     | handlers.search_movie:create_url:36 - Пользователь ищет фильм по названию классик.
+2024-02-05 09:50:53.116 | INFO     | handlers.search_movie:create_url:36 - Пользователь ищет фильм по названию классик.
+2024-02-05 09:50:57.613 | INFO     | handlers.search_movie:get_content_from_url:220 - Пользователь получил данные по: Классик.
+2024-02-05 09:50:57.616 | INFO     | handlers.search_movie:get_content_from_url:220 - Пользователь получил данные по: Классик.
+2024-02-05 09:52:00.084 | INFO     | __main__:main_menu:139 - Переход из search_movie в search_person	| Artem | ID 961741922.
+2024-02-05 09:52:03.932 | INFO     | handlers.search_person:create_url:41 - Пользователь ищет человека по имени: Юозас Будрайтис.
+2024-02-05 09:52:06.734 | INFO     | handlers.search_person:get_name_from_url:229 - Пользователь получил данные по: Юозас Будрайтис.
+2024-02-05 09:52:24.441 | INFO     | __main__:main_menu:139 - Переход из search_person в search_movie	| Artem | ID 961741922.
+2024-02-05 09:52:29.601 | INFO     | handlers.search_movie:create_url:36 - Пользователь ищет фильм по названию 24 часа.
+2024-02-05 09:52:33.175 | INFO     | handlers.search_movie:get_content_from_url:220 - Пользователь получил данные по: 24 часа.
+2024-02-05 09:53:04.814 | INFO     | __main__:main_menu:139 - Переход из search_movie в search_movie	| Artem | ID 961741922.
+2024-02-05 09:53:14.728 | INFO     | handlers.search_movie:create_url:36 - Пользователь ищет фильм по названию 24 часа россия.
+2024-02-05 09:53:18.110 | INFO     | handlers.search_movie:get_content_from_url:220 - Пользователь получил данные по: 24 часа.
