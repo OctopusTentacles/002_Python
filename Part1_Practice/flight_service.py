@@ -11,16 +11,47 @@ def create_flight_number():
             print('ОШИБКА! Используйте шаблон при вводе!')
         else:
             return flight_number
+        
+def create_flight_date():
+    while True:
+        flight_date = input('ДД/ММ/ГГГГ - дата рейса: ')
+        if len(flight_date) != 10:
+            print('ОШИБКА! Используйте шаблон при вводе!')
+        else:
+            return flight_date
+        
+def create_depart_time():
+    while True:
+        depart_time = input('ЧЧ:ММ - время вылета: ')
+        if len(depart_time) != 5:
+            print('ОШИБКА! Используйте шаблон при вводе!')
+        else:
+            return depart_time
+        
+def create_flight_time():
+    while True:
+        flight_time = float(input('ЧЧ.ММ - длительность перелета: '))
+        if flight_time > 0 and '.' in str(flight_time):
+            hours, minutes = str(flight_time.split('.'))
+            if len(hours) == 2 and len(minutes) == 2:
+                return flight_time
+            
+        else:
+            print('ОШИБКА! Используйте шаблон при вводе!')
+            
+        
+
+
+
 
 
 
 def create_flight():
     print('\nВведите данные рейса:')
-    # flight_number = input('XXXX - номер рейса: ').upper()
     flight_number = create_flight_number()
-    flight_date = input('ДД/ММ/ГГГГ - дата рейса: ')
-    depart_time = input('ЧЧ:ММ - время вылета: ')
-    flight_time = input('ЧЧ.ММ - длительность перелета: ')
+    flight_date = create_flight_date()
+    depart_time = create_depart_time()
+    flight_time = create_flight_time()
     depart_city = input('XXX - аэропорт вылета: ').upper()
     arrive_city = input('XXX - аэропорт назначения: ').upper()
     flight_price = float(input('X.XX - стоимость билета: '))
