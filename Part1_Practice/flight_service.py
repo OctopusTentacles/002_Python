@@ -1,6 +1,8 @@
 
+
 print('Сервис поиска авиабилетов\n\n')
 flights = dict()
+
 
 def create_flight():
     print('\nВведите данные рейса:')
@@ -38,7 +40,18 @@ def show_flights():
 
 
 def search_flight():
-    ...
+    if flights:
+        flight_number = input('Введите номер рейса в формате XXXX: ').upper()
+        if flight_number in flights:
+            info_flight = (flights[flight_number])
+            print('Информация о рейсе', *info_flight)
+        else:
+            print('Рейс', flight_number, 'не найден')
+    else:
+        print('Информация о рейсах отсутствует')
+    
+    print()
+    return
 
 
 
@@ -63,7 +76,6 @@ def main_menu():
             break
         else:
             print('\nОшибка! Повторите ввод!\n')
-
 
 
 main_menu()
