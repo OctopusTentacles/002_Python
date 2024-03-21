@@ -1,5 +1,5 @@
 
-
+print('Сервис поиска авиабилетов\n\n')
 flights = dict()
 
 def create_flight():
@@ -23,13 +23,18 @@ def create_flight():
     ]
     info_flight = (flights[flight_number])
     print('\nИнформация о рейсе', *info_flight, 'добавлена\n')
-    
     return
 
 
 def show_flights():
-    ...
-
+    if flights:
+        for flight_number in flights:
+            info_flight = (flights[flight_number])
+            print('Информация о рейсе', *info_flight)
+    else:
+        print('Информация о рейсах отсутствует')
+    print()
+    return
 
 
 def search_flight():
@@ -40,7 +45,6 @@ def search_flight():
 # MAIN MENU
 def main_menu():
     while True:    
-        print('Сервис поиска авиабилетов\n\n')
         print('Главное меню:\n')
         print('1 - ввод рейса')
         print('2 - вывод всех рейсов')
