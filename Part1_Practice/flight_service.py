@@ -13,6 +13,7 @@ def create_flight():
     flight_price = float(input('X.XX - стоимость билета: '))
     
     flights[flight_number] = {
+        'flight_number': flight_number,
         'flight_date': flight_date,
         'depart_time': depart_time,
         'flight_time': flight_time,
@@ -20,6 +21,9 @@ def create_flight():
         'arrive_city': arrive_city,
         'flight_price': flight_price
     }
+    info_flight = list(flights[flight_number].values())
+
+    print('\nИнформация о рейсе', *info_flight, 'добавлена\n')
     
     return
 
