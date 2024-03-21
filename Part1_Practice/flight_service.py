@@ -4,9 +4,20 @@ print('Сервис поиска авиабилетов\n\n')
 flights = dict()
 
 
+def create_flight_number():
+    while True:
+        flight_number = input('XXXX - номер рейса: ').upper()
+        if len(flight_number) != 4:
+            print('ОШИБКА! Используйте шаблон при вводе!')
+        else:
+            return flight_number
+
+
+
 def create_flight():
     print('\nВведите данные рейса:')
-    flight_number = input('XXXX - номер рейса: ').upper()
+    # flight_number = input('XXXX - номер рейса: ').upper()
+    flight_number = create_flight_number()
     flight_date = input('ДД/ММ/ГГГГ - дата рейса: ')
     depart_time = input('ЧЧ:ММ - время вылета: ')
     flight_time = input('ЧЧ.ММ - длительность перелета: ')
@@ -32,7 +43,7 @@ def show_flights():
     if flights:
         for flight_number in flights:
             info_flight = (flights[flight_number])
-            print('Информация о рейсе', *info_flight)
+            print('Информация о рейсе:', *info_flight)
     else:
         print('Информация о рейсах отсутствует')
     print()
@@ -44,7 +55,7 @@ def search_flight():
         flight_number = input('Введите номер рейса в формате XXXX: ').upper()
         if flight_number in flights:
             info_flight = (flights[flight_number])
-            print('Информация о рейсе', *info_flight)
+            print('Информация о рейсе:', *info_flight)
         else:
             print('Рейс', flight_number, 'не найден')
     else:
