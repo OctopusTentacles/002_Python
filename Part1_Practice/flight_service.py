@@ -4,29 +4,27 @@ flights = dict()
 
 def create_flight():
     print('\nВведите данные рейса:')
-    flight_number = input('XXXX - номер рейса: ')
+    flight_number = input('XXXX - номер рейса: ').upper()
     flight_date = input('ДД/ММ/ГГГГ - дата рейса: ')
     depart_time = input('ЧЧ:ММ - время вылета: ')
     flight_time = input('ЧЧ.ММ - длительность перелета: ')
-    depart_city = input('XXX - аэропорт вылета: ')
-    arrive_city = input('XXX - аэропорт назначения: ')
+    depart_city = input('XXX - аэропорт вылета: ').upper()
+    arrive_city = input('XXX - аэропорт назначения: ').upper()
     flight_price = float(input('X.XX - стоимость билета: '))
     
-    flights[flight_number] = {
-        'flight_number': flight_number,
-        'flight_date': flight_date,
-        'depart_time': depart_time,
-        'flight_time': flight_time,
-        'depart_city': depart_city,
-        'arrive_city': arrive_city,
-        'flight_price': flight_price
-    }
-    info_flight = list(flights[flight_number].values())
-
+    flights[flight_number] = [
+        flight_number,
+        flight_date,
+        depart_time,
+        flight_time,
+        depart_city,
+        arrive_city,
+        flight_price,
+    ]
+    info_flight = (flights[flight_number])
     print('\nИнформация о рейсе', *info_flight, 'добавлена\n')
     
     return
-
 
 
 def show_flights():
