@@ -32,15 +32,37 @@ def create_flight_time():
     while True:
         flight_time = float(input('ЧЧ.ММ - длительность перелета: '))
         if flight_time > 0 and '.' in str(flight_time):
-            hours, minutes = str(flight_time.split('.'))
+            hours, minutes = str(flight_time).split('.')
             if len(hours) == 2 and len(minutes) == 2:
                 return flight_time
-            
+            else:
+                print('ОШИБКА! Используйте шаблон при вводе!')
         else:
             print('ОШИБКА! Используйте шаблон при вводе!')
             
+def create_depart_city():
+    while True:
+        depart_city = input('XXX - аэропорт вылета: ').upper()
+        if len(depart_city) != 3:
+            print('ОШИБКА! Используйте шаблон при вводе!')
+        else:
+            return depart_city
         
-
+def create_arrive_city():
+    while True:
+        arrive_city = input('XXX - аэропорт назначения: ').upper()
+        if len(arrive_city) != 3:
+            print('ОШИБКА! Используйте шаблон при вводе!')
+        else:
+            return arrive_city
+        
+def create_flight_price():
+    while True:
+        flight_price = float(input('.XX - стоимость билета: '))
+        if flight_price > 0:
+            return flight_price
+        else:
+            print('ОШИБКА! Используйте шаблон при вводе!')
 
 
 
@@ -52,9 +74,9 @@ def create_flight():
     flight_date = create_flight_date()
     depart_time = create_depart_time()
     flight_time = create_flight_time()
-    depart_city = input('XXX - аэропорт вылета: ').upper()
-    arrive_city = input('XXX - аэропорт назначения: ').upper()
-    flight_price = float(input('X.XX - стоимость билета: '))
+    depart_city = create_depart_city()
+    arrive_city = create_arrive_city()
+    flight_price = create_flight_price()
     
     flights[flight_number] = [
         flight_number,
