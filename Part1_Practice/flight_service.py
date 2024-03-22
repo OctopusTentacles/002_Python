@@ -30,13 +30,15 @@ def create_depart_time():
         
 def create_flight_time():
     while True:
-        flight_time = float(input('ЧЧ.ММ - длительность перелета: '))
-        if flight_time > 0 and '.' in str(flight_time):
-            hours, minutes = str(flight_time).split('.')
-            if len(hours) == 2 and len(minutes) == 2:
-                return flight_time
-            else:
-                print('ОШИБКА! Используйте шаблон при вводе!')
+        try:
+            flight_time = float(input('ЧЧ.ММ - длительность перелета: '))
+        except ValueError:
+            print('ОШИБКА! Используйте шаблон при вводе!')
+            continue
+
+        hours, minutes = str(flight_time).split('.')
+        if len(hours) == 2 and len(minutes) == 2:
+            return flight_time
         else:
             print('ОШИБКА! Используйте шаблон при вводе!')
             
@@ -63,9 +65,6 @@ def create_flight_price():
             return flight_price
         else:
             print('ОШИБКА! Используйте шаблон при вводе!')
-
-
-
 
 
 def create_flight():
