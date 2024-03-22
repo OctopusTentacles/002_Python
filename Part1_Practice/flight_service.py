@@ -10,7 +10,7 @@ def create_flight_number():
         if len(flight_number) != 4:
             print('ОШИБКА! Используйте шаблон при вводе!')
         else:
-            flight_number[flight_number].append(flight_number)
+            return flight_number
         
 def create_flight_date():
     while True:
@@ -30,13 +30,14 @@ def create_depart_time():
         
 def create_flight_time():
     while True:
+        flight_time = input('ЧЧ.ММ - длительность перелета: ')
         try:
-            flight_time = float(input('ЧЧ.ММ - длительность перелета: '))
+            float(flight_time)
         except ValueError:
             print('ОШИБКА! Используйте шаблон при вводе!')
             continue
 
-        hours, minutes = str(flight_time).split('.')
+        hours, minutes = flight_time.split('.')
         if len(hours) == 2 and len(minutes) == 2:
             return flight_time
         else:
@@ -69,7 +70,7 @@ def create_flight_price():
 
 def create_flight():
     print('\nВведите данные рейса:')
-    create_flight_number()
+    flight_number = create_flight_number()
     flight_date = create_flight_date()
     depart_time = create_depart_time()
     flight_time = create_flight_time()
@@ -77,15 +78,15 @@ def create_flight():
     arrive_city = create_arrive_city()
     flight_price = create_flight_price()
     
-    # flights[flight_number] = [
-    #     flight_number,
-    #     flight_date,
-    #     depart_time,
-    #     flight_time,
-    #     depart_city,
-    #     arrive_city,
-    #     flight_price,
-    # ]
+    flights[flight_number] = [
+        flight_number,
+        flight_date,
+        depart_time,
+        flight_time,
+        depart_city,
+        arrive_city,
+        flight_price,
+    ]
     info_flight = (flights[flight_number])
     print('\nИнформация о рейсе', *info_flight, 'добавлена\n')
     return
