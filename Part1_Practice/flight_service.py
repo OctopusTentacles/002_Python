@@ -1,10 +1,14 @@
+""" Сервис поиска авиабилетов. """
 
 
-print('Сервис поиска авиабилетов\n\n')
+# Словарь для хранения данных о рейсах:
 flights = dict()
 
+print('Сервис поиска авиабилетов\n\n')
 
-def create_flight_number():
+
+def create_flight_number() -> str:
+    """Ввод номера рейса."""
     while True:
         flight_number = input('XXXX - номер рейса: ').upper()
         if len(flight_number) != 4:
@@ -12,7 +16,8 @@ def create_flight_number():
         else:
             return flight_number
         
-def create_flight_date():
+def create_flight_date() -> str:
+    """Ввод даты рейса."""
     while True:
         flight_date = input('ДД/ММ/ГГГГ - дата рейса: ')
         if len(flight_date) != 10:
@@ -20,7 +25,8 @@ def create_flight_date():
         else:
             return flight_date
         
-def create_depart_time():
+def create_depart_time() -> str:
+    """Ввод времени вылета."""
     while True:
         depart_time = input('ЧЧ:ММ - время вылета: ')
         if len(depart_time) != 5:
@@ -28,7 +34,8 @@ def create_depart_time():
         else:
             return depart_time
         
-def create_flight_time():
+def create_flight_time() -> str:
+    """Ввод длительности перелета."""
     while True:
         flight_time = input('ЧЧ.ММ - длительность перелета: ')
         try:
@@ -43,7 +50,8 @@ def create_flight_time():
         else:
             print('ОШИБКА! Используйте шаблон при вводе!')
             
-def create_depart_city():
+def create_depart_city() -> str:
+    """Ввод кода аэропорта вылета."""
     while True:
         depart_city = input('XXX - аэропорт вылета: ').upper()
         if len(depart_city) != 3:
@@ -51,7 +59,8 @@ def create_depart_city():
         else:
             return depart_city
         
-def create_arrive_city():
+def create_arrive_city() -> str:
+    """Ввод кода аэропорта назначения."""
     while True:
         arrive_city = input('XXX - аэропорт назначения: ').upper()
         if len(arrive_city) != 3:
@@ -59,7 +68,8 @@ def create_arrive_city():
         else:
             return arrive_city
         
-def create_flight_price():
+def create_flight_price() -> float:
+    """Ввод стоимости билета."""
     while True:
         flight_price = float(input('.XX - стоимость билета: '))
         if flight_price > 0:
@@ -68,7 +78,8 @@ def create_flight_price():
             print('ОШИБКА! Используйте шаблон при вводе!')
 
 
-def create_flight():
+def create_flight() -> None:
+    """Создание нового рейса."""
     print('\nВведите данные рейса:')
     flight_number = create_flight_number()
     flight_date = create_flight_date()
@@ -77,7 +88,7 @@ def create_flight():
     depart_city = create_depart_city()
     arrive_city = create_arrive_city()
     flight_price = create_flight_price()
-    
+    # Добавление информации о рейсе в словарь:
     flights[flight_number] = [
         flight_number,
         flight_date,
@@ -92,7 +103,8 @@ def create_flight():
     return
 
 
-def show_flights():
+def show_flights() -> None:
+    """Вывод информации о всех рейсах."""
     if flights:
         for flight_number in flights:
             info_flight = (flights[flight_number])
@@ -103,7 +115,8 @@ def show_flights():
     return
 
 
-def search_flight():
+def search_flight() -> None:
+    """Поиск рейса по номеру."""
     if flights:
         flight_number = input('Введите номер рейса в формате XXXX: ').upper()
         if flight_number in flights:
@@ -113,14 +126,13 @@ def search_flight():
             print('Рейс', flight_number, 'не найден')
     else:
         print('Информация о рейсах отсутствует')
-    
     print()
     return
 
 
-
 # MAIN MENU
-def main_menu():
+def main_menu() -> None:
+    """Главное меню программы."""
     while True:    
         print('Главное меню:\n')
         print('1 - ввод рейса')
@@ -142,4 +154,5 @@ def main_menu():
             print('\nОшибка! Повторите ввод!\n')
 
 
+# Запуск главного меню:
 main_menu()
