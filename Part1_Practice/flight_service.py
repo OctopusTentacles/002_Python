@@ -7,12 +7,16 @@ flights = dict()
 print('Сервис поиска авиабилетов\n\n')
 
 
+def print_error():
+    print('ОШИБКА! Используйте шаблон при вводе!')
+
+
 def create_flight_number() -> str:
     """Ввод номера рейса."""
     while True:
         flight_number = input('XXXX - номер рейса: ').upper()
         if len(flight_number) != 4:
-            print('ОШИБКА! Используйте шаблон при вводе!')
+            print_error()
         else:
             return flight_number
         
@@ -21,7 +25,7 @@ def create_flight_date() -> str:
     while True:
         flight_date = input('ДД/ММ/ГГГГ - дата рейса: ')
         if len(flight_date) != 10:
-            print('ОШИБКА! Используйте шаблон при вводе!')
+            print_error()
         else:
             return flight_date
         
@@ -30,7 +34,7 @@ def create_depart_time() -> str:
     while True:
         depart_time = input('ЧЧ:ММ - время вылета: ')
         if len(depart_time) != 5:
-            print('ОШИБКА! Используйте шаблон при вводе!')
+            print_error()
         else:
             return depart_time
         
@@ -39,23 +43,23 @@ def create_flight_time() -> str:
     while True:
         flight_time = input('ЧЧ.ММ - длительность перелета: ')
         try:
-            float(flight_time)
+            0 <= float(flight_time)
         except ValueError:
-            print('ОШИБКА! Используйте шаблон при вводе!')
+            print_error()
             continue
 
         hours, minutes = flight_time.split('.')
-        if len(hours) == 2 and len(minutes) == 2:
+        if len(hours) == 2 and len(minutes) == 2 and int(hours) >= 0:
             return flight_time
         else:
-            print('ОШИБКА! Используйте шаблон при вводе!')
+            print_error()
             
 def create_depart_city() -> str:
     """Ввод кода аэропорта вылета."""
     while True:
         depart_city = input('XXX - аэропорт вылета: ').upper()
         if len(depart_city) != 3:
-            print('ОШИБКА! Используйте шаблон при вводе!')
+            print_error()
         else:
             return depart_city
         
@@ -64,7 +68,7 @@ def create_arrive_city() -> str:
     while True:
         arrive_city = input('XXX - аэропорт назначения: ').upper()
         if len(arrive_city) != 3:
-            print('ОШИБКА! Используйте шаблон при вводе!')
+            print_error()
         else:
             return arrive_city
         
@@ -75,9 +79,10 @@ def create_flight_price() -> float:
         if flight_price > 0:
             return flight_price
         else:
-            print('ОШИБКА! Используйте шаблон при вводе!')
+            print_error()
 
 
+# =====================================================================
 def create_flight() -> None:
     """Создание нового рейса."""
     print('\nВведите данные рейса:')
@@ -130,7 +135,7 @@ def search_flight() -> None:
     return
 
 
-# MAIN MENU
+# MAIN MENU============================================================
 def main_menu() -> None:
     """Главное меню программы."""
     while True:    
