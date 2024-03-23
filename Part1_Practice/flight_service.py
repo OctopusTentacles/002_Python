@@ -43,7 +43,7 @@ def create_flight_time() -> str:
     while True:
         flight_time = input('ЧЧ.ММ - длительность перелета: ')
         try:
-            0 <= float(flight_time)
+            float(flight_time)
         except ValueError:
             print_error()
             continue
