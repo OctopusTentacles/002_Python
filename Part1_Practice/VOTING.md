@@ -129,3 +129,15 @@ for ...:
 
     while ...:
 ```
+
+<span style='color:#FF7F50'>Вложенность условий — не более двух уровней:</span>
+
+```
+if ...:
+
+    if ...:
+```
+
+
+
+<span style='color:#FF7F50'></span>
