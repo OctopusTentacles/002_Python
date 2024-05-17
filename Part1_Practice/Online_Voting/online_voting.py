@@ -6,8 +6,8 @@
 
 
 
-# MAIN MENU============================================================
-def main():
+# Функция для создания нового голосования____________________________
+def create_voting():
     print('Голосование за автомобиль года.')
 
     count_models = int(input(
@@ -15,12 +15,26 @@ def main():
     ))
 
     # словарь для хранения моделей авто:
-    car_models = dict()
+    models = dict()
     for i in range(count_models + 1):
         new_model = input(f'Введите модель {i}-го автомобиля: ')
 
-        car_models.append(new_model)
+        models.append(new_model)
 
         print('Голосование создано!')
 
-        return car_models
+        return models
+    
+
+# Функция для проведения голосования_________________________________
+def conduct_voting(models):
+    print('Выберите модель из списка:', ';'.join(models))
+    print('Для подсчета голосов введите 0')
+
+    # список для подсчета голосов на каждую модель:
+    votes = [0] * len(models)
+
+    while True:
+        choice = input('Ваш выбор?:')
+        if choice == 0:
+            break
