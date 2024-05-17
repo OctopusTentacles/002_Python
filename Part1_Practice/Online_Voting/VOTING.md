@@ -150,7 +150,14 @@ def some_function():
     return 0
 ```
 
+<span style='color:#FF7F50'>Каждая отдельно взятая функция выполняет только одно действие: например, функция, отвечающая за нахождение кубов, должна находить только кубы.</span>
 
+```
+def cubes(number):
 
+    cube = number ** 3
 
-<span style='color:#FF7F50'></span>
+        return cube
+```
+
+<span style='color:#FF7F50'>Нельзя использовать global.</span>
