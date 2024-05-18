@@ -1,10 +1,6 @@
 """ Сервис онлайн-голосования. """
 
 
-
-
-
-
 # Создать новое голосование.
 # Функция для создания нового голосования____________________________
 def create_voting():
@@ -48,7 +44,6 @@ def conduct_voting(models):
 
     return votes
 
-
 # Получить результат голосования.____________________________________
 def calculate_results(models, votes):
     '''Функция остановки голосования и получения результата. '''
@@ -60,3 +55,13 @@ def calculate_results(models, votes):
     print("Лучший автомобиль года:", models[winner_index])
     print("Количество голосов:", max_votes)
 
+
+# MAIN===============================================================
+def main():
+    models = create_voting()
+    votes = conduct_voting(models)
+    calculate_results(models, votes)
+
+
+# Запуск программы:__________________________________________________
+main()
