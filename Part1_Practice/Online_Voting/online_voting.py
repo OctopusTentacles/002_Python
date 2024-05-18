@@ -4,20 +4,20 @@
 # Создать новое голосование.
 # Функция для создания нового голосования____________________________
 def create_voting():
-    print('Голосование за автомобиль года.')
+    print('Голосование за автомобиль года.\n')
 
     count_models = int(input(
         'Сколько моделей авто участвуют в голосовании?: '
     ))
 
     # словарь для хранения моделей авто:
-    models = dict()
-    for i in range(count_models + 1):
-        new_model = input(f'Введите модель {i}-го автомобиля: ')
+    models = list()
+    for i in range(1, count_models + 1):
+        new_model = input(f'\nВведите модель {i}-го автомобиля: ')
 
         models.append(new_model)
 
-        print('Голосование создано!')
+        print('\nГолосование создано!')
 
         return models
     
