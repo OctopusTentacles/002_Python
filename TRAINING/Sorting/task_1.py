@@ -28,6 +28,7 @@ def bubble_sort(arr: List[int]) -> List[int]:
         # Если нет перестановок, массив уже отсортирован, 
         # и можно завершить выполнение раньше.
         if not swapped:
+            logger.info(f't\массив был отсортирован после {i+1} итерации')
             break
 
         logger.info(f'\tперестановка: {arr}')
