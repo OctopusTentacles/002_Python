@@ -15,11 +15,11 @@ logger = logging.getLogger('revers_bubble_sort')
 def revers_bubble_sort(arr: List[int]) -> List[int]:
     len_arr = len(arr)
 
-    for i in range(1, len_arr-1):
+    for i in range(len_arr):
         swapped = False
         logger.info(f'\tИтерация {i}')
 
-        for j in range(0, len_arr-1):
+        for j in range(0, len_arr-i-1):
             if arr[j] < arr[j+1]:
                 arr[j], arr[j+1] = arr[j+1], arr[j]
                 swapped = True
