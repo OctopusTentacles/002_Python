@@ -20,6 +20,7 @@ def bubble_sort(arr: List[int]) -> List[int]:
         for j in range(0, len_arr-i-1):
             if arr[j] > arr[j+1]:
                 arr[j], arr[j+1] = arr[j+1], arr[j]
+                swapped = True
 
         if not swapped:
             logger.info(f'\tСортировка завершилась на {i-1} итерации.')
@@ -28,7 +29,7 @@ def bubble_sort(arr: List[int]) -> List[int]:
     return arr
 
 def quick_sort(arr: List[int]) -> List[int]:
-
+    ...
 
 
 
@@ -49,4 +50,11 @@ if __name__ == '__main__':
     arr_bubble_sort = bubble_sort(copy_arr_for_bubble)
     time_bubble_sort = time.time() - start_time
     logger.info(f'\tПузырьковая сортировка: {arr_bubble_sort}')
-    logger.info(f'\tЗатраченное время {time_bubble_sort}')
+    logger.info(f'\tЗатраченное время {round(time_bubble_sort, 3)} сек.\n')
+
+    # измерение времени быстрой сортировки:
+    start_time = time.time()
+    arr_quick_sort = quick_sort(copy_arr_for_quick)
+    time_quick_sort = time.time() - start_time
+    logger.info(f'\Быстрая сортировка: {arr_quick_sort}')
+    logger.info(f'\tЗатраченное время {round(time_quick_sort, 3)} сек.\n')
